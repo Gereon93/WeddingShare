@@ -371,7 +371,7 @@
     <value>Pakisuyong ipasok ang sekretong susi.</value>
   </data>
   <data name="Gallery_Key_Placeholder" xml:space="preserve">
-    <value>araw ng kasal</value>
+    <value>Ipasok ang secret key dito</value>
   </data>
   <data name="Gallery_Limit_Reached" xml:space="preserve">
     <value>Ang pinakamaraming ipinahihintulot na bilang ng galerya ay naabot</value>

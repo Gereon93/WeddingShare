@@ -371,7 +371,7 @@
     <value>Будь ласка, введіть секретний ключ.</value>
   </data>
   <data name="Gallery_Key_Placeholder" xml:space="preserve">
-    <value>весілля-день</value>
+    <value>Введіть секретний ключ тут</value>
   </data>
   <data name="Gallery_Limit_Reached" xml:space="preserve">
     <value>Отримано максимальну кількість галерей</value>

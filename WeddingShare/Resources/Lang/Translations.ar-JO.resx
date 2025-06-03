@@ -371,7 +371,7 @@
     <value>من فضلك أدخل المفتاح السري.</value>
   </data>
   <data name="Gallery_Key_Placeholder" xml:space="preserve">
-    <value>يوم الزفاف</value>
+    <value>مفتاح سري هنا</value>
   </data>
   <data name="Gallery_Limit_Reached" xml:space="preserve">
     <value>تم الوصول إلى الحد الأقصى المسموح به من المغالي</value>

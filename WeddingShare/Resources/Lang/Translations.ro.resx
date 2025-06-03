@@ -371,7 +371,7 @@
     <value>Introduceți cheia secretă.</value>
   </data>
   <data name="Gallery_Key_Placeholder" xml:space="preserve">
-    <value>ziua nunții</value>
+    <value>Introduceți cheia secretă aici</value>
   </data>
   <data name="Gallery_Limit_Reached" xml:space="preserve">
     <value>Numărul maxim permis de galerii a fost atins</value>

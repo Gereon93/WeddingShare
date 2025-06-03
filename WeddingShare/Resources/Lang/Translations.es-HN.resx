@@ -371,7 +371,7 @@
     <value>Por favor, introduce la llave secreta.</value>
   </data>
   <data name="Gallery_Key_Placeholder" xml:space="preserve">
-    <value>boda-día</value>
+    <value>Entra la llave secreta aquí</value>
   </data>
   <data name="Gallery_Limit_Reached" xml:space="preserve">
     <value>Se ha alcanzado el número máximo permitido de galerías</value>

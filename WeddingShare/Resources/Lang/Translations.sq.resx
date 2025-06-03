@@ -371,7 +371,7 @@
     <value>Ju lutem shkruani çelësin sekret.</value>
   </data>
   <data name="Gallery_Key_Placeholder" xml:space="preserve">
-    <value>dasëm</value>
+    <value>Shkruaj këtu kyçin sekret</value>
   </data>
   <data name="Gallery_Limit_Reached" xml:space="preserve">
     <value>Numri maksimum i lejuar i galerive është arritur</value>

@@ -371,7 +371,7 @@
     <value>비밀 키를 입력하십시오.</value>
   </data>
   <data name="Gallery_Key_Placeholder" xml:space="preserve">
-    <value>웨딩 일</value>
+    <value>비밀 키 입력</value>
   </data>
   <data name="Gallery_Limit_Reached" xml:space="preserve">
     <value>최대 수의 갤러리가 도달되었습니다</value>

@@ -371,7 +371,7 @@
     <value>Lütfen gizli anahtarı girin.</value>
   </data>
   <data name="Gallery_Key_Placeholder" xml:space="preserve">
-    <value>düğün günü</value>
+    <value>Burada gizli anahtar girin</value>
   </data>
   <data name="Gallery_Limit_Reached" xml:space="preserve">
     <value>En fazla izin verilen galeri sayısına ulaştı</value>

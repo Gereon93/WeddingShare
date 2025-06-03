@@ -371,7 +371,7 @@
     <value>Kérem, adja meg a titkos kulcsot.</value>
   </data>
   <data name="Gallery_Key_Placeholder" xml:space="preserve">
-    <value>esküvői nap</value>
+    <value>Adja meg a titkos kulcsot</value>
   </data>
   <data name="Gallery_Limit_Reached" xml:space="preserve">
     <value>Elérte a galériák maximális megengedett számát</value>

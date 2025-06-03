@@ -371,7 +371,7 @@
     <value>Silakan masukkan kunci rahasia.</value>
   </data>
   <data name="Gallery_Key_Placeholder" xml:space="preserve">
-    <value>hari pernikahan pernikahan</value>
+    <value>Kunci rahasia disini</value>
   </data>
   <data name="Gallery_Limit_Reached" xml:space="preserve">
     <value>Jumlah maksimum galeri yang diizinkan telah dicapai</value>

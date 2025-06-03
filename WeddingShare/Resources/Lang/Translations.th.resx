@@ -371,7 +371,7 @@
     <value>โปรดป้อนกุญแจลับ.</value>
   </data>
   <data name="Gallery_Key_Placeholder" xml:space="preserve">
-    <value>วันแต่งงาน</value>
+    <value>ป้อนกุญแจลับที่นี่</value>
   </data>
   <data name="Gallery_Limit_Reached" xml:space="preserve">
     <value>จํานวนของแกลเลอรี่ที่อนุญาตสูงสุด</value>

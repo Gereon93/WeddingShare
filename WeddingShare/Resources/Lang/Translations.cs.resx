@@ -371,7 +371,7 @@
     <value>Prosím, zadejte tajný klíč.</value>
   </data>
   <data name="Gallery_Key_Placeholder" xml:space="preserve">
-    <value>svatební den</value>
+    <value>Zde zadejte tajný klíč</value>
   </data>
   <data name="Gallery_Limit_Reached" xml:space="preserve">
     <value>Maximální povolený počet galerií byl dosažen</value>

@@ -371,7 +371,7 @@
     <value>Si us plau, introduïu la clau secreta.</value>
   </data>
   <data name="Gallery_Key_Placeholder" xml:space="preserve">
-    <value>dia del casament@ info: whatsthis</value>
+    <value>Introduïu aquí la clau secreta</value>
   </data>
   <data name="Gallery_Limit_Reached" xml:space="preserve">
     <value>S' ha arribat al màxim nombre permès de galeries</value>

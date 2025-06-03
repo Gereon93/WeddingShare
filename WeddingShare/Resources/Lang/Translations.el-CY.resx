@@ -371,7 +371,7 @@
     <value>Παρακαλώ εισάγετε το μυστικό κλειδί.</value>
   </data>
   <data name="Gallery_Key_Placeholder" xml:space="preserve">
-    <value>ημέρα γάμου</value>
+    <value>Εισάγετε εδώ το μυστικό κλειδί</value>
   </data>
   <data name="Gallery_Limit_Reached" xml:space="preserve">
     <value>Έχει επιτευχθεί ο μέγιστος επιτρεπόμενος αριθμός γκαλερί</value>

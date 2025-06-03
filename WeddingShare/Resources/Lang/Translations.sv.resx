@@ -371,7 +371,7 @@
     <value>Vänligen ange den hemliga nyckeln.</value>
   </data>
   <data name="Gallery_Key_Placeholder" xml:space="preserve">
-    <value>bröllopsdag</value>
+    <value>Ange hemlig nyckel här</value>
   </data>
   <data name="Gallery_Limit_Reached" xml:space="preserve">
     <value>Det maximala tillåtna antalet gallerier har uppnåtts</value>

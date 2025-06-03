@@ -371,7 +371,7 @@
     <value>Please enter the secret key.</value>
   </data>
   <data name="Gallery_Key_Placeholder" xml:space="preserve">
-    <value>wedding-day</value>
+    <value>Enter secret key here</value>
   </data>
   <data name="Gallery_Limit_Reached" xml:space="preserve">
     <value>The maximum allowed number of galleries has been reached</value>
