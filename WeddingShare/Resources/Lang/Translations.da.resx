@@ -371,7 +371,7 @@
     <value>Indtast venligst den hemmelige nøgle.</value>
   </data>
   <data name="Gallery_Key_Placeholder" xml:space="preserve">
-    <value>ægteskab- dag</value>
+    <value>Indtast hemmelig nøgle her</value>
   </data>
   <data name="Gallery_Limit_Reached" xml:space="preserve">
     <value>Det maksimalt tilladte antal gallerier er nået</value>

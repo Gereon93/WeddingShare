@@ -371,7 +371,7 @@
     <value>請入入密钥.</value>
   </data>
   <data name="Gallery_Key_Placeholder" xml:space="preserve">
-    <value>二. 婚事日</value>
+    <value>在此輸入密钥</value>
   </data>
   <data name="Gallery_Limit_Reached" xml:space="preserve">
     <value>畫廊已達到所允许的最大數量</value>

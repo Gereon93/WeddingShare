@@ -371,7 +371,7 @@
     <value>Syötä salainen avain.</value>
   </data>
   <data name="Gallery_Key_Placeholder" xml:space="preserve">
-    <value>hääpäivä</value>
+    <value>Anna salainen avain tähän</value>
   </data>
   <data name="Gallery_Limit_Reached" xml:space="preserve">
     <value>Suurin sallittu määrä gallerioita on saavutettu</value>

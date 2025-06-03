@@ -371,7 +371,7 @@
     <value>Vennligst skriv den hemmelige nøkkelen.</value>
   </data>
   <data name="Gallery_Key_Placeholder" xml:space="preserve">
-    <value>bryllupsdag</value>
+    <value>Skriv inn hemmelig nøkkel her</value>
   </data>
   <data name="Gallery_Limit_Reached" xml:space="preserve">
     <value>Det maksimale tillatte antall gallerier er nådd</value>

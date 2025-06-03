@@ -371,7 +371,7 @@
     <value>秘密鍵を入力してください.</value>
   </data>
   <data name="Gallery_Key_Placeholder" xml:space="preserve">
-    <value>結婚式の日</value>
+    <value>秘密鍵を入力してください</value>
   </data>
   <data name="Gallery_Limit_Reached" xml:space="preserve">
     <value>許可されたギャラリーの数が最大に達した</value>

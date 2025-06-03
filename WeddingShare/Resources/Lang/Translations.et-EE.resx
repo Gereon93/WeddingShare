@@ -371,7 +371,7 @@
     <value>Palun sisesta salajane võti.</value>
   </data>
   <data name="Gallery_Key_Placeholder" xml:space="preserve">
-    <value>pulmapäev</value>
+    <value>Kirjuta siia salajane võti</value>
   </data>
   <data name="Gallery_Limit_Reached" xml:space="preserve">
     <value>Maksimaalne lubatud galeriide arv on saavutatud</value>

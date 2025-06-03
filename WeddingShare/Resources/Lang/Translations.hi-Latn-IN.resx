@@ -232,8 +232,14 @@
   <data name="Close" xml:space="preserve">
     <value>बंद</value>
   </data>
+  <data name="Contact_Admin_For_Access" xml:space="preserve">
+    <value>कृपया एक्सेस प्रदान करने के लिए साइट व्यवस्थापक से संपर्क करें</value>
+  </data>
   <data name="Create" xml:space="preserve">
     <value>बनाना</value>
+  </data>
+  <data name="Currently_No_Access" xml:space="preserve">
+    <value>वर्तमान में आपके पास पहुंच नहीं है</value>
   </data>
   <data name="Custom_Resources" xml:space="preserve">
     <value>कस्टम संसाधन</value>
@@ -365,7 +371,7 @@
     <value>कृपया गुप्त कुंजी दर्ज करें।.</value>
   </data>
   <data name="Gallery_Key_Placeholder" xml:space="preserve">
-    <value>शादी का दिन</value>
+    <value>यहां क्लिक करें</value>
   </data>
   <data name="Gallery_Limit_Reached" xml:space="preserve">
     <value>गैलरी की अधिकतम अनुमति संख्या तक पहुंच गई है</value>

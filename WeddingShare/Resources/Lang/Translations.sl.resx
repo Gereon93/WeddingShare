@@ -371,7 +371,7 @@
     <value>Prosim vnesite skrivni ključ.</value>
   </data>
   <data name="Gallery_Key_Placeholder" xml:space="preserve">
-    <value>poročni dan</value>
+    <value>Sem vnesite skrivni ključ</value>
   </data>
   <data name="Gallery_Limit_Reached" xml:space="preserve">
     <value>Doseženo je največje dovoljeno število galerij</value>

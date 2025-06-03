@@ -371,7 +371,7 @@
     <value>Proszę wprowadzić sekretny klucz.</value>
   </data>
   <data name="Gallery_Key_Placeholder" xml:space="preserve">
-    <value>dzień ślubu</value>
+    <value>Wpisz tutaj klucz tajny</value>
   </data>
   <data name="Gallery_Limit_Reached" xml:space="preserve">
     <value>Osiągnięto maksymalną dozwoloną liczbę galerii</value>

@@ -371,7 +371,7 @@
     <value>Voer de geheime sleutel in.</value>
   </data>
   <data name="Gallery_Key_Placeholder" xml:space="preserve">
-    <value>trouwdag</value>
+    <value>Voer hier de geheime sleutel in</value>
   </data>
   <data name="Gallery_Limit_Reached" xml:space="preserve">
     <value>Het maximaal toegestane aantal galerijen is bereikt</value>
