@@ -449,7 +449,7 @@
     <value>Введіть ім'я користувача облікового запису.</value>
   </data>
   <data name="Login_Username_Placeholder" xml:space="preserve">
-    <value>Головна</value>
+    <value>Ім'я користувача</value>
   </data>
   <data name="Logout" xml:space="preserve">
     <value>Зареєструватися</value>

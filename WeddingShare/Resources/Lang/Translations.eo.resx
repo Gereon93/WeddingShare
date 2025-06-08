@@ -449,7 +449,7 @@
     <value>Bonvolu eniri konton uzantnomo.</value>
   </data>
   <data name="Login_Username_Placeholder" xml:space="preserve">
-    <value>Admin</value>
+    <value>Uzantnomo</value>
   </data>
   <data name="Logout" xml:space="preserve">
     <value>Diskuto</value>

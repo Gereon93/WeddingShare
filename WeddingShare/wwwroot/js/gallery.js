@@ -364,7 +364,7 @@
                         }
 
                         $.ajax({
-                            url: '/Admin/DeletePhoto',
+                            url: '/Account/DeletePhoto',
                             method: 'DELETE',
                             data: { id }
                         })

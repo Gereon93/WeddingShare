@@ -449,7 +449,7 @@
     <value>Моля, въведете потребителско име на акаунта.</value>
   </data>
   <data name="Login_Username_Placeholder" xml:space="preserve">
-    <value>Администратор</value>
+    <value>Потребител</value>
   </data>
   <data name="Logout" xml:space="preserve">
     <value>Изход</value>

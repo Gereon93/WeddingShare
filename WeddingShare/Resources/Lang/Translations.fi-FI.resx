@@ -449,7 +449,7 @@
     <value>Anna tilin käyttäjätunnus.</value>
   </data>
   <data name="Login_Username_Placeholder" xml:space="preserve">
-    <value>Hallinto</value>
+    <value>Käyttäjätunnus</value>
   </data>
   <data name="Logout" xml:space="preserve">
     <value>Kirjaudu ulos</value>

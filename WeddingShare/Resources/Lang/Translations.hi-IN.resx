@@ -449,7 +449,7 @@
     <value>कृपया अकाउंट यूज़रनेम दर्ज करें।.</value>
   </data>
   <data name="Login_Username_Placeholder" xml:space="preserve">
-    <value>व्यवस्थापक</value>
+    <value>उपयोगकर्ता नाम</value>
   </data>
   <data name="Logout" xml:space="preserve">
     <value>लॉग-इन</value>

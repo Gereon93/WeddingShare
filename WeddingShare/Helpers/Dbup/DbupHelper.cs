@@ -50,19 +50,19 @@ namespace WeddingShare.Helpers.Dbup
                 }
 
                 var isDemoMode = config.GetOrDefault(Settings.IsDemoMode, false);
-                var username = !isDemoMode ? config.GetOrDefault(Settings.Account.Admin.Username, "admin").ToLower() : "demo";
-                var adminAccount = new UserModel() 
+                var username = !isDemoMode ? config.GetOrDefault(Settings.Account.Owner.Username, "admin").ToLower() : "demo";
+                var ownerAccount = new UserModel() 
                 {
                     Username = username,
-                    Password = encryption.Encrypt(!isDemoMode ? config.GetOrDefault(Settings.Account.Admin.Password, "admin") : "demo", username)
+                    Password = encryption.Encrypt(!isDemoMode ? config.GetOrDefault(Settings.Account.Owner.Password, "admin") : "demo", username)
                 };
-                await database.InitAdminAccount(adminAccount);
+                await database.InitOwnerAccount(ownerAccount);
 
                 await new DbupImporter(config, database, loggerFactory.CreateLogger<DbupImporter>()).ImportSettings();
 
-                if (config.GetOrDefault(Settings.Account.Admin.LogPassword, false))
+                if (config.GetOrDefault(Settings.Account.Owner.LogPassword, false))
                 {
-                    logger.LogInformation($"Password: {adminAccount.Password}");
+                    logger.LogInformation($"Password: {ownerAccount.Password}");
                 }
 
                 if (config.GetOrDefault(Security.MultiFactor.ResetToDefault, false))

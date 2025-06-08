@@ -449,7 +449,7 @@
     <value>Por favor, insira o nome de usuário da conta.</value>
   </data>
   <data name="Login_Username_Placeholder" xml:space="preserve">
-    <value>Administrador</value>
+    <value>Nome de utilizador</value>
   </data>
   <data name="Logout" xml:space="preserve">
     <value>Logotipo</value>

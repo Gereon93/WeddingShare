@@ -154,6 +154,13 @@ function displayIdentityCheck(required, callbackFn) {
 
 (function () {
     document.addEventListener('DOMContentLoaded', function () {
+
+        $(document).on('keyup', function (e) {
+            if (e.key === 'Escape') {
+                hidePopup();
+            }
+        });
+
         $(document).off('click', '.change-theme').on('click', '.change-theme', function (e) {
             var currentTheme = getCookie('Theme');
             if (currentTheme === 'dark') {
@@ -289,18 +296,18 @@ function displayIdentityCheck(required, callbackFn) {
             }
         });
 
-        $(document).off('submit', '#frmAdminLogin').on('submit', '#frmAdminLogin', function (e) {
+        $(document).off('submit', '#frmLogin').on('submit', '#frmLogin', function (e) {
             preventDefaults(e);
 
-            var token = $('#frmAdminLogin input[name=\'__RequestVerificationToken\']').val();
+            var token = $('#frmLogin input[name=\'__RequestVerificationToken\']').val();
 
-            var username = $('#frmAdminLogin input.input-username').val();
+            var username = $('#frmLogin input.input-username').val();
             if (username === undefined || username.length === 0) {
                 displayMessage(localization.translate('Login'), localization.translate('Login_Invalid_Username'));
                 return;
             }
 
-            var password = $('#frmAdminLogin input.input-password').val();
+            var password = $('#frmLogin input.input-password').val();
             if (password === undefined || password.length === 0) {
                 displayMessage(localization.translate('Login'), localization.translate('Login_Invalid_Password'));
                 return;
@@ -309,7 +316,7 @@ function displayIdentityCheck(required, callbackFn) {
             displayLoader(localization.translate('Loading'));
 
             $.ajax({
-                url: '/Admin/Login',
+                url: '/Account/Login',
                 method: 'POST',
                 data: { __RequestVerificationToken: token, Username: username, Password: password }
             })
@@ -334,11 +341,11 @@ function displayIdentityCheck(required, callbackFn) {
 
                                         $.ajax({
                                             type: "POST",
-                                            url: '/Admin/ValidateMultifactorAuth',
+                                            url: '/Account/ValidateMultifactorAuth',
                                             data: { __RequestVerificationToken: token, Username: username, Password: password, Code: code },
                                             success: function (data) {
                                                 if (data.success === true) {
-                                                    window.location = `/Admin`;
+                                                    window.location = `/Account`;
                                                 } else if (data.message) {
                                                     displayMessage(localization.translate('Login'), localization.translate('Login_Failed'), [data.message]);
                                                 } else {
@@ -352,7 +359,7 @@ function displayIdentityCheck(required, callbackFn) {
                                 }]
                             });
                         } else {
-                            window.location = `/Admin`;
+                            window.location = `/Account`;
                         }
                     } else if (data.message) {
                         displayMessage(localization.translate('Login'), localization.translate('Login_Failed'), [data.message]);

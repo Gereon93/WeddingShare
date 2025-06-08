@@ -724,7 +724,7 @@ namespace WeddingShare.Helpers.Database
         #endregion
 
         #region Users
-        public async Task<bool> InitAdminAccount(UserModel model)
+        public async Task<bool> InitOwnerAccount(UserModel model)
         {
             bool result = false;
 
@@ -907,7 +907,7 @@ namespace WeddingShare.Helpers.Database
         {
             bool result = false;
 
-            if (model.Id > 1 && !string.Equals("Admin", model.Username, StringComparison.OrdinalIgnoreCase))
+            if (model.Id > 1)
             { 
                 using (var conn = await GetConnection())
                 {

@@ -449,7 +449,7 @@
     <value>请输入账户用户名 .</value>
   </data>
   <data name="Login_Username_Placeholder" xml:space="preserve">
-    <value>管理员</value>
+    <value>用户名</value>
   </data>
   <data name="Logout" xml:space="preserve">
     <value>注销</value>

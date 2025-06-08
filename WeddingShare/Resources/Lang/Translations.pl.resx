@@ -449,7 +449,7 @@
     <value>Proszę podać nazwę konta.</value>
   </data>
   <data name="Login_Username_Placeholder" xml:space="preserve">
-    <value>Admin</value>
+    <value>Nazwa użytkownika</value>
   </data>
   <data name="Logout" xml:space="preserve">
     <value>Wylogowanie</value>

@@ -449,7 +449,7 @@
     <value>אנא הכנס את שם המשתמש.</value>
   </data>
   <data name="Login_Username_Placeholder" xml:space="preserve">
-    <value>Admin</value>
+    <value>שם המשתמש</value>
   </data>
   <data name="Logout" xml:space="preserve">
     <value>Logout</value>
