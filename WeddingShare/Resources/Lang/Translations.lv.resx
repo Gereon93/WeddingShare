@@ -449,7 +449,7 @@
     <value>Lūdzu ievadiet konta lietotājvārdu.</value>
   </data>
   <data name="Login_Username_Placeholder" xml:space="preserve">
-    <value>Administrators</value>
+    <value>Lietotājvārds</value>
   </data>
   <data name="Logout" xml:space="preserve">
     <value>Atteikties</value>

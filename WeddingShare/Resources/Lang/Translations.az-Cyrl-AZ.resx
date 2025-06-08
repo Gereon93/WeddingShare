@@ -449,7 +449,7 @@
     <value>Qeydiyyatdan istifadə edin.</value>
   </data>
   <data name="Login_Username_Placeholder" xml:space="preserve">
-    <value>Qeydiyyat</value>
+    <value>Ad Soyad</value>
   </data>
   <data name="Logout" xml:space="preserve">
     <value>Daxil ol</value>

@@ -449,7 +449,7 @@
     <value>Zadejte prosím uživatelské jméno účtu.</value>
   </data>
   <data name="Login_Username_Placeholder" xml:space="preserve">
-    <value>Admin</value>
+    <value>Uživatelské jméno</value>
   </data>
   <data name="Logout" xml:space="preserve">
     <value>Odhlášení</value>

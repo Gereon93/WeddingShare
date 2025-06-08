@@ -449,7 +449,7 @@
     <value>Prašome įvesti paskyros naudotojo vardą.</value>
   </data>
   <data name="Login_Username_Placeholder" xml:space="preserve">
-    <value>Adminas</value>
+    <value>Vartotojo vardas</value>
   </data>
   <data name="Logout" xml:space="preserve">
     <value>Comment</value>

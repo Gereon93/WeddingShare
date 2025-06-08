@@ -68,7 +68,7 @@ namespace WeddingShare
                 options.Cookie.HttpOnly = false;
                 options.ExpireTimeSpan = TimeSpan.FromMinutes(10);
 
-                options.LoginPath = "/Admin/Login";
+                options.LoginPath = "/Account/Login";
                 options.AccessDeniedPath = $"/Error?Reason={ErrorCode.Unauthorized}";
                 options.SlidingExpiration = true;
             });

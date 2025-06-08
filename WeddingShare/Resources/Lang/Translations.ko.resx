@@ -449,7 +449,7 @@
     <value>계정 사용자 이름 입력.</value>
   </data>
   <data name="Login_Username_Placeholder" xml:space="preserve">
-    <value>계정 관리</value>
+    <value>사용자 이름</value>
   </data>
   <data name="Logout" xml:space="preserve">
     <value>로그아웃</value>

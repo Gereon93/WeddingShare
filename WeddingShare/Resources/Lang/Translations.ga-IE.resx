@@ -449,7 +449,7 @@
     <value>Cuir ainm úsáideora san áireamh.</value>
   </data>
   <data name="Login_Username_Placeholder" xml:space="preserve">
-    <value>Amharc ar gach eolas</value>
+    <value>Ainm úsáideora</value>
   </data>
   <data name="Logout" xml:space="preserve">
     <value>Logáil isteach</value>

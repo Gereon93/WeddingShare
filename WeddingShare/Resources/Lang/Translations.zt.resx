@@ -449,7 +449,7 @@
     <value>請輸入帳號用戶名 .</value>
   </data>
   <data name="Login_Username_Placeholder" xml:space="preserve">
-    <value>管理</value>
+    <value>使用者名</value>
   </data>
   <data name="Logout" xml:space="preserve">
     <value>登出</value>

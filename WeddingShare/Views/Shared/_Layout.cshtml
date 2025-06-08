@@ -97,7 +97,7 @@
 
         @if (User?.Identity != null && User.Identity.IsAuthenticated)
         {
-            <script src="~/js/admin.js" asp-append-version="true"></script>
+            <script src="~/js/account.js" asp-append-version="true"></script>
         }
     </head>
     <body>
@@ -133,15 +133,15 @@
                         <div class="profile-icon my-1 m-lg-0 float-end">
                             @if (await _settings.GetOrDefault(Settings.Account.ShowProfileIcon, true))
                             {
-                                if (!string.IsNullOrWhiteSpace(Context?.Request.Path.Value) && Context.Request.Path.Value.Contains("/Admin", StringComparison.OrdinalIgnoreCase) && !Context.Request.Path.Value.Contains("/Login", StringComparison.OrdinalIgnoreCase))
+                                if (!string.IsNullOrWhiteSpace(Context?.Request.Path.Value) && Context.Request.Path.Value.Contains("/Account", StringComparison.OrdinalIgnoreCase) && !Context.Request.Path.Value.Contains("/Login", StringComparison.OrdinalIgnoreCase))
                                 {
-                                    <a href="@Url.Action("Logout", "Admin")">
+                                    <a href="@Url.Action("Logout", "Account")">
                                         <i class="fa-solid fa-door-open fa-2x text-danger"></i>
                                     </a>
                                 }
                                 else
                                 {
-                                    <a href="@Url.Action("Login", "Admin")">
+                                    <a href="@Url.Action("Login", "Account")">
                                         <i class="fa-solid fa-circle-user fa-2x text-secondary"></i>
                                     </a>
                                 }

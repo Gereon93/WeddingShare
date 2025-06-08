@@ -195,10 +195,7 @@ function moveSlide(direction) {
             }
         });
 
-        $(document).off('keyup').on('keyup', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
+        $(document).on('keyup', function (e) {
             if ($('.media-viewer .media-viewer-content').is(':visible')) {
                 if (e.key === 'Escape') {
                     hideMediaViewer();

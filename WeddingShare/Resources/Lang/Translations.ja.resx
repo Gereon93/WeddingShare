@@ -449,7 +449,7 @@
     <value>ユーザー名を入力してください.</value>
   </data>
   <data name="Login_Username_Placeholder" xml:space="preserve">
-    <value>アドミン</value>
+    <value>ユーザ名</value>
   </data>
   <data name="Logout" xml:space="preserve">
     <value>ログイン</value>

@@ -449,7 +449,7 @@
     <value>অনুগ্রহ করে অ্যাকাউন্টের নাম লিখুন।.</value>
   </data>
   <data name="Login_Username_Placeholder" xml:space="preserve">
-    <value>অ্যাডমিন</value>
+    <value>ব্যবহারকারীর নাম</value>
   </data>
   <data name="Logout" xml:space="preserve">
     <value>লগ-আউট করুন</value>

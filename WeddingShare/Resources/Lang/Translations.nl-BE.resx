@@ -449,7 +449,7 @@
     <value>Voer account gebruikersnaam in.</value>
   </data>
   <data name="Login_Username_Placeholder" xml:space="preserve">
-    <value>Beheerder</value>
+    <value>Gebruikersnaam</value>
   </data>
   <data name="Logout" xml:space="preserve">
     <value>Afmelden</value>

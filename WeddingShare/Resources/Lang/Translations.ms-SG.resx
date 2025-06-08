@@ -449,7 +449,7 @@
     <value>Nama pengguna akaun.</value>
   </data>
   <data name="Login_Username_Placeholder" xml:space="preserve">
-    <value>Admin</value>
+    <value>Namapengguna</value>
   </data>
   <data name="Logout" xml:space="preserve">
     <value>Logkeluar</value>
