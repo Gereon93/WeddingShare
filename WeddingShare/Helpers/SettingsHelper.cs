@@ -39,7 +39,7 @@ namespace WeddingShare.Helpers
             { 
                 try
                 {
-                    var dbValue = await _databaseHelper.GetSetting(key, gallery);
+                    var dbValue = !string.IsNullOrWhiteSpace(gallery) ? await _databaseHelper.GetSetting(key, gallery) : await _databaseHelper.GetSetting(key);
                     if (dbValue != null)
                     {
                         return dbValue;

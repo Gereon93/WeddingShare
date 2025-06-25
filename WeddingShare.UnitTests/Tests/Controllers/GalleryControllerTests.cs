@@ -40,25 +40,17 @@ namespace WeddingShare.UnitTests.Tests.Helpers
         {
             _env.WebRootPath.Returns("/app/wwwroot");
 
-            _database.GetGallery("default").Returns(Task.FromResult<GalleryModel?>(new GalleryModel()
-            {
-                Id = 1,
-                Name = "default",
-                SecretKey = "password",
-                ApprovedItems = 32,
-                PendingItems = 50,
-                TotalItems = 72
-            }));
-            _database.GetGallery("blaa").Returns(Task.FromResult<GalleryModel?>(new GalleryModel()
-            {
-                Id = 2,
-                Name = "blaa",
-                SecretKey = "456789",
-                ApprovedItems = 2,
-                PendingItems = 1,
-                TotalItems = 3
-            }));
-            _database.GetGallery("missing").Returns(Task.FromResult<GalleryModel?>(null));
+			var mockData = GetMockData();
+
+            _database.GetGallery(1).Returns(Task.FromResult<GalleryModel?>(mockData["default"]));
+            _database.GetGallery("default").Returns(Task.FromResult<GalleryModel?>(mockData["default"]));
+            
+			_database.GetGallery(2).Returns(Task.FromResult<GalleryModel?>(mockData["blaa"]));
+            _database.GetGallery("blaa").Returns(Task.FromResult<GalleryModel?>(mockData["blaa"]));
+            
+			_database.GetGallery(3).Returns(Task.FromResult<GalleryModel?>(null));
+			_database.GetGallery("missing").Returns(Task.FromResult<GalleryModel?>(null));
+
             _database.AddGallery(Arg.Any<GalleryModel>()).Returns(Task.FromResult<GalleryModel?>(new GalleryModel()
             {
                 Id = 101,
@@ -116,10 +108,8 @@ namespace WeddingShare.UnitTests.Tests.Helpers
 				PhotoGallery model = (PhotoGallery)actual.Model;
 				Assert.That(model?.GalleryId, Is.EqualTo(id));
 				Assert.That(model?.GalleryName, Is.EqualTo(name));
+				Assert.That(model?.SecretKey, Is.EqualTo(key));
 				Assert.That(model.ViewMode, Is.EqualTo(mode));
-				Assert.That(model?.FileUploader?.GalleryId, Is.EqualTo(name));
-				Assert.That(model?.FileUploader?.SecretKey, Is.EqualTo(key));
-				Assert.That(model?.FileUploader?.UploadUrl, Is.EqualTo("/Gallery/UploadImage"));
 			}
 			else
 			{
@@ -144,7 +134,7 @@ namespace WeddingShare.UnitTests.Tests.Helpers
             Assert.That(actual?.Model, Is.Not.Null);
 
             PhotoGallery model = (PhotoGallery)actual.Model;
-			Assert.That(model?.FileUploader, expected ? Is.Not.Null : Is.Null);
+			Assert.That(model?.UploadActivated, Is.EqualTo(expected));
         }
 
         [TestCase("1970-01-01 00:00", true)]
@@ -166,7 +156,7 @@ namespace WeddingShare.UnitTests.Tests.Helpers
             Assert.That(actual?.Model, Is.Not.Null);
 
             PhotoGallery model = (PhotoGallery)actual.Model;
-            Assert.That(model?.FileUploader, expected ? Is.Not.Null : Is.Null);
+            Assert.That(model?.UploadActivated, Is.EqualTo(expected));
         }
 
         [TestCase(DeviceType.Desktop, ViewMode.Default, GalleryGroup.None, GalleryOrder.Descending)]
@@ -187,10 +177,8 @@ namespace WeddingShare.UnitTests.Tests.Helpers
 			PhotoGallery model = (PhotoGallery)actual.Model;
 			Assert.That(model?.GalleryId, Is.EqualTo(1));
 			Assert.That(model?.GalleryName, Is.EqualTo("default"));
+			Assert.That(model?.SecretKey, Is.EqualTo("password"));
 			Assert.That(model.ViewMode, Is.EqualTo(mode));
-			Assert.That(model?.FileUploader?.GalleryId, Is.EqualTo("default"));
-			Assert.That(model?.FileUploader?.SecretKey, Is.EqualTo("password"));
-			Assert.That(model?.FileUploader?.UploadUrl, Is.EqualTo("/Gallery/UploadImage"));
 		}
 
 		[TestCase(true, 1, null)]
@@ -215,7 +203,7 @@ namespace WeddingShare.UnitTests.Tests.Helpers
 				session: session,
 				form: new Dictionary<string, StringValues>
 				{
-					{ "Id", "default" },
+					{ "Id", "1" },
 					{ "SecretKey", "password" }
                 },
 				files: files);
@@ -245,7 +233,7 @@ namespace WeddingShare.UnitTests.Tests.Helpers
                 session: session,
                 form: new Dictionary<string, StringValues>
                 {
-                    { "Id", "default" },
+                    { "Id", "1" },
                     { "SecretKey", "password" }
                 },
                 files: files);
@@ -283,7 +271,7 @@ namespace WeddingShare.UnitTests.Tests.Helpers
 			var controller = new GalleryController(_env, _settings, _database, _file, _deviceDetector, _image, _notification, _encryption, _url, _logger, _localizer);
 			controller.ControllerContext.HttpContext = MockData.MockHttpContext(form: new Dictionary<string, StringValues>
 			{
-				{ "Id", "default" },
+				{ "Id", "1" },
 				{ "SecretKey", key }
 			});
 
@@ -318,7 +306,7 @@ namespace WeddingShare.UnitTests.Tests.Helpers
 			var controller = new GalleryController(_env, _settings, _database, _file, _deviceDetector, _image, _notification, _encryption, _url, _logger, _localizer);
 			controller.ControllerContext.HttpContext = MockData.MockHttpContext(form: new Dictionary<string, StringValues>
 			{
-				{ "Id", "default" },
+				{ "Id", "1" },
 				{ "SecretKey", "password" }
 			});
 
@@ -337,7 +325,7 @@ namespace WeddingShare.UnitTests.Tests.Helpers
 			controller.ControllerContext.HttpContext = MockData.MockHttpContext(
 				form: new Dictionary<string, StringValues>
 				{
-					{ "Id", "default" },
+					{ "Id", "1" },
 					{ "SecretKey", "password" }
 				},
 				files: new FormFileCollection() {
@@ -359,7 +347,7 @@ namespace WeddingShare.UnitTests.Tests.Helpers
 			controller.ControllerContext.HttpContext = MockData.MockHttpContext(
 				form: new Dictionary<string, StringValues>
 				{
-					{ "Id", "default" },
+					{ "Id", "1" },
 					{ "SecretKey", "password" }
 				},
 				files: new FormFileCollection() {
@@ -373,5 +361,46 @@ namespace WeddingShare.UnitTests.Tests.Helpers
 			Assert.That(JsonResponseHelper.GetPropertyValue(actual.Value, "uploaded", 0), Is.EqualTo(0));
 			Assert.That(JsonResponseHelper.GetPropertyValue(actual.Value, "errors", new List<string>()).Count, Is.GreaterThan(0));
 		}
+
+		private IDictionary<string, GalleryModel> GetMockData()
+		{
+            return new Dictionary<string, GalleryModel>()
+            {
+                {
+                    "default", new GalleryModel()
+                    {
+                        Id = 1,
+                        Name = "default",
+                        SecretKey = "password",
+                        ApprovedItems = 32,
+                        PendingItems = 50,
+                        TotalItems = 72
+                    }
+                },
+                {
+                    "blaa", new GalleryModel()
+                    {
+                        Id = 2,
+                        Name = "blaa",
+                        SecretKey = "456789",
+                        ApprovedItems = 2,
+                        PendingItems = 1,
+                        TotalItems = 3
+                    }
+                },
+                {
+                    "missing", new GalleryModel()
+                    {
+                        Id = 101,
+                        Name = "missing",
+                        SecretKey = "123456",
+                        ApprovedItems = 0,
+                        PendingItems = 0,
+                        TotalItems = 0,
+                        Owner = 0
+                    }
+                }
+            };
+        }
 	}
 }

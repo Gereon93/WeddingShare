@@ -44,7 +44,9 @@ namespace WeddingShare.Helpers.Database
         Task<bool> Import(string path);
         Task<bool> Export(string path);
         Task<IEnumerable<SettingModel>?> GetAllSettings(string? gallery = "");
-        Task<SettingModel?> GetSetting(string id, string? gallery = "");
+        Task<SettingModel?> GetSetting(string id);
+        Task<SettingModel?> GetSetting(string id, int gallery);
+        Task<SettingModel?> GetSetting(string id, string gallery);
         Task<SettingModel?> GetGallerySpecificSetting(string id, string gallery);
         Task<SettingModel?> AddSetting(SettingModel model, string? gallery = "");
         Task<SettingModel?> EditSetting(SettingModel model, string? gallery = "");
