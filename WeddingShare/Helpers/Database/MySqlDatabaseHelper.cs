@@ -1311,17 +1311,26 @@ namespace WeddingShare.Helpers.Database
             return result;
         }
 
-        public async Task<SettingModel?> GetSetting(string id, string? gallery = "")
+        public async Task<SettingModel?> GetSetting(string id)
+        {
+            return await GetSetting(id, 0);
+        }
+
+        public async Task<SettingModel?> GetSetting(string id, string gallery)
+        {
+            return await GetSetting(id, await this.GetGalleryId(gallery) ?? 0);
+        }
+
+        public async Task<SettingModel?> GetSetting(string id, int galleryId)
         {
             SettingModel? result;
 
-            var galleryId = await this.GetGalleryId(gallery);
             using (var conn = await GetConnection())
             {
                 var cmd = CreateCommand($"SELECT `id`, `value` FROM (SELECT `id`, `value`, '2' AS `priority` FROM `settings` WHERE `id`=@Id UNION SELECT `id`, `value`, '1' AS `priority` FROM `gallery_settings` WHERE `id`=@Id AND `gallery_id`=@GalleryId) ORDER BY `priority` ASC LIMIT 1;", conn);
 
                 cmd.Parameters.AddWithValue("Id", id.ToUpper());
-                cmd.Parameters.AddWithValue("GalleryId", galleryId ?? 0);
+                cmd.Parameters.AddWithValue("GalleryId", galleryId);
                 cmd.CommandType = CommandType.Text;
 
                 await conn.OpenAsync();

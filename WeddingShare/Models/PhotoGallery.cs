@@ -14,20 +14,22 @@ namespace WeddingShare.Models
         {
         }
 
-        public PhotoGallery(int id, string name, string secretKey, ViewMode viewMode, GalleryGroup groupBy, GalleryOrder orderBy, List<PhotoGalleryImage> images, bool requireIdentity)
+        public PhotoGallery(int id, string name, string secretKey, ViewMode viewMode, GalleryGroup groupBy, GalleryOrder orderBy, List<PhotoGalleryImage> images, bool uploadActivated)
         {
             this.GalleryId = id;
             this.GalleryName = name;
+            this.SecretKey = secretKey;
             this.ViewMode = viewMode;
             this.GroupBy = groupBy;
             this.OrderBy = orderBy;
             this.PendingCount = 0;
             this.Images = images;
-            this.FileUploader = new FileUploader(name, secretKey, "/Gallery/UploadImage", requireIdentity);
+            this.UploadActivated = uploadActivated;
         }
 
         public int? GalleryId { get; set; }
         public string? GalleryName { get; set; }
+        public string? SecretKey { get; set; }
         public ViewMode ViewMode { get; set; }
         public GalleryGroup GroupBy { get; set; }
         public GalleryOrder OrderBy { get; set; }
@@ -45,7 +47,7 @@ namespace WeddingShare.Models
             }
         }
         public List<PhotoGalleryImage>? Images { get; set; }
-        public FileUploader? FileUploader { get; set; }
+        public bool UploadActivated { get; set; } = false;
     }
 
     public class PhotoGalleryImage
