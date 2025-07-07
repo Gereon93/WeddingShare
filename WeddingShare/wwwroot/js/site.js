@@ -92,14 +92,15 @@ function displayIdentityCheck(required, callbackFn) {
         Callback: function () {
             let name = $('#popup-modal-field-identity-name').val().trim();
             if (name !== undefined && name.length > 0) {
-                const regex = /^[a-zA-Z-\s\-\']+$/;
-                if (regex.test(name)) {
-                    $.ajax({
-                        url: '/Home/SetIdentity',
-                        method: 'POST',
-                        data: { name }
-                    })
-                        .done(data => {
+                $.ajax({
+                    url: '/Home/SetIdentity',
+                    method: 'POST',
+                    data: { name }
+                })
+                    .done(data => {
+                        if (data == undefined || data.success == undefined) {
+                            displayMessage(localization.translate('Identity_Check'), localization.translate('Identity_Check_Set_Failed'), [error]);
+                        } else if (data.success) {
                             $('.file-uploader-form').attr('data-identity-required', 'false');
 
                             if (callbackFn !== undefined && callbackFn !== null) {
@@ -107,13 +108,15 @@ function displayIdentityCheck(required, callbackFn) {
                             } else {
                                 window.location.reload();
                             }
-                        })
-                        .fail((xhr, error) => {
+                        } else if (data.reason == 1) {
+                            displayMessage(localization.translate('Identity_Check_Invalid_Name'), localization.translate('Identity_Check_Invalid_Name_Msg'));
+                        } else {
                             displayMessage(localization.translate('Identity_Check'), localization.translate('Identity_Check_Set_Failed'), [error]);
-                        });
-                } else {
-                    displayMessage(localization.translate('Identity_Check_Invalid_Name'), localization.translate('Identity_Check_Invalid_Name_Msg'));
-                }
+                        }
+                    })
+                    .fail((xhr, error) => {
+                        displayMessage(localization.translate('Identity_Check'), localization.translate('Identity_Check_Set_Failed'), [error]);
+                    });
             } else {
                 displayMessage(localization.translate('Identity_Check_Invalid_Name'), localization.translate('Identity_Check_Invalid_Name_Msg'));
             }
@@ -130,7 +133,15 @@ function displayIdentityCheck(required, callbackFn) {
                     data: { name: 'Anonymous' }
                 })
                     .done(data => {
-                        window.location.reload();
+                        if (data == undefined || data.success == undefined) {
+                            displayMessage(localization.translate('Identity_Check'), localization.translate('Identity_Check_Set_Failed'), [error]);
+                        } else if (data.success) {
+                            window.location.reload();
+                        } else if (data.reason == 1) {
+                            displayMessage(localization.translate('Identity_Check_Invalid_Name'), localization.translate('Identity_Check_Invalid_Name_Msg'));
+                        } else {
+                            displayMessage(localization.translate('Identity_Check'), localization.translate('Identity_Check_Set_Failed'), [error]);
+                        }
                     })
                     .fail((xhr, error) => {
                         displayMessage(localization.translate('Identity_Check'), localization.translate('Identity_Check_Set_Failed'), [error]);
@@ -235,22 +246,25 @@ function displayIdentityCheck(required, callbackFn) {
                     Callback: function () {
                         let name = $('#popup-modal-field-identity-name').val().trim();
                         if (name !== undefined && name.length > 0) {
-                            const regex = /^[a-zA-Z-\s\-\']+$/;
-                            if (regex.test(name)) {
-                                $.ajax({
-                                    url: '/Home/SetIdentity',
-                                    method: 'POST',
-                                    data: { name }
-                                })
-                                    .done(data => {
+                            $.ajax({
+                                url: '/Home/SetIdentity',
+                                method: 'POST',
+                                data: { name }
+                            })
+                                .done(data => {
+                                    if (data == undefined || data.success == undefined) {
+                                        displayMessage(localization.translate('Identity_Check'), localization.translate('Identity_Check_Set_Failed'), [error]);
+                                    } else if (data.success) {
                                         window.location.reload();
-                                    })
-                                    .fail((xhr, error) => {
-                                        displayMessage(localization.translate('Identity_Check_Change'), localization.translate('Identity_Check_Set_Failed'), [error]);
-                                    });
-                            } else {
-                                displayMessage(localization.translate('Identity_Check_Invalid_Name'), localization.translate('Identity_Check_Invalid_Name_Msg'));
-                            }
+                                    } else if (data.reason == 1) {
+                                        displayMessage(localization.translate('Identity_Check_Invalid_Name'), localization.translate('Identity_Check_Invalid_Name_Msg'));
+                                    } else {
+                                        displayMessage(localization.translate('Identity_Check'), localization.translate('Identity_Check_Set_Failed'), [error]);
+                                    }
+                                })
+                                .fail((xhr, error) => {
+                                    displayMessage(localization.translate('Identity_Check'), localization.translate('Identity_Check_Set_Failed'), [error]);
+                                });
                         } else {
                             displayMessage(localization.translate('Identity_Check_Invalid_Name'), localization.translate('Identity_Check_Invalid_Name_Msg'));
                         }
