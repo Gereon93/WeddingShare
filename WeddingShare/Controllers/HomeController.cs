@@ -70,7 +70,11 @@ namespace WeddingShare.Controllers
         {
             try
             {
-                if (Regex.IsMatch(name, @"^[a-zA-Z-\s\-\']+$", RegexOptions.Compiled))
+                if (HtmlSanitizer.MayContainXss(name))
+                {
+                    return Json(new { success = false, reason = 1 });
+                }
+                else 
                 {
                     HttpContext.Session.SetString(SessionKey.ViewerIdentity, name);
 
