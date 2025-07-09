@@ -121,5 +121,12 @@
             public const string Enabled = "Settings:Themes:Enabled";
             public const string Default = "Settings:Themes:Default";
         }
+
+        public class Policies
+        {
+            public const string BaseKey = "Settings:Policies:";
+            public const string Enabled = "Settings:Policies:Enabled";
+            public const string CookiePolicy = "Settings:Policies:CookiePolicy";
+        }
     }
 }

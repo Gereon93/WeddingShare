@@ -94,6 +94,9 @@
   <data name="406_Error_Title" xml:space="preserve">
     <value>잘못된 갤러리</value>
   </data>
+  <data name="Accept" xml:space="preserve">
+    <value>이름 *</value>
+  </data>
   <data name="Action" xml:space="preserve">
     <value>(주)</value>
   </data>
@@ -117,6 +120,9 @@
   </data>
   <data name="Audit_BulkRejectReviews" xml:space="preserve">
     <value>대량은 모든 대출 리뷰를 거부</value>
+  </data>
+  <data name="Audit_CookieConsentApproved" xml:space="preserve">
+    <value>방문자는 쿠키의 사용을 승인했습니다</value>
   </data>
   <data name="Audit_CreatedGallery" xml:space="preserve">
     <value>본문 바로가기</value>
@@ -235,6 +241,15 @@
   <data name="Contact_Admin_For_Access" xml:space="preserve">
     <value>사이트 관리자에 문의하여 액세스</value>
   </data>
+  <data name="Cookie_Audit_Error" xml:space="preserve">
+    <value>쿠키 승인에 대한 감사 메시지를 기록</value>
+  </data>
+  <data name="CookiePolicy_Button_Text" xml:space="preserve">
+    <value>쿠키 정책</value>
+  </data>
+  <data name="CookiePolicy_Message_Short" xml:space="preserve">
+    <value>이 웹 사이트를 이용함으로써 귀하는 당사의 쿠키 이용 약관에 따라 기본 쿠키를 사용합니다. 더 알아보기</value>
+  </data>
   <data name="Create" xml:space="preserve">
     <value>이름 *</value>
   </data>
@@ -270,6 +285,9 @@
   </data>
   <data name="Delete_Confirmation" xml:space="preserve">
     <value>이 갤러리를 삭제하시겠습니까?</value>
+  </data>
+  <data name="Demo_Message" xml:space="preserve">
+    <value>이 데모 버전입니다. 모든 구성은 주기적으로 미래 검사자를 위한 청결한 슬레이트를 지키기 위하여 닦습니다.</value>
   </data>
   <data name="Destructive_Action_Performed" xml:space="preserve">
     <value>연습 수행</value>
@@ -685,6 +703,15 @@
   <data name="Settings_Basic_Title_Label" xml:space="preserve">
     <value>이름 *</value>
   </data>
+  <data name="Settings_CustomCookiePolicy_Help" xml:space="preserve">
+    <value>CookiePolicy 정보 페이지에 표시하는 내용</value>
+  </data>
+  <data name="Settings_CustomCookiePolicy_Label" xml:space="preserve">
+    <value>주문 쿠키 정책</value>
+  </data>
+  <data name="Settings_CustomPolicies" xml:space="preserve">
+    <value>주문 정책</value>
+  </data>
   <data name="Settings_Failed" xml:space="preserve">
     <value>설정에 실패</value>
   </data>
@@ -925,6 +952,12 @@
   <data name="Settings_Ntfy_Topic_Label" xml:space="preserve">
     <value>이름 *</value>
   </data>
+  <data name="Settings_PoliciesEnabled_Help" xml:space="preserve">
+    <value>사용자는 GDPR 스타일 팝업을 볼 수 있습니까?</value>
+  </data>
+  <data name="Settings_PoliciesEnabled_Label" xml:space="preserve">
+    <value>이름 *</value>
+  </data>
   <data name="Settings_Slideshow" xml:space="preserve">
     <value>슬라이드 쇼</value>
   </data>
@@ -1089,6 +1122,9 @@
   </data>
   <data name="Visit" xml:space="preserve">
     <value>- 연혁</value>
+  </data>
+  <data name="Warning" xml:space="preserve">
+    <value>제품정보</value>
   </data>
   <data name="Wipe" xml:space="preserve">
     <value>사이트맵</value>

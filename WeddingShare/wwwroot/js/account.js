@@ -197,7 +197,7 @@ function selectActiveTab(tab) {
             selectActiveTab(tab);
         });
 
-        $(document).off('change', 'input.setting-field,select.setting-field').on('change', 'input.setting-field,select.setting-field', function (e) {
+        $(document).off('change', 'input.setting-field,select.setting-field,textarea.setting-field').on('change', 'input.setting-field,select.setting-field,textarea.setting-field', function (e) {
             $(this).attr('data-updated', 'true');
         });
 
