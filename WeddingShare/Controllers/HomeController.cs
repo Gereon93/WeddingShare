@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
 using WeddingShare.Constants;
+using WeddingShare.Extensions;
 using WeddingShare.Helpers;
 using WeddingShare.Helpers.Database;
 using WeddingShare.Models;
@@ -15,14 +16,16 @@ namespace WeddingShare.Controllers
         private readonly ISettingsHelper _settings;
         private readonly IDatabaseHelper _database;
         private readonly IDeviceDetector _deviceDetector;
+        private readonly IAuditHelper _audit;
         private readonly ILogger _logger;
         private readonly IStringLocalizer<Lang.Translations> _localizer;
 
-        public HomeController(ISettingsHelper settings, IDatabaseHelper database, IDeviceDetector deviceDetector, ILogger<HomeController> logger, IStringLocalizer<Lang.Translations> localizer)
+        public HomeController(ISettingsHelper settings, IDatabaseHelper database, IDeviceDetector deviceDetector, IAuditHelper audit, ILogger<HomeController> logger, IStringLocalizer<Lang.Translations> localizer)
         {
             _settings = settings;
             _database = database;
             _deviceDetector = deviceDetector;
+            _audit = audit;
             _logger = logger;
             _localizer = localizer;
         }
@@ -65,6 +68,18 @@ namespace WeddingShare.Controllers
             return View(model);
         }
 
+        [HttpGet]
+        [Route("CookiePolicy")]
+        [Route("Home/CookiePolicy")]
+        public async Task<IActionResult> CookiePolicy()
+        {
+            ViewBag.CompanyName = await _settings.GetOrDefault(Settings.Basic.Title, "WeddingShare");
+            ViewBag.SiteHostname = await _settings.GetOrDefault(Settings.Basic.BaseUrl, "www.wedding-share.org");
+            ViewBag.CustomPolicy = await _settings.GetOrDefault(Settings.Policies.CookiePolicy, string.Empty);
+
+            return View("~/Views/Home/CookiePolicy.cshtml");
+        }
+
         [HttpPost]
         public IActionResult SetIdentity(string name) 
         {
@@ -84,6 +99,23 @@ namespace WeddingShare.Controllers
             catch (Exception ex)
             {
                 _logger.LogError(ex, $"{_localizer["Identity_Session_Error"].Value}: '{name}'");
+            }
+
+            return Json(new { success = false });
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> LogCookieApproval()
+        {
+            try
+            {
+                var ipAddress = Request.HttpContext.TryGetIpAddress();
+
+                return Json(new { success = await _audit.LogAction("Visitor", $"{_localizer["Audit_CookieConsentApproved"].Value}: {ipAddress}") });
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"{_localizer["Cookie_Audit_Error"].Value}");
             }
 
             return Json(new { success = false });

@@ -94,6 +94,9 @@
   <data name="406_Error_Title" xml:space="preserve">
     <value>Galeri Tidak Valid</value>
   </data>
+  <data name="Accept" xml:space="preserve">
+    <value>Terima</value>
+  </data>
   <data name="Action" xml:space="preserve">
     <value>Aksi</value>
   </data>
@@ -117,6 +120,9 @@
   </data>
   <data name="Audit_BulkRejectReviews" xml:space="preserve">
     <value>Bulk menolak semua ulasan yang tertunda</value>
+  </data>
+  <data name="Audit_CookieConsentApproved" xml:space="preserve">
+    <value>Seorang pengunjung telah menyetujui penggunaan cookie</value>
   </data>
   <data name="Audit_CreatedGallery" xml:space="preserve">
     <value>Galeri dibuat</value>
@@ -235,6 +241,15 @@
   <data name="Contact_Admin_For_Access" xml:space="preserve">
     <value>Silahkan hubungi administrator situs untuk menyediakan akses</value>
   </data>
+  <data name="Cookie_Audit_Error" xml:space="preserve">
+    <value>Gagal mencatat pesan audit untuk persetujuan cookie</value>
+  </data>
+  <data name="CookiePolicy_Button_Text" xml:space="preserve">
+    <value>Kebijakan Kue</value>
+  </data>
+  <data name="CookiePolicy_Message_Short" xml:space="preserve">
+    <value>Dengan menggunakan situs ini Anda setuju untuk menggunakan kue dasar sesuai dengan istilah penggunaan cookie kami. Untuk mengetahui lebih banyak silahkan melihat kami</value>
+  </data>
   <data name="Create" xml:space="preserve">
     <value>Buat</value>
   </data>
@@ -270,6 +285,9 @@
   </data>
   <data name="Delete_Confirmation" xml:space="preserve">
     <value>Anda yakin ingin menghapus galeri ini?</value>
+  </data>
+  <data name="Demo_Message" xml:space="preserve">
+    <value>Ini adalah versi demo. Semua konfigurasi secara berkala dihapus untuk memastikan daftar bersih untuk penguji masa depan.</value>
   </data>
   <data name="Destructive_Action_Performed" xml:space="preserve">
     <value>Aksi Penghancuran Performed</value>
@@ -685,6 +703,15 @@
   <data name="Settings_Basic_Title_Label" xml:space="preserve">
     <value>Judul</value>
   </data>
+  <data name="Settings_CustomCookiePolicy_Help" xml:space="preserve">
+    <value>Isi untuk ditampilkan pada halaman info CookiePolicy</value>
+  </data>
+  <data name="Settings_CustomCookiePolicy_Label" xml:space="preserve">
+    <value>Kebijakan Cookie Kustom</value>
+  </data>
+  <data name="Settings_CustomPolicies" xml:space="preserve">
+    <value>Kebijakan Gubahan</value>
+  </data>
   <data name="Settings_Failed" xml:space="preserve">
     <value>Gagal mendapatkan pengaturan</value>
   </data>
@@ -925,6 +952,12 @@
   <data name="Settings_Ntfy_Topic_Label" xml:space="preserve">
     <value>Topik</value>
   </data>
+  <data name="Settings_PoliciesEnabled_Help" xml:space="preserve">
+    <value>Haruskah pengguna melihat popup gaya GDPR?</value>
+  </data>
+  <data name="Settings_PoliciesEnabled_Label" xml:space="preserve">
+    <value>Diaktifkan</value>
+  </data>
   <data name="Settings_Slideshow" xml:space="preserve">
     <value>Slideshow</value>
   </data>
@@ -1089,6 +1122,9 @@
   </data>
   <data name="Visit" xml:space="preserve">
     <value>Kunjungi</value>
+  </data>
+  <data name="Warning" xml:space="preserve">
+    <value>Peringatan</value>
   </data>
   <data name="Wipe" xml:space="preserve">
     <value>Hapus</value>

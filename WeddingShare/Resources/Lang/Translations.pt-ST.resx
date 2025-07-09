@@ -94,6 +94,9 @@
   <data name="406_Error_Title" xml:space="preserve">
     <value>Galeria Inválida</value>
   </data>
+  <data name="Accept" xml:space="preserve">
+    <value>Aceitar</value>
+  </data>
   <data name="Action" xml:space="preserve">
     <value>Acção</value>
   </data>
@@ -117,6 +120,9 @@
   </data>
   <data name="Audit_BulkRejectReviews" xml:space="preserve">
     <value>Bulk rejeitou todos os comentários pendentes</value>
+  </data>
+  <data name="Audit_CookieConsentApproved" xml:space="preserve">
+    <value>Um visitante aprovou o uso de cookies</value>
   </data>
   <data name="Audit_CreatedGallery" xml:space="preserve">
     <value>Galeria de imagens</value>
@@ -235,6 +241,15 @@
   <data name="Contact_Admin_For_Access" xml:space="preserve">
     <value>Entre em contato com um administrador do site para fornecer acesso</value>
   </data>
+  <data name="Cookie_Audit_Error" xml:space="preserve">
+    <value>Falhado para registrar uma mensagem de auditoria para aprovação de cookies</value>
+  </data>
+  <data name="CookiePolicy_Button_Text" xml:space="preserve">
+    <value>Política de Cookies</value>
+  </data>
+  <data name="CookiePolicy_Message_Short" xml:space="preserve">
+    <value>Ao usar este site você concorda com o uso de cookies básicos de acordo com nossos termos de uso de cookies. Para saber mais, por favor veja o nosso</value>
+  </data>
   <data name="Create" xml:space="preserve">
     <value>Criar</value>
   </data>
@@ -270,6 +285,9 @@
   </data>
   <data name="Delete_Confirmation" xml:space="preserve">
     <value>Tem certeza de que deseja excluir esta galeria?</value>
+  </data>
+  <data name="Demo_Message" xml:space="preserve">
+    <value>Esta é uma versão demo. Toda configuração é periodicamente limpa para garantir um ardósia limpo para futuros testadores.</value>
   </data>
   <data name="Destructive_Action_Performed" xml:space="preserve">
     <value>Ação Destrutiva Realizada</value>
@@ -685,6 +703,15 @@
   <data name="Settings_Basic_Title_Label" xml:space="preserve">
     <value>Título</value>
   </data>
+  <data name="Settings_CustomCookiePolicy_Help" xml:space="preserve">
+    <value>O conteúdo a ser exibido na página de informações do CookiePolicy</value>
+  </data>
+  <data name="Settings_CustomCookiePolicy_Label" xml:space="preserve">
+    <value>Política de cookies personalizada</value>
+  </data>
+  <data name="Settings_CustomPolicies" xml:space="preserve">
+    <value>Políticas aduaneiras</value>
+  </data>
   <data name="Settings_Failed" xml:space="preserve">
     <value>Falhado para obter configurações</value>
   </data>
@@ -925,6 +952,12 @@
   <data name="Settings_Ntfy_Topic_Label" xml:space="preserve">
     <value>Assunto</value>
   </data>
+  <data name="Settings_PoliciesEnabled_Help" xml:space="preserve">
+    <value>O usuário deve ver popups de estilo GDPR?</value>
+  </data>
+  <data name="Settings_PoliciesEnabled_Label" xml:space="preserve">
+    <value>Activado</value>
+  </data>
   <data name="Settings_Slideshow" xml:space="preserve">
     <value>Apresentação de Slides</value>
   </data>
@@ -1089,6 +1122,9 @@
   </data>
   <data name="Visit" xml:space="preserve">
     <value>Visita</value>
+  </data>
+  <data name="Warning" xml:space="preserve">
+    <value>Aviso</value>
   </data>
   <data name="Wipe" xml:space="preserve">
     <value>Espécie</value>

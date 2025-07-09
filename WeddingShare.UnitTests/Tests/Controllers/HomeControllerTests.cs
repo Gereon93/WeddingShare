@@ -16,6 +16,7 @@ namespace WeddingShare.UnitTests.Tests.Helpers
         private readonly ISettingsHelper _settings = Substitute.For<ISettingsHelper>();
         private readonly IDatabaseHelper _database = Substitute.For<IDatabaseHelper>();
         private readonly IDeviceDetector _deviceDetector = Substitute.For<IDeviceDetector>();
+        private readonly IAuditHelper _audit = Substitute.For<IAuditHelper>();
         private readonly ILogger<HomeController> _logger = Substitute.For<ILogger<HomeController>>();
         private readonly IStringLocalizer<Lang.Translations> _localizer = Substitute.For<IStringLocalizer<Lang.Translations>>();
         
@@ -42,7 +43,7 @@ namespace WeddingShare.UnitTests.Tests.Helpers
             _settings.GetOrDefault(Settings.Basic.SingleGalleryMode, Arg.Any<bool>()).Returns(singleGalleryMode);
             _settings.GetOrDefault(Settings.Gallery.SecretKey, Arg.Any<string>(), Arg.Any<string>()).Returns(secretKey);
 
-            var controller = new HomeController(_settings, _database, _deviceDetector, _logger, _localizer);
+            var controller = new HomeController(_settings, _database, _deviceDetector, _audit, _logger, _localizer);
             controller.ControllerContext.HttpContext = new DefaultHttpContext()
             {
                 Session = new MockSession()

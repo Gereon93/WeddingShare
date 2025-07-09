@@ -94,6 +94,9 @@
   <data name="406_Error_Title" xml:space="preserve">
     <value>گالری Invalid</value>
   </data>
+  <data name="Accept" xml:space="preserve">
+    <value>پذیرش</value>
+  </data>
   <data name="Action" xml:space="preserve">
     <value>Action</value>
   </data>
@@ -117,6 +120,9 @@
   </data>
   <data name="Audit_BulkRejectReviews" xml:space="preserve">
     <value>دانلود زیرنویس فارسی فیلم The Waiting Review</value>
+  </data>
+  <data name="Audit_CookieConsentApproved" xml:space="preserve">
+    <value>بازدید کننده استفاده از کوکی ها را تایید کرده است</value>
   </data>
   <data name="Audit_CreatedGallery" xml:space="preserve">
     <value>ساخت گالری</value>
@@ -235,6 +241,15 @@
   <data name="Contact_Admin_For_Access" xml:space="preserve">
     <value>لطفا با یک مدیر سایت برای ارائه دسترسی تماس بگیرید</value>
   </data>
+  <data name="Cookie_Audit_Error" xml:space="preserve">
+    <value>شکست در ورود به یک پیام حسابرسی برای تایید کوکی</value>
+  </data>
+  <data name="CookiePolicy_Button_Text" xml:space="preserve">
+    <value>سیاست کوکی ها</value>
+  </data>
+  <data name="CookiePolicy_Message_Short" xml:space="preserve">
+    <value>با استفاده از این وب سایت شما با استفاده از کوکی های پایه مطابق با شرایط استفاده از کوکی موافقت می کنید. برای پیدا کردن بیشتر لطفا ما را ببینید</value>
+  </data>
   <data name="Create" xml:space="preserve">
     <value>ایجاد آفرینش</value>
   </data>
@@ -270,6 +285,9 @@
   </data>
   <data name="Delete_Confirmation" xml:space="preserve">
     <value>آیا می خواهید این گالری را حذف کنید؟?</value>
+  </data>
+  <data name="Demo_Message" xml:space="preserve">
+    <value>این یک نسخه آزمایشی است. تمام تنظیمات به صورت دوره ای از بین می رود تا اطمینان حاصل شود که یک تخته تمیز برای تست های آینده.</value>
   </data>
   <data name="Destructive_Action_Performed" xml:space="preserve">
     <value>اقدام مخرب</value>
@@ -685,6 +703,15 @@
   <data name="Settings_Basic_Title_Label" xml:space="preserve">
     <value>عنوان</value>
   </data>
+  <data name="Settings_CustomCookiePolicy_Help" xml:space="preserve">
+    <value>محتوای صفحه اطلاعات کوکیPolicy</value>
+  </data>
+  <data name="Settings_CustomCookiePolicy_Label" xml:space="preserve">
+    <value>سیاست کوکی های سفارشی</value>
+  </data>
+  <data name="Settings_CustomPolicies" xml:space="preserve">
+    <value>سیاست های سفارشی</value>
+  </data>
   <data name="Settings_Failed" xml:space="preserve">
     <value>شکست در تنظیمات</value>
   </data>
@@ -925,6 +952,12 @@
   <data name="Settings_Ntfy_Topic_Label" xml:space="preserve">
     <value>موضوعات موضوعی</value>
   </data>
+  <data name="Settings_PoliciesEnabled_Help" xml:space="preserve">
+    <value>آیا کاربر باید پاپ آپ های سبک GDPR را ببیند؟?</value>
+  </data>
+  <data name="Settings_PoliciesEnabled_Label" xml:space="preserve">
+    <value>فعال سازی</value>
+  </data>
   <data name="Settings_Slideshow" xml:space="preserve">
     <value>Slideshow</value>
   </data>
@@ -1089,6 +1122,9 @@
   </data>
   <data name="Visit" xml:space="preserve">
     <value>بازدید</value>
+  </data>
+  <data name="Warning" xml:space="preserve">
+    <value>هشدار</value>
   </data>
   <data name="Wipe" xml:space="preserve">
     <value>Wipe</value>

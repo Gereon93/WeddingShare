@@ -25,9 +25,14 @@ function uuidv4() {
 }
 
 function setCookie(cname, cvalue, hours) {
-    const d = new Date();
-    d.setTime(d.getTime() + (hours * 60 * 60 * 1000));
-    document.cookie = `${cname}=${cvalue};expires=${d.toUTCString()};path=/`;
+    let consent = getCookie('.AspNet.Consent');
+    if ((consent !== undefined && consent === 'yes') || $('#cookieConsentDisabled').length > 0) {
+        const d = new Date();
+        d.setTime(d.getTime() + (hours * 60 * 60 * 1000));
+        document.cookie = `${cname}=${cvalue};expires=${d.toUTCString()};path=/`;
+    } else {
+        console.warn(`Cannot set cookie '${cname}' as the user has not accepted the cookie policy`);
+    }
 }
 
 function getCookie(cname) {
@@ -437,6 +442,18 @@ function displayIdentityCheck(required, callbackFn) {
                 error: function () {
                     hideLoader();
                 }
+            });
+        });
+
+        $(document).off('click', '#cookieConsent button.accept-policy').on('click', '#cookieConsent button.accept-policy', function (e) {
+            preventDefaults(e);
+
+            document.cookie = $(this).data('cookie-string');
+            $('#cookieConsentWrapper').remove();
+
+            $.ajax({
+                url: '/Home/LogCookieApproval',
+                method: 'POST'
             });
         });
 

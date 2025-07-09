@@ -94,6 +94,9 @@
   <data name="406_Error_Title" xml:space="preserve">
     <value>جالري</value>
   </data>
+  <data name="Accept" xml:space="preserve">
+    <value>قبول</value>
+  </data>
   <data name="Action" xml:space="preserve">
     <value>الإجراء</value>
   </data>
@@ -117,6 +120,9 @@
   </data>
   <data name="Audit_BulkRejectReviews" xml:space="preserve">
     <value>رفض الشعب جميع الاستعراضات المعلقة</value>
+  </data>
+  <data name="Audit_CookieConsentApproved" xml:space="preserve">
+    <value>قام زائر بالموافقة على استخدام الكعك</value>
   </data>
   <data name="Audit_CreatedGallery" xml:space="preserve">
     <value>معرض مبتكر</value>
@@ -235,6 +241,15 @@
   <data name="Contact_Admin_For_Access" xml:space="preserve">
     <value>يرجى الاتصال بمدير الموقع لتوفير إمكانية الوصول</value>
   </data>
+  <data name="Cookie_Audit_Error" xml:space="preserve">
+    <value>فشل في تسجيل رسالة مراجعة حسابات لموافقة الكعك</value>
+  </data>
+  <data name="CookiePolicy_Button_Text" xml:space="preserve">
+    <value>سياسة كوكي</value>
+  </data>
+  <data name="CookiePolicy_Message_Short" xml:space="preserve">
+    <value>من خلال استخدام هذا الموقع، توافق على استخدامنا للكوكيز الأساسي وفقا لشروط استخدام الكعك. لمعرفة المزيد من الرجاء مشاهدة</value>
+  </data>
   <data name="Create" xml:space="preserve">
     <value>الإبداع</value>
   </data>
@@ -270,6 +285,9 @@
   </data>
   <data name="Delete_Confirmation" xml:space="preserve">
     <value>هل أنت متأكد أنك تريد حذف هذا المعرض؟?</value>
+  </data>
+  <data name="Demo_Message" xml:space="preserve">
+    <value>هذه نسخة تجريبية وتُمسح جميع التشكيلات بصورة دورية لضمان وضع قائمة نظيفة للمختبرين في المستقبل.</value>
   </data>
   <data name="Destructive_Action_Performed" xml:space="preserve">
     <value>الإجراءات المدمرة</value>
@@ -685,6 +703,15 @@
   <data name="Settings_Basic_Title_Label" xml:space="preserve">
     <value>العنوان</value>
   </data>
+  <data name="Settings_CustomCookiePolicy_Help" xml:space="preserve">
+    <value>محتوى عرضه على صفحة معلومات شرطة كوكي</value>
+  </data>
+  <data name="Settings_CustomCookiePolicy_Label" xml:space="preserve">
+    <value>سياسة كوكي العرفية</value>
+  </data>
+  <data name="Settings_CustomPolicies" xml:space="preserve">
+    <value>السياسات العرفية</value>
+  </data>
   <data name="Settings_Failed" xml:space="preserve">
     <value>فشل في الحصول على الظروف</value>
   </data>
@@ -925,6 +952,12 @@
   <data name="Settings_Ntfy_Topic_Label" xml:space="preserve">
     <value>الموضوع</value>
   </data>
+  <data name="Settings_PoliciesEnabled_Help" xml:space="preserve">
+    <value>هل يجب على المستعمل أن يرى نمط الناتج المحلي الإجمالي؟?</value>
+  </data>
+  <data name="Settings_PoliciesEnabled_Label" xml:space="preserve">
+    <value>Enabled</value>
+  </data>
   <data name="Settings_Slideshow" xml:space="preserve">
     <value>Slideshow</value>
   </data>
@@ -1089,6 +1122,9 @@
   </data>
   <data name="Visit" xml:space="preserve">
     <value>زيارة</value>
+  </data>
+  <data name="Warning" xml:space="preserve">
+    <value>تحذير</value>
   </data>
   <data name="Wipe" xml:space="preserve">
     <value>Wipe</value>

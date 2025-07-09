@@ -47,6 +47,11 @@ namespace WeddingShare
             services.AddRazorPages();
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
 
+            services.Configure<CookiePolicyOptions>(options =>
+            {
+                options.CheckConsentNeeded = context => true;
+            });
+
             services.Configure<KestrelServerOptions>(options =>
             {
                 options.Limits.MaxRequestBodySize = int.MaxValue;
@@ -103,6 +108,8 @@ namespace WeddingShare
             { 
                 app.UseHttpsRedirection();
             }
+
+            app.UseCookiePolicy();
 
             this.DownloadLogoImagesLocally();
             this.DownloadBannerImagesLocally();

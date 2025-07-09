@@ -181,7 +181,7 @@
             @if (isDemoMode)
             {
                 <div class="alert alert-warning text-center" role="alert">
-                    <i class="fa fa-warning mx-3"></i><b>WARNING:</b> This is a demo version. All configuration is periodically wiped to ensure a clean slate for future testers. 
+                    <i class="fa fa-warning mx-3"></i><b>@(_localizer["Warning"].Value.ToUpper()):</b> @_localizer["Demo_Message"].Value
                 </div>
             }
 
@@ -231,6 +231,8 @@
                 </p>
             </div>
         </footer>
+
+        <partial name="_CookieConsentPartial" />
 
         <!-- Sponsors Button -->
         <i id="btn-show-sponsors" class="fa-solid fa-bolt"></i>

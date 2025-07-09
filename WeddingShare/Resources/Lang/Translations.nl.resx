@@ -94,6 +94,9 @@
   <data name="406_Error_Title" xml:space="preserve">
     <value>Ongeldige galerij</value>
   </data>
+  <data name="Accept" xml:space="preserve">
+    <value>Accepteren</value>
+  </data>
   <data name="Action" xml:space="preserve">
     <value>Actie</value>
   </data>
@@ -117,6 +120,9 @@
   </data>
   <data name="Audit_BulkRejectReviews" xml:space="preserve">
     <value>Bulk afgewezen alle lopende beoordelingen</value>
+  </data>
+  <data name="Audit_CookieConsentApproved" xml:space="preserve">
+    <value>Een bezoeker heeft het gebruik van cookies goedgekeurd</value>
   </data>
   <data name="Audit_CreatedGallery" xml:space="preserve">
     <value>Galerie aangemaakt</value>
@@ -235,6 +241,15 @@
   <data name="Contact_Admin_For_Access" xml:space="preserve">
     <value>Neem contact op met een beheerder van de site om toegang te bieden</value>
   </data>
+  <data name="Cookie_Audit_Error" xml:space="preserve">
+    <value>Kon een auditbericht voor cookie-goedkeuring niet aanmelden</value>
+  </data>
+  <data name="CookiePolicy_Button_Text" xml:space="preserve">
+    <value>Cookiebeleid</value>
+  </data>
+  <data name="CookiePolicy_Message_Short" xml:space="preserve">
+    <value>Door deze website te gebruiken gaat u akkoord met ons gebruik van basiscookies in overeenstemming met onze voorwaarden voor cookiegebruik. Voor meer informatie kunt u onze</value>
+  </data>
   <data name="Create" xml:space="preserve">
     <value>Aanmaken</value>
   </data>
@@ -270,6 +285,9 @@
   </data>
   <data name="Delete_Confirmation" xml:space="preserve">
     <value>Weet u zeker dat u deze galerij wilt verwijderen?</value>
+  </data>
+  <data name="Demo_Message" xml:space="preserve">
+    <value>Dit is een demoversie. Alle configuratie wordt periodiek gewist om te zorgen voor een schone lei voor toekomstige testers.</value>
   </data>
   <data name="Destructive_Action_Performed" xml:space="preserve">
     <value>Destructieve actie uitgevoerd</value>
@@ -685,6 +703,15 @@
   <data name="Settings_Basic_Title_Label" xml:space="preserve">
     <value>Titel</value>
   </data>
+  <data name="Settings_CustomCookiePolicy_Help" xml:space="preserve">
+    <value>De inhoud op de CookiePolicy info pagina</value>
+  </data>
+  <data name="Settings_CustomCookiePolicy_Label" xml:space="preserve">
+    <value>Aangepaste cookiebeleid</value>
+  </data>
+  <data name="Settings_CustomPolicies" xml:space="preserve">
+    <value>Aangepast beleid</value>
+  </data>
   <data name="Settings_Failed" xml:space="preserve">
     <value>Kon instellingen niet verkrijgen</value>
   </data>
@@ -925,6 +952,12 @@
   <data name="Settings_Ntfy_Topic_Label" xml:space="preserve">
     <value>Onderwerp</value>
   </data>
+  <data name="Settings_PoliciesEnabled_Help" xml:space="preserve">
+    <value>Moet de gebruiker GDPR stijl popups zien?</value>
+  </data>
+  <data name="Settings_PoliciesEnabled_Label" xml:space="preserve">
+    <value>Ingeschakeld</value>
+  </data>
   <data name="Settings_Slideshow" xml:space="preserve">
     <value>Diavoorstelling</value>
   </data>
@@ -1089,6 +1122,9 @@
   </data>
   <data name="Visit" xml:space="preserve">
     <value>Bezoek</value>
+  </data>
+  <data name="Warning" xml:space="preserve">
+    <value>Waarschuwing</value>
   </data>
   <data name="Wipe" xml:space="preserve">
     <value>Veeg</value>

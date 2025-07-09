@@ -1530,8 +1530,8 @@ namespace WeddingShare.Controllers
             {
                 if (await _settings.GetOrDefault(Notifications.Alerts.FailedLogin, true))
                 {
-                    var ipAddress = this.TryGetIpAddress(Request.HttpContext);
-                    var country = this.TryGetCountry(Request.HttpContext);
+                    var ipAddress = Request.HttpContext.TryGetIpAddress();
+                    var country = Request.HttpContext.TryGetCountry();
 
                     await _notificationHelper.Send("Invalid Login Detected", $"An invalid login attempt was made for account '{model?.Username}' from ip address '{ipAddress}' based in country '{country}'.", _url.GenerateBaseUrl(HttpContext?.Request, "/Account"));
                 }
@@ -1556,51 +1556,6 @@ namespace WeddingShare.Controllers
             {
                 return false;
             }
-        }
-
-        private string TryGetIpAddress(HttpContext ctx)
-        {
-            try
-            {
-                var ipAddress = TryGetHeaderValue(ctx, ["CF-Connecting-IP", "CF-Connecting-IPv6", "X-Forwarded-For", "HTTP_X_FORWARDED_FOR", "REMOTE_ADDR"]);
-                if (string.IsNullOrWhiteSpace(ipAddress) || ipAddress.Equals("Unknown", StringComparison.OrdinalIgnoreCase))
-                {
-                    return ctx.Connection?.RemoteIpAddress?.ToString() ?? "Unknown";
-                }
-
-                return ipAddress;
-            }
-            catch 
-            {
-                return "Unknown";
-            }
-        }
-
-        private string TryGetCountry(HttpContext ctx)
-        {
-            return TryGetHeaderValue(ctx, [ "CF-IPCountry" ]);
-        }
-
-        private string TryGetHeaderValue(HttpContext ctx, string[] headers)
-        {
-            foreach (var header in headers)
-            {
-                try
-                {
-                    string? val = ctx.Request.Headers[header];
-                    if (!string.IsNullOrWhiteSpace(val))
-                    {
-                        var vals = val.Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
-                        if (vals.Length != 0)
-                        {
-                            return vals[0];
-                        }
-                    }
-                }
-                catch { }
-            }
-
-            return "Unknown";
         }
     }
 }

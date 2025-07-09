@@ -94,6 +94,9 @@
   <data name="406_Error_Title" xml:space="preserve">
     <value>Invalide Galerie</value>
   </data>
+  <data name="Accept" xml:space="preserve">
+    <value>Annahme</value>
+  </data>
   <data name="Action" xml:space="preserve">
     <value>Aktion</value>
   </data>
@@ -117,6 +120,9 @@
   </data>
   <data name="Audit_BulkRejectReviews" xml:space="preserve">
     <value>Bulk hat alle anhängigen Bewertungen abgelehnt</value>
+  </data>
+  <data name="Audit_CookieConsentApproved" xml:space="preserve">
+    <value>Ein Besucher hat die Verwendung von Cookies genehmigt</value>
   </data>
   <data name="Audit_CreatedGallery" xml:space="preserve">
     <value>Erstellte Galerie</value>
@@ -235,6 +241,15 @@
   <data name="Contact_Admin_For_Access" xml:space="preserve">
     <value>Bitte kontaktieren Sie einen Website-Administrator, um Zugang zu erhalten</value>
   </data>
+  <data name="Cookie_Audit_Error" xml:space="preserve">
+    <value>Nicht eingeloggt, um eine Audit-Nachricht für die Cookie-Zulassung zu protokollieren</value>
+  </data>
+  <data name="CookiePolicy_Button_Text" xml:space="preserve">
+    <value>Cookie-Richtlinie</value>
+  </data>
+  <data name="CookiePolicy_Message_Short" xml:space="preserve">
+    <value>Durch die Nutzung dieser Website erklären Sie sich mit unserer Nutzung grundlegender Cookies gemäß unseren Nutzungsbedingungen einverstanden. Weitere Informationen finden Sie hier</value>
+  </data>
   <data name="Create" xml:space="preserve">
     <value>Erstellen</value>
   </data>
@@ -270,6 +285,9 @@
   </data>
   <data name="Delete_Confirmation" xml:space="preserve">
     <value>Bist du dir sicher, dass du diese Galerie löschen möchtest?</value>
+  </data>
+  <data name="Demo_Message" xml:space="preserve">
+    <value>Das ist eine Demoversion. Alle Konfigurationen werden periodisch gelöscht, um einen sauberen Schiefer für zukünftige Tester zu gewährleisten.</value>
   </data>
   <data name="Destructive_Action_Performed" xml:space="preserve">
     <value>Destruktive Aktion durchgeführt</value>
@@ -685,6 +703,15 @@
   <data name="Settings_Basic_Title_Label" xml:space="preserve">
     <value>Titel</value>
   </data>
+  <data name="Settings_CustomCookiePolicy_Help" xml:space="preserve">
+    <value>Die Inhalte auf der CookiePolicy-Infoseite</value>
+  </data>
+  <data name="Settings_CustomCookiePolicy_Label" xml:space="preserve">
+    <value>Kundenspezifische Cookie-Richtlinie</value>
+  </data>
+  <data name="Settings_CustomPolicies" xml:space="preserve">
+    <value>Zollpolitik</value>
+  </data>
   <data name="Settings_Failed" xml:space="preserve">
     <value>Nicht verfügbar, um Einstellungen zu erhalten</value>
   </data>
@@ -925,6 +952,12 @@
   <data name="Settings_Ntfy_Topic_Label" xml:space="preserve">
     <value>Thema</value>
   </data>
+  <data name="Settings_PoliciesEnabled_Help" xml:space="preserve">
+    <value>Sollte der Nutzer die DSGVO-Stil Popups sehen?</value>
+  </data>
+  <data name="Settings_PoliciesEnabled_Label" xml:space="preserve">
+    <value>Ermöglicht</value>
+  </data>
   <data name="Settings_Slideshow" xml:space="preserve">
     <value>Diashow</value>
   </data>
@@ -1089,6 +1122,9 @@
   </data>
   <data name="Visit" xml:space="preserve">
     <value>Besuche uns</value>
+  </data>
+  <data name="Warning" xml:space="preserve">
+    <value>Warnung</value>
   </data>
   <data name="Wipe" xml:space="preserve">
     <value>Löschen</value>

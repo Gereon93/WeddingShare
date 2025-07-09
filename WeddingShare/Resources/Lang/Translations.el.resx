@@ -94,6 +94,9 @@
   <data name="406_Error_Title" xml:space="preserve">
     <value>Μη έγκυρη συλλογή</value>
   </data>
+  <data name="Accept" xml:space="preserve">
+    <value>Αποδοχή</value>
+  </data>
   <data name="Action" xml:space="preserve">
     <value>Δράση</value>
   </data>
@@ -117,6 +120,9 @@
   </data>
   <data name="Audit_BulkRejectReviews" xml:space="preserve">
     <value>Η Bulk απέρριψε όλες τις εκκρεμείς κριτικές</value>
+  </data>
+  <data name="Audit_CookieConsentApproved" xml:space="preserve">
+    <value>Ένας επισκέπτης έχει εγκρίνει τη χρήση cookies</value>
   </data>
   <data name="Audit_CreatedGallery" xml:space="preserve">
     <value>Δημιουργία συλλογής</value>
@@ -235,6 +241,15 @@
   <data name="Contact_Admin_For_Access" xml:space="preserve">
     <value>Παρακαλούμε επικοινωνήστε με έναν διαχειριστή του site για να παρέχουν πρόσβαση</value>
   </data>
+  <data name="Cookie_Audit_Error" xml:space="preserve">
+    <value>Αποτυχία καταγραφής ενός μηνύματος ελέγχου για την έγκριση cookie</value>
+  </data>
+  <data name="CookiePolicy_Button_Text" xml:space="preserve">
+    <value>Πολιτική για τα cookies</value>
+  </data>
+  <data name="CookiePolicy_Message_Short" xml:space="preserve">
+    <value>Με τη χρήση αυτής της ιστοσελίδας συμφωνείτε με τη χρήση βασικών cookies σύμφωνα με τους όρους χρήσης των cookies. Για να μάθετε περισσότερα παρακαλώ δείτε μας</value>
+  </data>
   <data name="Create" xml:space="preserve">
     <value>Δημιουργία</value>
   </data>
@@ -270,6 +285,9 @@
   </data>
   <data name="Delete_Confirmation" xml:space="preserve">
     <value>Σίγουρα θέλετε να διαγράψετε αυτή την γκαλερί?</value>
+  </data>
+  <data name="Demo_Message" xml:space="preserve">
+    <value>Αυτή είναι μια έκδοση επίδειξης. Όλες οι ρυθμίσεις σβήνονται περιοδικά για να εξασφαλιστεί μια καθαρή πλάκα για τους μελλοντικούς δοκιμαστές.</value>
   </data>
   <data name="Destructive_Action_Performed" xml:space="preserve">
     <value>Εκτελείται Καταστροφική Δράση</value>
@@ -685,6 +703,15 @@
   <data name="Settings_Basic_Title_Label" xml:space="preserve">
     <value>Τίτλος</value>
   </data>
+  <data name="Settings_CustomCookiePolicy_Help" xml:space="preserve">
+    <value>Το περιεχόμενο που θα εμφανιστεί στη σελίδα πληροφοριών της CookiePolicy</value>
+  </data>
+  <data name="Settings_CustomCookiePolicy_Label" xml:space="preserve">
+    <value>Προσαρμοσμένη πολιτική cookies</value>
+  </data>
+  <data name="Settings_CustomPolicies" xml:space="preserve">
+    <value>Προσαρμοσμένες πολιτικές</value>
+  </data>
   <data name="Settings_Failed" xml:space="preserve">
     <value>Αποτυχία λήψης ρυθμίσεων</value>
   </data>
@@ -925,6 +952,12 @@
   <data name="Settings_Ntfy_Topic_Label" xml:space="preserve">
     <value>Θέμα</value>
   </data>
+  <data name="Settings_PoliciesEnabled_Help" xml:space="preserve">
+    <value>Πρέπει ο χρήστης να δει τα αναδυόμενα στυλ GDPR?</value>
+  </data>
+  <data name="Settings_PoliciesEnabled_Label" xml:space="preserve">
+    <value>Ενεργοποίηση</value>
+  </data>
   <data name="Settings_Slideshow" xml:space="preserve">
     <value>Προβολή σλάιντ</value>
   </data>
@@ -1089,6 +1122,9 @@
   </data>
   <data name="Visit" xml:space="preserve">
     <value>Επίσκεψη</value>
+  </data>
+  <data name="Warning" xml:space="preserve">
+    <value>Προειδοποίηση</value>
   </data>
   <data name="Wipe" xml:space="preserve">
     <value>Σκουπίστε</value>
