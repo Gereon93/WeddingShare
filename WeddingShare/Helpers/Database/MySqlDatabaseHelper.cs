@@ -1327,7 +1327,7 @@ namespace WeddingShare.Helpers.Database
 
             using (var conn = await GetConnection())
             {
-                var cmd = CreateCommand($"SELECT `id`, `value` FROM (SELECT `id`, `value`, '2' AS `priority` FROM `settings` WHERE `id`=@Id UNION SELECT `id`, `value`, '1' AS `priority` FROM `gallery_settings` WHERE `id`=@Id AND `gallery_id`=@GalleryId) ORDER BY `priority` ASC LIMIT 1;", conn);
+                var cmd = CreateCommand($"SELECT `id`, `value` FROM (SELECT `id`, `value`, '2' AS `priority` FROM `settings` WHERE `id`=@Id UNION SELECT `id`, `value`, '1' AS `priority` FROM `gallery_settings` WHERE `id`=@Id AND `gallery_id`=@GalleryId) AS sq1 ORDER BY `priority` ASC LIMIT 1;", conn);
 
                 cmd.Parameters.AddWithValue("Id", id.ToUpper());
                 cmd.Parameters.AddWithValue("GalleryId", galleryId);
