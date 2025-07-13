@@ -1,11 +1,9 @@
-﻿using System;
-using System.Data;
+﻿using System.Data;
 using System.Data.Common;
 using Microsoft.Data.Sqlite;
 using WeddingShare.Constants;
 using WeddingShare.Enums;
 using WeddingShare.Models.Database;
-using static WeddingShare.Constants.Settings;
 
 namespace WeddingShare.Helpers.Database
 {
@@ -20,6 +18,8 @@ namespace WeddingShare.Helpers.Database
             _logger = logger;
 
             _logger.LogInformation($"Using SQLite connection string: '{_connString}'");
+
+            this.TestConnection();
         }
 
         #region Setup
@@ -31,6 +31,28 @@ namespace WeddingShare.Helpers.Database
         private async Task<SqliteConnection> GetConnection(string connString)
         {
             return await Task.Run(() => { return new SqliteConnection(connString); });
+        }
+
+        private void TestConnection()
+        {
+            try
+            {
+                using (var conn = GetConnection().Result)
+                {
+                    var cmd = CreateCommand($"SELECT 1", conn);
+                    cmd.CommandType = CommandType.Text;
+
+                    conn.Open();
+                    cmd.ExecuteScalarAsync();
+                    conn.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                var message = $"Failed to connect to the database instance. Please check your database is up and running and the connection string used is correct";
+                _logger.LogCritical(ex, message);
+                Environment.FailFast(message, ex);
+            }
         }
 
         private SqliteCommand CreateCommand(string cmd, SqliteConnection conn)

@@ -18,6 +18,8 @@ namespace WeddingShare.Helpers.Database
             _logger = logger;
 
             _logger.LogInformation($"Using MySQL connection string: '{_connString}'");
+
+            this.TestConnection();
         }
 
         #region Setup
@@ -31,6 +33,28 @@ namespace WeddingShare.Helpers.Database
             var conn = new MySqlConnection(connString);
             await DisableOnlyFullGroup(conn);
             return conn;
+        }
+
+        private void TestConnection()
+        {
+            try
+            {
+                using (var conn = GetConnection().Result)
+                {
+                    var cmd = CreateCommand($"SELECT 1", conn);
+                    cmd.CommandType = CommandType.Text;
+
+                    conn.Open();
+                    cmd.ExecuteScalarAsync();
+                    conn.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                var message = $"Failed to connect to the database instance. Please check your database is up and running and the connection string used is correct";
+                _logger.LogCritical(ex, message);
+                Environment.FailFast(message, ex);
+            }
         }
 
         private MySqlCommand CreateCommand(string cmd, MySqlConnection conn)
