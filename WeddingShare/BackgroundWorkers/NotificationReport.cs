@@ -45,15 +45,19 @@ namespace WeddingShare.BackgroundWorkers
                     var builder = new StringBuilder();
                     builder.AppendLine($"<h1>You have items pending review!</h1>");
                     
-                    foreach (var item in pendingItems.GroupBy(x => x.GalleryName).OrderBy(x => x.Key))
+                    foreach (var item in pendingItems.GroupBy(x => x.GalleryId).OrderByDescending(x => x.Count()))
                     {
-                        try
-                        {
-                            builder.AppendLine($"<p style=\"font-size: 16pt;\">{item.Key} - Pending Items ({item.Count()})</p>");
-                        }
-                        catch (Exception ex)
-                        {
-                            loggerFactory.CreateLogger<NotificationReport>().LogError(ex, $"Failed to build gallery report for id '{item?.Key}' - {ex?.Message}");
+                        var gallery = await databaseHelper.GetGallery(item.Key);
+                        if (gallery != null)
+                        { 
+                            try
+                            {
+                                builder.AppendLine($"<p style=\"font-size: 16pt;\">{gallery.Name} - Pending Items ({item.Count()})</p>");
+                            }
+                            catch (Exception ex)
+                            {
+                                loggerFactory.CreateLogger<NotificationReport>().LogError(ex, $"Failed to build gallery report for '{gallery.Name}' - {ex?.Message}");
+                            }
                         }
                     }
 

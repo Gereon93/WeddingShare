@@ -9,15 +9,16 @@ namespace WeddingShare.Attributes
 {
     public class RequiresSecretKeyAttribute : ActionFilterAttribute
     {
-        public override void OnActionExecuting(ActionExecutingContext filterContext)
+        public override async void OnActionExecuting(ActionExecutingContext filterContext)
         {
             try
             {
                 var request = filterContext.HttpContext.Request;
-
-                var galleryId = (request.Query.ContainsKey("id") && !string.IsNullOrWhiteSpace(request.Query["id"])) ? request.Query["id"].ToString().ToLower() : "default";
-
                 var databaseHelper = filterContext.HttpContext.RequestServices.GetService<IDatabaseHelper>();
+
+                var galleryName = (request.Query.ContainsKey("id") && !string.IsNullOrWhiteSpace(request.Query["id"])) ? request.Query["id"].ToString().ToLower() : "default";
+                var galleryId = (databaseHelper?.GetGalleryId(galleryName)?.Result) ?? 1;
+
                 var gallery = databaseHelper?.GetGallery(galleryId).Result;
                 if (gallery != null)
                 { 

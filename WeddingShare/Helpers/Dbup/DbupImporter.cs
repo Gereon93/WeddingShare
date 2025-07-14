@@ -51,7 +51,7 @@ namespace WeddingShare.Helpers.Dbup
                                             {
                                                 Id = key,
                                                 Value = galleryOverride
-                                            }, gallery.Name);
+                                            }, gallery.Id);
                                         }
                                     }
                                     catch { }

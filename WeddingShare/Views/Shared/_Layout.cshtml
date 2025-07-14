@@ -1,9 +1,12 @@
 @using WeddingShare.Constants
 @inject WeddingShare.Helpers.IConfigHelper _config
+@inject WeddingShare.Helpers.Database.IDatabaseHelper _database
 
 @{
     var galleryName = (!string.IsNullOrWhiteSpace(ViewBag?.GalleryId) && !ViewBag.GalleryId.Equals("all", StringComparison.OrdinalIgnoreCase)) ? ViewBag.GalleryId.ToLower() : "default";
-    var title = await _settings.GetOrDefault(Settings.Basic.Title, "WeddingShare", galleryName);
+    var galleryId = (_database?.GetGalleryId(galleryName)?.Result) ?? 1;
+
+    var title = await _settings.GetOrDefault(Settings.Basic.Title, "WeddingShare", galleryId);
     var isDemoMode = await _settings.GetOrDefault(Settings.IsDemoMode, false);
 
     string logo;

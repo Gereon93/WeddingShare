@@ -7,7 +7,7 @@
 
 @{
     var userPermissions = User?.Identity?.GetUserPermissions() ?? AccessPermissions.None;
-    var qrCodeEnabled = await _settings.GetOrDefault(Settings.Gallery.QRCode.Enabled, true, Model?.GalleryName);
+    var qrCodeEnabled = await _settings.GetOrDefault(Settings.Gallery.QRCode.Enabled, true, Model?.GalleryId);
 }
 
 @if (qrCodeEnabled)
@@ -117,10 +117,10 @@
                 </div>
             </div>
 
-            @if (await _settings.GetOrDefault(Settings.Gallery.Download, true, Model?.GalleryName) || (User?.Identity != null && User.Identity.IsAuthenticated))
+            @if (await _settings.GetOrDefault(Settings.Gallery.Download, true, Model?.GalleryId) || (User?.Identity != null && User.Identity.IsAuthenticated))
             {
                 <div class="btn-group w-100 mb-2">
-                    <button class="btnDownloadGallery btn btn-primary btn-sm" type="button" data-gallery-id="@Model?.GalleryId" data-gallery-key="@(await _settings.GetOrDefault(Settings.Gallery.SecretKey, string.Empty, Model?.GalleryName))">
+                    <button class="btnDownloadGallery btn btn-primary btn-sm" type="button" data-gallery-id="@Model?.GalleryId" data-gallery-key="@(await _settings.GetOrDefault(Settings.Gallery.SecretKey, string.Empty, Model?.GalleryId))">
                         @_localizer["Download"].Value
                     </button>
                 </div>

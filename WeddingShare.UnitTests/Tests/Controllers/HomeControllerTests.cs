@@ -41,7 +41,7 @@ namespace WeddingShare.UnitTests.Tests.Helpers
         {
             _deviceDetector.ParseDeviceType(Arg.Any<string>()).Returns(deviceType);
             _settings.GetOrDefault(Settings.Basic.SingleGalleryMode, Arg.Any<bool>()).Returns(singleGalleryMode);
-            _settings.GetOrDefault(Settings.Gallery.SecretKey, Arg.Any<string>(), Arg.Any<string>()).Returns(secretKey);
+            _settings.GetOrDefault(Settings.Gallery.SecretKey, Arg.Any<string>(), Arg.Any<int>()).Returns(secretKey);
 
             var controller = new HomeController(_settings, _database, _deviceDetector, _audit, _logger, _localizer);
             controller.ControllerContext.HttpContext = new DefaultHttpContext()
