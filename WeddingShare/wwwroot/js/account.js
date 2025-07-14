@@ -163,19 +163,11 @@ function checkAccountState() {
 }
 
 function selectActiveTab(tab) {
-    tab = tab.replace('#', '');
-
     if (tab === undefined || tab === null || tab.length === 0) {
         tab = $('a.pnl-selector')[0].attributes['data-tab'].value;
     }
 
-    $('a.pnl-selector').removeClass('active');
-    $(`a.pnl-selector[data-tab="${tab}"]`).addClass('active');
-
-    $('section.pnl-account').addClass('d-none');
-    $(`section.pnl-account-${tab}`).removeClass('d-none');
-
-    window.location.hash = `#${tab}`;
+    window.location = `/Account?tab=${tab}`;
 }
 
 (function () {
@@ -185,10 +177,6 @@ function selectActiveTab(tab) {
         accountStateCheckInterval = setInterval(function () {
             checkAccountState();
         }, 60000);
-
-        if (window.location.pathname.toLowerCase() == '/account') {
-            selectActiveTab(window.location.hash);
-        }
 
         $(document).off('click', 'a.pnl-selector').on('click', 'a.pnl-selector', function (e) {
             preventDefaults(e);

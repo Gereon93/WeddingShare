@@ -43,13 +43,12 @@ namespace WeddingShare.UnitTests.Tests.Helpers
 			var mockData = GetMockData();
 
             _database.GetGallery(1).Returns(Task.FromResult<GalleryModel?>(mockData["default"]));
-            _database.GetGallery("default").Returns(Task.FromResult<GalleryModel?>(mockData["default"]));
-            
 			_database.GetGallery(2).Returns(Task.FromResult<GalleryModel?>(mockData["blaa"]));
-            _database.GetGallery("blaa").Returns(Task.FromResult<GalleryModel?>(mockData["blaa"]));
-            
 			_database.GetGallery(3).Returns(Task.FromResult<GalleryModel?>(null));
-			_database.GetGallery("missing").Returns(Task.FromResult<GalleryModel?>(null));
+
+            _database.GetGalleryId("default").Returns(Task.FromResult<int?>(mockData["default"].Id));
+            _database.GetGalleryId("blaa").Returns(Task.FromResult<int?>(mockData["blaa"].Id));
+            _database.GetGalleryId("missing").Returns(Task.FromResult<int?>(null));
 
             _database.AddGallery(Arg.Any<GalleryModel>()).Returns(Task.FromResult<GalleryModel?>(new GalleryModel()
             {
@@ -68,17 +67,17 @@ namespace WeddingShare.UnitTests.Tests.Helpers
             _database.GetAllGalleryItems(Arg.Any<int>(), GalleryItemState.Approved, Arg.Any<MediaType>(), Arg.Any<ImageOrientation>(), Arg.Any<GalleryGroup>(), Arg.Any<GalleryOrder>(), Arg.Any<int>(), Arg.Any<int>()).Returns(Task.FromResult(MockData.MockGalleryItems(10, 1, GalleryItemState.Approved)));
 			_database.GetGalleryItemByChecksum(Arg.Any<int>(), Arg.Any<string>()).ReturnsNull();
 
-            _settings.GetOrDefault(Settings.Gallery.SecretKey, Arg.Any<string>(), Arg.Any<string>()).Returns("password");
-            _settings.GetOrDefault(Settings.Gallery.SecretKey, Arg.Any<string>(), "blaa").Returns("456789");
-            _settings.GetOrDefault(Settings.Gallery.SecretKey, Arg.Any<string>(), "missing").Returns("123456");
-			_settings.GetOrDefault(Settings.Gallery.Upload, Arg.Any<bool>(), Arg.Any<string>()).Returns(true);
-			_settings.GetOrDefault(Settings.Gallery.Download, Arg.Any<bool>(), Arg.Any<string>()).Returns(true);
-			_settings.GetOrDefault(Settings.Gallery.UploadPeriod, Arg.Any<string>(), Arg.Any<string>()).Returns("1970-01-01 00:00:00");
-			_settings.GetOrDefault(Settings.Gallery.PreventDuplicates, Arg.Any<bool>(), Arg.Any<string>()).Returns(true);
-            _settings.GetOrDefault(Settings.Gallery.DefaultView, Arg.Any<int>(), Arg.Any<string>()).Returns((int)ViewMode.Default);
-            _settings.GetOrDefault(Settings.Gallery.AllowedFileTypes, Arg.Any<string>(), Arg.Any<string>()).Returns(".jpg,.jpeg,.png,.mp4,.mov");
-			_settings.GetOrDefault(Settings.Gallery.RequireReview, Arg.Any<bool>(), Arg.Any<string>()).Returns(true);
-            _settings.GetOrDefault(Settings.Gallery.MaxFileSizeMB, Arg.Any<int>(), Arg.Any<string>()).Returns(10);
+            _settings.GetOrDefault(Settings.Gallery.SecretKey, Arg.Any<string>(), Arg.Any<int>()).Returns("password");
+            _settings.GetOrDefault(Settings.Gallery.SecretKey, Arg.Any<string>(), 2).Returns("456789");
+            _settings.GetOrDefault(Settings.Gallery.SecretKey, Arg.Any<string>(), 101).Returns("123456");
+			_settings.GetOrDefault(Settings.Gallery.Upload, Arg.Any<bool>(), Arg.Any<int>()).Returns(true);
+			_settings.GetOrDefault(Settings.Gallery.Download, Arg.Any<bool>(), Arg.Any<int>()).Returns(true);
+			_settings.GetOrDefault(Settings.Gallery.UploadPeriod, Arg.Any<string>(), Arg.Any<int>()).Returns("1970-01-01 00:00:00");
+			_settings.GetOrDefault(Settings.Gallery.PreventDuplicates, Arg.Any<bool>(), Arg.Any<int>()).Returns(true);
+            _settings.GetOrDefault(Settings.Gallery.DefaultView, Arg.Any<int>(), Arg.Any<int>()).Returns((int)ViewMode.Default);
+            _settings.GetOrDefault(Settings.Gallery.AllowedFileTypes, Arg.Any<string>(), Arg.Any<int>()).Returns(".jpg,.jpeg,.png,.mp4,.mov");
+			_settings.GetOrDefault(Settings.Gallery.RequireReview, Arg.Any<bool>(), Arg.Any<int>()).Returns(true);
+            _settings.GetOrDefault(Settings.Gallery.MaxFileSizeMB, Arg.Any<int>(), Arg.Any<int>()).Returns(10);
 
 			_file.GetChecksum(Arg.Any<string>()).Returns(Guid.NewGuid().ToString());
 
@@ -120,11 +119,11 @@ namespace WeddingShare.UnitTests.Tests.Helpers
 
         [TestCase(true, true)]
         [TestCase(false, false)]
-        public async Task GalleryController_UploadDisabled(bool disabled, bool expected)
+        public async Task GalleryController_UploadDisabled(bool enabled, bool expected)
         {
             _deviceDetector.ParseDeviceType(Arg.Any<string>()).Returns(DeviceType.Desktop);
             _settings.GetOrDefault(Settings.Basic.SingleGalleryMode, Arg.Any<bool>()).Returns(false);
-            _settings.GetOrDefault(Settings.Gallery.Upload, Arg.Any<bool>(), Arg.Any<string>()).Returns(disabled);
+            _settings.GetOrDefault(Settings.Gallery.Upload, Arg.Any<bool>(), Arg.Any<int>()).Returns(enabled);
 
             var controller = new GalleryController(_env, _settings, _database, _file, _deviceDetector, _image, _notification, _encryption, _url, _logger, _localizer);
             controller.ControllerContext.HttpContext = MockData.MockHttpContext();
@@ -146,7 +145,7 @@ namespace WeddingShare.UnitTests.Tests.Helpers
         {
             _deviceDetector.ParseDeviceType(Arg.Any<string>()).Returns(DeviceType.Desktop);
             _settings.GetOrDefault(Settings.Basic.SingleGalleryMode, Arg.Any<bool>()).Returns(false);
-            _settings.GetOrDefault(Settings.Gallery.UploadPeriod, Arg.Any<string>(), Arg.Any<string>()).Returns(uploadPeriod);
+            _settings.GetOrDefault(Settings.Gallery.UploadPeriod, Arg.Any<string>(), Arg.Any<int>()).Returns(uploadPeriod);
 
             var controller = new GalleryController(_env, _settings, _database, _file, _deviceDetector, _image, _notification, _encryption, _url, _logger, _localizer);
             controller.ControllerContext.HttpContext = MockData.MockHttpContext();

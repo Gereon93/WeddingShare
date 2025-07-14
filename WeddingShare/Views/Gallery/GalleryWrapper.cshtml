@@ -12,7 +12,7 @@
     {
         var bannerGallery = _config.Get($"{Settings.Gallery.BannerImage}_{galleryName}") != null ? galleryName : "default";
 
-        banner = await _settings.GetOrDefault(Settings.Gallery.BannerImage, string.Empty, galleryName);
+        banner = await _settings.GetOrDefault(Settings.Gallery.BannerImage, string.Empty, Model?.GalleryId);
         if (!string.IsNullOrWhiteSpace(banner))
         {
             if (!banner.StartsWith("/images", StringComparison.OrdinalIgnoreCase) && !banner.StartsWith("/banners", StringComparison.OrdinalIgnoreCase) && !banner.StartsWith("/custom_resources", StringComparison.OrdinalIgnoreCase))
@@ -32,7 +32,7 @@
     }
     catch { }
 
-    var quote = await _settings.GetOrDefault(Settings.Gallery.Quote, string.Empty, galleryName);
+    var quote = await _settings.GetOrDefault(Settings.Gallery.Quote, string.Empty, Model?.GalleryId);
     if (!string.IsNullOrWhiteSpace(quote))
     {
         <div class="row mb-3 mb-lg-4 border rounded">
@@ -42,7 +42,7 @@
         </div>
     }
 
-    if (await _settings.GetOrDefault(Settings.Gallery.ReviewCounter, true, Model?.GalleryName))
+    if (await _settings.GetOrDefault(Settings.Gallery.ReviewCounter, true, Model?.GalleryId))
     {
         <div class="row mb-3 mb-lg-4 review-counter">
             <div class="col-4">

@@ -29,7 +29,7 @@
                 new KeyValuePair<string, string>("id", gallery.Name)
             };
 
-            var secretKey = await _settings.GetOrDefault(Settings.Gallery.SecretKey, string.Empty, gallery.Name);
+            var secretKey = await _settings.GetOrDefault(Settings.Gallery.SecretKey, string.Empty, gallery.Id);
             if (!string.IsNullOrWhiteSpace(secretKey))
             {
                 var enc = _encryption.IsEncryptionEnabled();
@@ -46,7 +46,7 @@
                     <i class="fa-solid @(!string.IsNullOrWhiteSpace(secretKey) ? "fa-lock" : "fa-lock-open") m-0"></i>
                 </td>
                 <td class="d-none d-md-table-cell text-center">
-                    @(gallery.Name.Equals("all", StringComparison.OrdinalIgnoreCase) ? _file.BytesToHumanReadable(gallery.TotalGallerySize, 2) : $"{_file.BytesToHumanReadable(gallery.TotalGallerySize, 2)} ({gallery.CalculateUsage(await _settings.GetOrDefault(Settings.Gallery.MaxSizeMB, long.MaxValue, gallery?.Name))})")
+                    @(gallery.Name.Equals("all", StringComparison.OrdinalIgnoreCase) ? _file.BytesToHumanReadable(gallery.TotalGallerySize, 2) : $"{_file.BytesToHumanReadable(gallery.TotalGallerySize, 2)} ({gallery.CalculateUsage(await _settings.GetOrDefault(Settings.Gallery.MaxSizeMB, long.MaxValue, gallery?.Id))})")
                 </td>
                 <td>
                     @if (userPermissions.HasFlag(AccessPermissions.Gallery_View))
