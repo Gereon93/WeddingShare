@@ -19,7 +19,7 @@
         qrAppend.Add(new KeyValuePair<string, string>("order", qrDefaultOrder));
     }
 
-    if (await _settings.GetOrDefault(Settings.Gallery.QRCode.IncludeCulture, true))
+    if (await _settings.GetOrDefault(Settings.Gallery.QRCode.IncludeCulture, true, Model?.GalleryId))
     {
         try
         {
