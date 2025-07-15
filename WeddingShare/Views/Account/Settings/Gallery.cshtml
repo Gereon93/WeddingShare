@@ -345,7 +345,7 @@
             <select class="setting-field form-control" data-setting-name="@Settings.Gallery.QRCode.IncludeCulture">
                 @foreach (var option in ViewOptions.YesNo)
                 {
-                    if (Model.Settings.GetValue(Settings.Gallery.QRCode.IncludeCulture, "true").Equals(option.Value, StringComparison.OrdinalIgnoreCase))
+                    if (Model.Settings.GetValue(Settings.Gallery.QRCode.IncludeCulture.ToUpper(), "true").Equals(option.Value, StringComparison.OrdinalIgnoreCase))
                     {
                         <option value="@option.Value" selected="selected">@option.Key</option>
                     }
