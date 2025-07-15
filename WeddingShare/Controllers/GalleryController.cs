@@ -110,7 +110,7 @@ namespace WeddingShare.Controllers
         public async Task<IActionResult> Index(string id = "default", string? key = null, ViewMode? mode = null, GalleryGroup group = GalleryGroup.None, GalleryOrder order = GalleryOrder.Descending, GalleryFilter filter = GalleryFilter.All, string? culture = null, bool partial = false)
         {
             id = (!string.IsNullOrWhiteSpace(id) && !await _settings.GetOrDefault(Settings.Basic.SingleGalleryMode, false)) ? id.Trim().ToLower() : "default";
-            var galleryId = await _database.GetGalleryId(id);
+            var galleryId = id.Equals("All", StringComparison.OrdinalIgnoreCase) ? 0 : await _database.GetGalleryId(id);
 
             if (galleryId != null)
             {

@@ -219,7 +219,26 @@ namespace WeddingShare.Controllers
                     }
                     else if (tab == AccountTabs.Galleries)
                     { 
-                        model.Galleries = await _database.GetAllGalleries();
+                        if (!await _settings.GetOrDefault(Settings.Basic.SingleGalleryMode, false))
+                        {
+                            model.Galleries = await _database.GetAllGalleries();
+                            if (model.Galleries != null)
+                            {
+                                var all = await _database.GetGallery(0);
+                                if (all != null)
+                                {
+                                    model.Galleries.Add(all);
+                                }
+                            }
+                        }
+                        else
+                        {
+                            var gallery = await _database.GetGallery(1);
+                            if (gallery != null)
+                            {
+                                model.Galleries = new List<GalleryModel>() { gallery };
+                            }
+                        }
                     }
                     else if (tab == AccountTabs.Users)
                     {
@@ -590,8 +609,8 @@ namespace WeddingShare.Controllers
                 {
                     try
                     {
-                        var check = await _database.GetGallery(model.Id);
-                        if (check == null)
+                        var alreadyExists = (await _database.GetGalleryNames()).Any(x => x.Equals(model.Name, StringComparison.OrdinalIgnoreCase));
+                        if (!alreadyExists)
                         {
                             if (await _database.GetGalleryCount() < await _settings.GetOrDefault(Settings.Basic.MaxGalleryCount, 1000000))
                             {
