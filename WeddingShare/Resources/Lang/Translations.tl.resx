@@ -844,6 +844,12 @@
   <data name="Settings_Gallery_SecretKey_Label" xml:space="preserve">
     <value>Sekreto</value>
   </data>
+  <data name="Settings_Gallery_ShowFilters_Help" xml:space="preserve">
+    <value>Dapat bang salain at i - group media ang gumagamit nito?</value>
+  </data>
+  <data name="Settings_Gallery_ShowFilters_Label" xml:space="preserve">
+    <value>Ipakita ang mga Filipina</value>
+  </data>
   <data name="Settings_Gallery_Upload_Help" xml:space="preserve">
     <value>Kung ang mga bisita ay papayagang mag - download ng mga bagay - bagay</value>
   </data>

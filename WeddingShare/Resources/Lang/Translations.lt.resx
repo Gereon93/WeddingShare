@@ -844,6 +844,12 @@
   <data name="Settings_Gallery_SecretKey_Label" xml:space="preserve">
     <value>Slaptas raktas</value>
   </data>
+  <data name="Settings_Gallery_ShowFilters_Help" xml:space="preserve">
+    <value>Gal vartotojas galėtų filtruoti ir grupuoti laikmenas?</value>
+  </data>
+  <data name="Settings_Gallery_ShowFilters_Label" xml:space="preserve">
+    <value>Rodyti filtrus</value>
+  </data>
   <data name="Settings_Gallery_Upload_Help" xml:space="preserve">
     <value>Gal reikėtų leisti svečiams įkelti elementus</value>
   </data>

@@ -844,6 +844,12 @@
   <data name="Settings_Gallery_SecretKey_Label" xml:space="preserve">
     <value>راز</value>
   </data>
+  <data name="Settings_Gallery_ShowFilters_Help" xml:space="preserve">
+    <value>صارف کو فیلڈر اور گروپ میڈیا کے قابل ہونا چاہیے؟?</value>
+  </data>
+  <data name="Settings_Gallery_ShowFilters_Label" xml:space="preserve">
+    <value>فائلز</value>
+  </data>
   <data name="Settings_Gallery_Upload_Help" xml:space="preserve">
     <value>مہمانوں کو اپ لوڈ کرنے کی اجازت ہے</value>
   </data>

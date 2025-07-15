@@ -844,6 +844,12 @@
   <data name="Settings_Gallery_SecretKey_Label" xml:space="preserve">
     <value>กุญแจลับ</value>
   </data>
+  <data name="Settings_Gallery_ShowFilters_Help" xml:space="preserve">
+    <value>จะให้ผู้ใช้สามารถกรองและจัดกลุ่มสื่อได้หรือไม่?</value>
+  </data>
+  <data name="Settings_Gallery_ShowFilters_Label" xml:space="preserve">
+    <value>แสดงตัวกรอง</value>
+  </data>
   <data name="Settings_Gallery_Upload_Help" xml:space="preserve">
     <value>ควรอนุญาตให้แขกทําการอัปโหลดรายการ</value>
   </data>

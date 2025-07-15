@@ -844,6 +844,12 @@
   <data name="Settings_Gallery_SecretKey_Label" xml:space="preserve">
     <value>Slepenā atslēga</value>
   </data>
+  <data name="Settings_Gallery_ShowFilters_Help" xml:space="preserve">
+    <value>Vai lietotājam vajadzētu būt iespējai filtrēt un grupēt datu nesēju?</value>
+  </data>
+  <data name="Settings_Gallery_ShowFilters_Label" xml:space="preserve">
+    <value>Rādīt filtrus</value>
+  </data>
   <data name="Settings_Gallery_Upload_Help" xml:space="preserve">
     <value>Ja viesiem ir atļauts augšupielādēt ierakstus</value>
   </data>

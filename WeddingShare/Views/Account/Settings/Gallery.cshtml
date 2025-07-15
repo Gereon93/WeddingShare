@@ -361,6 +361,26 @@
 
     <div class="row mb-4 mb-lg-4">
         <div class="col-12">
+            <label>@_localizer["Settings_Gallery_ShowFilters_Label"].Value</label>
+            <select class="setting-field form-control" data-setting-name="@Settings.Gallery.ShowFilters">
+                @foreach (var option in ViewOptions.YesNo)
+                {
+                    if (Model.Settings.GetValue(Settings.Gallery.ShowFilters.ToUpper(), "true").Equals(option.Value, StringComparison.OrdinalIgnoreCase))
+                    {
+                        <option value="@option.Value" selected="selected">@option.Key</option>
+                    }
+                    else
+                    {
+                        <option value="@option.Value">@option.Key</option>
+                    }
+                }
+            </select>
+            <div class="form-text">@_localizer["Settings_Gallery_ShowFilters_Help"].Value</div>
+        </div>
+    </div>
+
+    <div class="row mb-4 mb-lg-4">
+        <div class="col-12">
             <label>@_localizer["Settings_Gallery_IdleRefreshMins_Label"].Value</label>
             <input class="setting-field form-control" data-setting-name="@Settings.Gallery.IdleRefreshMins" placeholder="5" value="@Model.Settings.GetValue(Settings.Gallery.IdleRefreshMins.ToUpper(), string.Empty)" type="number" min="0" max="5000" step="1" />
             <div class="form-text">@_localizer["Settings_Gallery_IdleRefreshMins_Help"].Value</div>

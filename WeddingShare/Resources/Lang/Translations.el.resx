@@ -844,6 +844,12 @@
   <data name="Settings_Gallery_SecretKey_Label" xml:space="preserve">
     <value>Μυστικό κλειδί</value>
   </data>
+  <data name="Settings_Gallery_ShowFilters_Help" xml:space="preserve">
+    <value>Θα πρέπει ο χρήστης να μπορεί να φιλτράρει και να ομαδοποιήσει τα μέσα?</value>
+  </data>
+  <data name="Settings_Gallery_ShowFilters_Label" xml:space="preserve">
+    <value>Εμφάνιση φίλτρων</value>
+  </data>
   <data name="Settings_Gallery_Upload_Help" xml:space="preserve">
     <value>Σε περίπτωση που επιτρέπεται στους επισκέπτες να ανεβάζουν αντικείμενα</value>
   </data>
