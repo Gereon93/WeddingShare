@@ -19,7 +19,7 @@ namespace WeddingShare.Helpers
                 var resourceFiles = Directory.GetFiles(Path.Combine("Resources", "Lang"), "*.resx");
                 var detectedCultures = resourceFiles
                     .Select(x => Path.GetFileNameWithoutExtension(x))
-                    .Where(x => x.Contains("."))
+                    .Where(x => x.Contains(".") && x.Contains("-"))
                     .Select(x => x.Split('.').LastOrDefault());
 
                 foreach (var detectedCulture in detectedCultures)

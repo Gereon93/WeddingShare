@@ -33,7 +33,6 @@ namespace WeddingShare.Controllers
                 }
 
                 options = (await _languageHelper.DetectSupportedCulturesAsync())
-                    .Where(x => x.Name.Contains("-"))
                     .Select(x => new SupportedLanguage() { Key = x.Name, Value = $"{(x.EnglishName.Contains("(") ? x.EnglishName.Substring(0, x.EnglishName.IndexOf("(")) : x.EnglishName).Trim()} ({x.Name})", Selected = string.Equals(defaultLang, x.Name, StringComparison.OrdinalIgnoreCase) })
                     .OrderBy(x => x.Value.ToLower())
                     .ToList();
