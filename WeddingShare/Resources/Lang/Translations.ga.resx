@@ -844,6 +844,12 @@
   <data name="Settings_Gallery_SecretKey_Label" xml:space="preserve">
     <value>Gach ceart ar cosaint</value>
   </data>
+  <data name="Settings_Gallery_ShowFilters_Help" xml:space="preserve">
+    <value>Ar chóir an t-úsáideoir a bheith in ann a scagadh agus na meáin ghrúpa?</value>
+  </data>
+  <data name="Settings_Gallery_ShowFilters_Label" xml:space="preserve">
+    <value>Taispeáin Scagairí</value>
+  </data>
   <data name="Settings_Gallery_Upload_Help" xml:space="preserve">
     <value>Má cheadaíonn aíonna míreanna a uaslódáil</value>
   </data>

@@ -286,6 +286,9 @@
   <data name="Delete_Confirmation" xml:space="preserve">
     <value>क्या आप इस गैलरी को हटाना चाहते हैं?</value>
   </data>
+  <data name="Demo_Message" xml:space="preserve">
+    <value>यह एक डेमो संस्करण है। भविष्य के परीक्षकों के लिए स्वच्छ स्लेट सुनिश्चित करने के लिए सभी विन्यास समय-समय पर पोंछे जाते हैं।.</value>
+  </data>
   <data name="Destructive_Action_Performed" xml:space="preserve">
     <value>विनाशकारी कार्रवाई का प्रदर्शन</value>
   </data>
@@ -841,6 +844,12 @@
   <data name="Settings_Gallery_SecretKey_Label" xml:space="preserve">
     <value>गुप्त कुंजी</value>
   </data>
+  <data name="Settings_Gallery_ShowFilters_Help" xml:space="preserve">
+    <value>क्या उपयोगकर्ता मीडिया को फ़िल्टर और समूहित करने में सक्षम होना चाहिए?</value>
+  </data>
+  <data name="Settings_Gallery_ShowFilters_Label" xml:space="preserve">
+    <value>फ़िल्टर दिखाएं</value>
+  </data>
   <data name="Settings_Gallery_Upload_Help" xml:space="preserve">
     <value>क्या मेहमानों को आइटम अपलोड करने की अनुमति है</value>
   </data>
@@ -1119,6 +1128,9 @@
   </data>
   <data name="Visit" xml:space="preserve">
     <value>यात्रा</value>
+  </data>
+  <data name="Warning" xml:space="preserve">
+    <value>चेतावनी</value>
   </data>
   <data name="Wipe" xml:space="preserve">
     <value>वाइप</value>

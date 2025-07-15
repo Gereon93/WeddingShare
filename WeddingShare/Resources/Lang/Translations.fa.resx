@@ -844,6 +844,12 @@
   <data name="Settings_Gallery_SecretKey_Label" xml:space="preserve">
     <value>کلید راز</value>
   </data>
+  <data name="Settings_Gallery_ShowFilters_Help" xml:space="preserve">
+    <value>آیا کاربر باید قادر به فیلتر کردن و رسانه های گروهی باشد؟?</value>
+  </data>
+  <data name="Settings_Gallery_ShowFilters_Label" xml:space="preserve">
+    <value>نشان دادن فیلتر</value>
+  </data>
   <data name="Settings_Gallery_Upload_Help" xml:space="preserve">
     <value>مهمانان باید اجازه بارگذاری اقلام را داشته باشند</value>
   </data>
