@@ -50,8 +50,8 @@
     {
         culture = Context?.Session?.GetString(SessionKey.SelectedLanguage)?.Trim();
         if (string.IsNullOrEmpty(culture))
-        { 
-            culture = WeddingShare.Configurations.LocalizationConfiguration.CurrentCulture;
+        {
+            culture = await _settings.GetOrDefault(Settings.Languages.Default, "en-GB");
         }
     }
     catch
