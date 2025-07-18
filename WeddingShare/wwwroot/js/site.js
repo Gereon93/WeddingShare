@@ -178,8 +178,7 @@ function displayIdentityCheck(required, callbackFn) {
         });
 
         $(document).off('click', '.change-theme').on('click', '.change-theme', function (e) {
-            var currentTheme = getCookie('Theme');
-            if (currentTheme === 'dark') {
+            if ($('i.change-theme').hasClass('fa-sun')) {
                 setCookie('Theme', 'default', 24);
             } else {
                 setCookie('Theme', 'dark', 24);
