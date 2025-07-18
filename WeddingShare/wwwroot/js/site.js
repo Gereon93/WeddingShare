@@ -26,7 +26,7 @@ function uuidv4() {
 
 function setCookie(cname, cvalue, hours) {
     let consent = getCookie('.AspNet.Consent');
-    if ((consent !== undefined && consent === 'yes') || $('#cookieConsentDisabled').length > 0) {
+    if (consent !== undefined && consent === 'yes') {
         const d = new Date();
         d.setTime(d.getTime() + (hours * 60 * 60 * 1000));
         document.cookie = `${cname}=${cvalue};expires=${d.toUTCString()};path=/`;
