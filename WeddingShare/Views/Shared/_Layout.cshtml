@@ -1,5 +1,6 @@
 @using WeddingShare.Constants
 @inject WeddingShare.Helpers.IConfigHelper _config
+@inject WeddingShare.Helpers.ILanguageHelper _language
 @inject WeddingShare.Helpers.Database.IDatabaseHelper _database
 
 @{
@@ -51,7 +52,8 @@
         culture = Context?.Session?.GetString(SessionKey.SelectedLanguage)?.Trim();
         if (string.IsNullOrEmpty(culture))
         {
-            culture = await _settings.GetOrDefault(Settings.Languages.Default, "en-GB");
+            culture = await _language.GetOrFallbackCulture(string.Empty, await _settings.GetOrDefault(Settings.Languages.Default, "en-GB"));
+
             <script>
                 (function () {
                     document.addEventListener('DOMContentLoaded', function () {
