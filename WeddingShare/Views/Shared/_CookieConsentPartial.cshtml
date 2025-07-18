@@ -1,10 +1,12 @@
 ﻿@using Microsoft.AspNetCore.Http.Features
 
 @{
+    var consentFeature = Context.Features.Get<ITrackingConsentFeature>();
+    var consentGranted = consentFeature?.CanTrack ?? false;
+
     if (await _settings.GetOrDefault(Settings.Policies.Enabled, true))
     {
-        var consentFeature = Context.Features.Get<ITrackingConsentFeature>();
-        if (!consentFeature?.CanTrack ?? false)
+        if (!consentGranted)
         {
             <div id="cookieConsentWrapper"></div>
             <div id="cookieConsent" class="alert alert-info alert-dismissible fade show" role="alert">
@@ -18,5 +20,15 @@
     else
     {
         <div id="cookieConsentDisabled"></div>
+        if (!consentGranted)
+        {
+            <script>
+                (function () {
+                    document.addEventListener('DOMContentLoaded', function () {
+                        document.cookie = '@(consentFeature?.CreateConsentCookie())';
+                    });
+                })();
+            </script>
+        }
     }
 }
