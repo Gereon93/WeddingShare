@@ -219,7 +219,7 @@ function displayIdentityCheck(required, callbackFn) {
                                                 try {
                                                     window.location = window.location.toString().replace(/([&]*culture\=.+?)(\&|$)/g, '');
                                                 } catch {
-                                                    window.reload();
+                                                    window.location.reload();
                                                 }
                                             }
                                         }

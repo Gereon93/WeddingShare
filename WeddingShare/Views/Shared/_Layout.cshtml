@@ -52,6 +52,25 @@
         if (string.IsNullOrEmpty(culture))
         {
             culture = await _settings.GetOrDefault(Settings.Languages.Default, "en-GB");
+            <script>
+                (function () {
+                    document.addEventListener('DOMContentLoaded', function () {
+                        let culture = window.navigator.language;
+                        if (culture !== undefined && culture.length > 0) {
+                            $.ajax({
+                                type: "POST",
+                                url: '/Language/ChangeDisplayLanguage',
+                                data: { culture: culture },
+                                success: function (data) {
+                                    if (data.success) {
+                                        window.location.reload();
+                                    }
+                                }
+                            });
+                        }
+                    });
+                })();
+            </script>
         }
     }
     catch
