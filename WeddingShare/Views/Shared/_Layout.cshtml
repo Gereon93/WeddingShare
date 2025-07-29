@@ -1,11 +1,12 @@
 @using WeddingShare.Constants
+@using WeddingShare.Helpers
 @inject WeddingShare.Helpers.IConfigHelper _config
 @inject WeddingShare.Helpers.ILanguageHelper _language
 @inject WeddingShare.Helpers.Database.IDatabaseHelper _database
 
 @{
-    var galleryName = (!string.IsNullOrWhiteSpace(ViewBag?.GalleryId) && !ViewBag.GalleryId.Equals("all", StringComparison.OrdinalIgnoreCase)) ? ViewBag.GalleryId.ToLower() : "default";
-    var galleryId = (_database?.GetGalleryId(galleryName)?.Result) ?? 1;
+    var galleryIdentifier = (!string.IsNullOrWhiteSpace(ViewBag?.GalleryIdentifier) && !ViewBag.GalleryIdentifier.Equals("All", StringComparison.OrdinalIgnoreCase)) ? ViewBag.GalleryIdentifier.ToLower() : "default";
+    var galleryId = (_database?.GetGalleryId(galleryIdentifier)?.Result) ?? 1;
 
     var title = await _settings.GetOrDefault(Settings.Basic.Title, "WeddingShare", galleryId);
     var isDemoMode = await _settings.GetOrDefault(Settings.IsDemoMode, false);
@@ -13,7 +14,7 @@
     string logo;
     try
     {
-        var logoGallery = _config.Get($"{Settings.Basic.Logo}_{galleryName}") != null ? galleryName : "default";
+        var logoGallery = _config.Get($"{Settings.Basic.Logo}_{galleryIdentifier}") != null ? galleryIdentifier : "default";
 
         logo = await _settings.GetOrDefault(Settings.Basic.Logo, "/images/logo.png", logoGallery);
         if (!logo.StartsWith("/images", StringComparison.OrdinalIgnoreCase) && !logo.StartsWith("/logos", StringComparison.OrdinalIgnoreCase) && !logo.StartsWith("/custom_resources", StringComparison.OrdinalIgnoreCase))

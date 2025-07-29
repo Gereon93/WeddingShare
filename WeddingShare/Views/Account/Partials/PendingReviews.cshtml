@@ -41,7 +41,7 @@
                                         @if (identityEnabled)
                                         {
                                             <div class="col-12 col-lg-6 text-lg-center">
-                                                <b>@_localizer["Gallery"].Value:</b> @gallery.GalleryName
+                                                <b>@_localizer["Gallery"].Value:</b> @gallery.Gallery.Name
                                             </div>
                                             <div class="col-12 col-lg-6 text-lg-center">
                                                 <b>@_localizer["Uploader"].Value:</b> @(!string.IsNullOrWhiteSpace(review?.UploadedBy) ? review.UploadedBy : "Anonymous")
@@ -50,7 +50,7 @@
                                         else
                                         {
                                             <div class="col-12">
-                                                <b>@_localizer["Gallery"].Value:</b> @gallery.GalleryName
+                                                <b>@_localizer["Gallery"].Value:</b> @gallery.Gallery.Name
                                             </div>
                                         }
                                     </div>

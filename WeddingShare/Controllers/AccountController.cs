@@ -218,25 +218,14 @@ namespace WeddingShare.Controllers
                         model.PendingRequests = await GetPendingReviews();
                     }
                     else if (tab == AccountTabs.Galleries)
-                    { 
-                        if (!await _settings.GetOrDefault(Settings.Basic.SingleGalleryMode, false))
+                    {
+                        model.Galleries = (await _database.GetAllGalleries())?.Where(x => !x.Identifier.Equals("All", StringComparison.OrdinalIgnoreCase))?.ToList();
+                        if (model.Galleries != null)
                         {
-                            model.Galleries = await _database.GetAllGalleries();
-                            if (model.Galleries != null)
+                            var all = await _database.GetGallery(0);
+                            if (all != null)
                             {
-                                var all = await _database.GetGallery(0);
-                                if (all != null)
-                                {
-                                    model.Galleries.Add(all);
-                                }
-                            }
-                        }
-                        else
-                        {
-                            var gallery = await _database.GetGallery(1);
-                            if (gallery != null)
-                            {
-                                model.Galleries = new List<GalleryModel>() { gallery };
+                                model.Galleries.Add(all);
                             }
                         }
                     }
@@ -283,24 +272,13 @@ namespace WeddingShare.Controllers
                 var user = await _database.GetUser(User.Identity.GetUserId());
                 if (user != null)
                 {
-                    if (!await _settings.GetOrDefault(Settings.Basic.SingleGalleryMode, false))
+                    result = (await _database.GetAllGalleries())?.Where(x => !x.Identifier.Equals("All", StringComparison.OrdinalIgnoreCase))?.ToList();
+                    if (result != null)
                     {
-                        result = await _database.GetAllGalleries();
-                        if (result != null)
+                        var all = await _database.GetGallery(0);
+                        if (all != null)
                         {
-                            var all = await _database.GetGallery(0);
-                            if (all != null)
-                            {
-                                result.Add(all);
-                            }
-                        }
-                    }
-                    else
-                    {
-                        var gallery = await _database.GetGallery(1);
-                        if (gallery != null)
-                        {
-                            result = new List<GalleryModel>() { gallery };
+                            result.Add(all);
                         }
                     }
                 }
@@ -481,7 +459,7 @@ namespace WeddingShare.Controllers
                         var gallery = await _database.GetGallery(review.GalleryId);
                         if (gallery != null)
                         { 
-                            var galleryDir = Path.Combine(UploadsDirectory, gallery.Name);
+                            var galleryDir = Path.Combine(UploadsDirectory, gallery.Identifier);
                             var reviewFile = Path.Combine(galleryDir, "Pending", review.Title);
                             if (action == ReviewAction.APPROVED)
                             {
@@ -490,7 +468,7 @@ namespace WeddingShare.Controllers
                                 review.State = GalleryItemState.Approved;
                                 await _database.EditGalleryItem(review);
 
-                                await _audit.LogAction(User?.Identity?.Name, $"'{review.Title}' {_localizer["Audit_ItemApprovedInGallery"].Value} '{gallery.Name}'");
+                                await _audit.LogAction(User?.Identity?.Name, $"'{review.Title}' {_localizer["Audit_ItemApprovedInGallery"].Value} '{gallery.Identifier}'");
                             }
                             else if (action == ReviewAction.REJECTED)
                             {
@@ -508,7 +486,7 @@ namespace WeddingShare.Controllers
 
                                 await _database.DeleteGalleryItem(review);
 
-                                await _audit.LogAction(User?.Identity?.Name, $"'{review.Title}' {_localizer["Audit_ItemRejectedInGallery"].Value} '{gallery.Name}'");
+                                await _audit.LogAction(User?.Identity?.Name, $"'{review.Title}' {_localizer["Audit_ItemRejectedInGallery"].Value} '{gallery.Identifier}'");
                             }
                             else if (action == ReviewAction.UNKNOWN)
                             {
@@ -550,7 +528,7 @@ namespace WeddingShare.Controllers
                             {
                                 foreach (var review in galleryGroup)
                                 {
-                                    var galleryDir = Path.Combine(UploadsDirectory, gallery.Name);
+                                    var galleryDir = Path.Combine(UploadsDirectory, gallery.Identifier);
                                     var reviewFile = Path.Combine(galleryDir, "Pending", review.Title);
                                     if (action == ReviewAction.APPROVED)
                                     {
@@ -609,7 +587,7 @@ namespace WeddingShare.Controllers
                 {
                     try
                     {
-                        var alreadyExists = (await _database.GetGalleryNames()).Any(x => x.Equals(model.Name, StringComparison.OrdinalIgnoreCase));
+                        var alreadyExists = ((await _database.GetGalleryNames()).Any(x => x.Equals(model.Name, StringComparison.OrdinalIgnoreCase))) || ((await _database.GetGalleryId(model.Identifier)) != null);
                         if (!alreadyExists)
                         {
                             if (await _database.GetGalleryCount() < await _settings.GetOrDefault(Settings.Basic.MaxGalleryCount, 1000000))
@@ -701,12 +679,12 @@ namespace WeddingShare.Controllers
                     var gallery = await _database.GetGallery(id);
                     if (gallery != null)
                     {
-                        var galleryDir = Path.Combine(UploadsDirectory, gallery.Name);
+                        var galleryDir = Path.Combine(UploadsDirectory, gallery.Identifier);
                         if (_fileHelper.DirectoryExists(galleryDir))
                         {
                             foreach (var photo in _fileHelper.GetFiles(galleryDir, "*.*", SearchOption.AllDirectories))
                             {
-                                var thumbnail = Path.Combine(ThumbnailsDirectory, gallery.Name, $"{Path.GetFileNameWithoutExtension(photo)}.webp");
+                                var thumbnail = Path.Combine(ThumbnailsDirectory, gallery.Identifier, $"{Path.GetFileNameWithoutExtension(photo)}.webp");
                                 _fileHelper.DeleteFileIfExists(thumbnail);
                             }
 
@@ -789,7 +767,7 @@ namespace WeddingShare.Controllers
                     var gallery = await _database.GetGallery(id);
                     if (gallery != null && gallery.Id > 1)
                     {
-                        var galleryDir = Path.Combine(UploadsDirectory, gallery.Name);
+                        var galleryDir = Path.Combine(UploadsDirectory, gallery.Identifier);
                         _fileHelper.DeleteDirectoryIfExists(galleryDir);
 
                         if (await _settings.GetOrDefault(Notifications.Alerts.DestructiveAction, true))
@@ -829,7 +807,7 @@ namespace WeddingShare.Controllers
                         var gallery = await _database.GetGallery(photo.GalleryId);
                         if (gallery != null)
                         { 
-                            var photoPath = Path.Combine(UploadsDirectory, gallery.Name, photo.Title);
+                            var photoPath = Path.Combine(UploadsDirectory, gallery.Identifier, photo.Title);
                             _fileHelper.DeleteFileIfExists(photoPath);
 
                             await _audit.LogAction(User?.Identity?.Name, $"'{photo?.Title}' {_localizer["Audit_ItemDeletedInGallery"].Value} '{gallery?.Name}'");
@@ -1581,7 +1559,7 @@ namespace WeddingShare.Controllers
         {
             var galleries = new List<PhotoGallery>();
 
-            var items = !await _settings.GetOrDefault(Settings.Basic.SingleGalleryMode, false) ? await _database.GetPendingGalleryItems() : await _database.GetPendingGalleryItems(1);
+            var items = await _database.GetPendingGalleryItems();
             if (items != null)
             {
                 foreach (var galleryGroup in items.GroupBy(x => x.GalleryId))
@@ -1591,8 +1569,7 @@ namespace WeddingShare.Controllers
                     {
                         galleries.Add(new PhotoGallery()
                         {
-                            GalleryId = gallery?.Id,
-                            GalleryName = gallery?.Name,
+                            Gallery = gallery,
                             Images = items?.Select(x => new PhotoGalleryImage()
                             {
                                 Id = x.Id,
@@ -1600,8 +1577,8 @@ namespace WeddingShare.Controllers
                                 Name = Path.GetFileName(x.Title),
                                 UploadedBy = x.UploadedBy,
                                 UploadDate = x.UploadedDate,
-                                ImagePath = $"/{Path.Combine(UploadsDirectory, gallery.Name).Remove(_hostingEnvironment.WebRootPath).Replace('\\', '/').TrimStart('/')}/Pending/{x.Title}",
-                                ThumbnailPath = $"/{Path.Combine(ThumbnailsDirectory, gallery.Name).Remove(_hostingEnvironment.WebRootPath).Replace('\\', '/').TrimStart('/')}/{Path.GetFileNameWithoutExtension(x.Title)}.webp",
+                                ImagePath = $"/{Path.Combine(UploadsDirectory, gallery.Identifier).Remove(_hostingEnvironment.WebRootPath).Replace('\\', '/').TrimStart('/')}/Pending/{x.Title}",
+                                ThumbnailPath = $"/{Path.Combine(ThumbnailsDirectory, gallery.Identifier).Remove(_hostingEnvironment.WebRootPath).Replace('\\', '/').TrimStart('/')}/{Path.GetFileNameWithoutExtension(x.Title)}.webp",
                                 ThumbnailPathFallback = $"/{ThumbnailsDirectory.Remove(_hostingEnvironment.WebRootPath).Replace('\\', '/').TrimStart('/')}/{Path.GetFileNameWithoutExtension(x.Title)}.webp",
                                 MediaType = x.MediaType
                             })?.ToList(),

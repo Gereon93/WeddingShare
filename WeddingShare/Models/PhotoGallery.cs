@@ -1,4 +1,5 @@
 ﻿using WeddingShare.Enums;
+using WeddingShare.Models.Database;
 
 namespace WeddingShare.Models
 {
@@ -10,14 +11,13 @@ namespace WeddingShare.Models
         }
 
         public PhotoGallery(ViewMode viewMode, GalleryGroup groupBy, GalleryOrder orderBy)
-            : this(1, "default", string.Empty, viewMode, groupBy, orderBy, new List<PhotoGalleryImage>(), false)
+            : this(null, string.Empty, viewMode, groupBy, orderBy, new List<PhotoGalleryImage>(), false)
         {
         }
 
-        public PhotoGallery(int id, string name, string secretKey, ViewMode viewMode, GalleryGroup groupBy, GalleryOrder orderBy, List<PhotoGalleryImage> images, bool uploadActivated)
+        public PhotoGallery(GalleryModel? gallery, string secretKey, ViewMode viewMode, GalleryGroup groupBy, GalleryOrder orderBy, List<PhotoGalleryImage> images, bool uploadActivated)
         {
-            this.GalleryId = id;
-            this.GalleryName = name;
+            this.Gallery = gallery;
             this.SecretKey = secretKey;
             this.ViewMode = viewMode;
             this.GroupBy = groupBy;
@@ -27,8 +27,7 @@ namespace WeddingShare.Models
             this.UploadActivated = uploadActivated;
         }
 
-        public int? GalleryId { get; set; }
-        public string? GalleryName { get; set; }
+        public GalleryModel? Gallery { get; set; }
         public string? SecretKey { get; set; }
         public ViewMode ViewMode { get; set; }
         public GalleryGroup GroupBy { get; set; }

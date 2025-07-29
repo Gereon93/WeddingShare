@@ -59,15 +59,14 @@ namespace WeddingShare.BackgroundWorkers
             var uploadsDirectory = Path.Combine(hostingEnvironment.WebRootPath, Directories.Uploads);
             if (fileHelper.DirectoryExists(uploadsDirectory))
             {
-                var searchPattern = !settingsHelper.GetOrDefault(Settings.Basic.SingleGalleryMode, false).Result ? "*" : "default";
-                var galleries = fileHelper.GetDirectories(uploadsDirectory, searchPattern, SearchOption.TopDirectoryOnly)?.Where(x => !Path.GetFileName(x).StartsWith("."));
-                if (galleries != null)
+                var galleryDirs = fileHelper.GetDirectories(uploadsDirectory, "*", SearchOption.TopDirectoryOnly)?.Where(x => !Path.GetFileName(x).StartsWith("."));
+                if (galleryDirs != null)
                 {
-                    foreach (var gallery in galleries)
+                    foreach (var galleryDir in galleryDirs)
                     {
                         try
                         {
-                            var identifier = Path.GetFileName(gallery).ToLower();
+                            var identifier = Path.GetFileName(galleryDir).ToLower();
 
                             var galleryId = await databaseHelper.GetGalleryId(identifier);
                             if (galleryId != null)
@@ -90,9 +89,9 @@ namespace WeddingShare.BackgroundWorkers
                                     var allowedFileTypes = settingsHelper.GetOrDefault(Settings.Gallery.AllowedFileTypes, ".jpg,.jpeg,.png,.mp4,.mov", galleryItem?.Id).Result.Split(',', StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries);
                                     var galleryItems = await databaseHelper.GetAllGalleryItems(galleryItem.Id);
 
-                                    if (Path.Exists(gallery))
+                                    if (Path.Exists(galleryDir))
                                     {
-                                        var approvedFiles = fileHelper.GetFiles(gallery, "*.*", SearchOption.TopDirectoryOnly).Where(x => allowedFileTypes.Any(y => string.Equals(Path.GetExtension(x).Trim('.'), y.Trim('.'), StringComparison.OrdinalIgnoreCase)));
+                                        var approvedFiles = fileHelper.GetFiles(galleryDir, "*.*", SearchOption.TopDirectoryOnly).Where(x => allowedFileTypes.Any(y => string.Equals(Path.GetExtension(x).Trim('.'), y.Trim('.'), StringComparison.OrdinalIgnoreCase)));
                                         if (approvedFiles != null)
                                         {
                                             foreach (var file in approvedFiles)
@@ -179,9 +178,9 @@ namespace WeddingShare.BackgroundWorkers
                                             }
                                         }
 
-                                        if (Path.Exists(Path.Combine(gallery, "Pending")))
+                                        if (Path.Exists(Path.Combine(galleryDir, "Pending")))
                                         {
-                                            var pendingFiles = fileHelper.GetFiles(Path.Combine(gallery, "Pending"), "*.*", SearchOption.TopDirectoryOnly).Where(x => allowedFileTypes.Any(y => string.Equals(Path.GetExtension(x).Trim('.'), y.Trim('.'), StringComparison.OrdinalIgnoreCase)));
+                                            var pendingFiles = fileHelper.GetFiles(Path.Combine(galleryDir, "Pending"), "*.*", SearchOption.TopDirectoryOnly).Where(x => allowedFileTypes.Any(y => string.Equals(Path.GetExtension(x).Trim('.'), y.Trim('.'), StringComparison.OrdinalIgnoreCase)));
                                             if (pendingFiles != null)
                                             {
                                                 foreach (var file in pendingFiles)
@@ -216,7 +215,7 @@ namespace WeddingShare.BackgroundWorkers
                         }
                         catch (Exception ex)
                         {
-                            logger.LogError(ex, $"An error occurred while scanning directory '{gallery}'");
+                            logger.LogError(ex, $"An error occurred while scanning directory '{galleryDir}'");
                         }
                     }
                 }
