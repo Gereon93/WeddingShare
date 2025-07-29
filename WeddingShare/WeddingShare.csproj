@@ -59,6 +59,8 @@
     <EmbeddedResource Include="SqlScripts\MySQL\014 - Rename Background Service Settings Keys.sql" />
     <EmbeddedResource Include="SqlScripts\MySQL\013 - Rename Account Settings Keys.sql" />
     <EmbeddedResource Include="SqlScripts\MySQL\012 - Add Resource Owners.sql" />
+    <EmbeddedResource Include="SqlScripts\MySQL\016 - Add All Gallery.sql" />
+    <EmbeddedResource Include="SqlScripts\MySQL\015 - Add Gallery Identifier.sql" />
     <EmbeddedResource Include="SqlScripts\SQLite\004 - Add 2FA.sql" />
     <EmbeddedResource Include="SqlScripts\SQLite\003 - Add Checksum.sql" />
     <EmbeddedResource Include="SqlScripts\SQLite\002 - Add MediaType.sql" />
@@ -75,7 +77,9 @@
     <EmbeddedResource Include="SqlScripts\SQLite\010 - Add CustomResources Table.sql" />
     <EmbeddedResource Include="SqlScripts\SQLite\012 - Add Resource Owners.sql" />
     <EmbeddedResource Include="SqlScripts\SQLite\013 - Rename Account Settings Keys.sql" />
+    <EmbeddedResource Include="SqlScripts\SQLite\015 - Add Gallery Identifier.sql" />
     <EmbeddedResource Include="SqlScripts\SQLite\014 - Rename Background Service Settings Keys.sql" />
+    <EmbeddedResource Include="SqlScripts\SQLite\016 - Add All Gallery.sql" />
   </ItemGroup>
 
   <ItemGroup>

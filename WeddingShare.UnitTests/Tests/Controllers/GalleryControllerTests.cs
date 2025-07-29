@@ -1,3 +1,4 @@
+using System.Data.Common;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -50,6 +51,10 @@ namespace WeddingShare.UnitTests.Tests.Helpers
             _database.GetGalleryId("blaa").Returns(Task.FromResult<int?>(mockData["blaa"].Id));
             _database.GetGalleryId("missing").Returns(Task.FromResult<int?>(null));
 
+            _database.GetGalleryIdByName("default").Returns(Task.FromResult<int?>(mockData["default"].Id));
+            _database.GetGalleryIdByName("blaa").Returns(Task.FromResult<int?>(mockData["blaa"].Id));
+            _database.GetGalleryIdByName("missing").Returns(Task.FromResult<int?>(null));
+
             _database.AddGallery(Arg.Any<GalleryModel>()).Returns(Task.FromResult<GalleryModel?>(new GalleryModel()
             {
                 Id = 101,
@@ -86,10 +91,10 @@ namespace WeddingShare.UnitTests.Tests.Helpers
 			_localizer[Arg.Any<string>()].Returns(new LocalizedString("UnitTest", "UnitTest"));
 		}
 
-        [TestCase(DeviceType.Desktop, 1, "default", "password", ViewMode.Default, GalleryGroup.None, GalleryOrder.Descending, true)]
-        [TestCase(DeviceType.Mobile, 2, "blaa", "456789", ViewMode.Presentation, GalleryGroup.Date, GalleryOrder.Ascending, true)]
-        [TestCase(DeviceType.Tablet, 101, "missing", "123456", ViewMode.Slideshow, GalleryGroup.Uploader, GalleryOrder.Ascending, false)]
-        public async Task GalleryController_Index(DeviceType deviceType, int id, string name, string? key, ViewMode? mode, GalleryGroup group, GalleryOrder order, bool existing)
+        [TestCase(DeviceType.Desktop, 1, "default", "default", "password", ViewMode.Default, GalleryGroup.None, GalleryOrder.Descending, true)]
+        [TestCase(DeviceType.Mobile, 2, "blaa", "blaa", "456789", ViewMode.Presentation, GalleryGroup.Date, GalleryOrder.Ascending, true)]
+        [TestCase(DeviceType.Tablet, 101, "missing", "missing", "123456", ViewMode.Slideshow, GalleryGroup.Uploader, GalleryOrder.Ascending, false)]
+        public async Task GalleryController_Index(DeviceType deviceType, int id, string? identifier, string? name, string? key, ViewMode? mode, GalleryGroup group, GalleryOrder order, bool existing)
         {
             _deviceDetector.ParseDeviceType(Arg.Any<string>()).Returns(deviceType);
             _settings.GetOrDefault(Settings.Basic.SingleGalleryMode, Arg.Any<bool>()).Returns(false);
@@ -100,21 +105,42 @@ namespace WeddingShare.UnitTests.Tests.Helpers
 
 			if (existing)
 			{
-				ViewResult actual = (ViewResult)await controller.Index(name, key, mode, group, order);
+				ViewResult actual = (ViewResult)await controller.Index(identifier, name, key, mode, group, order);
 				Assert.That(actual, Is.TypeOf<ViewResult>());
                 Assert.That(actual?.Model, Is.Not.Null);
 
 				PhotoGallery model = (PhotoGallery)actual.Model;
-				Assert.That(model?.GalleryId, Is.EqualTo(id));
-				Assert.That(model?.GalleryName, Is.EqualTo(name));
+				Assert.That(model?.Gallery?.Id, Is.EqualTo(id));
+                Assert.That(model?.Gallery?.Identifier, Is.EqualTo(identifier));
+                Assert.That(model?.Gallery?.Name, Is.EqualTo(name));
 				Assert.That(model?.SecretKey, Is.EqualTo(key));
 				Assert.That(model.ViewMode, Is.EqualTo(mode));
 			}
 			else
 			{
-                RedirectToActionResult actual = (RedirectToActionResult)await controller.Index(name, key, mode, group, order);
+                RedirectToActionResult actual = (RedirectToActionResult)await controller.Index(identifier, name, key, mode, group, order);
 				Assert.That(actual, Is.TypeOf<RedirectToActionResult>());
 			}
+        }
+
+        [TestCase(null, "default", "default")]
+        [TestCase("default", null, "default")]
+        [TestCase("default", "blaa", "blaa")]
+        public async Task GalleryController_Index_GetByIdentifier(string? id, string? identifier, string expected)
+        {
+            _deviceDetector.ParseDeviceType(Arg.Any<string>()).Returns(DeviceType.Desktop);
+            _settings.GetOrDefault(Settings.Basic.SingleGalleryMode, Arg.Any<bool>()).Returns(false);
+            _settings.GetOrDefault(Settings.Basic.GuestGalleryCreation, Arg.Any<bool>()).Returns(false);
+
+            var controller = new GalleryController(_env, _settings, _database, _file, _deviceDetector, _image, _notification, _encryption, _url, _logger, _localizer);
+            controller.ControllerContext.HttpContext = MockData.MockHttpContext();
+
+            ViewResult actual = (ViewResult)await controller.Index(id, identifier, "password", ViewMode.Default, GalleryGroup.None, GalleryOrder.Random);
+            Assert.That(actual, Is.TypeOf<ViewResult>());
+            Assert.That(actual?.Model, Is.Not.Null);
+
+            PhotoGallery model = (PhotoGallery)actual.Model;
+            Assert.That(model?.Gallery?.Identifier, Is.EqualTo(expected));
         }
 
         [TestCase(true, true)]
@@ -128,7 +154,7 @@ namespace WeddingShare.UnitTests.Tests.Helpers
             var controller = new GalleryController(_env, _settings, _database, _file, _deviceDetector, _image, _notification, _encryption, _url, _logger, _localizer);
             controller.ControllerContext.HttpContext = MockData.MockHttpContext();
 
-            ViewResult actual = (ViewResult)await controller.Index("default", "password", ViewMode.Default, GalleryGroup.None, GalleryOrder.Descending);
+            ViewResult actual = (ViewResult)await controller.Index("default", "default", "password", ViewMode.Default, GalleryGroup.None, GalleryOrder.Descending);
             Assert.That(actual, Is.TypeOf<ViewResult>());
             Assert.That(actual?.Model, Is.Not.Null);
 
@@ -150,7 +176,7 @@ namespace WeddingShare.UnitTests.Tests.Helpers
             var controller = new GalleryController(_env, _settings, _database, _file, _deviceDetector, _image, _notification, _encryption, _url, _logger, _localizer);
             controller.ControllerContext.HttpContext = MockData.MockHttpContext();
 
-            ViewResult actual = (ViewResult)await controller.Index("default", "password", ViewMode.Default, GalleryGroup.None, GalleryOrder.Descending);
+            ViewResult actual = (ViewResult)await controller.Index("default", "default", "password", ViewMode.Default, GalleryGroup.None, GalleryOrder.Descending);
             Assert.That(actual, Is.TypeOf<ViewResult>());
             Assert.That(actual?.Model, Is.Not.Null);
 
@@ -169,14 +195,15 @@ namespace WeddingShare.UnitTests.Tests.Helpers
 			var controller = new GalleryController(_env, _settings, _database, _file, _deviceDetector, _image, _notification, _encryption, _url, _logger, _localizer);
 			controller.ControllerContext.HttpContext = MockData.MockHttpContext();
 
-			ViewResult actual = (ViewResult)await controller.Index("default", "password", mode, group, order);
+			ViewResult actual = (ViewResult)await controller.Index("default", "default", "password", mode, group, order);
 			Assert.That(actual, Is.TypeOf<ViewResult>());
 			Assert.That(actual?.Model, Is.Not.Null);
 
 			PhotoGallery model = (PhotoGallery)actual.Model;
-			Assert.That(model?.GalleryId, Is.EqualTo(1));
-			Assert.That(model?.GalleryName, Is.EqualTo("default"));
-			Assert.That(model?.SecretKey, Is.EqualTo("password"));
+			Assert.That(model?.Gallery?.Id, Is.EqualTo(1));
+			Assert.That(model?.Gallery?.Identifier, Is.EqualTo("default"));
+			Assert.That(model?.Gallery?.Name, Is.EqualTo("default"));
+            Assert.That(model?.SecretKey, Is.EqualTo("password"));
 			Assert.That(model.ViewMode, Is.EqualTo(mode));
 		}
 
@@ -369,6 +396,7 @@ namespace WeddingShare.UnitTests.Tests.Helpers
                     "default", new GalleryModel()
                     {
                         Id = 1,
+                        Identifier = "default",
                         Name = "default",
                         SecretKey = "password",
                         ApprovedItems = 32,
@@ -380,7 +408,8 @@ namespace WeddingShare.UnitTests.Tests.Helpers
                     "blaa", new GalleryModel()
                     {
                         Id = 2,
-                        Name = "blaa",
+                        Identifier = "blaa",
+						Name = "blaa",
                         SecretKey = "456789",
                         ApprovedItems = 2,
                         PendingItems = 1,
@@ -391,7 +420,8 @@ namespace WeddingShare.UnitTests.Tests.Helpers
                     "missing", new GalleryModel()
                     {
                         Id = 101,
-                        Name = "missing",
+                        Identifier = "missing", 
+						Name = "missing",
                         SecretKey = "123456",
                         ApprovedItems = 0,
                         PendingItems = 0,

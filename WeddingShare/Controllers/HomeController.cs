@@ -54,7 +54,7 @@ namespace WeddingShare.Controllers
                     }
                 }
 
-                model.GalleryNames = await _settings.GetOrDefault(Settings.GallerySelector.Dropdown, false) ? await _database.GetGalleryNames() : new List<string>() { "default" };
+                model.GalleryNames = await _settings.GetOrDefault(Settings.GallerySelector.Dropdown, false) ? (await _database.GetGalleryNames()).Where(x => !x.Equals("all", StringComparison.OrdinalIgnoreCase)) : new List<string>();
                 if (await _settings.GetOrDefault(Settings.GallerySelector.HideDefaultOption, false))
                 {
                     model.GalleryNames = model.GalleryNames.Where(x => !x.Equals("default", StringComparison.OrdinalIgnoreCase));

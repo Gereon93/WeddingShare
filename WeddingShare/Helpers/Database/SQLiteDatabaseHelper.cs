@@ -124,7 +124,7 @@ namespace WeddingShare.Helpers.Database
             return result;
         }
 
-        public async Task<int?> GetGalleryId(string? name)
+        public async Task<int?> GetGalleryIdByName(string? name)
         {
             int? result = null;
 
@@ -135,6 +135,27 @@ namespace WeddingShare.Helpers.Database
                     var cmd = CreateCommand($"SELECT g.`id` FROM `galleries` AS g WHERE UPPER(g.`name`)=UPPER(@Name);", conn);
                     cmd.CommandType = CommandType.Text;
                     cmd.Parameters.AddWithValue("Name", name);
+
+                    await conn.OpenAsync();
+                    result = (int?)(long?)await cmd.ExecuteScalarAsync();
+                    await conn.CloseAsync();
+                }
+            }
+
+            return result;
+        }
+
+        public async Task<int?> GetGalleryId(string identifier)
+        {
+            int? result = null;
+
+            if (!string.IsNullOrWhiteSpace(identifier))
+            {
+                using (var conn = await GetConnection())
+                {
+                    var cmd = CreateCommand($"SELECT g.`id` FROM `galleries` AS g WHERE UPPER(g.`identifier`)=UPPER(@Identifier);", conn);
+                    cmd.CommandType = CommandType.Text;
+                    cmd.Parameters.AddWithValue("Identifier", identifier);
 
                     await conn.OpenAsync();
                     result = (int?)(long?)await cmd.ExecuteScalarAsync();
@@ -178,12 +199,14 @@ namespace WeddingShare.Helpers.Database
                         result = new GalleryModel()
                         {
                             Id = 0,
+                            Identifier = "all",
                             Name = "all",
                             SecretKey = null,
                             TotalItems = galleries?.Sum(x => x.TotalItems) ?? 0,
                             ApprovedItems = galleries?.Sum(x => x.ApprovedItems) ?? 0,
                             PendingItems = galleries?.Sum(x => x.PendingItems) ?? 0,
-                            TotalGallerySize =  galleries?.Sum(x => x.TotalGallerySize) ?? 0
+                            TotalGallerySize =  galleries?.Sum(x => x.TotalGallerySize) ?? 0,
+                            Owner = 1
                         };
                     }
                 }
@@ -205,8 +228,9 @@ namespace WeddingShare.Helpers.Database
 
             using (var conn = await GetConnection())
             {
-                var cmd = CreateCommand($"INSERT INTO `galleries` (`name`, `secret_key`, `owner`) VALUES (@Name, @SecretKey, @Owner); SELECT g.*, COUNT(gi.`id`) AS `total`, SUM(CASE WHEN gi.`state`=@ApprovedState THEN 1 ELSE 0 END) AS `approved`, SUM(CASE WHEN gi.`state`=@PendingState THEN 1 ELSE 0 END) AS `pending`, SUM(gi.file_size) AS `total_gallery_size` FROM `galleries` AS g LEFT JOIN `gallery_items` AS gi ON g.`id` = gi.`gallery_id` WHERE g.`id`=last_insert_rowid();", conn);
+                var cmd = CreateCommand($"INSERT INTO `galleries` (`identifier`, `name`, `secret_key`, `owner`) VALUES (@Identifier, @Name, @SecretKey, @Owner); SELECT g.*, COUNT(gi.`id`) AS `total`, SUM(CASE WHEN gi.`state`=@ApprovedState THEN 1 ELSE 0 END) AS `approved`, SUM(CASE WHEN gi.`state`=@PendingState THEN 1 ELSE 0 END) AS `pending`, SUM(gi.file_size) AS `total_gallery_size` FROM `galleries` AS g LEFT JOIN `gallery_items` AS gi ON g.`id` = gi.`gallery_id` WHERE g.`id`=last_insert_rowid();", conn);
                 cmd.CommandType = CommandType.Text;
+                cmd.Parameters.AddWithValue("Identifier", model.Identifier);
                 cmd.Parameters.AddWithValue("Name", model.Name.ToLower());
                 cmd.Parameters.AddWithValue("SecretKey", !string.IsNullOrWhiteSpace(model.SecretKey) ? model.SecretKey : DBNull.Value);
                 cmd.Parameters.AddWithValue("ApprovedState", (int)GalleryItemState.Approved);
@@ -1700,21 +1724,18 @@ namespace WeddingShare.Helpers.Database
                 {
                     try
                     {
-                        var id = !await reader.IsDBNullAsync("id") ? reader.GetInt32("id") : 0;
-                        if (id > 0)
-                        { 
-                            items.Add(new GalleryModel()
-                            {
-                                Id = id,
-                                Name = !await reader.IsDBNullAsync("name") ? reader.GetString("name") : "Unknown",
-                                SecretKey = !await reader.IsDBNullAsync("secret_key") ? reader.GetString("secret_key") : null,
-                                TotalItems = !await reader.IsDBNullAsync("total") ? reader.GetInt32("total") : 0,
-                                ApprovedItems = !await reader.IsDBNullAsync("approved") ? reader.GetInt32("approved") : 0,
-                                PendingItems = !await reader.IsDBNullAsync("pending") ? reader.GetInt32("pending") : 0,
-                                TotalGallerySize = !await reader.IsDBNullAsync("total_gallery_size") ? reader.GetInt64("total_gallery_size") : 0,
-                                Owner = !await reader.IsDBNullAsync("owner") ? reader.GetInt32("owner") : 0
-                            });
-                        }
+                        items.Add(new GalleryModel()
+                        {
+                            Id = !await reader.IsDBNullAsync("id") ? reader.GetInt32("id") : 0,
+                            Identifier = !await reader.IsDBNullAsync("identifier") ? reader.GetString("identifier") : GalleryHelper.GenerateGalleryIdentifier(),
+                            Name = !await reader.IsDBNullAsync("name") ? reader.GetString("name") : "Unknown",
+                            SecretKey = !await reader.IsDBNullAsync("secret_key") ? reader.GetString("secret_key") : null,
+                            TotalItems = !await reader.IsDBNullAsync("total") ? reader.GetInt32("total") : 0,
+                            ApprovedItems = !await reader.IsDBNullAsync("approved") ? reader.GetInt32("approved") : 0,
+                            PendingItems = !await reader.IsDBNullAsync("pending") ? reader.GetInt32("pending") : 0,
+                            TotalGallerySize = !await reader.IsDBNullAsync("total_gallery_size") ? reader.GetInt64("total_gallery_size") : 0,
+                            Owner = !await reader.IsDBNullAsync("owner") ? reader.GetInt32("owner") : 0
+                        });
                     }
                     catch (Exception ex)
                     {

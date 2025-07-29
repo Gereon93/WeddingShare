@@ -8,7 +8,8 @@ namespace WeddingShare.Helpers.Database
         Task<int> GetGalleryCount();
         Task<IEnumerable<string>> GetGalleryNames();
         Task<List<GalleryModel>> GetAllGalleries();
-        Task<int?> GetGalleryId(string name);
+        Task<int?> GetGalleryId(string identifier);
+        Task<int?> GetGalleryIdByName(string name);
         Task<string?> GetGalleryName(int id);
         Task<GalleryModel?> GetGallery(int id);
         Task<GalleryModel?> AddGallery(GalleryModel model);
