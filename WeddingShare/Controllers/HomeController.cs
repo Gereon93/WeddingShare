@@ -50,7 +50,7 @@ namespace WeddingShare.Controllers
                     var key = await _settings.GetOrDefault(Settings.Gallery.SecretKey, string.Empty, 1);
                     if (string.IsNullOrWhiteSpace(key))
                     {
-                        return RedirectToAction("Index", "Gallery");
+                        return RedirectToAction("Index", "Gallery", new { identifier = "default" });
                     }
                 }
 
