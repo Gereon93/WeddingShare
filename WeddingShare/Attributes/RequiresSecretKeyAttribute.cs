@@ -9,7 +9,7 @@ namespace WeddingShare.Attributes
 {
     public class RequiresSecretKeyAttribute : ActionFilterAttribute
     {
-        public override async void OnActionExecuting(ActionExecutingContext filterContext)
+        public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
             try
             {
@@ -22,7 +22,7 @@ namespace WeddingShare.Attributes
                     var galleryIdentifier = (request.Query.ContainsKey("identifier") && !string.IsNullOrWhiteSpace(request.Query["identifier"])) ? request.Query["identifier"].ToString().ToLower() : null;
                     if (!string.IsNullOrWhiteSpace(galleryIdentifier))
                     {
-                        galleryId = await databaseHelper.GetGalleryId(galleryIdentifier);
+                        galleryId = databaseHelper.GetGalleryId(galleryIdentifier).Result;
                     }
 
                     if (galleryId == null)

@@ -60,7 +60,6 @@ namespace WeddingShare.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(string? id, string? identifier, string? key = null)
         {
-
             int? galleryId = 0;
 
             if (!string.IsNullOrWhiteSpace(identifier))

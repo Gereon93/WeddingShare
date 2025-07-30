@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 using WeddingShare.Constants;
@@ -61,7 +62,7 @@ namespace WeddingShare.UnitTests.Tests.Helpers
                 Assert.That(actual.Permanent, Is.EqualTo(false));
                 Assert.That(actual.ControllerName, Is.EqualTo("Gallery"));
                 Assert.That(actual.ActionName, Is.EqualTo("Index"));
-                Assert.That(actual.RouteValues, Is.Null);
+                Assert.That(actual.RouteValues, singleGalleryMode ? Is.EqualTo(new RouteValueDictionary { { "identifier", "default" } }) : Is.Null);
                 Assert.That(actual.Fragment, Is.Null);
             }
         }
