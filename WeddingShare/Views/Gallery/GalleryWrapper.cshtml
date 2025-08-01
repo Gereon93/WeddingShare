@@ -7,27 +7,16 @@
 {
     var galleryName = (!string.IsNullOrWhiteSpace(Model?.Gallery?.Identifier) && !Model.Gallery.Identifier.Equals("All", StringComparison.OrdinalIgnoreCase)) ? Model.Gallery.Name.ToLower() : "default";
 
-    string banner;
     try
     {
-        var bannerGallery = _config.Get($"{Settings.Gallery.BannerImage}_{galleryName}") != null ? galleryName : "default";
-
-        banner = await _settings.GetOrDefault(Settings.Gallery.BannerImage, string.Empty, Model?.Gallery?.Id);
+        var banner = await _settings.GetOrDefault(Settings.Gallery.BannerImage, string.Empty, Model?.Gallery?.Id);
         if (!string.IsNullOrWhiteSpace(banner))
         {
-            if (!banner.StartsWith("/images", StringComparison.OrdinalIgnoreCase) && !banner.StartsWith("/banners", StringComparison.OrdinalIgnoreCase) && !banner.StartsWith("/custom_resources", StringComparison.OrdinalIgnoreCase))
-            {
-                banner = $"/banners/{bannerGallery}.{System.IO.Path.GetExtension(banner).Trim('.')}";
-            }
-
-            if (!string.IsNullOrWhiteSpace(banner))
-            {
-                <div class="row mb-3 mb-lg-4 p-0">
-                    <div class="col-12 gallery_banner_header text-center p-0">
-                        <img src="@banner" alt="banner image" />
-                    </div>
+            <div class="row mb-3 mb-lg-4 p-0">
+                <div class="col-12 gallery_banner_header text-center p-0">
+                    <img src="@banner" alt="banner image" />
                 </div>
-            }
+            </div>
         }
     }
     catch { }

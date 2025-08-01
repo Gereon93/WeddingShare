@@ -642,18 +642,6 @@ function selectActiveTab(tab) {
                     Class: 'form-check-input',
                     Label: 'Thumbnails'
                 }, {
-                    Id: 'logos',
-                    Type: 'checkbox',
-                    Checked: true,
-                    Class: 'form-check-input',
-                    Label: 'Logos'
-                }, {
-                    Id: 'banners',
-                    Type: 'checkbox',
-                    Checked: true,
-                    Class: 'form-check-input',
-                    Label: 'Banners'
-                }, {
                     Id: 'custom-resources',
                     Type: 'checkbox',
                     Checked: true,
@@ -673,8 +661,6 @@ function selectActiveTab(tab) {
                                 Database: $('#popup-modal-field-database').is(':checked'),
                                 Uploads: $('#popup-modal-field-uploads').is(':checked'),
                                 Thumbnails: $('#popup-modal-field-thumbnails').is(':checked'),
-                                Logos: $('#popup-modal-field-logos').is(':checked'),
-                                Banners: $('#popup-modal-field-banners').is(':checked'),
                                 CustomResources: $('#popup-modal-field-custom-resources').is(':checked')
                             }
                         })
