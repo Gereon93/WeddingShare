@@ -11,16 +11,10 @@
     var title = await _settings.GetOrDefault(Settings.Basic.Title, "WeddingShare", galleryId);
     var isDemoMode = await _settings.GetOrDefault(Settings.IsDemoMode, false);
 
-    string logo;
+    var logo = "/images/logo.png";
     try
     {
-        var logoGallery = _config.Get($"{Settings.Basic.Logo}_{galleryIdentifier}") != null ? galleryIdentifier : "default";
-
-        logo = await _settings.GetOrDefault(Settings.Basic.Logo, "/images/logo.png", logoGallery);
-        if (!logo.StartsWith("/images", StringComparison.OrdinalIgnoreCase) && !logo.StartsWith("/logos", StringComparison.OrdinalIgnoreCase) && !logo.StartsWith("/custom_resources", StringComparison.OrdinalIgnoreCase))
-        {
-            logo = $"/logos/{logoGallery}.{System.IO.Path.GetExtension(logo).Trim('.')}";
-        }
+        logo = await _settings.GetOrDefault(Settings.Basic.Logo, "/images/logo.png", galleryId);
     }
     catch
     {

@@ -38,8 +38,6 @@ namespace WeddingShare.Controllers
         private readonly string TempDirectory;
         private readonly string UploadsDirectory;
         private readonly string ThumbnailsDirectory;
-        private readonly string LogosDirectory;
-        private readonly string BannersDirectory;
         private readonly string CustomResourcesDirectory;
 
         public AccountController(IWebHostEnvironment hostingEnvironment, ISettingsHelper settings, IDatabaseHelper database, IDeviceDetector deviceDetector, IFileHelper fileHelper, IEncryptionHelper encryption, INotificationHelper notificationHelper, Helpers.IUrlHelper url, IAuditHelper audit, ILogger<AccountController> logger, IStringLocalizer<Lang.Translations> localizer)
@@ -59,8 +57,6 @@ namespace WeddingShare.Controllers
             TempDirectory = Path.Combine(_hostingEnvironment.WebRootPath, Directories.TempFiles);
             UploadsDirectory = Path.Combine(_hostingEnvironment.WebRootPath, Directories.Uploads);
             ThumbnailsDirectory = Path.Combine(_hostingEnvironment.WebRootPath, Directories.Thumbnails);
-            LogosDirectory = Path.Combine(_hostingEnvironment.WebRootPath, Directories.Logos);
-            BannersDirectory = Path.Combine(_hostingEnvironment.WebRootPath, Directories.Banners);
             CustomResourcesDirectory = Path.Combine(_hostingEnvironment.WebRootPath, Directories.CustomResources);
         }
 
@@ -1138,18 +1134,6 @@ namespace WeddingShare.Controllers
                                 ZipFile.CreateFromDirectory(ThumbnailsDirectory, thumbnailsZip, CompressionLevel.Optimal, false);
                             }
 
-                            var logosZip = Path.Combine(exportDir, $"Logos.bak");
-                            if (options.Logos && _fileHelper.DirectoryExists(LogosDirectory))
-                            {
-                                ZipFile.CreateFromDirectory(LogosDirectory, logosZip, CompressionLevel.Optimal, false);
-                            }
-
-                            var bannersZip = Path.Combine(exportDir, $"Banners.bak");
-                            if (options.Banners && _fileHelper.DirectoryExists(BannersDirectory))
-                            {
-                                ZipFile.CreateFromDirectory(BannersDirectory, bannersZip, CompressionLevel.Optimal, false);
-                            }
-
                             var customResourcesZip = Path.Combine(exportDir, $"CustomResources.bak");
                             if (options.CustomResources && _fileHelper.DirectoryExists(CustomResourcesDirectory))
                             {
@@ -1163,8 +1147,6 @@ namespace WeddingShare.Controllers
                             _fileHelper.DeleteFileIfExists(dbExport);
                             _fileHelper.DeleteFileIfExists(uploadsZip);
                             _fileHelper.DeleteFileIfExists(thumbnailsZip);
-                            _fileHelper.DeleteFileIfExists(logosZip);
-                            _fileHelper.DeleteFileIfExists(bannersZip);
                             _fileHelper.DeleteFileIfExists(customResourcesZip);
 
                             await _audit.LogAction(User?.Identity?.Name, _localizer["Audit_ExportedBackup"].Value);
@@ -1222,18 +1204,6 @@ namespace WeddingShare.Controllers
 
                                     var thumbnailsZip = Path.Combine(importDir, "Thumbnails.bak");
                                     ZipFile.ExtractToDirectory(thumbnailsZip, ThumbnailsDirectory, true);
-
-                                    var logosZip = Path.Combine(importDir, "Logos.bak");
-                                    if (_fileHelper.FileExists(logosZip))
-                                    { 
-                                        ZipFile.ExtractToDirectory(logosZip, LogosDirectory, true);
-                                    }
-
-                                    var bannersZip = Path.Combine(importDir, "Banners.bak");
-                                    if (_fileHelper.FileExists(bannersZip))
-                                    {
-                                        ZipFile.ExtractToDirectory(bannersZip, BannersDirectory, true);
-                                    }
 
                                     var customResourcesZip = Path.Combine(importDir, "CustomResources.bak");
                                     if (_fileHelper.FileExists(customResourcesZip))
