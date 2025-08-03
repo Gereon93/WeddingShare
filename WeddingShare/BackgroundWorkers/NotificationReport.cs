@@ -11,26 +11,38 @@ namespace WeddingShare.BackgroundWorkers
     {
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
-            if (await settingsHelper.GetOrDefault(Settings.Basic.EmailReport, true) && await settingsHelper.GetOrDefault(Notifications.Smtp.Enabled, false))
+            var enabled = await settingsHelper.GetOrDefault(BackgroundServices.EmailReport.Enabled, true);
+            if (enabled)
             {
                 var cron = await settingsHelper.GetOrDefault(BackgroundServices.EmailReport.Schedule, "0 0 * * *");
-                var schedule = CrontabSchedule.Parse(cron, new CrontabSchedule.ParseOptions() { IncludingSeconds = cron.Split(new[] { ' ' }, StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries).Length == 6 });
+                var nextExecutionTime = DateTime.Now.AddSeconds(10);
 
                 while (!stoppingToken.IsCancellationRequested)
                 {
-                    var now = DateTime.Now;
-                    var nextExecutionTime = schedule.GetNextOccurrence(now);
-                    var waitTime = nextExecutionTime - now;
-                    await Task.Delay(waitTime, stoppingToken);
+                    var currentCron = await settingsHelper.GetOrDefault(BackgroundServices.EmailReport.Schedule, "0 0 * * *");
 
-                    var enabled = await settingsHelper.GetOrDefault(BackgroundServices.EmailReport.Enabled, true);
-                    if (await settingsHelper.GetOrDefault(Settings.Basic.EmailReport, true) && await settingsHelper.GetOrDefault(Notifications.Smtp.Enabled, false))
+                    var now = DateTime.Now;
+                    if (now >= nextExecutionTime)
                     {
-                        if (enabled)
+                        if (await settingsHelper.GetOrDefault(Settings.Basic.EmailReport, true) && await settingsHelper.GetOrDefault(Notifications.Smtp.Enabled, false))
                         {
-                           await SendReport();
+                            await SendReport();
                         }
+
+                        var schedule = CrontabSchedule.Parse(cron, new CrontabSchedule.ParseOptions() { IncludingSeconds = cron.Split(new[] { ' ' }, StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries).Length == 6 });
+                        nextExecutionTime = schedule.GetNextOccurrence(now);
                     }
+                    else
+                    {
+                        if (!currentCron.Equals(cron))
+                        {
+                            nextExecutionTime = DateTime.Now;
+                        }
+
+                        await Task.Delay(TimeSpan.FromSeconds(1), stoppingToken);
+                    }
+
+                    cron = currentCron;
                 }
             }
         }

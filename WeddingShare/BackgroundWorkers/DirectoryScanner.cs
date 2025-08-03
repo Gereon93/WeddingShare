@@ -13,27 +13,35 @@ namespace WeddingShare.BackgroundWorkers
     {
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
-            var cron = settingsHelper.GetOrDefault(BackgroundServices.DirectoryScanner.Schedule, "*/30 * * * *").Result;
-            var schedule = CrontabSchedule.Parse(cron, new CrontabSchedule.ParseOptions() { IncludingSeconds = cron.Split(new[] { ' ' }, StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries).Length == 6 });
-
-            var enabled = settingsHelper.GetOrDefault(BackgroundServices.DirectoryScanner.Enabled, true).Result;
+            var enabled = await settingsHelper.GetOrDefault(BackgroundServices.DirectoryScanner.Enabled, true);
             if (enabled)
             {
-                await Task.Delay((int)TimeSpan.FromSeconds(10).TotalMilliseconds, stoppingToken);
-                await ScanForFiles();
-            }
+                var cron = await settingsHelper.GetOrDefault(BackgroundServices.DirectoryScanner.Schedule, "*/30 * * * *");
+                var nextExecutionTime = DateTime.Now.AddSeconds(10);
 
-            while (!stoppingToken.IsCancellationRequested)
-            {
-                var now = DateTime.Now;
-                var nextExecutionTime = schedule.GetNextOccurrence(now);
-                var waitTime = nextExecutionTime - now;
-                await Task.Delay(waitTime, stoppingToken);
-
-                enabled = settingsHelper.GetOrDefault(BackgroundServices.DirectoryScanner.Enabled, true).Result;
-                if (enabled)
+                while (!stoppingToken.IsCancellationRequested)
                 {
-                    await ScanForFiles();
+                    var currentCron = await settingsHelper.GetOrDefault(BackgroundServices.DirectoryScanner.Schedule, "*/30 * * * *");
+
+                    var now = DateTime.Now;
+                    if (now >= nextExecutionTime)
+                    {
+                        await ScanForFiles();
+
+                        var schedule = CrontabSchedule.Parse(cron, new CrontabSchedule.ParseOptions() { IncludingSeconds = cron.Split(new[] { ' ' }, StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries).Length == 6 });
+                        nextExecutionTime = schedule.GetNextOccurrence(now);
+                    }
+                    else
+                    {
+                        if (!currentCron.Equals(cron))
+                        {
+                            nextExecutionTime = DateTime.Now;
+                        }
+
+                        await Task.Delay(TimeSpan.FromSeconds(1), stoppingToken);
+                    }
+                    
+                    cron = currentCron;
                 }
             }
         }
