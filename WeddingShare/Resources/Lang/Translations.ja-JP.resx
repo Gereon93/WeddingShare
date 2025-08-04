@@ -301,6 +301,9 @@
   <data name="Duplicate_Item_Detected" xml:space="preserve">
     <value>検出された重複ファイル</value>
   </data>
+  <data name="EmailAddress" xml:space="preserve">
+    <value>メールアドレス</value>
+  </data>
   <data name="Export" xml:space="preserve">
     <value>エクスポート</value>
   </data>
@@ -903,6 +906,12 @@
   </data>
   <data name="Settings_IdentityCheck_PageLoad_Label" xml:space="preserve">
     <value>ページの読み込みプロンプト</value>
+  </data>
+  <data name="Settings_IdentityCheck_RequireEmail_Help" xml:space="preserve">
+    <value>ユーザーがメールアドレスを入力する必要があります</value>
+  </data>
+  <data name="Settings_IdentityCheck_RequireEmail_Label" xml:space="preserve">
+    <value>必須メールアドレス</value>
   </data>
   <data name="Settings_IdentityCheck_Upload_Help" xml:space="preserve">
     <value>メディアをアップロードするには、本人確認が必要です</value>

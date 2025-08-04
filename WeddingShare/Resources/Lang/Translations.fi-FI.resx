@@ -301,6 +301,9 @@
   <data name="Duplicate_Item_Detected" xml:space="preserve">
     <value>Kahdenna havaittu tiedosto</value>
   </data>
+  <data name="EmailAddress" xml:space="preserve">
+    <value>Sähköpostiosoite</value>
+  </data>
   <data name="Export" xml:space="preserve">
     <value>Vie</value>
   </data>
@@ -903,6 +906,12 @@
   </data>
   <data name="Settings_IdentityCheck_PageLoad_Label" xml:space="preserve">
     <value>Sivun lataus</value>
+  </data>
+  <data name="Settings_IdentityCheck_RequireEmail_Help" xml:space="preserve">
+    <value>Jos käyttäjiä vaaditaan antamaan sähköpostiosoite</value>
+  </data>
+  <data name="Settings_IdentityCheck_RequireEmail_Label" xml:space="preserve">
+    <value>Vaadi sähköpostiosoite</value>
   </data>
   <data name="Settings_IdentityCheck_Upload_Help" xml:space="preserve">
     <value>Jos henkilöllisyyden tarkistus vaaditaan ladata media</value>

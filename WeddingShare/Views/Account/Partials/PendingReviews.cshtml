@@ -6,6 +6,7 @@
 @{
     var userPermissions = User?.Identity?.GetUserPermissions() ?? AccessPermissions.None;
     var identityEnabled = await _settings.GetOrDefault(Settings.IdentityCheck.Enabled, true);
+    var requireEmailEnabled = identityEnabled ? await _settings.GetOrDefault(Settings.IdentityCheck.RequireEmail, false) : false;
 }
 
 <div class="row">
@@ -21,7 +22,7 @@
                     {
                         <div class="pending-approval col-12 col-lg-4 mb-4 mb-lg-0 mb-1 mb-lg-4">
                             <div class="card">
-                                <a href="@review.ImagePath" class="media-viewer-item" data-media-viewer-type="@review.MediaType.ToString().ToLower()" data-media-viewer-collection="@review.GalleryName" data-media-viewer-author="@(identityEnabled ? $"{_localizer["Uploaded_By"].Value}: {(!string.IsNullOrWhiteSpace(review?.UploadedBy) ? review?.UploadedBy : "Anonymous")}" : string.Empty)" data-media-viewer-download="true">
+                                <a href="@review.ImagePath" class="media-viewer-item" data-media-viewer-type="@review.MediaType.ToString().ToLower()" data-media-viewer-collection="@review.GalleryName" data-media-viewer-author="@(identityEnabled ? $"{_localizer["Uploaded_By"].Value}: {(!string.IsNullOrWhiteSpace(review?.UploadedBy) ? $"{review?.UploadedBy}{(!string.IsNullOrWhiteSpace(review?.UploaderEmailAddress) ? $" - {review?.UploaderEmailAddress?.ToLower()}" : string.Empty)}" : "Anonymous")}" : string.Empty)" data-media-viewer-download="true">
                                     <img src="@review.ThumbnailPath" class="review-tile" loading="lazy" onerror="this.onerror=null;this.src='@(review.ThumbnailPathFallback)';" />
                                     @if (review?.MediaType == MediaType.Video)
                                     {
@@ -46,6 +47,12 @@
                                             <div class="col-12 col-lg-6 text-lg-center">
                                                 <b>@_localizer["Uploader"].Value:</b> @(!string.IsNullOrWhiteSpace(review?.UploadedBy) ? review.UploadedBy : "Anonymous")
                                             </div>
+                                            @if (requireEmailEnabled)
+                                            {
+                                                <div class="col-12 text-lg-center mt-lg-1">
+                                                    <b>@_localizer["EmailAddress"].Value:</b> <span class="text-lowercase">@(!string.IsNullOrWhiteSpace(review?.UploaderEmailAddress) ? review.UploaderEmailAddress : "Anonymous")</span>
+                                                </div>
+                                            }
                                         }
                                         else
                                         {

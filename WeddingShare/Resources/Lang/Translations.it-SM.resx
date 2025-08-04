@@ -301,6 +301,9 @@
   <data name="Duplicate_Item_Detected" xml:space="preserve">
     <value>File duplicato rilevato</value>
   </data>
+  <data name="EmailAddress" xml:space="preserve">
+    <value>Indirizzo email</value>
+  </data>
   <data name="Export" xml:space="preserve">
     <value>Esportazione</value>
   </data>
@@ -903,6 +906,12 @@
   </data>
   <data name="Settings_IdentityCheck_PageLoad_Label" xml:space="preserve">
     <value>Prompt di carico di pagina</value>
+  </data>
+  <data name="Settings_IdentityCheck_RequireEmail_Help" xml:space="preserve">
+    <value>Se gli utenti devono inserire un indirizzo email</value>
+  </data>
+  <data name="Settings_IdentityCheck_RequireEmail_Label" xml:space="preserve">
+    <value>Richiedere Indirizzo e-mail</value>
   </data>
   <data name="Settings_IdentityCheck_Upload_Help" xml:space="preserve">
     <value>Se il controllo dell'identità è necessario per caricare i media</value>

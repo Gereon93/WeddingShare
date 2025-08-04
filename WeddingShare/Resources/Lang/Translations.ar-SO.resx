@@ -301,6 +301,9 @@
   <data name="Duplicate_Item_Detected" xml:space="preserve">
     <value>ملف مزدوج مكتشف</value>
   </data>
+  <data name="EmailAddress" xml:space="preserve">
+    <value>عنوان البريد الإلكتروني</value>
+  </data>
   <data name="Export" xml:space="preserve">
     <value>الصادرات</value>
   </data>
@@ -903,6 +906,12 @@
   </data>
   <data name="Settings_IdentityCheck_PageLoad_Label" xml:space="preserve">
     <value>الصفحة</value>
+  </data>
+  <data name="Settings_IdentityCheck_RequireEmail_Help" xml:space="preserve">
+    <value>إذا طُلب من المستعملين الدخول إلى عنوان بريد إلكتروني</value>
+  </data>
+  <data name="Settings_IdentityCheck_RequireEmail_Label" xml:space="preserve">
+    <value>عنوان البريد الإلكتروني المطلوب</value>
   </data>
   <data name="Settings_IdentityCheck_Upload_Help" xml:space="preserve">
     <value>إذا طُلب التحقق من الهوية لتحميل وسائط الإعلام</value>

@@ -301,6 +301,9 @@
   <data name="Duplicate_Item_Detected" xml:space="preserve">
     <value>Bikoiztutako fitxategia detektatuta</value>
   </data>
+  <data name="EmailAddress" xml:space="preserve">
+    <value>Helbide elektronikoa</value>
+  </data>
   <data name="Export" xml:space="preserve">
     <value>Esportatu</value>
   </data>
@@ -903,6 +906,12 @@
   </data>
   <data name="Settings_IdentityCheck_PageLoad_Label" xml:space="preserve">
     <value>Page Load Prompt</value>
+  </data>
+  <data name="Settings_IdentityCheck_RequireEmail_Help" xml:space="preserve">
+    <value>Erabiltzaileak helbide elektroniko bat sartu behar badu</value>
+  </data>
+  <data name="Settings_IdentityCheck_RequireEmail_Label" xml:space="preserve">
+    <value>Helbide elektronikoa behar da</value>
   </data>
   <data name="Settings_IdentityCheck_Upload_Help" xml:space="preserve">
     <value>Identitatea egiaztatu behar den euskarria igotzeko</value>

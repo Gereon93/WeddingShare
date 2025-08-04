@@ -301,6 +301,9 @@
   <data name="Duplicate_Item_Detected" xml:space="preserve">
     <value>Zjištěn duplicitní soubor</value>
   </data>
+  <data name="EmailAddress" xml:space="preserve">
+    <value>E-mailová adresa</value>
+  </data>
   <data name="Export" xml:space="preserve">
     <value>Vývoz</value>
   </data>
@@ -903,6 +906,12 @@
   </data>
   <data name="Settings_IdentityCheck_PageLoad_Label" xml:space="preserve">
     <value>Name</value>
+  </data>
+  <data name="Settings_IdentityCheck_RequireEmail_Help" xml:space="preserve">
+    <value>Měli by být uživatelé povinni zadat e-mailovou adresu</value>
+  </data>
+  <data name="Settings_IdentityCheck_RequireEmail_Label" xml:space="preserve">
+    <value>Požadovat e-mailovou adresu</value>
   </data>
   <data name="Settings_IdentityCheck_Upload_Help" xml:space="preserve">
     <value>Je-li vyžadována kontrola totožnosti pro nahrávání médií</value>

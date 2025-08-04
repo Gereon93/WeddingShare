@@ -301,6 +301,9 @@
   <data name="Duplicate_Item_Detected" xml:space="preserve">
     <value>Bestand dupliceren gedetecteerd</value>
   </data>
+  <data name="EmailAddress" xml:space="preserve">
+    <value>E-mailadres</value>
+  </data>
   <data name="Export" xml:space="preserve">
     <value>Uitvoer</value>
   </data>
@@ -903,6 +906,12 @@
   </data>
   <data name="Settings_IdentityCheck_PageLoad_Label" xml:space="preserve">
     <value>Pagina laden</value>
+  </data>
+  <data name="Settings_IdentityCheck_RequireEmail_Help" xml:space="preserve">
+    <value>Moeten gebruikers een e-mailadres invoeren</value>
+  </data>
+  <data name="Settings_IdentityCheck_RequireEmail_Label" xml:space="preserve">
+    <value>E-mailadres nodig</value>
   </data>
   <data name="Settings_IdentityCheck_Upload_Help" xml:space="preserve">
     <value>Moet de identiteitscontrole nodig zijn om media te uploaden</value>

@@ -301,6 +301,9 @@
   <data name="Duplicate_Item_Detected" xml:space="preserve">
     <value>فایل تکراری شناسایی شده</value>
   </data>
+  <data name="EmailAddress" xml:space="preserve">
+    <value>آدرس ایمیل</value>
+  </data>
   <data name="Export" xml:space="preserve">
     <value>صادرات</value>
   </data>
@@ -903,6 +906,12 @@
   </data>
   <data name="Settings_IdentityCheck_PageLoad_Label" xml:space="preserve">
     <value>صفحه Load Prompt</value>
+  </data>
+  <data name="Settings_IdentityCheck_RequireEmail_Help" xml:space="preserve">
+    <value>کاربران باید برای ورود به آدرس ایمیل مورد نیاز باشند</value>
+  </data>
+  <data name="Settings_IdentityCheck_RequireEmail_Label" xml:space="preserve">
+    <value>نیاز به آدرس ایمیل</value>
   </data>
   <data name="Settings_IdentityCheck_Upload_Help" xml:space="preserve">
     <value>باید چک هویت برای آپلود رسانه ها لازم باشد</value>

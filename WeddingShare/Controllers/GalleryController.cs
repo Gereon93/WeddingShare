@@ -270,21 +270,26 @@ namespace WeddingShare.Controllers
                     }
 
                     var itemCounts = await _database.GetGalleryItemCount(gallery?.Id, GalleryItemState.All, mediaType, orientation);
+                    var galleryIdentifiers = !gallery.Identifier.Equals("All", StringComparison.OrdinalIgnoreCase) ? new Dictionary<int, string>() { { gallery.Id, gallery.Identifier } } : items?.GroupBy(x => x.Id)?.Select(x => new KeyValuePair<int, string>(x.Key, _database.GetGalleryIdentifier(x.Key).Result))?.ToDictionary();
                     var model = new PhotoGallery()
                     {
                         Gallery = gallery,
                         SecretKey = secretKey,
-                        Images = items?.Select(x => new PhotoGalleryImage()
-                        {
-                            Id = x.Id,
-                            GalleryId = x.GalleryId,
-                            Name = Path.GetFileName(x.Title),
-                            UploadedBy = x.UploadedBy,
-                            UploadDate = x.UploadedDate,
-                            ImagePath = $"/{Path.Combine(UploadsDirectory, gallery.Identifier).Remove(_hostingEnvironment.WebRootPath).Replace('\\', '/').TrimStart('/')}/{x.Title}",
-                            ThumbnailPath = $"/{Path.Combine(ThumbnailsDirectory, gallery.Identifier).Remove(_hostingEnvironment.WebRootPath).Replace('\\', '/').TrimStart('/')}/{Path.GetFileNameWithoutExtension(x.Title)}.webp",
-                            ThumbnailPathFallback = $"/{ThumbnailsDirectory.Remove(_hostingEnvironment.WebRootPath).Replace('\\', '/').TrimStart('/')}/{Path.GetFileNameWithoutExtension(x.Title)}.webp",
-                            MediaType = x.MediaType
+                        Images = items?.Select(x => {
+                            var galleryIdentifier = galleryIdentifiers != null && galleryIdentifiers.ContainsKey(x.GalleryId) ? galleryIdentifiers[x.GalleryId] : gallery.Identifier;
+                            return new PhotoGalleryImage()
+                            {
+                                Id = x.Id,
+                                GalleryId = x.GalleryId,
+                                Name = Path.GetFileName(x.Title),
+                                UploadedBy = x.UploadedBy,
+                                UploaderEmailAddress = x.UploaderEmailAddress,
+                                UploadDate = x.UploadedDate,
+                                ImagePath = $"/{Path.Combine(UploadsDirectory, galleryIdentifier).Remove(_hostingEnvironment.WebRootPath).Replace('\\', '/').TrimStart('/')}/{x.Title}",
+                                ThumbnailPath = $"/{Path.Combine(ThumbnailsDirectory, galleryIdentifier).Remove(_hostingEnvironment.WebRootPath).Replace('\\', '/').TrimStart('/')}/{Path.GetFileNameWithoutExtension(x.Title)}.webp",
+                                ThumbnailPathFallback = $"/{ThumbnailsDirectory.Remove(_hostingEnvironment.WebRootPath).Replace('\\', '/').TrimStart('/')}/{Path.GetFileNameWithoutExtension(x.Title)}.webp",
+                                MediaType = x.MediaType
+                            };
                         })?.ToList(),
                         CurrentPage = currentPage,
                         ApprovedCount = (int)itemCounts["Approved"],
@@ -328,6 +333,7 @@ namespace WeddingShare.Controllers
                     }
 
                     string uploadedBy = HttpContext.Session.GetString(SessionKey.ViewerIdentity)?.Trim() ?? "Anonymous";
+                    string uploaderEmail = HttpContext.Session.GetString(SessionKey.ViewerEmailAddress)?.Trim() ?? "Anonymous";
                 
                     var files = Request?.Form?.Files;
                     if (files != null && files.Count > 0)
@@ -399,6 +405,7 @@ namespace WeddingShare.Controllers
                                                 GalleryId = gallery.Id,
                                                 Title = fileName,
                                                 UploadedBy = uploadedBy,
+                                                UploaderEmailAddress = uploaderEmail,
                                                 UploadedDate = await _fileHelper.GetCreationDatetime(filePath),
                                                 Checksum = checksum,
                                                 MediaType = _imageHelper.GetMediaType(filePath),

@@ -301,6 +301,9 @@
   <data name="Duplicate_Item_Detected" xml:space="preserve">
     <value>Podvoji zaznano datoteko</value>
   </data>
+  <data name="EmailAddress" xml:space="preserve">
+    <value>E- poštni naslov</value>
+  </data>
   <data name="Export" xml:space="preserve">
     <value>Izvoz</value>
   </data>
@@ -903,6 +906,12 @@
   </data>
   <data name="Settings_IdentityCheck_PageLoad_Label" xml:space="preserve">
     <value>Naloži na stran</value>
+  </data>
+  <data name="Settings_IdentityCheck_RequireEmail_Help" xml:space="preserve">
+    <value>Ali naj uporabniki vnesejo e- poštni naslov</value>
+  </data>
+  <data name="Settings_IdentityCheck_RequireEmail_Label" xml:space="preserve">
+    <value>Zahtevaj e- poštni naslov</value>
   </data>
   <data name="Settings_IdentityCheck_Upload_Help" xml:space="preserve">
     <value>Če se zahteva preverjanje identitete za pošiljanje nosilcev</value>

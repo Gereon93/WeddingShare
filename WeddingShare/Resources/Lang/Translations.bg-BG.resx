@@ -301,6 +301,9 @@
   <data name="Duplicate_Item_Detected" xml:space="preserve">
     <value>Дублиране на засечен файл</value>
   </data>
+  <data name="EmailAddress" xml:space="preserve">
+    <value>Адрес на електронна поща</value>
+  </data>
   <data name="Export" xml:space="preserve">
     <value>Експортиране</value>
   </data>
@@ -903,6 +906,12 @@
   </data>
   <data name="Settings_IdentityCheck_PageLoad_Label" xml:space="preserve">
     <value>Зареждане на страница</value>
+  </data>
+  <data name="Settings_IdentityCheck_RequireEmail_Help" xml:space="preserve">
+    <value>Ако от потребителите се изисква да въвеждат имейл адрес</value>
+  </data>
+  <data name="Settings_IdentityCheck_RequireEmail_Label" xml:space="preserve">
+    <value>Изискване на адрес за електронна поща</value>
   </data>
   <data name="Settings_IdentityCheck_Upload_Help" xml:space="preserve">
     <value>Ако се изисква проверка на самоличността, за да се качи медия</value>

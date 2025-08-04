@@ -301,6 +301,9 @@
   <data name="Duplicate_Item_Detected" xml:space="preserve">
     <value>Ανιχνεύθηκε διπλό αρχείο</value>
   </data>
+  <data name="EmailAddress" xml:space="preserve">
+    <value>Διεύθυνση ηλεκτρονικού ταχυδρομείου</value>
+  </data>
   <data name="Export" xml:space="preserve">
     <value>Εξαγωγή</value>
   </data>
@@ -903,6 +906,12 @@
   </data>
   <data name="Settings_IdentityCheck_PageLoad_Label" xml:space="preserve">
     <value>Προτροπή φόρτωσης σελίδας</value>
+  </data>
+  <data name="Settings_IdentityCheck_RequireEmail_Help" xml:space="preserve">
+    <value>Σε περίπτωση που απαιτείται από τους χρήστες να εισέλθουν μια διεύθυνση ηλεκτρονικού ταχυδρομείου</value>
+  </data>
+  <data name="Settings_IdentityCheck_RequireEmail_Label" xml:space="preserve">
+    <value>Απαίτηση διεύθυνσης ηλεκτρονικού ταχυδρομείου</value>
   </data>
   <data name="Settings_IdentityCheck_Upload_Help" xml:space="preserve">
     <value>Σε περίπτωση που απαιτείται έλεγχος ταυτότητας για την αποστολή μέσων</value>

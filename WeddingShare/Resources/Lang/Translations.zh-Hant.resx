@@ -301,6 +301,9 @@
   <data name="Duplicate_Item_Detected" xml:space="preserve">
     <value>检测到复制文件</value>
   </data>
+  <data name="EmailAddress" xml:space="preserve">
+    <value>电子邮件地址</value>
+  </data>
   <data name="Export" xml:space="preserve">
     <value>导出</value>
   </data>
@@ -903,6 +906,12 @@
   </data>
   <data name="Settings_IdentityCheck_PageLoad_Label" xml:space="preserve">
     <value>页面加载提示</value>
+  </data>
+  <data name="Settings_IdentityCheck_RequireEmail_Help" xml:space="preserve">
+    <value>是否要求用户输入电子邮件地址</value>
+  </data>
+  <data name="Settings_IdentityCheck_RequireEmail_Label" xml:space="preserve">
+    <value>需要电子邮件地址</value>
   </data>
   <data name="Settings_IdentityCheck_Upload_Help" xml:space="preserve">
     <value>如果需要身份检查才能上传媒体</value>

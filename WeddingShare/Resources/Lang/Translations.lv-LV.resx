@@ -301,6 +301,9 @@
   <data name="Duplicate_Item_Detected" xml:space="preserve">
     <value>Atrasts dublikāts</value>
   </data>
+  <data name="EmailAddress" xml:space="preserve">
+    <value>E- pasta adrese</value>
+  </data>
   <data name="Export" xml:space="preserve">
     <value>Eksports</value>
   </data>
@@ -903,6 +906,12 @@
   </data>
   <data name="Settings_IdentityCheck_PageLoad_Label" xml:space="preserve">
     <value>Lapas ielādes pieprasījums</value>
+  </data>
+  <data name="Settings_IdentityCheck_RequireEmail_Help" xml:space="preserve">
+    <value>Ja lietotājiem ir jāievada e-pasta adrese</value>
+  </data>
+  <data name="Settings_IdentityCheck_RequireEmail_Label" xml:space="preserve">
+    <value>Nepieciešama e- pasta adrese</value>
   </data>
   <data name="Settings_IdentityCheck_Upload_Help" xml:space="preserve">
     <value>Ja nepieciešama identitātes pārbaude, lai augšupielādētu datu nesēju</value>

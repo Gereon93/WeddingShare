@@ -301,6 +301,9 @@
   <data name="Duplicate_Item_Detected" xml:space="preserve">
     <value>Fișier duplicat detectat</value>
   </data>
+  <data name="EmailAddress" xml:space="preserve">
+    <value>Adresa de e-mail</value>
+  </data>
   <data name="Export" xml:space="preserve">
     <value>Exportă</value>
   </data>
@@ -903,6 +906,12 @@
   </data>
   <data name="Settings_IdentityCheck_PageLoad_Label" xml:space="preserve">
     <value>Încarcă pagina prompt</value>
+  </data>
+  <data name="Settings_IdentityCheck_RequireEmail_Help" xml:space="preserve">
+    <value>În cazul în care utilizatorii trebuie să introducă o adresă de e-mail</value>
+  </data>
+  <data name="Settings_IdentityCheck_RequireEmail_Label" xml:space="preserve">
+    <value>Necesită adresa de e-mail</value>
   </data>
   <data name="Settings_IdentityCheck_Upload_Help" xml:space="preserve">
     <value>În cazul în care verificarea identității este necesară pentru a încărca media</value>

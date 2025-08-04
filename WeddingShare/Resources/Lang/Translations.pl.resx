@@ -301,6 +301,9 @@
   <data name="Duplicate_Item_Detected" xml:space="preserve">
     <value>Wykryto powtórzenie pliku</value>
   </data>
+  <data name="EmailAddress" xml:space="preserve">
+    <value>Adres e-mail</value>
+  </data>
   <data name="Export" xml:space="preserve">
     <value>Eksport</value>
   </data>
@@ -903,6 +906,12 @@
   </data>
   <data name="Settings_IdentityCheck_PageLoad_Label" xml:space="preserve">
     <value>Strona Wczytaj prompt</value>
+  </data>
+  <data name="Settings_IdentityCheck_RequireEmail_Help" xml:space="preserve">
+    <value>Czy użytkownicy powinni być zobowiązani do podania adresu e-mail</value>
+  </data>
+  <data name="Settings_IdentityCheck_RequireEmail_Label" xml:space="preserve">
+    <value>Wymagany adres e-mail</value>
   </data>
   <data name="Settings_IdentityCheck_Upload_Help" xml:space="preserve">
     <value>Jeżeli kontrola tożsamości jest wymagana do przesłania mediów</value>

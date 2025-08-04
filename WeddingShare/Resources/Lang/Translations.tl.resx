@@ -301,6 +301,9 @@
   <data name="Duplicate_Item_Detected" xml:space="preserve">
     <value>Natuklasan ang talaksang Diplicate</value>
   </data>
+  <data name="EmailAddress" xml:space="preserve">
+    <value>Pakikipag - usap sa Email</value>
+  </data>
   <data name="Export" xml:space="preserve">
     <value>Transportasyon</value>
   </data>
@@ -903,6 +906,12 @@
   </data>
   <data name="Settings_IdentityCheck_PageLoad_Label" xml:space="preserve">
     <value>Pahina Agad - agad</value>
+  </data>
+  <data name="Settings_IdentityCheck_RequireEmail_Help" xml:space="preserve">
+    <value>Kung ang mga gumagamit ay hilingang pumasok sa adres ng email</value>
+  </data>
+  <data name="Settings_IdentityCheck_RequireEmail_Label" xml:space="preserve">
+    <value>Kailangan ang Pakikipag - usap sa Email</value>
   </data>
   <data name="Settings_IdentityCheck_Upload_Help" xml:space="preserve">
     <value>Kung kailangan ang tseke ng pagkakakilanlan upang i-upload ang media</value>

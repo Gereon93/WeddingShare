@@ -301,6 +301,9 @@
   <data name="Duplicate_Item_Detected" xml:space="preserve">
     <value>קובץ Duplicate זוהה</value>
   </data>
+  <data name="EmailAddress" xml:space="preserve">
+    <value>כתובת דואר אלקטרוני</value>
+  </data>
   <data name="Export" xml:space="preserve">
     <value>יצוא</value>
   </data>
@@ -903,6 +906,12 @@
   </data>
   <data name="Settings_IdentityCheck_PageLoad_Label" xml:space="preserve">
     <value>תגית: Prompt</value>
+  </data>
+  <data name="Settings_IdentityCheck_RequireEmail_Help" xml:space="preserve">
+    <value>אם משתמשים נדרשים להיכנס לכתובת דואר אלקטרוני</value>
+  </data>
+  <data name="Settings_IdentityCheck_RequireEmail_Label" xml:space="preserve">
+    <value>נדרש כתובת דואר אלקטרוני</value>
   </data>
   <data name="Settings_IdentityCheck_Upload_Help" xml:space="preserve">
     <value>צריך לבדוק את זהות כדי להעלות מדיה</value>

@@ -301,6 +301,9 @@
   <data name="Duplicate_Item_Detected" xml:space="preserve">
     <value>Duplikeret fil detekteret</value>
   </data>
+  <data name="EmailAddress" xml:space="preserve">
+    <value>E- mail- adresse</value>
+  </data>
   <data name="Export" xml:space="preserve">
     <value>Eksport</value>
   </data>
@@ -903,6 +906,12 @@
   </data>
   <data name="Settings_IdentityCheck_PageLoad_Label" xml:space="preserve">
     <value>Name</value>
+  </data>
+  <data name="Settings_IdentityCheck_RequireEmail_Help" xml:space="preserve">
+    <value>Skal brugerne være forpligtet til at indtaste en e-mailadresse</value>
+  </data>
+  <data name="Settings_IdentityCheck_RequireEmail_Label" xml:space="preserve">
+    <value>Kræv e- mail- adresse</value>
   </data>
   <data name="Settings_IdentityCheck_Upload_Help" xml:space="preserve">
     <value>Hvis identitetskontrollen er nødvendig for at uploade medier</value>

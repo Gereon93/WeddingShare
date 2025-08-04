@@ -142,7 +142,8 @@
                             }
                             @if (await _settings.GetOrDefault(Settings.IdentityCheck.Enabled, true))
                             {
-                                <i class="change-identity fa-solid fa-id-card fa-1x text-secondary pointer mx-2" data-identity="@Context?.Session.GetString(SessionKey.ViewerIdentity)"></i>
+                                var requireEmail = await _settings.GetOrDefault(Settings.IdentityCheck.RequireEmail, false);
+                                <i class="change-identity fa-solid fa-id-card fa-1x text-secondary pointer mx-2" data-identity-name="@Context?.Session.GetString(SessionKey.ViewerIdentity)" @(requireEmail ? $"data-identity-email={Context?.Session.GetString(SessionKey.ViewerEmailAddress)}" : string.Empty)></i>
                             }
                             @if (User?.Identity != null && User.Identity.IsAuthenticated)
                             {

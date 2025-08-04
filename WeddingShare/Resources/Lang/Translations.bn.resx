@@ -301,6 +301,9 @@
   <data name="Duplicate_Item_Detected" xml:space="preserve">
     <value>অনুরূপ ফাইল সনাক্ত করা হয়েছে</value>
   </data>
+  <data name="EmailAddress" xml:space="preserve">
+    <value>ই-মেইল ঠিকানা</value>
+  </data>
   <data name="Export" xml:space="preserve">
     <value>এক্সপোর্ট করুন</value>
   </data>
@@ -903,6 +906,12 @@
   </data>
   <data name="Settings_IdentityCheck_PageLoad_Label" xml:space="preserve">
     <value>পৃষ্ঠা প্রদর্শন</value>
+  </data>
+  <data name="Settings_IdentityCheck_RequireEmail_Help" xml:space="preserve">
+    <value>একটি ই-মেইল ঠিকানা লিখুন</value>
+  </data>
+  <data name="Settings_IdentityCheck_RequireEmail_Label" xml:space="preserve">
+    <value>ই-মেইল ঠিকানা (_A):</value>
   </data>
   <data name="Settings_IdentityCheck_Upload_Help" xml:space="preserve">
     <value>মিডিয়া আপলোড করার জন্য পরিচয় যাচাই করা আবশ্যক</value>

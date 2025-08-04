@@ -1,4 +1,5 @@
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
@@ -81,17 +82,24 @@ namespace WeddingShare.Controllers
         }
 
         [HttpPost]
-        public IActionResult SetIdentity(string name) 
+        public async Task<IActionResult> SetIdentity(string name, string? emailAddress)
         {
             try
             {
+                var emailRequired = await _settings.GetOrDefault(Settings.IdentityCheck.RequireEmail, false);
+
                 if (HtmlSanitizer.MayContainXss(name))
                 {
                     return Json(new { success = false, reason = 1 });
                 }
-                else 
+                else if (emailRequired && !name.Equals("Anonymous") && (EmailValidationHelper.IsValid(emailAddress) == false || HtmlSanitizer.MayContainXss(emailAddress)))
+                {
+                    return Json(new { success = false, reason = 2 });
+                }
+                else
                 {
                     HttpContext.Session.SetString(SessionKey.ViewerIdentity, name);
+                    HttpContext.Session.SetString(SessionKey.ViewerEmailAddress, emailAddress ?? string.Empty);
 
                     return Json(new { success = true });
                 }
