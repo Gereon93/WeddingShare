@@ -301,6 +301,9 @@
   <data name="Duplicate_Item_Detected" xml:space="preserve">
     <value>Qeyd olunan fayl</value>
   </data>
+  <data name="EmailAddress" xml:space="preserve">
+    <value>E-poçt</value>
+  </data>
   <data name="Export" xml:space="preserve">
     <value>İdman</value>
   </data>
@@ -903,6 +906,12 @@
   </data>
   <data name="Settings_IdentityCheck_PageLoad_Label" xml:space="preserve">
     <value> Page Load Prompt</value>
+  </data>
+  <data name="Settings_IdentityCheck_RequireEmail_Help" xml:space="preserve">
+    <value>Istifadəçilər e-poçt ünvanı almaq üçün tələb olunur</value>
+  </data>
+  <data name="Settings_IdentityCheck_RequireEmail_Label" xml:space="preserve">
+    <value>E-mail ünvanı</value>
   </data>
   <data name="Settings_IdentityCheck_Upload_Help" xml:space="preserve">
     <value>Medianın yükləmək üçün kimlik çeki lazımdır</value>

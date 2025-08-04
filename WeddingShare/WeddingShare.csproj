@@ -42,6 +42,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="SqlScripts\MySQL\017 - Add Uploader Email.sql" />
     <EmbeddedResource Include="SqlScripts\MySQL\010 - Add CustomResources Table.sql" />
     <EmbeddedResource Include="SqlScripts\MySQL\009b - Add Gallery Settings Table.sql" />
     <EmbeddedResource Include="SqlScripts\MySQL\009 - Add Settings Table.sql" />
@@ -80,6 +81,7 @@
     <EmbeddedResource Include="SqlScripts\SQLite\015 - Add Gallery Identifier.sql" />
     <EmbeddedResource Include="SqlScripts\SQLite\014 - Rename Background Service Settings Keys.sql" />
     <EmbeddedResource Include="SqlScripts\SQLite\016 - Add All Gallery.sql" />
+    <EmbeddedResource Include="SqlScripts\SQLite\017 - Add Uploader Email.sql" />
   </ItemGroup>
 
   <ItemGroup>

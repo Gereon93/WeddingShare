@@ -166,6 +166,11 @@ namespace WeddingShare.Helpers.Database
             return result;
         }
 
+        public async Task<string?> GetGalleryIdentifier(int id)
+        {
+            return (await this.GetGallery(id))?.Identifier;
+        }
+
         public async Task<string?> GetGalleryName(int id)
         {
             return (await this.GetGallery(id))?.Name;
@@ -617,12 +622,13 @@ namespace WeddingShare.Helpers.Database
             { 
                 using (var conn = await GetConnection())
                 {
-                    var cmd = CreateCommand($"INSERT INTO `gallery_items` (`gallery_id`, `title`, `state`, `uploaded_by`, `uploaded_date`, `checksum`, `media_type`, `orientation`, `file_size`) VALUES (@GalleryId, @Title, @State, @UploadedBy, @UploadedDate, @Checksum, @MediaType, @Orientation, @FileSize); SELECT g.`name` AS `gallery_name`, gi.* FROM `gallery_items` AS gi LEFT JOIN `galleries` AS g ON gi.`gallery_id` = g.`id` WHERE gi.`id`=last_insert_rowid();", conn);
+                    var cmd = CreateCommand($"INSERT INTO `gallery_items` (`gallery_id`, `title`, `state`, `uploaded_by`, `uploader_email`, `uploaded_date`, `checksum`, `media_type`, `orientation`, `file_size`) VALUES (@GalleryId, @Title, @State, @UploadedBy, @UploaderEmailAddress, @UploadedDate, @Checksum, @MediaType, @Orientation, @FileSize); SELECT g.`name` AS `gallery_name`, gi.* FROM `gallery_items` AS gi LEFT JOIN `galleries` AS g ON gi.`gallery_id` = g.`id` WHERE gi.`id`=last_insert_rowid();", conn);
                     cmd.CommandType = CommandType.Text;
                     cmd.Parameters.AddWithValue("GalleryId", model.GalleryId);
                     cmd.Parameters.AddWithValue("Title", model.Title);
                     cmd.Parameters.AddWithValue("State", (int)model.State);
                     cmd.Parameters.AddWithValue("UploadedBy", !string.IsNullOrWhiteSpace(model.UploadedBy) ? model.UploadedBy : DBNull.Value);
+                    cmd.Parameters.AddWithValue("UploaderEmailAddress", !string.IsNullOrWhiteSpace(model.UploaderEmailAddress) ? model.UploaderEmailAddress : DBNull.Value);
                     cmd.Parameters.AddWithValue("UploadedDate", ((model.UploadedDate ?? DateTime.UtcNow) - new DateTime(1970, 1, 1)).TotalSeconds);
                     cmd.Parameters.AddWithValue("Checksum", !string.IsNullOrWhiteSpace(model.Checksum) ? model.Checksum : DBNull.Value);
                     cmd.Parameters.AddWithValue("MediaType", (int)model.MediaType);
@@ -659,12 +665,13 @@ namespace WeddingShare.Helpers.Database
 
             using (var conn = await GetConnection())
             {
-                var cmd = CreateCommand($"UPDATE `gallery_items` SET `title`=@Title, `state`=@State, `uploaded_by`=@UploadedBy, `uploaded_date`=@UploadedDate, `checksum`=@Checksum, `media_type`=@MediaType, `orientation`=@Orientation, `file_size`=@FileSize  WHERE `id`=@Id; SELECT g.`name` AS `gallery_name`, gi.* FROM `gallery_items` AS gi LEFT JOIN `galleries` AS g ON gi.`gallery_id` = g.`id` WHERE gi.`id`=@Id;", conn);
+                var cmd = CreateCommand($"UPDATE `gallery_items` SET `title`=@Title, `state`=@State, `uploaded_by`=@UploadedBy, `uploader_email`=@UploaderEmailAddress, `uploaded_date`=@UploadedDate, `checksum`=@Checksum, `media_type`=@MediaType, `orientation`=@Orientation, `file_size`=@FileSize  WHERE `id`=@Id; SELECT g.`name` AS `gallery_name`, gi.* FROM `gallery_items` AS gi LEFT JOIN `galleries` AS g ON gi.`gallery_id` = g.`id` WHERE gi.`id`=@Id;", conn);
                 cmd.CommandType = CommandType.Text;
                 cmd.Parameters.AddWithValue("Id", model.Id);
                 cmd.Parameters.AddWithValue("Title", model.Title);
                 cmd.Parameters.AddWithValue("State", (int)model.State);
                 cmd.Parameters.AddWithValue("UploadedBy", !string.IsNullOrWhiteSpace(model.UploadedBy) ? model.UploadedBy : DBNull.Value);
+                cmd.Parameters.AddWithValue("UploaderEmailAddress", !string.IsNullOrWhiteSpace(model.UploaderEmailAddress) ? model.UploaderEmailAddress : DBNull.Value);
                 cmd.Parameters.AddWithValue("UploadedDate", model.UploadedDate != null ? ((DateTime)model.UploadedDate - new DateTime(1970, 1, 1)).TotalSeconds : (DateTime.UtcNow - new DateTime(1970, 1, 1)).TotalSeconds);
                 cmd.Parameters.AddWithValue("Checksum", !string.IsNullOrWhiteSpace(model.Checksum) ? model.Checksum : DBNull.Value);
                 cmd.Parameters.AddWithValue("MediaType", (int)model.MediaType);
@@ -1766,6 +1773,7 @@ namespace WeddingShare.Helpers.Database
                                 GalleryId = !await reader.IsDBNullAsync("gallery_id") ? reader.GetInt32("gallery_id") : 0,
                                 Title = !await reader.IsDBNullAsync("title") ? reader.GetString("title") : string.Empty,
                                 UploadedBy = !await reader.IsDBNullAsync("uploaded_by") ? reader.GetString("uploaded_by") : null,
+                                UploaderEmailAddress = !await reader.IsDBNullAsync("uploader_email") ? reader.GetString("uploader_email") : null,
                                 UploadedDate = !await reader.IsDBNullAsync("uploaded_date") ? DateTime.UnixEpoch.AddSeconds(reader.GetInt32("uploaded_date")) : null,
                                 Checksum = !await reader.IsDBNullAsync("checksum") ? reader.GetString("checksum") : null,
                                 MediaType = !await reader.IsDBNullAsync("media_type") ? (MediaType)reader.GetInt32("media_type") : MediaType.Unknown,
@@ -1805,6 +1813,7 @@ namespace WeddingShare.Helpers.Database
                                 GalleryId = !await reader.IsDBNullAsync("gallery_id") ? reader.GetInt32("gallery_id") : 0,
                                 Title = !await reader.IsDBNullAsync("title") ? reader.GetString("title") : string.Empty,
                                 UploadedBy = !await reader.IsDBNullAsync("uploaded_by") ? reader.GetString("uploaded_by") : null,
+                                UploaderEmailAddress = !await reader.IsDBNullAsync("uploader_email") ? reader.GetString("uploader_email") : null,
                                 Checksum = !await reader.IsDBNullAsync("checksum") ? reader.GetString("checksum") : null,
                                 MediaType = !await reader.IsDBNullAsync("media_type") ? (MediaType)reader.GetInt32("media_type") : MediaType.Unknown,
                                 Orientation = !await reader.IsDBNullAsync("orientation") ? (ImageOrientation)reader.GetInt32("orientation") : ImageOrientation.None,

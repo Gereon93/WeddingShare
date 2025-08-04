@@ -301,6 +301,9 @@
   <data name="Duplicate_Item_Detected" xml:space="preserve">
     <value>Дублікатний файл виявлений</value>
   </data>
+  <data name="EmailAddress" xml:space="preserve">
+    <value>Адреса електронної пошти</value>
+  </data>
   <data name="Export" xml:space="preserve">
     <value>Експорт</value>
   </data>
@@ -903,6 +906,12 @@
   </data>
   <data name="Settings_IdentityCheck_PageLoad_Label" xml:space="preserve">
     <value>Сторінка завантаження</value>
+  </data>
+  <data name="Settings_IdentityCheck_RequireEmail_Help" xml:space="preserve">
+    <value>Якщо потрібно ввести адресу електронної пошти</value>
+  </data>
+  <data name="Settings_IdentityCheck_RequireEmail_Label" xml:space="preserve">
+    <value>Запит електронної пошти</value>
   </data>
   <data name="Settings_IdentityCheck_Upload_Help" xml:space="preserve">
     <value>Чи потрібно перевірити особу для завантаження медіа</value>

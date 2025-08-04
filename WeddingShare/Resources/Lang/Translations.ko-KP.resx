@@ -301,6 +301,9 @@
   <data name="Duplicate_Item_Detected" xml:space="preserve">
     <value>중복 파일 감지</value>
   </data>
+  <data name="EmailAddress" xml:space="preserve">
+    <value>이메일 주소</value>
+  </data>
   <data name="Export" xml:space="preserve">
     <value>수출입</value>
   </data>
@@ -903,6 +906,12 @@
   </data>
   <data name="Settings_IdentityCheck_PageLoad_Label" xml:space="preserve">
     <value>페이지로드 Prompt</value>
+  </data>
+  <data name="Settings_IdentityCheck_RequireEmail_Help" xml:space="preserve">
+    <value>자주 묻는 질문</value>
+  </data>
+  <data name="Settings_IdentityCheck_RequireEmail_Label" xml:space="preserve">
+    <value>이메일 주소</value>
   </data>
   <data name="Settings_IdentityCheck_Upload_Help" xml:space="preserve">
     <value>본문내용 바로가기 주메뉴 바로가기</value>

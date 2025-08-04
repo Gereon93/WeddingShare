@@ -301,6 +301,9 @@
   <data name="Duplicate_Item_Detected" xml:space="preserve">
     <value>Berkas duplikat terdeteksi</value>
   </data>
+  <data name="EmailAddress" xml:space="preserve">
+    <value>Alamat Email</value>
+  </data>
   <data name="Export" xml:space="preserve">
     <value>Ekspor</value>
   </data>
@@ -903,6 +906,12 @@
   </data>
   <data name="Settings_IdentityCheck_PageLoad_Label" xml:space="preserve">
     <value>Prompt Muatan Halaman</value>
+  </data>
+  <data name="Settings_IdentityCheck_RequireEmail_Help" xml:space="preserve">
+    <value>Haruskah pengguna diperlukan untuk memasukkan alamat email</value>
+  </data>
+  <data name="Settings_IdentityCheck_RequireEmail_Label" xml:space="preserve">
+    <value>Memerlukan Alamat Email</value>
   </data>
   <data name="Settings_IdentityCheck_Upload_Help" xml:space="preserve">
     <value>Haruskah pemeriksaan identitas diperlukan untuk mengunggah media</value>

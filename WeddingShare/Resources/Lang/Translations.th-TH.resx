@@ -301,6 +301,9 @@
   <data name="Duplicate_Item_Detected" xml:space="preserve">
     <value>ตรวจพบแฟ้มซ้ํากัน</value>
   </data>
+  <data name="EmailAddress" xml:space="preserve">
+    <value>ที่อยู่อีเมล</value>
+  </data>
   <data name="Export" xml:space="preserve">
     <value>ส่งออก</value>
   </data>
@@ -903,6 +906,12 @@
   </data>
   <data name="Settings_IdentityCheck_PageLoad_Label" xml:space="preserve">
     <value>เตือนการโหลดหน้าเว็บ</value>
+  </data>
+  <data name="Settings_IdentityCheck_RequireEmail_Help" xml:space="preserve">
+    <value>ควรให้ผู้ใช้ใส่ที่อยู่อีเมลหรือไม่</value>
+  </data>
+  <data name="Settings_IdentityCheck_RequireEmail_Label" xml:space="preserve">
+    <value>ต้องการที่อยู่อีเมล</value>
   </data>
   <data name="Settings_IdentityCheck_Upload_Help" xml:space="preserve">
     <value>ต้องการตรวจสอบการแสดงตัวเพื่ออัปโหลดสื่อ</value>

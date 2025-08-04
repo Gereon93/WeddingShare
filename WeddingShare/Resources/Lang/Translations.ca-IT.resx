@@ -301,6 +301,9 @@
   <data name="Duplicate_Item_Detected" xml:space="preserve">
     <value>S' ha detectat un fitxer duplicat</value>
   </data>
+  <data name="EmailAddress" xml:space="preserve">
+    <value>Adreça de correu electrònic</value>
+  </data>
   <data name="Export" xml:space="preserve">
     <value>Exporta</value>
   </data>
@@ -903,6 +906,12 @@
   </data>
   <data name="Settings_IdentityCheck_PageLoad_Label" xml:space="preserve">
     <value>Pregunta a la càrrega de pàgina</value>
+  </data>
+  <data name="Settings_IdentityCheck_RequireEmail_Help" xml:space="preserve">
+    <value>Cal als usuaris introduir una adreça de correu electrònic</value>
+  </data>
+  <data name="Settings_IdentityCheck_RequireEmail_Label" xml:space="preserve">
+    <value>Requereix l' adreça de correu electrònic</value>
   </data>
   <data name="Settings_IdentityCheck_Upload_Help" xml:space="preserve">
     <value>Cal la comprovació d' identitat per pujar suports</value>

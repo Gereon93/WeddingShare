@@ -301,6 +301,9 @@
   <data name="Duplicate_Item_Detected" xml:space="preserve">
     <value>Duplika dosiero detektis</value>
   </data>
+  <data name="EmailAddress" xml:space="preserve">
+    <value>Retpoŝto</value>
+  </data>
   <data name="Export" xml:space="preserve">
     <value>Eksporto</value>
   </data>
@@ -903,6 +906,12 @@
   </data>
   <data name="Settings_IdentityCheck_PageLoad_Label" xml:space="preserve">
     <value>Paĝo Load Prompt</value>
+  </data>
+  <data name="Settings_IdentityCheck_RequireEmail_Help" xml:space="preserve">
+    <value>Se uzantoj estu postulataj por eniri retpoŝtan adreson</value>
+  </data>
+  <data name="Settings_IdentityCheck_RequireEmail_Label" xml:space="preserve">
+    <value>Postula retpoŝto</value>
   </data>
   <data name="Settings_IdentityCheck_Upload_Help" xml:space="preserve">
     <value>Se la identeckontrolo estu postulata por alŝuti amaskomunikilojn</value>

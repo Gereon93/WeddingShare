@@ -301,6 +301,9 @@
   <data name="Duplicate_Item_Detected" xml:space="preserve">
     <value>Duplicate file detected</value>
   </data>
+  <data name="EmailAddress" xml:space="preserve">
+    <value>Email Address</value>
+  </data>
   <data name="Export" xml:space="preserve">
     <value>Export</value>
   </data>
@@ -890,7 +893,7 @@
     <value>Access Token</value>
   </data>
   <data name="Settings_IdentityCheck" xml:space="preserve">
-    <value>Guest Name</value>
+    <value>Guest Identity</value>
   </data>
   <data name="Settings_IdentityCheck_Enabled_Help" xml:space="preserve">
     <value>Prompt users for their name</value>
@@ -903,6 +906,12 @@
   </data>
   <data name="Settings_IdentityCheck_PageLoad_Label" xml:space="preserve">
     <value>Page Load Prompt</value>
+  </data>
+  <data name="Settings_IdentityCheck_RequireEmail_Help" xml:space="preserve">
+    <value>Should users be required to enter an email address</value>
+  </data>
+  <data name="Settings_IdentityCheck_RequireEmail_Label" xml:space="preserve">
+    <value>Require Email Address</value>
   </data>
   <data name="Settings_IdentityCheck_Upload_Help" xml:space="preserve">
     <value>Should the guest name check be required to upload media</value>

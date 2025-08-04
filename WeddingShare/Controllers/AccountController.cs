@@ -1546,6 +1546,7 @@ namespace WeddingShare.Controllers
                                 GalleryId = x.GalleryId,
                                 Name = Path.GetFileName(x.Title),
                                 UploadedBy = x.UploadedBy,
+                                UploaderEmailAddress = x.UploaderEmailAddress,
                                 UploadDate = x.UploadedDate,
                                 ImagePath = $"/{Path.Combine(UploadsDirectory, gallery.Identifier).Remove(_hostingEnvironment.WebRootPath).Replace('\\', '/').TrimStart('/')}/Pending/{x.Title}",
                                 ThumbnailPath = $"/{Path.Combine(ThumbnailsDirectory, gallery.Identifier).Remove(_hostingEnvironment.WebRootPath).Replace('\\', '/').TrimStart('/')}/{Path.GetFileNameWithoutExtension(x.Title)}.webp",

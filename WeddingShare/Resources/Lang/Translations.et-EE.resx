@@ -301,6 +301,9 @@
   <data name="Duplicate_Item_Detected" xml:space="preserve">
     <value>Tuvastati topeltfail</value>
   </data>
+  <data name="EmailAddress" xml:space="preserve">
+    <value>E-posti aadress</value>
+  </data>
   <data name="Export" xml:space="preserve">
     <value>Eksport</value>
   </data>
@@ -903,6 +906,12 @@
   </data>
   <data name="Settings_IdentityCheck_PageLoad_Label" xml:space="preserve">
     <value>Lehekülje laadimise viip</value>
+  </data>
+  <data name="Settings_IdentityCheck_RequireEmail_Help" xml:space="preserve">
+    <value>Kas kasutaja peab sisestama e-posti aadressi</value>
+  </data>
+  <data name="Settings_IdentityCheck_RequireEmail_Label" xml:space="preserve">
+    <value>Nõutakse e- posti aadressi</value>
   </data>
   <data name="Settings_IdentityCheck_Upload_Help" xml:space="preserve">
     <value>Kas meedia üleslaadimiseks on vaja identiteedikontrolli</value>
