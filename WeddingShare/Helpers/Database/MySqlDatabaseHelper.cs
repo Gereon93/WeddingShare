@@ -1704,12 +1704,16 @@ namespace WeddingShare.Helpers.Database
         #region Backups
         public async Task<bool> Import(string path)
         {
-            throw new NotImplementedException("This feature is not yet available");
+            return await Task.Run(() => {
+                return false;
+            });
         }
 
         public async Task<bool> Export(string path)
         {
-            throw new NotImplementedException("This feature is not yet available");
+            return await Task.Run(() => {
+                return false;
+            });
         }
         #endregion
 

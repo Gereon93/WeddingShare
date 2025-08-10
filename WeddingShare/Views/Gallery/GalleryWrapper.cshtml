@@ -7,6 +7,16 @@
 {
     var galleryName = (!string.IsNullOrWhiteSpace(Model?.Gallery?.Identifier) && !Model.Gallery.Identifier.Equals("All", StringComparison.OrdinalIgnoreCase)) ? Model.Gallery.Name.ToLower() : "default";
 
+    var showTitle = await _settings.GetOrDefault(Settings.Gallery.ShowTitle, true, Model?.Gallery?.Id);
+    if (showTitle)
+    {
+        <div class="row mb-4">
+            <div class="col-12">
+                <h6 class="display-6 mx-0 my-0 text-center text-capitalize">@Model?.Gallery?.Name</h6>
+            </div>
+        </div>
+    }
+
     try
     {
         var banner = await _settings.GetOrDefault(Settings.Gallery.BannerImage, string.Empty, Model?.Gallery?.Id);
@@ -49,7 +59,7 @@
 
 @if (Model?.Images != null && Model.Images.Any())
 {
-    <div class="row">
+    <div class="row mx-1">
         @if (Model.ViewMode == ViewMode.Slideshow)
         {
             <partial name="~/Views/Gallery/Modes/Slideshow.cshtml" model="Model" />

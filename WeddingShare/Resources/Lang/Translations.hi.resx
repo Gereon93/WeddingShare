@@ -745,6 +745,24 @@
   <data name="Settings_Gallery_Columns_Label" xml:space="preserve">
     <value>कॉलम गणना</value>
   </data>
+  <data name="Settings_Gallery_DefaultFilter_Help" xml:space="preserve">
+    <value>डिफ़ॉल्ट गैलरी फ़िल्टर क्या है</value>
+  </data>
+  <data name="Settings_Gallery_DefaultFilter_Label" xml:space="preserve">
+    <value>डिफ़ॉल्ट फ़िल्टर</value>
+  </data>
+  <data name="Settings_Gallery_DefaultGroup_Help" xml:space="preserve">
+    <value>डिफ़ॉल्ट गैलरी समूह क्या है</value>
+  </data>
+  <data name="Settings_Gallery_DefaultGroup_Label" xml:space="preserve">
+    <value>डिफ़ॉल्ट समूह</value>
+  </data>
+  <data name="Settings_Gallery_DefaultOrder_Help" xml:space="preserve">
+    <value>डिफ़ॉल्ट गैलरी ऑर्डर क्या है</value>
+  </data>
+  <data name="Settings_Gallery_DefaultOrder_Label" xml:space="preserve">
+    <value>डिफ़ॉल्ट आदेश</value>
+  </data>
   <data name="Settings_Gallery_DefaultView_Help" xml:space="preserve">
     <value>डिफ़ॉल्ट गैलरी दृश्य क्या है</value>
   </data>
@@ -852,6 +870,12 @@
   </data>
   <data name="Settings_Gallery_ShowFilters_Label" xml:space="preserve">
     <value>फ़िल्टर दिखाएं</value>
+  </data>
+  <data name="Settings_Gallery_ShowTitle_Help" xml:space="preserve">
+    <value>क्या शीर्षक गैलरी के शीर्ष पर प्रदर्शित किया जाना चाहिए</value>
+  </data>
+  <data name="Settings_Gallery_ShowTitle_Label" xml:space="preserve">
+    <value>शीर्षक दिखाएं</value>
   </data>
   <data name="Settings_Gallery_Upload_Help" xml:space="preserve">
     <value>क्या मेहमानों को आइटम अपलोड करने की अनुमति है</value>

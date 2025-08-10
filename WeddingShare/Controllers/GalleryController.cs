@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
-using Mysqlx.Expr;
 using WeddingShare.Attributes;
 using WeddingShare.Constants;
 using WeddingShare.Enums;
@@ -116,7 +115,7 @@ namespace WeddingShare.Controllers
         [HttpGet]
         [RequiresSecretKey]
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public async Task<IActionResult> Index(string? id, string? identifier, string? key = null, ViewMode? mode = null, GalleryGroup group = GalleryGroup.None, GalleryOrder order = GalleryOrder.Descending, GalleryFilter filter = GalleryFilter.All, string? culture = null, bool partial = false)
+        public async Task<IActionResult> Index(string? id, string? identifier, string? key = null, ViewMode? mode = null, GalleryGroup? group = null, GalleryOrder? order = null, GalleryFilter? filter = null, string? culture = null, bool partial = false)
         {
             int? galleryId = null;
 
@@ -182,6 +181,10 @@ namespace WeddingShare.Controllers
                     }
                     catch { }
 
+                    var galleryGroup = group ?? (GalleryGroup)(await _settings.GetOrDefault(Settings.Gallery.DefaultGroup, (int)GalleryGroup.None, gallery?.Id));
+                    var galleryOrder = order ?? (GalleryOrder)(await _settings.GetOrDefault(Settings.Gallery.DefaultOrder, (int)GalleryOrder.Descending, gallery?.Id));
+                    var galleryFilter = filter ?? (GalleryFilter)(await _settings.GetOrDefault(Settings.Gallery.DefaultFilter, (int)GalleryFilter.All, gallery?.Id));
+
                     var mediaType = MediaType.All;
                     if (mode == ViewMode.Slideshow)
                     {
@@ -189,7 +192,7 @@ namespace WeddingShare.Controllers
                     }
                     else
                     {
-                        switch (filter)
+                        switch (galleryFilter)
                         {
                             case GalleryFilter.Images:
                                 mediaType = MediaType.Image;
@@ -204,7 +207,7 @@ namespace WeddingShare.Controllers
                     }
 
                     var orientation = ImageOrientation.None;
-                    switch (filter)
+                    switch (galleryFilter)
                     {
                         case GalleryFilter.Landscape:
                             orientation = ImageOrientation.Landscape;
@@ -222,7 +225,7 @@ namespace WeddingShare.Controllers
 
                     var itemsPerPage = await _settings.GetOrDefault(Settings.Gallery.ItemsPerPage, 50, gallery?.Id);
                     var allowedFileTypes = (await _settings.GetOrDefault(Settings.Gallery.AllowedFileTypes, ".jpg,.jpeg,.png,.mp4,.mov", gallery?.Id)).Split(',', StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries);
-                    var items = (await _database.GetAllGalleryItems(gallery?.Id, GalleryItemState.Approved, mediaType, orientation, group, order, itemsPerPage, currentPage))?.Where(x => allowedFileTypes.Any(y => string.Equals(Path.GetExtension(x.Title).Trim('.'), y.Trim('.'), StringComparison.OrdinalIgnoreCase)));
+                    var items = (await _database.GetAllGalleryItems(gallery?.Id, GalleryItemState.Approved, mediaType, orientation, galleryGroup, galleryOrder, itemsPerPage, currentPage))?.Where(x => allowedFileTypes.Any(y => string.Equals(Path.GetExtension(x.Title).Trim('.'), y.Trim('.'), StringComparison.OrdinalIgnoreCase)));
 
                     var userPermissions = User?.Identity?.GetUserPermissions() ?? AccessPermissions.None;
                     var isGalleryAdmin = User?.Identity != null && User.Identity.IsAuthenticated && userPermissions.HasFlag(AccessPermissions.Gallery_Upload);
@@ -297,9 +300,9 @@ namespace WeddingShare.Controllers
                         ItemsPerPage = itemsPerPage,
                         UploadActivated = uploadActvated,
                         ViewMode = (ViewMode)ViewBag.ViewMode,
-                        GroupBy = group,
-                        OrderBy = order,
-                        Pagination = order != GalleryOrder.Random,
+                        GroupBy = galleryGroup,
+                        OrderBy = galleryOrder,
+                        Pagination = galleryOrder != GalleryOrder.Random,
                         LoadScripts = !partial
                     };
 
