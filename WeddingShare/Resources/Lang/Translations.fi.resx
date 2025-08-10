@@ -745,6 +745,24 @@
   <data name="Settings_Gallery_Columns_Label" xml:space="preserve">
     <value>Sarakemäärä</value>
   </data>
+  <data name="Settings_Gallery_DefaultFilter_Help" xml:space="preserve">
+    <value>Mikä on oletus galleriasuodatin</value>
+  </data>
+  <data name="Settings_Gallery_DefaultFilter_Label" xml:space="preserve">
+    <value>Oletussuodin</value>
+  </data>
+  <data name="Settings_Gallery_DefaultGroup_Help" xml:space="preserve">
+    <value>Mikä on oletus galleria ryhmä</value>
+  </data>
+  <data name="Settings_Gallery_DefaultGroup_Label" xml:space="preserve">
+    <value>Oletusryhmä</value>
+  </data>
+  <data name="Settings_Gallery_DefaultOrder_Help" xml:space="preserve">
+    <value>Mikä on oletus galleria järjestyksessä</value>
+  </data>
+  <data name="Settings_Gallery_DefaultOrder_Label" xml:space="preserve">
+    <value>Oletusjärjestys</value>
+  </data>
   <data name="Settings_Gallery_DefaultView_Help" xml:space="preserve">
     <value>Mikä on oletusgallerian näkymä</value>
   </data>
@@ -852,6 +870,12 @@
   </data>
   <data name="Settings_Gallery_ShowFilters_Label" xml:space="preserve">
     <value>Näytä suotimet</value>
+  </data>
+  <data name="Settings_Gallery_ShowTitle_Help" xml:space="preserve">
+    <value>Jos otsikko näytetään yläreunassa galleria</value>
+  </data>
+  <data name="Settings_Gallery_ShowTitle_Label" xml:space="preserve">
+    <value>Näytä otsikko</value>
   </data>
   <data name="Settings_Gallery_Upload_Help" xml:space="preserve">
     <value>Pitäisikö vieraiden saada ladata kohteita</value>

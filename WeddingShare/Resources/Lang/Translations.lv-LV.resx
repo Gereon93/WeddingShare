@@ -745,6 +745,24 @@
   <data name="Settings_Gallery_Columns_Label" xml:space="preserve">
     <value>Kolonnu skaits</value>
   </data>
+  <data name="Settings_Gallery_DefaultFilter_Help" xml:space="preserve">
+    <value>Kas ir noklusētais galerijas filtrs</value>
+  </data>
+  <data name="Settings_Gallery_DefaultFilter_Label" xml:space="preserve">
+    <value>Noklusētais filtrs</value>
+  </data>
+  <data name="Settings_Gallery_DefaultGroup_Help" xml:space="preserve">
+    <value>Kas ir noklusētā galerijas grupa</value>
+  </data>
+  <data name="Settings_Gallery_DefaultGroup_Label" xml:space="preserve">
+    <value>Noklusētā grupa</value>
+  </data>
+  <data name="Settings_Gallery_DefaultOrder_Help" xml:space="preserve">
+    <value>Kas ir noklusētais galerijas rīkojums</value>
+  </data>
+  <data name="Settings_Gallery_DefaultOrder_Label" xml:space="preserve">
+    <value>Noklusētā kārtība</value>
+  </data>
   <data name="Settings_Gallery_DefaultView_Help" xml:space="preserve">
     <value>Kāds ir noklusētais galerijas skats</value>
   </data>
@@ -852,6 +870,12 @@
   </data>
   <data name="Settings_Gallery_ShowFilters_Label" xml:space="preserve">
     <value>Rādīt filtrus</value>
+  </data>
+  <data name="Settings_Gallery_ShowTitle_Help" xml:space="preserve">
+    <value>Ja nosaukums redzams galerijas augšpusē</value>
+  </data>
+  <data name="Settings_Gallery_ShowTitle_Label" xml:space="preserve">
+    <value>Rādīt nosaukumu</value>
   </data>
   <data name="Settings_Gallery_Upload_Help" xml:space="preserve">
     <value>Ja viesiem ir atļauts augšupielādēt ierakstus</value>

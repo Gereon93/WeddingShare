@@ -745,6 +745,24 @@
   <data name="Settings_Gallery_Columns_Label" xml:space="preserve">
     <value>Conteggio colonne</value>
   </data>
+  <data name="Settings_Gallery_DefaultFilter_Help" xml:space="preserve">
+    <value>Qual è il filtro di galleria predefinito</value>
+  </data>
+  <data name="Settings_Gallery_DefaultFilter_Label" xml:space="preserve">
+    <value>Filtro predefinito</value>
+  </data>
+  <data name="Settings_Gallery_DefaultGroup_Help" xml:space="preserve">
+    <value>Qual è il gruppo di galleria predefinito</value>
+  </data>
+  <data name="Settings_Gallery_DefaultGroup_Label" xml:space="preserve">
+    <value>Gruppo di default</value>
+  </data>
+  <data name="Settings_Gallery_DefaultOrder_Help" xml:space="preserve">
+    <value>Qual è l'ordine predefinito della galleria</value>
+  </data>
+  <data name="Settings_Gallery_DefaultOrder_Label" xml:space="preserve">
+    <value>Ordine di default</value>
+  </data>
   <data name="Settings_Gallery_DefaultView_Help" xml:space="preserve">
     <value>Qual è la visualizzazione della galleria predefinita</value>
   </data>
@@ -852,6 +870,12 @@
   </data>
   <data name="Settings_Gallery_ShowFilters_Label" xml:space="preserve">
     <value>Mostra filtri</value>
+  </data>
+  <data name="Settings_Gallery_ShowTitle_Help" xml:space="preserve">
+    <value>Se il titolo viene visualizzato in cima alla galleria</value>
+  </data>
+  <data name="Settings_Gallery_ShowTitle_Label" xml:space="preserve">
+    <value>Mostra il titolo</value>
   </data>
   <data name="Settings_Gallery_Upload_Help" xml:space="preserve">
     <value>Gli ospiti dovrebbero essere autorizzati a caricare elementi</value>

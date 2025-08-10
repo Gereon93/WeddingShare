@@ -745,6 +745,24 @@
   <data name="Settings_Gallery_Columns_Label" xml:space="preserve">
     <value>Počet sloupců</value>
   </data>
+  <data name="Settings_Gallery_DefaultFilter_Help" xml:space="preserve">
+    <value>Co je výchozí filtr galerie</value>
+  </data>
+  <data name="Settings_Gallery_DefaultFilter_Label" xml:space="preserve">
+    <value>Výchozí filtr</value>
+  </data>
+  <data name="Settings_Gallery_DefaultGroup_Help" xml:space="preserve">
+    <value>Co je výchozí skupina galerie</value>
+  </data>
+  <data name="Settings_Gallery_DefaultGroup_Label" xml:space="preserve">
+    <value>Výchozí skupina</value>
+  </data>
+  <data name="Settings_Gallery_DefaultOrder_Help" xml:space="preserve">
+    <value>Co je výchozí pořadí galerie</value>
+  </data>
+  <data name="Settings_Gallery_DefaultOrder_Label" xml:space="preserve">
+    <value>Výchozí pořadí</value>
+  </data>
   <data name="Settings_Gallery_DefaultView_Help" xml:space="preserve">
     <value>Co je výchozí zobrazení galerie</value>
   </data>
@@ -852,6 +870,12 @@
   </data>
   <data name="Settings_Gallery_ShowFilters_Label" xml:space="preserve">
     <value>Zobrazit filtry</value>
+  </data>
+  <data name="Settings_Gallery_ShowTitle_Help" xml:space="preserve">
+    <value>Je-li název zobrazen v horní části galerie</value>
+  </data>
+  <data name="Settings_Gallery_ShowTitle_Label" xml:space="preserve">
+    <value>Zobrazit název</value>
   </data>
   <data name="Settings_Gallery_Upload_Help" xml:space="preserve">
     <value>Mělo by být hostům dovoleno nahrávat položky</value>

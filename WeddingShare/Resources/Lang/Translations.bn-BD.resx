@@ -745,6 +745,24 @@
   <data name="Settings_Gallery_Columns_Label" xml:space="preserve">
     <value>কলাম গণনা</value>
   </data>
+  <data name="Settings_Gallery_DefaultFilter_Help" xml:space="preserve">
+    <value>ডিফল্ট গ্যালারির ফিল্টার</value>
+  </data>
+  <data name="Settings_Gallery_DefaultFilter_Label" xml:space="preserve">
+    <value>ডিফল্ট ফিল্টার</value>
+  </data>
+  <data name="Settings_Gallery_DefaultGroup_Help" xml:space="preserve">
+    <value>ডিফল্ট সংকলন রূপে নির্ধারণ করা হয়েছে</value>
+  </data>
+  <data name="Settings_Gallery_DefaultGroup_Label" xml:space="preserve">
+    <value>ডিফল্ট দল</value>
+  </data>
+  <data name="Settings_Gallery_DefaultOrder_Help" xml:space="preserve">
+    <value>ডিফল্ট গ্যালারির সংকলন</value>
+  </data>
+  <data name="Settings_Gallery_DefaultOrder_Label" xml:space="preserve">
+    <value>ডিফল্ট</value>
+  </data>
   <data name="Settings_Gallery_DefaultView_Help" xml:space="preserve">
     <value>ডিফল্ট গ্যালারিটি কি</value>
   </data>
@@ -852,6 +870,12 @@
   </data>
   <data name="Settings_Gallery_ShowFilters_Label" xml:space="preserve">
     <value>ফিল্টার দেখাও</value>
+  </data>
+  <data name="Settings_Gallery_ShowTitle_Help" xml:space="preserve">
+    <value>সংকলনের মধ্যে উইন্ডো প্রদর্শন করা হবে কি না</value>
+  </data>
+  <data name="Settings_Gallery_ShowTitle_Label" xml:space="preserve">
+    <value>শিরোনাম প্রদর্শন</value>
   </data>
   <data name="Settings_Gallery_Upload_Help" xml:space="preserve">
     <value>আপলোড করার জন্য অতিথিকে অনুমতি প্রদান করা হবে</value>

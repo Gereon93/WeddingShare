@@ -49,37 +49,44 @@ namespace WeddingShare.BackgroundWorkers
 
         private async Task SendReport()
         {
-            await Task.Run(async () =>
+            try
             {
-                var pendingItems = await databaseHelper.GetPendingGalleryItems();
-                if (pendingItems != null && pendingItems.Any())
+                await Task.Run(async () =>
                 {
-                    var builder = new StringBuilder();
-                    builder.AppendLine($"<h1>You have items pending review!</h1>");
-                    
-                    foreach (var item in pendingItems.GroupBy(x => x.GalleryId).OrderByDescending(x => x.Count()))
+                    var pendingItems = await databaseHelper.GetPendingGalleryItems();
+                    if (pendingItems != null && pendingItems.Any())
                     {
-                        var gallery = await databaseHelper.GetGallery(item.Key);
-                        if (gallery != null)
-                        { 
-                            try
+                        var builder = new StringBuilder();
+                        builder.AppendLine($"<h1>You have items pending review!</h1>");
+
+                        foreach (var item in pendingItems.GroupBy(x => x.GalleryId).OrderByDescending(x => x.Count()))
+                        {
+                            var gallery = await databaseHelper.GetGallery(item.Key);
+                            if (gallery != null)
                             {
-                                builder.AppendLine($"<p style=\"font-size: 16pt;\">{gallery.Name} - Pending Items ({item.Count()})</p>");
-                            }
-                            catch (Exception ex)
-                            {
-                                loggerFactory.CreateLogger<NotificationReport>().LogError(ex, $"Failed to build gallery report for '{gallery.Name}' - {ex?.Message}");
+                                try
+                                {
+                                    builder.AppendLine($"<p style=\"font-size: 16pt;\">{gallery.Name} - Pending Items ({item.Count()})</p>");
+                                }
+                                catch (Exception ex)
+                                {
+                                    loggerFactory.CreateLogger<NotificationReport>().LogError(ex, $"Failed to build gallery report for '{gallery.Name}' - {ex?.Message}");
+                                }
                             }
                         }
-                    }
 
-                    var sent = await new EmailHelper(settingsHelper, smtpHelper, loggerFactory.CreateLogger<EmailHelper>()).Send("Pending Items Report", builder.ToString());
-                    if (!sent)
-                    {
-                        loggerFactory.CreateLogger<NotificationReport>().LogWarning($"Failed to send notification report");
+                        var sent = await new EmailHelper(settingsHelper, smtpHelper, loggerFactory.CreateLogger<EmailHelper>()).Send("Pending Items Report", builder.ToString());
+                        if (!sent)
+                        {
+                            loggerFactory.CreateLogger<NotificationReport>().LogWarning($"Failed to send notification report");
+                        }
                     }
-                }
-            });
+                });
+            }
+            catch (Exception ex)
+            {
+                loggerFactory.CreateLogger<NotificationReport>().LogError(ex, $"NotificationReport - Failed to send report - {ex?.Message}");
+            }
         }
     }
 }

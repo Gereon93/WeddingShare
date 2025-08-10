@@ -10,16 +10,28 @@
 
     try
     {
-        if (ViewBag.IsMobile ?? false)
+        switch (Model?.ViewMode ?? ViewMode.Default)
         {
-            columnCount = 1;
-        }
-        else
-        {
-            while (12 % columnCount != 0)
-            {
-                columnCount--;
-            }
+            case ViewMode.Single:
+                {
+                    columnCount = 1;
+                    break;
+                }
+            default:
+                {
+                    if (ViewBag.IsMobile ?? false)
+                    {
+                        columnCount = 2;
+                    }
+                    else
+                    {
+                        while (12 % columnCount != 0)
+                        {
+                            columnCount--;
+                        }
+                    }
+                    break;    
+                }
         }
     }
     catch { }
@@ -112,7 +124,7 @@
         var imageGroupImages = Model?.OrderBy == GalleryOrder.Random ? imageGroup.OrderBy(x => Guid.NewGuid()).ToList() : imageGroup.ToList();
         for (var columnIndex = 0; columnIndex < columnCount; columnIndex++)
         {
-            <div class="@(ViewBag.IsMobile ? "col-12" : $"col-lg-{12 / columnCount} col-md-6 col-sm-12 mb-4 mb-lg-0")">
+            <div class="@($"col-{12 / columnCount} mb-4 mb-lg-0 mx-0 px-1")">
                 @if (imageGroupImages != null)
                 {
                     var index = columnIndex;
@@ -120,7 +132,7 @@
                     {
                         var image = imageGroupImages.ElementAt(index);
 
-                        <div class="image-tile mb-4">
+                        <div class="image-tile mb-2">
                             <a href="@image.ImagePath" class="media-viewer-item" data-media-viewer-type="@image?.MediaType.ToString().ToLower()" data-media-viewer-collection="@image.GalleryName" data-media-viewer-author="@(identityEnabled ? $"{_localizer["Uploaded_By"].Value}: {(!string.IsNullOrWhiteSpace(image?.UploadedBy) ? $"{image?.UploadedBy}{(!string.IsNullOrWhiteSpace(image?.UploaderEmailAddress) && User?.Identity != null && User.Identity.IsAuthenticated ? $" - {image?.UploaderEmailAddress?.ToLower()}" : string.Empty)}" : "Anonymous")}" : string.Empty)" data-media-viewer-download="@((await _settings.GetOrDefault(Settings.Gallery.Download, true, Model?.Gallery?.Id) || (User?.Identity != null && User.Identity.IsAuthenticated)).ToString().ToLower())">
                                 <img src="@image?.ThumbnailPath" class="w-100 shadow-1-strong" loading="lazy" onerror="this.onerror=null;this.src='@image?.ThumbnailPathFallback';" />
                                 @if (image?.MediaType == MediaType.Video)

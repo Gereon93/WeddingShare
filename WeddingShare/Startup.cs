@@ -1,5 +1,4 @@
-﻿using System.Text.RegularExpressions;
-using Microsoft.AspNetCore.Authentication.Cookies;
+﻿using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Microsoft.Extensions.Localization;
@@ -7,7 +6,7 @@ using WeddingShare.BackgroundWorkers;
 using WeddingShare.Configurations;
 using WeddingShare.Constants;
 using WeddingShare.Helpers;
-using Xabe.FFmpeg.Extensions;
+using WeddingShare.Middleware;
 
 namespace WeddingShare
 {
@@ -30,6 +29,9 @@ namespace WeddingShare
         public void ConfigureServices(IServiceCollection services)
         {
             var config = new ConfigHelper(new EnvironmentWrapper(), Configuration, _loggerFactory.CreateLogger<ConfigHelper>());
+
+            services.AddExceptionHandler<GlobalExceptionHandler>();
+            services.AddProblemDetails();
 
             services.AddDependencyInjectionConfiguration();
             services.AddWebClientConfiguration(config);
@@ -97,6 +99,8 @@ namespace WeddingShare
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseExceptionHandler();
+
             if (!env.IsDevelopment())
             {
                 app.UseExceptionHandler("/Error");

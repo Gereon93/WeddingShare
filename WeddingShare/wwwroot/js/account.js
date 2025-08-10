@@ -1354,27 +1354,51 @@ function selectActiveTab(tab) {
                 const formData = new FormData();
                 formData.append(files[0].name, files[0]);
 
-                displayLoader(localization.translate('Upload_Progress', { index: 1, count: 1 }));
+                displayLoader(`${localization.translate('Upload_Progress', { index: i + 1, count: 1 })} <br/><br/><span id="file-upload-progress">0%</span>`);
 
-                fetch('/Account/UploadCustomResource', {
-                    method: 'POST',
-                    body: formData
-                })
-                    .then(response => response.json())
-                    .then(data => {
+                $.ajax({
+                    url: '/Account/UploadCustomResource',
+                    type: 'POST',
+                    data: formData,
+                    async: true,
+                    cache: false,
+                    contentType: false,
+                    dataType: 'json',
+                    processData: false,
+                    success: function (response) {
                         hideLoader();
-
-                        if (data !== undefined && data.success === true) {
+                        if (response !== undefined && response.success === true) {
                             displayMessage(localization.translate('Upload'), localization.translate('Upload_Success', { count: 1 }));
 
                             updateCustomResources();
                             updateSettings();
 
                             $('input#custom-resource-upload').val('');
-                        } else if (data.errors !== undefined && data.errors.length > 0) {
-                            displayMessage(localization.translate('Upload'), localization.translate('Upload_Failed'), [data.errors]);
+                        } else if (response.errors !== undefined && response.errors.length > 0) {
+                            displayMessage(localization.translate('Upload'), localization.translate('Upload_Failed'), [response.errors]);
                         }
-                    });
+                    },
+                    error: function (response) {
+                        console.log(response);
+                        displayMessage(localization.translate('Upload'), localization.translate('Upload_Failed'), errors);
+                    },
+                    xhr: function () {
+                        var xhr = new window.XMLHttpRequest();
+
+                        xhr.upload.addEventListener("progress", function (evt) {
+                            if (evt.lengthComputable) {
+                                var percentComplete = evt.loaded / evt.total;
+                                percentComplete = parseInt(percentComplete * 100);
+
+                                if ($('span#file-upload-progress').length > 0) {
+                                    $('span#file-upload-progress').text(`(${percentComplete}%)`);
+                                }
+                            }
+                        }, false);
+
+                        return xhr;
+                    },
+                });
             }
         });
 

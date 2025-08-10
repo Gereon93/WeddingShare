@@ -43,28 +43,35 @@ namespace WeddingShare.BackgroundWorkers
 
         private async Task Cleanup()
         {
-            await Task.Run(() =>
+            try
             {
-                var paths = new List<string>()
+                await Task.Run(() =>
                 {
-                    Path.Combine(hostingEnvironment.WebRootPath, Directories.TempFiles)
-                };
+                    var paths = new List<string>()
+                    {
+                        Path.Combine(hostingEnvironment.WebRootPath, Directories.TempFiles)
+                    };
 
-                if (paths != null)
-                { 
-                    foreach (var path in paths)
-                    { 
-                        try
-                        { 
-                            fileHelper.DeleteDirectoryIfExists(path);
-                        }
-                        catch (Exception ex)
+                    if (paths != null)
+                    {
+                        foreach (var path in paths)
                         {
-                            logger.LogError(ex, $"An error occurred while running cleanup of '{path}'");
+                            try
+                            {
+                                fileHelper.DeleteDirectoryIfExists(path);
+                            }
+                            catch (Exception ex)
+                            {
+                                logger.LogError(ex, $"An error occurred while running cleanup of '{path}'");
+                            }
                         }
                     }
-                }
-            });
+                });
+            }
+            catch (Exception ex) 
+            {
+                logger.LogError(ex, $"CleanupService - Failed to clean up files - {ex?.Message}");
+            }
         }
     }
 }
