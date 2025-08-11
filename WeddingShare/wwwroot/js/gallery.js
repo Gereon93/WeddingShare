@@ -171,6 +171,7 @@
             let uploadedCount = 0;
             let requiresReview = true;
             let errors = [];
+            let retries = 0;
 
             function processFileUpload(i) {
                 if (i < dataRefs.files.length) {
@@ -193,17 +194,10 @@
                         processData: false,
                         success: function (response) {
                             if (response !== undefined && response.success === true) {
-                                uploadedCount++;
                                 requiresReview = response.requiresReview;
                             } else if (response.errors !== undefined && response.errors.length > 0) {
                                 errors.push(response.errors);
                             }
-
-                            processFileUpload(i + 1);
-                        },
-                        error: function (response) {
-                            console.log(response);
-                            displayMessage(localization.translate('Upload'), localization.translate('Upload_Failed'), errors);
                         },
                         xhr: function () {
                             var xhr = new window.XMLHttpRequest();
@@ -216,6 +210,23 @@
                                     if ($('span#file-upload-progress').length > 0) {
                                         $('span#file-upload-progress').text(`(${percentComplete}%)`);
                                     }
+                                }
+                            }, false);
+
+                            xhr.upload.addEventListener("load", function (evt) {
+                                uploadedCount++;
+                                processFileUpload(i + 1);
+                            }, false);
+
+                            xhr.upload.addEventListener("error", function (evt) {
+                                console.log(evt);
+                                if (retries < 5) {
+                                    setTimeout(function () {
+                                        retries++;
+                                        processFileUpload(i);
+                                    }, 2000);
+                                } else {
+                                    displayMessage(localization.translate('Upload'), localization.translate('Upload_Failed'), errors);
                                 }
                             }, false);
 

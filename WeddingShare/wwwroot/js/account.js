@@ -1350,56 +1350,70 @@ function selectActiveTab(tab) {
 
         $(document).off('change', 'input#custom-resource-upload').on('change', 'input#custom-resource-upload', function (e) {
             const files = $(this)[0].files;
-            if (files !== undefined && files.length > 0) {
-                const formData = new FormData();
-                formData.append(files[0].name, files[0]);
+            let retries = 0;
 
-                displayLoader(`${localization.translate('Upload_Progress', { index: i + 1, count: 1 })} <br/><br/><span id="file-upload-progress">0%</span>`);
+            function uploadCustomResource(i) {
+                if (files !== undefined && files.length > 0) {
+                    const formData = new FormData();
+                    formData.append(files[i].name, files[i]);
 
-                $.ajax({
-                    url: '/Account/UploadCustomResource',
-                    type: 'POST',
-                    data: formData,
-                    async: true,
-                    cache: false,
-                    contentType: false,
-                    dataType: 'json',
-                    processData: false,
-                    success: function (response) {
-                        hideLoader();
-                        if (response !== undefined && response.success === true) {
-                            displayMessage(localization.translate('Upload'), localization.translate('Upload_Success', { count: 1 }));
+                    displayLoader(`${localization.translate('Upload_Progress', { index: i + 1, count: 1 })} <br/><br/><span id="file-upload-progress">0%</span>`);
 
-                            updateCustomResources();
-                            updateSettings();
+                    $.ajax({
+                        url: '/Account/UploadCustomResource',
+                        type: 'POST',
+                        data: formData,
+                        async: true,
+                        cache: false,
+                        contentType: false,
+                        dataType: 'json',
+                        processData: false,
+                        success: function (response) {
+                            hideLoader();
+                            if (response !== undefined && response.success === true) {
+                                displayMessage(localization.translate('Upload'), localization.translate('Upload_Success', { count: 1 }));
 
-                            $('input#custom-resource-upload').val('');
-                        } else if (response.errors !== undefined && response.errors.length > 0) {
-                            displayMessage(localization.translate('Upload'), localization.translate('Upload_Failed'), [response.errors]);
-                        }
-                    },
-                    error: function (response) {
-                        console.log(response);
-                        displayMessage(localization.translate('Upload'), localization.translate('Upload_Failed'), errors);
-                    },
-                    xhr: function () {
-                        var xhr = new window.XMLHttpRequest();
+                                updateCustomResources();
+                                updateSettings();
 
-                        xhr.upload.addEventListener("progress", function (evt) {
-                            if (evt.lengthComputable) {
-                                var percentComplete = evt.loaded / evt.total;
-                                percentComplete = parseInt(percentComplete * 100);
-
-                                if ($('span#file-upload-progress').length > 0) {
-                                    $('span#file-upload-progress').text(`(${percentComplete}%)`);
-                                }
+                                $('input#custom-resource-upload').val('');
+                            } else if (response.errors !== undefined && response.errors.length > 0) {
+                                displayMessage(localization.translate('Upload'), localization.translate('Upload_Failed'), [response.errors]);
                             }
-                        }, false);
+                        },
+                        xhr: function () {
+                            var xhr = new window.XMLHttpRequest();
 
-                        return xhr;
-                    },
-                });
+                            xhr.upload.addEventListener("progress", function (evt) {
+                                if (evt.lengthComputable) {
+                                    var percentComplete = evt.loaded / evt.total;
+                                    percentComplete = parseInt(percentComplete * 100);
+
+                                    if ($('span#file-upload-progress').length > 0) {
+                                        $('span#file-upload-progress').text(`(${percentComplete}%)`);
+                                    }
+                                }
+                            }, false);
+
+                            xhr.upload.addEventListener("error", function (evt) {
+                                console.log(evt);
+                                if (retries < 5) {
+                                    setTimeout(function () {
+                                        retries++;
+                                        uploadCustomResource(i);
+                                    }, 2000);
+                                } else {
+                                    displayMessage(localization.translate('Upload'), localization.translate('Upload_Failed'));
+                                }
+                            }, false);
+
+                            return xhr;
+                        },
+                    });
+                }
             }
+
+            uploadCustomResource(0);
         });
 
         $(document).off('click', 'i.custom-resource-delete').on('click', 'i.custom-resource-delete', function (e) {
