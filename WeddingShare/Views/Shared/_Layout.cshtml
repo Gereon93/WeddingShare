@@ -233,7 +233,7 @@
         @if (await _settings.GetOrDefault(Settings.IdentityCheck.Enabled, true) && await _settings.GetOrDefault(Settings.IdentityCheck.ShowOnPageLoad, true) && string.IsNullOrWhiteSpace(Context?.Session?.GetString(SessionKey.ViewerIdentity)))
         {
             <script>
-                displayIdentityCheck(false);
+                displayIdentityCheck(@((await _settings.GetOrDefault(Settings.IdentityCheck.RequireEmail, false)).ToString().ToLower()));
             </script>
         }
 
