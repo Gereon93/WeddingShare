@@ -88,11 +88,11 @@ namespace WeddingShare.Controllers
             {
                 var emailRequired = await _settings.GetOrDefault(Settings.IdentityCheck.RequireEmail, false);
 
-                if (HtmlSanitizer.MayContainXss(name))
+                if (string.IsNullOrWhiteSpace(name) || HtmlSanitizer.MayContainXss(name))
                 {
                     return Json(new { success = false, reason = 1 });
                 }
-                else if (emailRequired && !name.Equals("Anonymous") && (EmailValidationHelper.IsValid(emailAddress) == false || HtmlSanitizer.MayContainXss(emailAddress)))
+                else if (emailRequired && (string.IsNullOrWhiteSpace(emailAddress) || EmailValidationHelper.IsValid(emailAddress) == false || HtmlSanitizer.MayContainXss(emailAddress)))
                 {
                     return Json(new { success = false, reason = 2 });
                 }
