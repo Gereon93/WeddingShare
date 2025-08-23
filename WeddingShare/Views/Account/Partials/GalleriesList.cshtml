@@ -51,7 +51,7 @@
                 <td>
                     @if (userPermissions.HasFlag(AccessPermissions.Gallery_View))
                     {
-                        <i class="btnOpenGallery btn btn-outline-primary fa-solid fa-up-right-from-square" data-url="@_url.GenerateFullUrl(Context?.Request, "/Gallery", append)" data-target="@(await _settings.GetOrDefault(Settings.Basic.LinksOpenNewTab, true) ? "_blank" : "_self")" alt="Open"></i>
+                        <i class="btnOpenGallery btn btn-outline-primary fa-solid fa-up-right-from-square" data-url="@_url.GenerateFullUrl(Context?.Request, "/Gallery", append, new List<string>() { "partial" })" data-target="@(await _settings.GetOrDefault(Settings.Basic.LinksOpenNewTab, true) ? "_blank" : "_self")" alt="Open"></i>
                     }
                     @if (userPermissions.HasFlag(AccessPermissions.Gallery_Download))
                     {

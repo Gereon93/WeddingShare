@@ -125,7 +125,9 @@ function moveSlide(direction) {
         index = 0;
     }
 
-    openMediaViewer(items[index]);
+    let slide = $(`a[data-media-viewer-index='${index}']`);
+
+    openMediaViewer(slide);
 }
 
 (function () {
@@ -133,18 +135,6 @@ function moveSlide(direction) {
 
         clearTimeout(playButtonTimeout);
         playButtonTimeout = setTimeout(function () {
-            let collections = [];
-
-            $('.media-viewer-item').each(function () {
-                let name = $(this).data('media-viewer-collection');
-                if (!collections.includes(name)) {
-                    collections.push(name);
-                    $(`*[data-media-viewer-collection='${name}']`).each(function (i) {
-                        $(this).attr('data-media-viewer-index', i);
-                    });
-                }
-            });
-
             $('.media-viewer-item .media-viewer-play').each(function () {
                 let element = $(this);
                 let preview = element.parent();

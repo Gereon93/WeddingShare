@@ -5,6 +5,8 @@
     var queryString = HttpUtility.ParseQueryString(Context.Request.QueryString.ToString());
     queryString.Remove("page");
     queryString.Remove("Page");
+    queryString.Remove("partial");
+    queryString.Remove("Partial");
 
     var pageUrl = $"/{Context.Request.Path.ToString()?.TrimStart('/')?.TrimEnd('?')}?{queryString.ToString()?.TrimStart('?')}";
 }
