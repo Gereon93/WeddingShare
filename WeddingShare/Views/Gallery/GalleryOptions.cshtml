@@ -9,6 +9,7 @@
     var userPermissions = User?.Identity?.GetUserPermissions() ?? AccessPermissions.None;
     var qrCodeEnabled = await _settings.GetOrDefault(Settings.Gallery.QRCode.Enabled, true, Model?.Gallery?.Id);
     var showFilters = await _settings.GetOrDefault(Settings.Gallery.ShowFilters, true, Model?.Gallery?.Id);
+    var excludeFromUrls = new List<string>() { "partial" };
 }
 
 @if (qrCodeEnabled)
@@ -67,7 +68,7 @@
                             {
                                 new KeyValuePair<string, string>("mode", ((int)mode).ToString())
                             };
-                            <a class="dropdown-item" href="@_url.GenerateFullUrl(Context.Request, Context.Request.Path, append)">@_localizer[mode.ToString()].Value</a>
+                            <a class="dropdown-item" href="@_url.GenerateFullUrl(Context.Request, Context.Request.Path, append, excludeFromUrls)">@_localizer[mode.ToString()].Value</a>
                         }
                     </div>
                 </div>
@@ -83,7 +84,7 @@
                             {
                                 new KeyValuePair<string, string>("group", ((int)group).ToString())
                             };
-                            <a class="dropdown-item" href="@_url.GenerateFullUrl(Context.Request, Context.Request.Path, append)">@_localizer[group.ToString()].Value</a>
+                            <a class="dropdown-item" href="@_url.GenerateFullUrl(Context.Request, Context.Request.Path, append, excludeFromUrls)">@_localizer[group.ToString()].Value</a>
                         }
                     </div>
                 </div>
@@ -99,7 +100,7 @@
                             {
                                 new KeyValuePair<string, string>("order", ((int)order).ToString())
                             };
-                            <a class="dropdown-item" href="@_url.GenerateFullUrl(Context.Request, Context.Request.Path, append)">@_localizer[order.ToString()].Value</a>
+                            <a class="dropdown-item" href="@_url.GenerateFullUrl(Context.Request, Context.Request.Path, append, excludeFromUrls)">@_localizer[order.ToString()].Value</a>
                         }
                     </div>
                 </div>
@@ -115,7 +116,7 @@
                             {
                                 new KeyValuePair<string, string>("filter", ((int)filter).ToString())
                             };
-                            <a class="dropdown-item" href="@_url.GenerateFullUrl(Context.Request, Context.Request.Path, append)">@_localizer[filter.ToString()].Value</a>
+                            <a class="dropdown-item" href="@_url.GenerateFullUrl(Context.Request, Context.Request.Path, append, excludeFromUrls)">@_localizer[filter.ToString()].Value</a>
                         }
                     </div>
                 </div>

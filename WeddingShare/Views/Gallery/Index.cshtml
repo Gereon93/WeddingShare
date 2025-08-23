@@ -32,7 +32,7 @@
         catch { }
     }
 
-    var qrExclude = new List<string>();
+    var qrExclude = new List<string>() { "partial" };
     if (await _settings.GetOrDefault(Settings.Basic.HideKeyFromQRCode, false))
     {
         qrExclude.Add("key");
