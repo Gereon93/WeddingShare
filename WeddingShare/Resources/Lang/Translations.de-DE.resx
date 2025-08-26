@@ -116,7 +116,7 @@
     <value>Genehmigt</value>
   </data>
   <data name="Ascending" xml:space="preserve">
-    <value>Immatrikulation</value>
+    <value>Aufsteigend</value>
   </data>
   <data name="Audit" xml:space="preserve">
     <value>Prüfung</value>
@@ -287,7 +287,7 @@
     <value>Datum</value>
   </data>
   <data name="Default" xml:space="preserve">
-    <value>Fehler</value>
+    <value>Standard</value>
   </data>
   <data name="Delete" xml:space="preserve">
     <value>Löschen</value>
@@ -299,7 +299,7 @@
     <value>Das ist eine Demoversion. Alle Konfigurationen werden periodisch gelöscht, um einen sauberen Schiefer für zukünftige Tester zu gewährleisten.</value>
   </data>
   <data name="Descending" xml:space="preserve">
-    <value>In den Warenkorb</value>
+    <value>Absteigend</value>
   </data>
   <data name="Destructive_Action_Performed" xml:space="preserve">
     <value>Destruktive Aktion durchgeführt</value>
@@ -1133,7 +1133,7 @@
     <value>Teile den Code</value>
   </data>
   <data name="Single" xml:space="preserve">
-    <value>Einheit</value>
+    <value>Einzeln</value>
   </data>
   <data name="Slideshow" xml:space="preserve">
     <value>Diashow</value>
@@ -1154,7 +1154,7 @@
     <value>Versäumt, die Sponsorenliste zu laden</value>
   </data>
   <data name="Square" xml:space="preserve">
-    <value>Platz</value>
+    <value>Quadrat</value>
   </data>
   <data name="Supporters" xml:space="preserve">
     <value>Unterstützer</value>

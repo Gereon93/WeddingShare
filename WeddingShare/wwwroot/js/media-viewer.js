@@ -1,5 +1,6 @@
 let playButtonTimeout = null;
 let resizePopupTimeout = null;
+let touchStartPosX, touchStartPosY  = null;
 
 function openMediaViewer(e) {
     let thumbnail = $($(e).find('img')[0]).attr('src');
@@ -173,15 +174,47 @@ function moveSlide(direction) {
             e.stopPropagation();
         });
 
-        $(document).off('click', '.media-viewer .media-viewer-content').on('click', '.media-viewer .media-viewer-content', function (e) {
+        $(document).off('click touchstart touchend', '.media-viewer .media-viewer-content').on('click touchstart touchend', '.media-viewer .media-viewer-content', function (e) {
             e.preventDefault();
             e.stopPropagation();
 
-            let position = e.pageX - $(this).offset().left;
-            if (position <= ($(this).width() / 2)) {
-                moveSlide(-1);
-            } else {
-                moveSlide(1);
+            if (e.originalEvent.type === 'click') {
+                let position = e.pageX - $(this).offset().left;
+                if (position <= ($(this).width() / 2)) {
+                    moveSlide(-1);
+                } else {
+                    moveSlide(1);
+                }
+            } else if (e.originalEvent.type === 'touchstart') {
+                touchStartPosX = e.touches[0].screenX;
+                touchStartPosY = e.touches[0].screenY;
+            } else if (e.originalEvent.type === 'touchend') {
+                let touchEndPosX = e.changedTouches[0].screenX;
+                let touchEndPosY = e.changedTouches[0].screenY;
+
+                let touchDiffX = Math.abs(touchStartPosX - touchEndPosX);
+                let touchDiffY = Math.abs(touchStartPosY - touchEndPosY);
+
+                if (touchDiffX > 100) {
+                    if (touchEndPosX < touchStartPosX) {
+                        moveSlide(1);
+                    } else if (touchEndPosX > touchStartPosX) {
+                        moveSlide(-1);
+                    }
+                } else if (touchDiffY > 100) {
+                    if (touchEndPosY < touchStartPosY) {
+                        moveSlide(1);
+                    } else if (touchEndPosY > touchStartPosY) {
+                        moveSlide(-1);
+                    }
+                } else {
+                    let position = e.changedTouches[0].pageX - $(this).offset().left;
+                    if (position <= ($(this).width() / 2)) {
+                        moveSlide(-1);
+                    } else {
+                        moveSlide(1);
+                    }
+                }
             }
         });
 
