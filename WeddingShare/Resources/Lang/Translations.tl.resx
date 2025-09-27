@@ -970,6 +970,12 @@
   <data name="Settings_IdentityCheck_RequireEmail_Label" xml:space="preserve">
     <value>Kailangan ang Pakikipag - usap sa Email</value>
   </data>
+  <data name="Settings_IdentityCheck_RequireName_Help" xml:space="preserve">
+    <value>Kung ang mga gumagamit ay hilingang pumasok sa isang pangalan</value>
+  </data>
+  <data name="Settings_IdentityCheck_RequireName_Label" xml:space="preserve">
+    <value>Hinihiling ang Pangalan</value>
+  </data>
   <data name="Settings_IdentityCheck_Upload_Help" xml:space="preserve">
     <value>Kung kailangan ang tseke ng pagkakakilanlan upang i-upload ang media</value>
   </data>

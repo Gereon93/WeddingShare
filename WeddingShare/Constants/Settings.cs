@@ -103,6 +103,7 @@
             public const string Enabled = "Settings:Identity_Check:Enabled";
             public const string ShowOnPageLoad = "Settings:Identity_Check:Show_On_Page_Load";
             public const string RequireIdentityForUpload = "Settings:Identity_Check:Require_Identity_For_Upload";
+            public const string RequireName = "Settings:Identity_Check:Require_Name";
             public const string RequireEmail = "Settings:Identity_Check:Require_Email";
         }
 

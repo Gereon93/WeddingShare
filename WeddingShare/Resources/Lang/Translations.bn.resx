@@ -970,6 +970,12 @@
   <data name="Settings_IdentityCheck_RequireEmail_Label" xml:space="preserve">
     <value>ই-মেইল ঠিকানা (_A):</value>
   </data>
+  <data name="Settings_IdentityCheck_RequireName_Help" xml:space="preserve">
+    <value>একটি নাম লেখার জন্য ব্যবহারকারীর নাম উল্লেখ করা আবশ্যক</value>
+  </data>
+  <data name="Settings_IdentityCheck_RequireName_Label" xml:space="preserve">
+    <value>নাম উল্লেখ করা আবশ্যক</value>
+  </data>
   <data name="Settings_IdentityCheck_Upload_Help" xml:space="preserve">
     <value>মিডিয়া আপলোড করার জন্য পরিচয় যাচাই করা আবশ্যক</value>
   </data>
