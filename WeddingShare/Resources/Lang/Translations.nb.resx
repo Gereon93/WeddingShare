@@ -970,6 +970,12 @@
   <data name="Settings_IdentityCheck_RequireEmail_Label" xml:space="preserve">
     <value>Krev e-postadresse</value>
   </data>
+  <data name="Settings_IdentityCheck_RequireName_Help" xml:space="preserve">
+    <value>Hvis brukerne må skrive inn et navn</value>
+  </data>
+  <data name="Settings_IdentityCheck_RequireName_Label" xml:space="preserve">
+    <value>Krev navn</value>
+  </data>
   <data name="Settings_IdentityCheck_Upload_Help" xml:space="preserve">
     <value>Hvis det kreves identitetskontroll for å laste opp medier</value>
   </data>

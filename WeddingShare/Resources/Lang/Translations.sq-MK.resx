@@ -970,6 +970,12 @@
   <data name="Settings_IdentityCheck_RequireEmail_Label" xml:space="preserve">
     <value>Adresa email</value>
   </data>
+  <data name="Settings_IdentityCheck_RequireName_Help" xml:space="preserve">
+    <value>Përdoruesit duhet të shkruajnë një emër</value>
+  </data>
+  <data name="Settings_IdentityCheck_RequireName_Label" xml:space="preserve">
+    <value>Kërko emër</value>
+  </data>
   <data name="Settings_IdentityCheck_Upload_Help" xml:space="preserve">
     <value>A duhet kontrolluar identiteti për të ngarkuar median</value>
   </data>

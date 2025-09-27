@@ -970,6 +970,12 @@
   <data name="Settings_IdentityCheck_RequireEmail_Label" xml:space="preserve">
     <value>Postula retpoŝto</value>
   </data>
+  <data name="Settings_IdentityCheck_RequireName_Help" xml:space="preserve">
+    <value>Se la uzantoj devas eniri nomon</value>
+  </data>
+  <data name="Settings_IdentityCheck_RequireName_Label" xml:space="preserve">
+    <value>Nomo de la nomo</value>
+  </data>
   <data name="Settings_IdentityCheck_Upload_Help" xml:space="preserve">
     <value>Se la identeckontrolo estu postulata por alŝuti amaskomunikilojn</value>
   </data>

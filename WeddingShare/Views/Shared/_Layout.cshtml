@@ -232,8 +232,11 @@
 
         @if (await _settings.GetOrDefault(Settings.IdentityCheck.Enabled, true) && await _settings.GetOrDefault(Settings.IdentityCheck.ShowOnPageLoad, true) && string.IsNullOrWhiteSpace(Context?.Session?.GetString(SessionKey.ViewerIdentity)))
         {
+            var nameRequired = await _settings.GetOrDefault(Settings.IdentityCheck.RequireName, false);
+            var emailRequired = await _settings.GetOrDefault(Settings.IdentityCheck.RequireEmail, false);
+
             <script>
-                displayIdentityCheck(@((await _settings.GetOrDefault(Settings.IdentityCheck.RequireEmail, false)).ToString().ToLower()));
+                displayIdentityCheck(@((nameRequired || emailRequired).ToString().ToLower()));
             </script>
         }
 

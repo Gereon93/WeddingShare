@@ -970,6 +970,12 @@
   <data name="Settings_IdentityCheck_RequireEmail_Label" xml:space="preserve">
     <value>Запит електронної пошти</value>
   </data>
+  <data name="Settings_IdentityCheck_RequireName_Help" xml:space="preserve">
+    <value>Чи потрібно користувач ввести назву</value>
+  </data>
+  <data name="Settings_IdentityCheck_RequireName_Label" xml:space="preserve">
+    <value>Ім'я</value>
+  </data>
   <data name="Settings_IdentityCheck_Upload_Help" xml:space="preserve">
     <value>Чи потрібно перевірити особу для завантаження медіа</value>
   </data>

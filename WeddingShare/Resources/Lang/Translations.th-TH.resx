@@ -970,6 +970,12 @@
   <data name="Settings_IdentityCheck_RequireEmail_Label" xml:space="preserve">
     <value>ต้องการที่อยู่อีเมล</value>
   </data>
+  <data name="Settings_IdentityCheck_RequireName_Help" xml:space="preserve">
+    <value>ควรเรียกผู้ใช้ให้ป้อนชื่อ</value>
+  </data>
+  <data name="Settings_IdentityCheck_RequireName_Label" xml:space="preserve">
+    <value>ชื่อที่ต้องการ</value>
+  </data>
   <data name="Settings_IdentityCheck_Upload_Help" xml:space="preserve">
     <value>ต้องการตรวจสอบการแสดงตัวเพื่ออัปโหลดสื่อ</value>
   </data>

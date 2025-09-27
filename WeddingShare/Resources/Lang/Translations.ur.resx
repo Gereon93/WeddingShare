@@ -970,6 +970,12 @@
   <data name="Settings_IdentityCheck_RequireEmail_Label" xml:space="preserve">
     <value>ای میل پتہ درکار ہے</value>
   </data>
+  <data name="Settings_IdentityCheck_RequireName_Help" xml:space="preserve">
+    <value>نام داخل کرنے کے لیے صارفین کو لازم ہے</value>
+  </data>
+  <data name="Settings_IdentityCheck_RequireName_Label" xml:space="preserve">
+    <value>نام</value>
+  </data>
   <data name="Settings_IdentityCheck_Upload_Help" xml:space="preserve">
     <value>میڈیا اپ لوڈ کرنے کے لئے شناخت چیک کرنے کی ضرورت ہو تو</value>
   </data>

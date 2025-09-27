@@ -970,6 +970,12 @@
   <data name="Settings_IdentityCheck_RequireEmail_Label" xml:space="preserve">
     <value>Seoladh Ríomhphoist a Fhiosrú</value>
   </data>
+  <data name="Settings_IdentityCheck_RequireName_Help" xml:space="preserve">
+    <value>Ba chóir go mbeadh ar úsáideoirí ainm a chur isteach</value>
+  </data>
+  <data name="Settings_IdentityCheck_RequireName_Label" xml:space="preserve">
+    <value>Ainm a Fhiosrú</value>
+  </data>
   <data name="Settings_IdentityCheck_Upload_Help" xml:space="preserve">
     <value>Más gá seiceáil aitheantais a uaslódáil meáin</value>
   </data>
