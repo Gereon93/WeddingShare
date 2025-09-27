@@ -23,7 +23,7 @@ function displayMediaViewer(index, thumbnail, source, type, title, collection, a
         <div id="media-viewer-popup" style="opacity: 0;">
             <div class="media-viewer" data-media-viewer-index="${index}" data-media-viewer-collection="${collection}" data-media-viewer-source="${source}">
                 <div class="media-viewer-title ${title === undefined || title.length === 0 ? 'd-none' : ''}"></div>
-                <div class="media-viewer-content"><img class="media-viewer-image" src="${type.toLowerCase() === 'image' ? source : thumbnail}" /></div>
+                <div class="media-viewer-content"><img class="media-viewer-image" src="${type.toLowerCase() === 'image' ? source : thumbnail}" onload="initMediaViewImage('${type}', '${source}');"/></div>
                 <div class="media-viewer-author ${author === undefined || author.length === 0 ? 'd-none' : ''}"></div>
                 <div class="media-viewer-description ${description === undefined || description.length === 0 ? 'd-none' : ''}"></div>
                 <div class="media-viewer-options">
@@ -36,7 +36,9 @@ function displayMediaViewer(index, thumbnail, source, type, title, collection, a
     $('#media-viewer-popup .media-viewer-title').text(title);
     $('#media-viewer-popup .media-viewer-author').text(author);
     $('#media-viewer-popup .media-viewer-description').text(description);
+}
 
+function initMediaViewImage(type, source) {
     resizeMediaViewer(1, $('#media-viewer-popup'), type, source);
 }
 
