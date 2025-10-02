@@ -67,6 +67,7 @@
             "Gallery_Wipe_Failed": "ล้มเหลวในการลบคลังภาพ",
             "Gallery_Wipe_Message": "คุณแน่ใจหรือว่าต้องการจะลบคลังภาพ '{0}'?",
             "Gallery_Wipe_Success": "ลบคลังภาพเรียบร้อยแล้ว",
+            "Generating_Download": "กําลังสร้างการดาวน์โหลด",
             "Identity_Check": "ตรวจสอบการแสดงตัว",
             "Identity_Check_Change": "เปลี่ยน",
             "Identity_Check_Change_Identity": "เปลี่ยนการแสดงตัว",

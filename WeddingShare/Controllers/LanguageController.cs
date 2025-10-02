@@ -8,13 +8,14 @@ using WeddingShare.Models;
 namespace WeddingShare.Controllers
 {
     [AllowAnonymous]
-    public class LanguageController : Controller
+    public class LanguageController : BaseController
     {
         private readonly ISettingsHelper _settings;
         private readonly ILanguageHelper _languageHelper;
         private readonly ILogger<LanguageController> _logger;
 
         public LanguageController(ISettingsHelper settings, ILanguageHelper languageHelper, ILogger<LanguageController> logger)
+            : base()
         {
             _settings = settings;
             _languageHelper = languageHelper;

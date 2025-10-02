@@ -67,6 +67,7 @@
             "Gallery_Wipe_Failed": "Αποτυχία διαγραφής της συλλογής",
             "Gallery_Wipe_Message": "Είσαι σίγουρος ότι θέλεις να σκουπίσεις την γκαλερί '{όνομα}'?",
             "Gallery_Wipe_Success": "Επιτυχής σκούπισμα γκαλερί",
+            "Generating_Download": "Δημιουργία λήψης",
             "Identity_Check": "Έλεγχος ταυτότητας",
             "Identity_Check_Change": "Αλλαγή",
             "Identity_Check_Change_Identity": "Τροποποίηση ταυτότητας",

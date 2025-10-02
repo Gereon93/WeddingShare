@@ -67,6 +67,7 @@
             "Gallery_Wipe_Failed": "Failed to wipe gallery",
             "Gallery_Wipe_Message": "Are you sure you want to wipe gallery '{name}'?",
             "Gallery_Wipe_Success": "Successfully wiped gallery",
+            "Generating_Download": "Generating Download",
             "Identity_Check": "Guest Name",
             "Identity_Check_Change": "Change",
             "Identity_Check_Change_Identity": "Change Guest Name",

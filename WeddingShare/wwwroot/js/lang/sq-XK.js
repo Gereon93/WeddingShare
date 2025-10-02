@@ -67,6 +67,7 @@
             "Gallery_Wipe_Failed": "Fshirja e koleksionit dështoi",
             "Gallery_Wipe_Message": "Jeni i sigurt që dëshironi të eleminoni galerinë '{name}'?",
             "Gallery_Wipe_Success": "Galeria e fshirë me sukses",
+            "Generating_Download": "Duke krijuar shkarkime",
             "Identity_Check": "Kontrolli i identitetit",
             "Identity_Check_Change": "Ndrysho",
             "Identity_Check_Change_Identity": "Ndrysho identitetin",

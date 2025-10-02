@@ -321,25 +321,27 @@
                 return;
             }
 
-            displayLoader(localization.translate('Loading'));
+            displayLoader(localization.translate('Generating_Download'));
 
             let id = $(this).data('gallery-id');
+            let name = $(this).data('gallery-name');
             let secretKey = $(this).data('gallery-key');
             let group = $(this).data('group-name');
 
             $.ajax({
                 url: '/Gallery/DownloadGallery',
                 method: 'POST',
-                data: { Id: id, SecretKey: secretKey, Group: group }
+                data: { Id: id, SecretKey: secretKey, Group: group },
+                xhrFields: {
+                    responseType: 'blob'
+                },
             })
-                .done(data => {
+                .done((data, status, xhr) => {
                     hideLoader();
 
-                    if (data.success === true && data.filename) {
-                        window.location.href = data.filename;
-                    } else if (data.message) {
-                        displayMessage(localization.translate('Download'), localization.translate('Download_Failed'), [data.message]);
-                    } else {
+                    try {
+                        downloadBlob(`${name}_${getTimestamp()}.zip`, 'application/zip', data, xhr);
+                    } catch {
                         displayMessage(localization.translate('Download'), localization.translate('Download_Failed'));
                     }
                 })
@@ -356,24 +358,26 @@
                 return;
             }
 
-            displayLoader(localization.translate('Loading'));
+            displayLoader(localization.translate('Generating_Download'));
 
             let id = $(this).data('gallery-id');
+            let name = $(this).data('gallery-name');
             let secretKey = $(this).data('gallery-key');
 
             $.ajax({
                 url: '/Gallery/DownloadGallery',
                 method: 'POST',
-                data: { Id: id, SecretKey: secretKey }
+                data: { Id: id, SecretKey: secretKey },
+                xhrFields: {
+                    responseType: 'blob'
+                },
             })
-                .done(data => {
+                .done((data, status, xhr) => {
                     hideLoader();
 
-                    if (data.success === true && data.filename) {
-                        window.location.href = data.filename;
-                    } else if (data.message) {
-                        displayMessage(localization.translate('Download'), localization.translate('Download_Failed'), [data.message]);
-                    } else {
+                    try {
+                        downloadBlob(`${name}_${getTimestamp()}.zip`, 'application/zip', data, xhr);
+                    } catch {
                         displayMessage(localization.translate('Download'), localization.translate('Download_Failed'));
                     }
                 })

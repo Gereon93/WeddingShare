@@ -67,6 +67,7 @@
             "Gallery_Wipe_Failed": "Failed chun wipe gailearaí",
             "Gallery_Wipe_Message": "An bhfuil tú cinnte gur mhaith leat a wipe gailearaí ''?",
             "Gallery_Wipe_Success": "Go rathúil wiped gailearaí",
+            "Generating_Download": "Giniúint Íosluchtaigh",
             "Identity_Check": "Seiceáil Aitheantais",
             "Identity_Check_Change": "Athraigh agus Athraigh",
             "Identity_Check_Change_Identity": "Amharc ar gach eolas",

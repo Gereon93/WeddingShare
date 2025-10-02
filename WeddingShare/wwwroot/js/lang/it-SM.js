@@ -67,6 +67,7 @@
             "Gallery_Wipe_Failed": "Impossibile svuotare la galleria",
             "Gallery_Wipe_Message": "Sei sicuro di voler svuotare la galleria?",
             "Gallery_Wipe_Success": "Galleria svuotata con successo",
+            "Generating_Download": "Generando Download",
             "Identity_Check": "Controllo identità",
             "Identity_Check_Change": "Modifica",
             "Identity_Check_Change_Identity": "Cambia identità",

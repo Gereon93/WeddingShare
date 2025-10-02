@@ -67,6 +67,7 @@
             "Gallery_Wipe_Failed": "شکست برای حذف گالری",
             "Gallery_Wipe_Message": "آیا مطمئن هستید که می خواهید گالری «نام» را پاک کنید؟?",
             "Gallery_Wipe_Success": "موفق به حذف گالری",
+            "Generating_Download": "تولید کننده",
             "Identity_Check": "بررسی هویت",
             "Identity_Check_Change": "تغییر",
             "Identity_Check_Change_Identity": "تغییر هویت",

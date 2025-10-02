@@ -67,6 +67,7 @@
             "Gallery_Wipe_Failed": "Eșec la ștergerea galeriei",
             "Gallery_Wipe_Message": "Eşti sigur că vrei să ştergi galeria '{numele}'?",
             "Gallery_Wipe_Success": "Galerie ștersă cu succes",
+            "Generating_Download": "Generare descărcare",
             "Identity_Check": "Verificarea identității",
             "Identity_Check_Change": "Modificare",
             "Identity_Check_Change_Identity": "Schimbă identitatea",

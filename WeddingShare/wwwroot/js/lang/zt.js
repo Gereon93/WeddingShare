@@ -67,6 +67,7 @@
             "Gallery_Wipe_Failed": "擦除相簿失敗",
             "Gallery_Wipe_Message": "您確定要擦去畫廊 “{名稱} ?",
             "Gallery_Wipe_Success": "已成功擦除相簿",
+            "Generating_Download": "正在下載中",
             "Identity_Check": "身份檢查",
             "Identity_Check_Change": "更改",
             "Identity_Check_Change_Identity": "更改身份",

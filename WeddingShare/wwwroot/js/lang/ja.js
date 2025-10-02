@@ -67,6 +67,7 @@
             "Gallery_Wipe_Failed": "ギャラリーを拭き取らない",
             "Gallery_Wipe_Message": "ギャラリー「{name}'を拭きたいですか?",
             "Gallery_Wipe_Success": "すっかり拭いたギャラリー",
+            "Generating_Download": "ダウンロードの生成",
             "Identity_Check": "アイデンティティチェック",
             "Identity_Check_Change": "アクセス",
             "Identity_Check_Change_Identity": "アイデンティティの変更",

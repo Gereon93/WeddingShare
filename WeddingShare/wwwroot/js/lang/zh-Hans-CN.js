@@ -67,6 +67,7 @@
             "Gallery_Wipe_Failed": "擦去画廊失败",
             "Gallery_Wipe_Message": "您确定要擦去画廊“ {name} ” 吗 ?",
             "Gallery_Wipe_Success": "成功擦除画廊",
+            "Generating_Download": "生成下载",
             "Identity_Check": "身份检查",
             "Identity_Check_Change": "变动",
             "Identity_Check_Change_Identity": "更改身份",

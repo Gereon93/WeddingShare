@@ -67,6 +67,7 @@
             "Gallery_Wipe_Failed": "گیلری کو مٹانے میں ناکام",
             "Gallery_Wipe_Message": "کیا آپ یقینی طور پر گیلری کو ختم کرنا چاہتے ہیں؟?",
             "Gallery_Wipe_Success": "کامیابی کیساتھ گیلری کو ختم کِیا گیا",
+            "Generating_Download": "جینیاتی ردوبدل",
             "Identity_Check": "چیک کریں",
             "Identity_Check_Change": "تبدیل کریں",
             "Identity_Check_Change_Identity": "تبدیل کریں",

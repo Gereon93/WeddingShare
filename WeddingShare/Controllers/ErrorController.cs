@@ -4,9 +4,10 @@ using Microsoft.AspNetCore.Mvc;
 namespace WeddingShare.Controllers
 {
     [AllowAnonymous]
-    public class ErrorController : Controller
+    public class ErrorController : BaseController
     {
         public ErrorController()
+            : base()
         {
         }
 

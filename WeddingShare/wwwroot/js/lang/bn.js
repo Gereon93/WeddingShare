@@ -67,6 +67,7 @@
             "Gallery_Wipe_Failed": "গ্যালারি লোড করতে ব্যর্থ",
             "Gallery_Wipe_Message": "আপনি কি নিশ্চিতরূপে '{name' ট্যাগ মুছে ফেলতে ইচ্ছুক?",
             "Gallery_Wipe_Success": "সাফল্যের সাথে আপডেট করা হয়েছে",
+            "Generating_Download": "ডাউনলোড করা হচ্ছে",
             "Identity_Check": "পরিচয় পরীক্ষা করো",
             "Identity_Check_Change": "পরিবর্তন",
             "Identity_Check_Change_Identity": "পরিচয় পরিবর্তন করো",

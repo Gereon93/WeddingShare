@@ -8,7 +8,7 @@ using WeddingShare.Models;
 namespace WeddingShare.Controllers
 {
     [AllowAnonymous]
-    public class SponsorsController : Controller
+    public class SponsorsController : BaseController
     {
         private readonly ISettingsHelper _settings;
         private readonly IHttpClientFactory _clientFactory;
@@ -16,6 +16,7 @@ namespace WeddingShare.Controllers
         private readonly IStringLocalizer<Lang.Translations> _localizer;
 
         public SponsorsController(ISettingsHelper settings, IHttpClientFactory clientFactory, ILogger<HomeController> logger, IStringLocalizer<Lang.Translations> localizer)
+            : base()
         {
             _settings = settings;
             _clientFactory = clientFactory;

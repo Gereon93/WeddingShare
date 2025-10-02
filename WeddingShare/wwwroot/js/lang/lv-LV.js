@@ -67,6 +67,7 @@
             "Gallery_Wipe_Failed": "Neizdevās noslaucīt galeriju",
             "Gallery_Wipe_Message": "Vai tiešām vēlaties noslaucīt galeriju '{name}'?",
             "Gallery_Wipe_Success": "Veiksmīgi noslaucīta galerija",
+            "Generating_Download": "Ģenerē lejupielādi",
             "Identity_Check": "Identitātes pārbaude",
             "Identity_Check_Change": "Mainīt",
             "Identity_Check_Change_Identity": "Mainīt identitāti",

@@ -67,6 +67,7 @@
             "Gallery_Wipe_Failed": "В'язаний для витирання галереї",
             "Gallery_Wipe_Message": "Ви впевнені, що ви хочете протерти галерею '{name}'?",
             "Gallery_Wipe_Success": "Успішно протерти галерею",
+            "Generating_Download": "Генерування Завантажити",
             "Identity_Check": "Перевірка ідентичності",
             "Identity_Check_Change": "Зареєструватися",
             "Identity_Check_Change_Identity": "Зміна ідентичності",

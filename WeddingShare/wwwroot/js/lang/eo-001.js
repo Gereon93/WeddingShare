@@ -67,6 +67,7 @@
             "Gallery_Wipe_Failed": "Maltrankviligita por forviŝi galerion",
             "Gallery_Wipe_Message": "Ĉu vi estas certa ke vi volas forviŝi galerion ''?",
             "Gallery_Wipe_Success": "Sukcese forviŝita galerio",
+            "Generating_Download": "Mortigo",
             "Identity_Check": "Identeco Kontrolu",
             "Identity_Check_Change": "Ŝanĝoj ŝanĝiĝas",
             "Identity_Check_Change_Identity": "Ŝanĝo Identeco",

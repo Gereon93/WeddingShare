@@ -67,6 +67,7 @@
             "Gallery_Wipe_Failed": "Ha fallat en esborrar la galeria",
             "Gallery_Wipe_Message": "Esteu segur que voleu esborrar la galeria '{nom}'?",
             "Gallery_Wipe_Success": "S' ha esborrat correctament la galeria",
+            "Generating_Download": "S' està generant la descàrrega",
             "Identity_Check": "Comprovació d' identitat",
             "Identity_Check_Change": "Canvia",
             "Identity_Check_Change_Identity": "Canvia la identitat",

@@ -67,6 +67,7 @@
             "Gallery_Wipe_Failed": "Ni uspelo brisati galerije",
             "Gallery_Wipe_Message": "Si prepričan, da želiš izbrisati galerijo 'Ime'?",
             "Gallery_Wipe_Success": "Uspešno izbrisana galerija",
+            "Generating_Download": "Ustvarjanje prejemanja",
             "Identity_Check": "Preverjanje identitete",
             "Identity_Check_Change": "Sprememba",
             "Identity_Check_Change_Identity": "Spremeni identiteto",

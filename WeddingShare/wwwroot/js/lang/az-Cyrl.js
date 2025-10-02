@@ -67,6 +67,7 @@
             "Gallery_Wipe_Failed": "Sərginin silinməsi",
             "Gallery_Wipe_Message": " gallery {name}?",
             "Gallery_Wipe_Success": "Ətraflı qalereya",
+            "Generating_Download": "Qeydiyyat",
             "Identity_Check": "Qeydiyyat",
             "Identity_Check_Change": "Qeydiyyat",
             "Identity_Check_Change_Identity": "Qeydiyyat",

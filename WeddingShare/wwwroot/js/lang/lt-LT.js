@@ -67,6 +67,7 @@
             "Gallery_Wipe_Failed": "Nepavyko ištrinti galerijos",
             "Gallery_Wipe_Message": "Jūs tikrai norite ištrinti galeriją {vardas}?",
             "Gallery_Wipe_Success": "@ info: tooltip",
+            "Generating_Download": "Generuojamas atsiuntimas",
             "Identity_Check": "Tapatybės patikrinimas",
             "Identity_Check_Change": "Pokytis",
             "Identity_Check_Change_Identity": "Keisti tapatybę",

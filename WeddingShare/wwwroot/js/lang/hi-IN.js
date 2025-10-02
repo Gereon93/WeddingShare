@@ -67,6 +67,7 @@
             "Gallery_Wipe_Failed": "गैलरी पोंछने में विफल",
             "Gallery_Wipe_Message": "क्या आपको यकीन है कि आप गैलरी '{name}' को मिटाना चाहते हैं?",
             "Gallery_Wipe_Success": "सफलतापूर्वक पोंछे गैलरी",
+            "Generating_Download": "Generating डाउनलोड",
             "Identity_Check": "पहचान जांच",
             "Identity_Check_Change": "परिवर्तन",
             "Identity_Check_Change_Identity": "पहचान बदलें",

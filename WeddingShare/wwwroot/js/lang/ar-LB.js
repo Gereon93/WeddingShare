@@ -67,6 +67,7 @@
             "Gallery_Wipe_Failed": "فشل في محو المعرض",
             "Gallery_Wipe_Message": "هل أنت متأكد من أنك تريد مسح المعرض؟?",
             "Gallery_Wipe_Success": "معرض مبيد بنجاح",
+            "Generating_Download": "توليد الحمولة",
             "Identity_Check": "التحقق من الهوية",
             "Identity_Check_Change": "التغيير",
             "Identity_Check_Change_Identity": "تغيير الهوية",

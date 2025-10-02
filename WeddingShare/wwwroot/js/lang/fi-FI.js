@@ -67,6 +67,7 @@
             "Gallery_Wipe_Failed": "Gallerian pyyhkiminen epäonnistui",
             "Gallery_Wipe_Message": "Haluatko varmasti pyyhkiä gallerian?",
             "Gallery_Wipe_Success": "Onnistuneesti pyyhitty galleria",
+            "Generating_Download": "Luodaan latausta",
             "Identity_Check": "Henkilöllisyyden tarkistus",
             "Identity_Check_Change": "Muutos",
             "Identity_Check_Change_Identity": "Muuta henkilöllisyyttä",

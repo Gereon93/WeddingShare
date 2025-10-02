@@ -67,6 +67,7 @@
             "Gallery_Wipe_Failed": "Galeriyi yok etmek için başarısız oldu",
             "Gallery_Wipe_Message": "Galeriyi ‘{name} silmek istediğinizden emin misiniz?",
             "Gallery_Wipe_Success": "Başarılı bir şekilde galeriyi sildi",
+            "Generating_Download": "Gening Download Download",
             "Identity_Check": "Kimlik Kontrolü",
             "Identity_Check_Change": "Change",
             "Identity_Check_Change_Identity": "Kimlik Değişimi Değiştirin",

@@ -67,6 +67,7 @@
             "Gallery_Wipe_Failed": "Грешка при изтриване на галерията",
             "Gallery_Wipe_Message": "Сигурен ли си, че искаш да изтриеш галерията?",
             "Gallery_Wipe_Success": "Успешно изтрита галерия",
+            "Generating_Download": "Генериране на изтегляне",
             "Identity_Check": "Проверка на самоличността",
             "Identity_Check_Change": "Промяна",
             "Identity_Check_Change_Identity": "Промяна на самоличността",

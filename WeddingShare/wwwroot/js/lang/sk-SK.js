@@ -67,6 +67,7 @@
             "Gallery_Wipe_Failed": "Galéria zlyhala",
             "Gallery_Wipe_Message": "Si si istý, že chceš vymazať galériu?",
             "Gallery_Wipe_Success": "Úspešne vymazaná galéria",
+            "Generating_Download": "Generujem sťahovanie",
             "Identity_Check": "Kontrola totožnosti",
             "Identity_Check_Change": "Zmena",
             "Identity_Check_Change_Identity": "Zmeniť identitu",
