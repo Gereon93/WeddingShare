@@ -181,10 +181,12 @@ namespace WeddingShare.Helpers
 
                 return true;
             }
-            catch 
+            catch (Exception ex)
             {
-                return false;
+                _logger.LogWarning(ex, $"Failed to download FFmpeg - '{path}'");
             }
+
+            return false;
         }
     }
 }

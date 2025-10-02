@@ -67,6 +67,7 @@
             "Gallery_Wipe_Failed": "글 탐색",
             "Gallery_Wipe_Message": "갤러리 '{name}'를 닦고 싶으신가요?",
             "Gallery_Wipe_Success": "성공적으로 닦은 갤러리",
+            "Generating_Download": "다운로드",
             "Identity_Check": "ID 확인",
             "Identity_Check_Change": "- 기타",
             "Identity_Check_Change_Identity": "ID 변경",

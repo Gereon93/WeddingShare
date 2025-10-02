@@ -1,5 +1,3 @@
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
@@ -12,7 +10,7 @@ using WeddingShare.Models;
 namespace WeddingShare.Controllers
 {
     [AllowAnonymous]
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         private readonly ISettingsHelper _settings;
         private readonly IDatabaseHelper _database;
@@ -22,6 +20,7 @@ namespace WeddingShare.Controllers
         private readonly IStringLocalizer<Lang.Translations> _localizer;
 
         public HomeController(ISettingsHelper settings, IDatabaseHelper database, IDeviceDetector deviceDetector, IAuditHelper audit, ILogger<HomeController> logger, IStringLocalizer<Lang.Translations> localizer)
+            : base()
         {
             _settings = settings;
             _database = database;

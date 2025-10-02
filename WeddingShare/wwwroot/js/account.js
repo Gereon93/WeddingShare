@@ -652,7 +652,7 @@ function selectActiveTab(tab) {
                     Text: localization.translate('Export'),
                     Class: 'btn-success',
                     Callback: function () {
-                        displayLoader(localization.translate('Loading'));
+                        displayLoader(localization.translate('Generating_Download'));
 
                         $.ajax({
                             url: '/Account/ExportBackup',
@@ -662,16 +662,17 @@ function selectActiveTab(tab) {
                                 Uploads: $('#popup-modal-field-uploads').is(':checked'),
                                 Thumbnails: $('#popup-modal-field-thumbnails').is(':checked'),
                                 CustomResources: $('#popup-modal-field-custom-resources').is(':checked')
+                            },
+                            xhrFields: {
+                                responseType: 'blob'
                             }
                         })
-                            .done(data => {
+                            .done((data, status, xhr) => {
                                 hideLoader();
 
-                                if (data.success === true && data.filename) {
-                                    window.location.href = data.filename;
-                                } else if (data.message) {
-                                    displayMessage(localization.translate('Export_Data'), localization.translate('Export_Data_Failed'), [data.message]);
-                                } else {
+                                try {
+                                    downloadBlob(`WeddingShare_${getTimestamp()}.zip`, 'application/zip', data, xhr);
+                                } catch {
                                     displayMessage(localization.translate('Export_Data'), localization.translate('Export_Data_Failed'));
                                 }
                             })
@@ -954,25 +955,27 @@ function selectActiveTab(tab) {
                 return;
             }
 
-            displayLoader(localization.translate('Loading'));
+            displayLoader(localization.translate('Generating_Download'));
 
             let row = $(this).closest('tr');
             let id = row.data('gallery-id');
+            let name = row.data('gallery-name');
             let secretKey = row.data('gallery-key');
 
             $.ajax({
                 url: '/Gallery/DownloadGallery',
                 method: 'POST',
-                data: { Id: id, SecretKey: secretKey }
+                data: { Id: id, SecretKey: secretKey },
+                xhrFields: {
+                    responseType: 'blob'
+                },
             })
-                .done(data => {
+                .done((data, status, xhr) => {
                     hideLoader();
 
-                    if (data.success === true && data.filename) {
-                        window.location.href = data.filename;
-                    } else if (data.message) {
-                        displayMessage(localization.translate('Download'), localization.translate('Download_Failed'), [data.message]);
-                    } else {
+                    try {
+                        downloadBlob(`${name}_${getTimestamp()}.zip`, 'application/zip', data, xhr);
+                    } catch {
                         displayMessage(localization.translate('Download'), localization.translate('Download_Failed'));
                     }
                 })

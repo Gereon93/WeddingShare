@@ -1,9 +1,8 @@
-using System.IO.Compression;
-using System.Net;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
+using System.Net;
 using WeddingShare.Attributes;
 using WeddingShare.Constants;
 using WeddingShare.Enums;
@@ -17,7 +16,7 @@ using WeddingShare.Models.Database;
 namespace WeddingShare.Controllers
 {
     [AllowAnonymous]
-    public class GalleryController : Controller
+    public class GalleryController : BaseController
     {
         private readonly IWebHostEnvironment _hostingEnvironment;
         private readonly ISettingsHelper _settings;
@@ -37,6 +36,7 @@ namespace WeddingShare.Controllers
         private readonly string ThumbnailsDirectory;
 
         public GalleryController(IWebHostEnvironment hostingEnvironment, ISettingsHelper settings, IDatabaseHelper database, IFileHelper fileHelper, IDeviceDetector deviceDetector, IImageHelper imageHelper, INotificationHelper notificationHelper, IEncryptionHelper encryptionHelper, Helpers.IUrlHelper urlHelper, ILogger<GalleryController> logger, IStringLocalizer<Lang.Translations> localizer)
+            : base()
         {
             _hostingEnvironment = hostingEnvironment;
             _settings = settings;
@@ -522,7 +522,7 @@ namespace WeddingShare.Controllers
                         var galleryDir = id > 0 ? Path.Combine(UploadsDirectory, gallery.Identifier) : UploadsDirectory;
                         if (_fileHelper.DirectoryExists(galleryDir))
                         {
-                            var keepFiles = new List<string>();
+                            var fileFilter = new List<string>();
                             if (!string.IsNullOrWhiteSpace(group))
                             {
                                 var groupParts = group.Split('|', StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries);
@@ -557,7 +557,7 @@ namespace WeddingShare.Controllers
                                                         {
                                                             if (f.Any())
                                                             {
-                                                                keepFiles.AddRange(f.Select(x => x.Title));
+                                                                fileFilter.AddRange(f.Select(x => x.Title));
                                                             }
 
                                                             break;
@@ -577,46 +577,31 @@ namespace WeddingShare.Controllers
                                 }
                             }
 
-                            _fileHelper.CreateDirectoryIfNotExists(TempDirectory);
-
-                            var tempZipFile = Path.Combine(TempDirectory, $"{gallery.Identifier}-{DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss")}.zip");
-                            ZipFile.CreateFromDirectory(galleryDir, tempZipFile, CompressionLevel.Optimal, false);
-
-                            if (User?.Identity == null || !User.Identity.IsAuthenticated)
+                            var searchOption = (User?.Identity == null || !User.Identity.IsAuthenticated) ? SearchOption.TopDirectoryOnly : SearchOption.AllDirectories;
+                            var files = Directory.GetFiles(galleryDir, "*", searchOption);
+                            if (fileFilter != null && fileFilter.Any())
                             {
-                                using (var fs = new FileStream(tempZipFile, FileMode.Open, FileAccess.ReadWrite))
-                                using (var archive = new ZipArchive(fs, ZipArchiveMode.Update, false))
-                                {
-                                    foreach (var entry in archive.Entries.Where(x => x.FullName.StartsWith("Pending/", StringComparison.OrdinalIgnoreCase) || x.FullName.StartsWith("Rejected/", StringComparison.OrdinalIgnoreCase)).ToList())
-                                    {
-                                        entry.Delete();
-                                    }
-
-                                    if (keepFiles.Any())
-                                    {
-                                        foreach (var entry in archive.Entries.Where(x => !keepFiles.Exists(y => Path.GetFileName(y).Equals(x.Name))).ToList())
-                                        {
-                                            entry.Delete();
-                                        }
-                                    }
-                                }
+                                files = files.Where(x => fileFilter.Exists(y => Path.GetFileName(y).Equals(Path.GetFileName(x), StringComparison.OrdinalIgnoreCase))).ToArray();
                             }
 
-                            return Json(new { success = true, filename = $"/temp/{Path.GetFileName(tempZipFile)}" });
+                            return await ZipFileResponse($"{gallery?.Identifier ?? "WeddingShare"}_{DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss")}.zip", new ZipListing(galleryDir, files));
                         }
                     }
                     else
                     {
+                        Response.StatusCode = (int)HttpStatusCode.BadRequest;
                         return Json(new { success = false, message = _localizer["Download_Gallery_Not_Allowed"].Value });
                     }
                 }
                 else
                 {
+                    Response.StatusCode = (int)HttpStatusCode.BadRequest;
                     return Json(new { success = false, message = _localizer["Failed_Download_Gallery"].Value });
                 }
             }
             catch (Exception ex)
             {
+                Response.StatusCode = (int)HttpStatusCode.BadRequest;
                 _logger.LogError(ex, $"{_localizer["Failed_Download_Gallery"].Value} - {ex?.Message}");
             }
 

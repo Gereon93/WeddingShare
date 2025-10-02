@@ -67,6 +67,7 @@
             "Gallery_Wipe_Failed": "Nem sikerült törölni a galériát",
             "Gallery_Wipe_Message": "Biztos, hogy le akarod törölni a galériát?",
             "Gallery_Wipe_Success": "Sikeresen letörölt galéria",
+            "Generating_Download": "Letöltés generálása",
             "Identity_Check": "Azonosítás ellenőrzése",
             "Identity_Check_Change": "Változás",
             "Identity_Check_Change_Identity": "Azonosítás módosítása",

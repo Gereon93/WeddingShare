@@ -67,6 +67,7 @@
             "Gallery_Wipe_Failed": "נכשלת בגלריית הנגיף",
             "Gallery_Wipe_Message": "אתה בטוח שאתה רוצה למחוק את הגלריה '?",
             "Gallery_Wipe_Success": "גלריה ממולחת",
+            "Generating_Download": "יצירת Download",
             "Identity_Check": "Identity Check",
             "Identity_Check_Change": "שינוי",
             "Identity_Check_Change_Identity": "שינוי זהות",

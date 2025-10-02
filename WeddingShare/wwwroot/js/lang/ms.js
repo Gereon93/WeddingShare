@@ -67,6 +67,7 @@
             "Gallery_Wipe_Failed": "Gagal menghapus galeri",
             "Gallery_Wipe_Message": "Anda yakin ingin menghapus galeri '{name}'?",
             "Gallery_Wipe_Success": "Galeri yang berhasil dibersihkan",
+            "Generating_Download": "Muaturun Penjanaan",
             "Identity_Check": "Cek Identitas",
             "Identity_Check_Change": "♪ Berubah ♪",
             "Identity_Check_Change_Identity": "Identitas Perubahan",

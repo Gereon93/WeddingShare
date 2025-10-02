@@ -67,6 +67,7 @@
             "Gallery_Wipe_Failed": "Kon galerij niet wissen",
             "Gallery_Wipe_Message": "Weet u zeker dat u galerij '{name}' wilt wissen?",
             "Gallery_Wipe_Success": "Galerie met succes gewist",
+            "Generating_Download": "Downloaden genereren",
             "Identity_Check": "Identiteitscontrole",
             "Identity_Check_Change": "Wijziging",
             "Identity_Check_Change_Identity": "Identiteit wijzigen",

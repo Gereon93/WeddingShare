@@ -67,6 +67,7 @@
             "Gallery_Wipe_Failed": "Kunne ikke tørre galleri",
             "Gallery_Wipe_Message": "Er du sikker på, du vil tørre galleri '{name}'?",
             "Gallery_Wipe_Success": "Galleriet er udtørret med succes",
+            "Generating_Download": "Generering af download",
             "Identity_Check": "Identitetskontrol",
             "Identity_Check_Change": "Ændring",
             "Identity_Check_Change_Identity": "Ændr identitet",

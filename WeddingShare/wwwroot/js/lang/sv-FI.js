@@ -67,6 +67,7 @@
             "Gallery_Wipe_Failed": "Misslyckades med att torka galleriet",
             "Gallery_Wipe_Message": "Är du säker på att du vill torka galleriet '{namn}'?",
             "Gallery_Wipe_Success": "Framgångsrikt torkat galleri",
+            "Generating_Download": "Generera nedladdning",
             "Identity_Check": "Identity Check",
             "Identity_Check_Change": "Förändring",
             "Identity_Check_Change_Identity": "Ändra identitet",

@@ -67,6 +67,7 @@
             "Gallery_Wipe_Failed": "Galerii pühkimine nurjus",
             "Gallery_Wipe_Message": "Kas oled kindel, et soovid galerii '{name}' pühkida?",
             "Gallery_Wipe_Success": "Edukalt pühitud galerii",
+            "Generating_Download": "Allalaadimise genereerimine",
             "Identity_Check": "Identiteedikontroll",
             "Identity_Check_Change": "Muuda",
             "Identity_Check_Change_Identity": "Identiteedi muutmine",

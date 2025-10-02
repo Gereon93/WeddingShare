@@ -67,6 +67,7 @@
             "Gallery_Wipe_Failed": "Huts egin du galeria garbitzean",
             "Gallery_Wipe_Message": "Ziur zaude galeria garbitu nahi duzula?",
             "Gallery_Wipe_Success": "Galeria ongi ezabatuta",
+            "Generating_Download": "Deskarga sortzen",
             "Identity_Check": "Identitatearen kontrola",
             "Identity_Check_Change": "Aldatu",
             "Identity_Check_Change_Identity": "Aldatu identitatea",

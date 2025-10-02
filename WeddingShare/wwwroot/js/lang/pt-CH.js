@@ -67,6 +67,7 @@
             "Gallery_Wipe_Failed": "Falhado para limpar a galeria",
             "Gallery_Wipe_Message": "Tens a certeza que queres limpar a galeria?",
             "Gallery_Wipe_Success": "Galeria bem limpa",
+            "Generating_Download": "Gerar Download",
             "Identity_Check": "Verificação de identidade",
             "Identity_Check_Change": "Variação",
             "Identity_Check_Change_Identity": "Identidade de mudança",

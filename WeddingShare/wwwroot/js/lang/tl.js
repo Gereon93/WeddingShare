@@ -67,6 +67,7 @@
             "Gallery_Wipe_Failed": "Sawi sa pagbura ng galerya",
             "Gallery_Wipe_Message": "Natitiyak mo ba na nais mong alisin ang gallery 'ificname}'?",
             "Gallery_Wipe_Success": "Matagumpay na nabura ang galerya",
+            "Generating_Download": "Bumababang Bilang",
             "Identity_Check": "Pagsusuri sa Pagkakakilanlan",
             "Identity_Check_Change": "Pagbabago",
             "Identity_Check_Change_Identity": "Palitan ang Pagkakakilanlan",

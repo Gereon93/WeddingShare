@@ -21,7 +21,7 @@ using WeddingShare.Views.Account;
 namespace WeddingShare.Controllers
 {
     [Authorize]
-    public class AccountController : Controller
+    public class AccountController : BaseController
     {
         private readonly IWebHostEnvironment _hostingEnvironment;
         private readonly ISettingsHelper _settings;
@@ -41,6 +41,7 @@ namespace WeddingShare.Controllers
         private readonly string CustomResourcesDirectory;
 
         public AccountController(IWebHostEnvironment hostingEnvironment, ISettingsHelper settings, IDatabaseHelper database, IDeviceDetector deviceDetector, IFileHelper fileHelper, IEncryptionHelper encryption, INotificationHelper notificationHelper, Helpers.IUrlHelper url, IAuditHelper audit, ILogger<AccountController> logger, IStringLocalizer<Lang.Translations> localizer)
+            : base()
         {
             _hostingEnvironment = hostingEnvironment;
             _settings = settings;
@@ -1122,36 +1123,35 @@ namespace WeddingShare.Controllers
 
                         if (exported)
                         {
-                            var uploadsZip = Path.Combine(exportDir, $"Uploads.bak");
+                            var listing = new List<ZipListing>();
+
+                            if (options.Database)
+                            {
+                                listing.Add(new ZipListing(exportDir, new string[] { dbExport }));
+                            }
+
                             if (options.Uploads)
-                            { 
-                                ZipFile.CreateFromDirectory(UploadsDirectory, uploadsZip, CompressionLevel.Optimal, false);
+                            {
+                                listing.Add(new ZipListing(UploadsDirectory, Directory.GetFiles(UploadsDirectory, "*", SearchOption.AllDirectories), "Uploads.bak"));
                             }
 
-                            var thumbnailsZip = Path.Combine(exportDir, $"Thumbnails.bak");
                             if (options.Thumbnails)
-                            { 
-                                ZipFile.CreateFromDirectory(ThumbnailsDirectory, thumbnailsZip, CompressionLevel.Optimal, false);
+                            {
+                                listing.Add(new ZipListing(ThumbnailsDirectory, Directory.GetFiles(ThumbnailsDirectory, "*", SearchOption.AllDirectories), "Thumbnails.bak"));
                             }
 
-                            var customResourcesZip = Path.Combine(exportDir, $"CustomResources.bak");
                             if (options.CustomResources && _fileHelper.DirectoryExists(CustomResourcesDirectory))
                             {
-                                ZipFile.CreateFromDirectory(CustomResourcesDirectory, customResourcesZip, CompressionLevel.Optimal, false);
+                                listing.Add(new ZipListing(CustomResourcesDirectory, Directory.GetFiles(CustomResourcesDirectory, "*", SearchOption.AllDirectories), "CustomResources.bak"));
                             }
 
-                            var exportZipFile = Path.Combine(TempDirectory, $"WeddingShare-{DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss")}.zip");
-                            _fileHelper.DeleteFileIfExists(exportZipFile);
+                            var response = await ZipFileResponse($"WeddingShare-{DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss")}.zip", listing);
 
-                            ZipFile.CreateFromDirectory(exportDir, exportZipFile, CompressionLevel.Optimal, false);
                             _fileHelper.DeleteFileIfExists(dbExport);
-                            _fileHelper.DeleteFileIfExists(uploadsZip);
-                            _fileHelper.DeleteFileIfExists(thumbnailsZip);
-                            _fileHelper.DeleteFileIfExists(customResourcesZip);
 
                             await _audit.LogAction(User?.Identity?.Name, _localizer["Audit_ExportedBackup"].Value);
 
-                            return Json(new { success = true, filename = $"/temp/{Path.GetFileName(exportZipFile)}" });
+                            return response;
                         }
                     }
                 }
