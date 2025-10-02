@@ -577,14 +577,52 @@ namespace WeddingShare.Controllers
                                 }
                             }
 
-                            var searchOption = (User?.Identity == null || !User.Identity.IsAuthenticated) ? SearchOption.TopDirectoryOnly : SearchOption.AllDirectories;
-                            var files = Directory.GetFiles(galleryDir, "*", searchOption);
-                            if (fileFilter != null && fileFilter.Any())
-                            {
-                                files = files.Where(x => fileFilter.Exists(y => Path.GetFileName(y).Equals(Path.GetFileName(x), StringComparison.OrdinalIgnoreCase))).ToArray();
-                            }
+                            var archieveName = $"{gallery?.Identifier ?? "WeddingShare"}_{DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss")}.zip";
 
-                            return await ZipFileResponse($"{gallery?.Identifier ?? "WeddingShare"}_{DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss")}.zip", new ZipListing(galleryDir, files));
+                            var listing = new List<ZipListing>();
+
+                            if (User?.Identity == null || !User.Identity.IsAuthenticated)
+                            {
+                                var files = Directory.GetFiles(galleryDir, "*", SearchOption.TopDirectoryOnly);
+                                if (fileFilter != null && fileFilter.Any())
+                                {
+                                    files = files.Where(x => fileFilter.Exists(y => Path.GetFileName(y).Equals(Path.GetFileName(x), StringComparison.OrdinalIgnoreCase))).ToArray();
+                                }
+
+                                if (files != null && files.Any())
+                                {
+                                    listing.Add(new ZipListing(galleryDir, files));
+                                }
+                            }
+                            else
+                            {
+                                var scanners = new List<ZipListingScanner>()
+                                {
+                                    new ZipListingScanner("Approved", galleryDir, SearchOption.TopDirectoryOnly),
+                                    new ZipListingScanner("Pending", Path.Combine(galleryDir, "Pending"), SearchOption.AllDirectories),
+                                    new ZipListingScanner("Rejected", Path.Combine(galleryDir, "Rejected"), SearchOption.AllDirectories),
+                                };
+
+                                foreach (var scanner in scanners)
+                                {
+                                    try
+                                    {
+                                        var files = Directory.GetFiles(scanner.Path, "*", scanner.SearchOption);
+                                        if (fileFilter != null && fileFilter.Any())
+                                        {
+                                            files = files.Where(x => fileFilter.Exists(y => Path.GetFileName(y).Equals(Path.GetFileName(x), StringComparison.OrdinalIgnoreCase))).ToArray();
+                                        }
+
+                                        if (files != null && files.Any())
+                                        {
+                                            listing.Add(new ZipListing(scanner.Path, files, scanner.Name));
+                                        }
+                                    }
+                                    catch { }
+                                }
+                            }
+                                
+                            return await ZipFileResponse(archieveName, listing);
                         }
                     }
                     else
