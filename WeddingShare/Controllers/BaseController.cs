@@ -31,11 +31,11 @@ namespace WeddingShare.Controllers
                     {
                         var files = contents?.Files?.Where(x => x.StartsWith(contents.SourcePath, StringComparison.OrdinalIgnoreCase));
                         if (files != null && files.Any())
-                        { 
+                        {
                             if (!string.IsNullOrWhiteSpace(contents?.FileName))
                             {
                                 using (var ms = new MemoryStream())
-                                { 
+                                {
                                     using (var archive = new ZipArchive(ms, ZipArchiveMode.Create, true))
                                     {
                                         foreach (var file in files)
@@ -53,7 +53,7 @@ namespace WeddingShare.Controllers
                                     }
 
                                     var relativePath = $"{contents.FileName.TrimStart('/')}";
-                                    var zipEntry = zipArchive.CreateEntry(relativePath);
+                                    var zipEntry = zipArchive.CreateEntry(!string.IsNullOrWhiteSpace(contents.Directory) ? Path.Combine(contents.Directory, relativePath) : relativePath);
 
                                     using (var entryStream = zipEntry.Open())
                                     {
@@ -67,7 +67,7 @@ namespace WeddingShare.Controllers
                                 foreach (var file in files)
                                 {
                                     var relativePath = Path.GetRelativePath(contents.SourcePath, file);
-                                    var zipEntry = zipArchive.CreateEntry(relativePath);
+                                    var zipEntry = zipArchive.CreateEntry(!string.IsNullOrWhiteSpace(contents.Directory) ? Path.Combine(contents.Directory, relativePath) : relativePath);
 
                                     using (var fs = System.IO.File.OpenRead(file))
                                     using (var entryStream = zipEntry.Open())

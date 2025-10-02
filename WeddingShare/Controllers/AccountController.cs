@@ -1132,17 +1132,17 @@ namespace WeddingShare.Controllers
 
                             if (options.Uploads)
                             {
-                                listing.Add(new ZipListing(UploadsDirectory, Directory.GetFiles(UploadsDirectory, "*", SearchOption.AllDirectories), "Uploads.bak"));
+                                listing.Add(new ZipListing(UploadsDirectory, Directory.GetFiles(UploadsDirectory, "*", SearchOption.AllDirectories), null, "Uploads.bak"));
                             }
 
                             if (options.Thumbnails)
                             {
-                                listing.Add(new ZipListing(ThumbnailsDirectory, Directory.GetFiles(ThumbnailsDirectory, "*", SearchOption.AllDirectories), "Thumbnails.bak"));
+                                listing.Add(new ZipListing(ThumbnailsDirectory, Directory.GetFiles(ThumbnailsDirectory, "*", SearchOption.AllDirectories), null, "Thumbnails.bak"));
                             }
 
                             if (options.CustomResources && _fileHelper.DirectoryExists(CustomResourcesDirectory))
                             {
-                                listing.Add(new ZipListing(CustomResourcesDirectory, Directory.GetFiles(CustomResourcesDirectory, "*", SearchOption.AllDirectories), "CustomResources.bak"));
+                                listing.Add(new ZipListing(CustomResourcesDirectory, Directory.GetFiles(CustomResourcesDirectory, "*", SearchOption.AllDirectories), null, "CustomResources.bak"));
                             }
 
                             var response = await ZipFileResponse($"WeddingShare-{DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss")}.zip", listing);
