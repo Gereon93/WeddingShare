@@ -195,9 +195,12 @@
                         success: function (response) {
                             if (response !== undefined && response.success === true) {
                                 requiresReview = response.requiresReview;
+                                uploadedCount++;
                             } else if (response.errors !== undefined && response.errors.length > 0) {
                                 errors.push(response.errors);
                             }
+
+                            processFileUpload(i + 1);
                         },
                         xhr: function () {
                             var xhr = new window.XMLHttpRequest();
@@ -211,11 +214,6 @@
                                         $('span#file-upload-progress').text(`(${percentComplete}%)`);
                                     }
                                 }
-                            }, false);
-
-                            xhr.upload.addEventListener("load", function (evt) {
-                                uploadedCount++;
-                                processFileUpload(i + 1);
                             }, false);
 
                             xhr.upload.addEventListener("error", function (evt) {
@@ -236,7 +234,9 @@
                 } else {
                     hideLoader();
 
-                    if (requiresReview) {
+                    if (uploadedCount <= 0) {
+                        displayMessage(localization.translate('Upload'), localization.translate('Upload_Failed'), errors);
+                    } else if (requiresReview) {
                         displayMessage(localization.translate('Upload'), localization.translate('Upload_Success_Pending_Review', { count: uploadedCount }), errors);
 
                         const formData = new FormData();
