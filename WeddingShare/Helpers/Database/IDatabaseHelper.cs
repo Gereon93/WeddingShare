@@ -29,6 +29,15 @@ namespace WeddingShare.Helpers.Database
         Task<GalleryItemModel?> AddGalleryItem(GalleryItemModel model);
         Task<GalleryItemModel?> EditGalleryItem(GalleryItemModel model);
         Task<bool> DeleteGalleryItem(GalleryItemModel model);
+        Task<List<GalleryItemModel>> GetGalleryItemsByDeviceUuid(int? galleryId, string deviceUuid);
+        Task<bool> DeleteGalleryItemByDeviceUuid(int itemId, string deviceUuid);
+        Task<bool> ToggleLike(int galleryItemId, string deviceUuid);
+        Task<int> GetLikeCount(int galleryItemId);
+        Task<bool> HasUserLiked(int galleryItemId, string deviceUuid);
+        Task<bool> AddPhotographerToGallery(int galleryId, int userId);
+        Task<bool> RemovePhotographerFromGallery(int galleryId, int userId);
+        Task<bool> IsPhotographerForGallery(int galleryId, int userId);
+        Task<List<int>> GetPhotographerGalleries(int userId);
         Task<bool> InitOwnerAccount(UserModel model);
         Task<bool> ValidateCredentials(string username, string password);
         Task<List<UserModel>?> GetAllUsers();

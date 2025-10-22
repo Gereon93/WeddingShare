@@ -56,6 +56,43 @@ namespace WeddingShare.Controllers
             ThumbnailsDirectory = Path.Combine(_hostingEnvironment.WebRootPath, Directories.Thumbnails);
         }
 
+        [HttpGet]
+        public async Task<IActionResult> CaptureIdentity(int? galleryId, string? identifier, string? key = null, string? returnUrl = null)
+        {
+            try
+            {
+                var gallery = galleryId.HasValue ? await _database.GetGallery(galleryId.Value) : null;
+
+                if (gallery == null && !string.IsNullOrWhiteSpace(identifier))
+                {
+                    var gId = await _database.GetGalleryId(identifier);
+                    gallery = gId.HasValue ? await _database.GetGallery(gId.Value) : null;
+                }
+
+                if (gallery == null)
+                {
+                    return new RedirectToActionResult("Index", "Error", new { Reason = ErrorCode.InvalidGalleryId }, false);
+                }
+
+                ViewBag.GalleryIdentifier = gallery.Identifier;
+                ViewBag.GalleryId = gallery.Id;
+                ViewBag.SecretKey = key;
+                ViewBag.ReturnUrl = returnUrl ?? $"/Gallery?identifier={gallery.Identifier}";
+                ViewBag.RequireEmail = await _settings.GetOrDefault(Settings.IdentityCheck.RequireEmail, false, gallery.Id);
+
+                // Pre-fill name if already in session
+                ViewBag.ExistingName = HttpContext.Session.GetString(SessionKey.ViewerIdentity) ?? string.Empty;
+                ViewBag.ExistingEmail = HttpContext.Session.GetString(SessionKey.ViewerEmailAddress) ?? string.Empty;
+
+                return View("~/Views/Gallery/CaptureIdentity.cshtml");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"Failed to load identity capture page - {ex?.Message}");
+                return new RedirectToActionResult("Index", "Error", new { Reason = ErrorCode.InvalidGalleryId }, false);
+            }
+        }
+
         [HttpPost]
         public async Task<IActionResult> Login(string? id, string? identifier, string? key = null)
         {
@@ -130,6 +167,16 @@ namespace WeddingShare.Controllers
 
             if (galleryId != null)
             {
+                // Check if user has provided their name (required for first-time visitors)
+                var viewerIdentity = HttpContext.Session.GetString(SessionKey.ViewerIdentity);
+                var requireNameEntry = await _settings.GetOrDefault(Settings.IdentityCheck.RequireIdentityForUpload, false, galleryId);
+
+                if (requireNameEntry && string.IsNullOrWhiteSpace(viewerIdentity) && !partial)
+                {
+                    // Redirect to name capture page
+                    return RedirectToAction("CaptureIdentity", new { galleryId, identifier, key, returnUrl = Request.Path + Request.QueryString });
+                }
+
                 if (!string.IsNullOrWhiteSpace(culture))
                 {
                     try
@@ -314,6 +361,7 @@ namespace WeddingShare.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken] // SECURITY FIX: CSRF protection
         public async Task<IActionResult> UploadImage()
         {
             Response.StatusCode = (int)HttpStatusCode.BadRequest;
@@ -324,7 +372,7 @@ namespace WeddingShare.Controllers
                 {
                     return Json(new { success = false, uploaded = 0, errors = new List<string>() { _localizer["Invalid_Gallery_Id"].Value } });
                 }
-                
+
                 var gallery = await _database.GetGallery(galleryId);
                 if (gallery != null)
                 {
@@ -335,13 +383,42 @@ namespace WeddingShare.Controllers
                         return Json(new { success = false, uploaded = 0, errors = new List<string>() { _localizer["Invalid_Secret_Key_Warning"].Value } });
                     }
 
+                    // SECURITY FIX: Input length validation
                     string uploadedBy = HttpContext.Session.GetString(SessionKey.ViewerIdentity)?.Trim() ?? "Anonymous";
+                    if (uploadedBy.Length > 255)
+                    {
+                        uploadedBy = uploadedBy.Substring(0, 255);
+                    }
+
                     string uploaderEmail = HttpContext.Session.GetString(SessionKey.ViewerEmailAddress)?.Trim() ?? "Anonymous";
-                
+                    if (uploaderEmail.Length > 255)
+                    {
+                        uploaderEmail = uploaderEmail.Substring(0, 255);
+                    }
+
+                    // SECURITY FIX: Validate device UUID format
+                    string? deviceUuid = HttpContext.Session.GetString(SessionKey.DeviceUuid);
+                    if (!string.IsNullOrWhiteSpace(deviceUuid) && !Guid.TryParse(deviceUuid, out _))
+                    {
+                        return Json(new { success = false, uploaded = 0, errors = new List<string>() { "Invalid session" } });
+                    }
+
+                    // Check if user is a photographer FOR THIS SPECIFIC GALLERY (SECURITY FIX)
+                    var userLevel = HttpContext.User?.Identity?.GetUserLevel() ?? UserLevel.Basic;
+                    var userId = HttpContext.User?.Identity?.GetUserId() ?? -1;
+                    var isPhotographer = false;
+
+                    if (userLevel == UserLevel.Photographer && userId > 0)
+                    {
+                        // SECURITY FIX: Verify photographer is assigned to THIS specific gallery
+                        isPhotographer = await _database.IsPhotographerForGallery(gallery.Id, userId);
+                    }
+
                     var files = Request?.Form?.Files;
                     if (files != null && files.Count > 0)
                     {
-                        var requiresReview = await _settings.GetOrDefault(Settings.Gallery.RequireReview, true, gallery.Id);
+                        // Photographers don't need review ONLY if authorized for this gallery
+                        var requiresReview = isPhotographer ? false : await _settings.GetOrDefault(Settings.Gallery.RequireReview, true, gallery.Id);
 
                         var uploaded = 0;
                         var errors = new List<string>();
@@ -415,6 +492,8 @@ namespace WeddingShare.Controllers
                                                 Orientation = await _imageHelper.GetOrientation(savePath),
                                                 State = requiresReview ? GalleryItemState.Pending : GalleryItemState.Approved,
                                                 FileSize = file.Length,
+                                                DeviceUuid = deviceUuid,
+                                                IsOfficial = isPhotographer,  // Photographer uploads are marked as official
                                             });
 
                                             if (item?.Id > 0)
@@ -583,6 +662,7 @@ namespace WeddingShare.Controllers
 
                             if (User?.Identity == null || !User.Identity.IsAuthenticated)
                             {
+                                // Unauthenticated users only get approved photos
                                 var files = Directory.GetFiles(galleryDir, "*", SearchOption.TopDirectoryOnly);
                                 if (fileFilter != null && fileFilter.Any())
                                 {
@@ -596,12 +676,21 @@ namespace WeddingShare.Controllers
                             }
                             else
                             {
-                                var scanners = new List<ZipListingScanner>()
+                                // SECURITY FIX: Check if user has Review permissions for pending/rejected photos
+                                var userPermissions = User.Identity.GetUserPermissions();
+                                var hasReviewPermission = userPermissions.HasFlag(AccessPermissions.Review_View);
+
+                                var scanners = new List<ZipListingScanner>();
+
+                                // All authenticated users can download approved photos
+                                scanners.Add(new ZipListingScanner("Approved", galleryDir, SearchOption.TopDirectoryOnly));
+
+                                // SECURITY FIX: Only users with Review permissions can download pending/rejected
+                                if (hasReviewPermission)
                                 {
-                                    new ZipListingScanner("Approved", galleryDir, SearchOption.TopDirectoryOnly),
-                                    new ZipListingScanner("Pending", Path.Combine(galleryDir, "Pending"), SearchOption.AllDirectories),
-                                    new ZipListingScanner("Rejected", Path.Combine(galleryDir, "Rejected"), SearchOption.AllDirectories),
-                                };
+                                    scanners.Add(new ZipListingScanner("Pending", Path.Combine(galleryDir, "Pending"), SearchOption.AllDirectories));
+                                    scanners.Add(new ZipListingScanner("Rejected", Path.Combine(galleryDir, "Rejected"), SearchOption.AllDirectories));
+                                }
 
                                 foreach (var scanner in scanners)
                                 {
@@ -644,6 +733,169 @@ namespace WeddingShare.Controllers
             }
 
             return Json(new { success = false });
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetMyUploads(int galleryId)
+        {
+            try
+            {
+                // SECURITY FIX: Validate gallery ID
+                if (galleryId <= 0)
+                {
+                    return Json(new { success = false, message = "Invalid gallery ID" });
+                }
+
+                // SECURITY FIX: Validate device UUID format
+                var deviceUuid = HttpContext.Session.GetString(SessionKey.DeviceUuid);
+                if (string.IsNullOrWhiteSpace(deviceUuid) || !Guid.TryParse(deviceUuid, out _))
+                {
+                    return Json(new { success = false, message = "Invalid session" });
+                }
+
+                var items = await _database.GetGalleryItemsByDeviceUuid(galleryId, deviceUuid);
+                var gallery = await _database.GetGallery(galleryId);
+
+                if (gallery == null)
+                {
+                    return Json(new { success = false, message = "Gallery not found" });
+                }
+
+                var result = items.Select(x => new
+                {
+                    id = x.Id,
+                    title = x.Title,
+                    uploadedBy = x.UploadedBy,
+                    uploadedDate = x.UploadedDate,
+                    state = x.State.ToString(),
+                    imagePath = $"/{Path.Combine(UploadsDirectory, gallery.Identifier).Remove(_hostingEnvironment.WebRootPath).Replace('\\', '/').TrimStart('/')}/{x.Title}",
+                    thumbnailPath = $"/{Path.Combine(ThumbnailsDirectory, gallery.Identifier).Remove(_hostingEnvironment.WebRootPath).Replace('\\', '/').TrimStart('/')}/{Path.GetFileNameWithoutExtension(x.Title)}.webp"
+                });
+
+                return Json(new { success = true, items = result });
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"Failed to get user uploads - {ex?.Message}");
+                return Json(new { success = false, message = "Internal error" });
+            }
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken] // SECURITY FIX: CSRF protection
+        public async Task<IActionResult> DeleteMyUpload(int itemId)
+        {
+            try
+            {
+                // SECURITY FIX: Validate item ID
+                if (itemId <= 0)
+                {
+                    return Json(new { success = false, message = "Invalid item ID" });
+                }
+
+                // SECURITY FIX: Validate device UUID format
+                var deviceUuid = HttpContext.Session.GetString(SessionKey.DeviceUuid);
+                if (string.IsNullOrWhiteSpace(deviceUuid) || !Guid.TryParse(deviceUuid, out _))
+                {
+                    return Json(new { success = false, message = "Invalid session" });
+                }
+
+                // Verify ownership before deleting
+                var item = await _database.GetGalleryItem(itemId);
+                if (item == null)
+                {
+                    return Json(new { success = false, message = "Item not found" });
+                }
+
+                if (item.DeviceUuid != deviceUuid)
+                {
+                    return Json(new { success = false, message = "Unauthorized: You can only delete your own uploads" });
+                }
+
+                var gallery = await _database.GetGallery(item.GalleryId);
+                if (gallery == null)
+                {
+                    return Json(new { success = false, message = "Gallery not found" });
+                }
+
+                var success = await _database.DeleteGalleryItemByDeviceUuid(itemId, deviceUuid);
+
+                if (success)
+                {
+                    // Delete physical files
+                    var uploadPath = Path.Combine(UploadsDirectory, gallery.Identifier, item.Title);
+                    var pendingPath = Path.Combine(UploadsDirectory, gallery.Identifier, "Pending", item.Title);
+                    var thumbnailPath = Path.Combine(ThumbnailsDirectory, gallery.Identifier, $"{Path.GetFileNameWithoutExtension(item.Title)}.webp");
+
+                    _fileHelper.DeleteFileIfExists(uploadPath);
+                    _fileHelper.DeleteFileIfExists(pendingPath);
+                    _fileHelper.DeleteFileIfExists(thumbnailPath);
+                }
+
+                return Json(new { success });
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"Failed to delete user upload - {ex?.Message}");
+                return Json(new { success = false, message = "Internal error" });
+            }
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken] // SECURITY FIX: CSRF protection
+        public async Task<IActionResult> ToggleLike(int itemId)
+        {
+            try
+            {
+                // SECURITY FIX: Validate item ID
+                if (itemId <= 0)
+                {
+                    return Json(new { success = false, message = "Invalid item ID" });
+                }
+
+                // SECURITY FIX: Validate device UUID format
+                var deviceUuid = HttpContext.Session.GetString(SessionKey.DeviceUuid);
+                if (string.IsNullOrWhiteSpace(deviceUuid) || !Guid.TryParse(deviceUuid, out _))
+                {
+                    return Json(new { success = false, message = "Invalid session" });
+                }
+
+                var success = await _database.ToggleLike(itemId, deviceUuid);
+                var likeCount = await _database.GetLikeCount(itemId);
+                var isLiked = await _database.HasUserLiked(itemId, deviceUuid);
+
+                return Json(new { success, likeCount, isLiked });
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"Failed to toggle like - {ex?.Message}");
+                return Json(new { success = false, message = "Internal error" });
+            }
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetLikeInfo(int itemId)
+        {
+            try
+            {
+                // SECURITY FIX: Validate item ID
+                if (itemId <= 0)
+                {
+                    return Json(new { success = false, message = "Invalid item ID" });
+                }
+
+                // SECURITY FIX: Validate device UUID format
+                var deviceUuid = HttpContext.Session.GetString(SessionKey.DeviceUuid);
+                var likeCount = await _database.GetLikeCount(itemId);
+                var isLiked = !string.IsNullOrWhiteSpace(deviceUuid) && Guid.TryParse(deviceUuid, out _) && await _database.HasUserLiked(itemId, deviceUuid);
+
+                return Json(new { success = true, likeCount, isLiked });
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"Failed to get like info - {ex?.Message}");
+                return Json(new { success = false, message = "Internal error" });
+            }
         }
     }
 }
