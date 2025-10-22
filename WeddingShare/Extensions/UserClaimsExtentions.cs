@@ -95,6 +95,12 @@ namespace WeddingShare.Extensions
                             | AccessPermissions.Settings_Update
                             | AccessPermissions.Settings_Gallery_Update
                             | AccessPermissions.Audit_View;
+                    case UserLevel.Photographer:
+                        return
+                            AccessPermissions.Login
+                            | AccessPermissions.Gallery_View
+                            | AccessPermissions.Gallery_Upload
+                            | AccessPermissions.Gallery_Download;
                     case UserLevel.Owner:
                         return
                             AccessPermissions.Login
@@ -128,7 +134,7 @@ namespace WeddingShare.Extensions
                             | AccessPermissions.Data_Import
                             | AccessPermissions.Data_Export
                             | AccessPermissions.Data_Wipe;
-                    default: 
+                    default:
                         return AccessPermissions.None;
                 }
 

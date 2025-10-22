@@ -648,7 +648,7 @@ namespace WeddingShare.Helpers.Database
             { 
                 using (var conn = await GetConnection())
                 {
-                    var cmd = CreateCommand($"INSERT INTO `gallery_items` (`gallery_id`, `title`, `state`, `uploaded_by`, `uploader_email`, `uploaded_date`, `checksum`, `media_type`, `orientation`, `file_size`) VALUES (@GalleryId, @Title, @State, @UploadedBy, @UploaderEmailAddress, @UploadedDate, @Checksum, @MediaType, @Orientation, @FileSize); SELECT g.`name` AS `gallery_name`, gi.* FROM `gallery_items` AS gi LEFT JOIN `galleries` AS g ON gi.`gallery_id` = g.`id` WHERE gi.`id`=last_insert_rowid();", conn);
+                    var cmd = CreateCommand($"INSERT INTO `gallery_items` (`gallery_id`, `title`, `state`, `uploaded_by`, `uploader_email`, `uploaded_date`, `checksum`, `media_type`, `orientation`, `file_size`, `device_uuid`, `is_official`) VALUES (@GalleryId, @Title, @State, @UploadedBy, @UploaderEmailAddress, @UploadedDate, @Checksum, @MediaType, @Orientation, @FileSize, @DeviceUuid, @IsOfficial); SELECT g.`name` AS `gallery_name`, gi.* FROM `gallery_items` AS gi LEFT JOIN `galleries` AS g ON gi.`gallery_id` = g.`id` WHERE gi.`id`=last_insert_rowid();", conn);
                     cmd.CommandType = CommandType.Text;
                     cmd.Parameters.AddWithValue("GalleryId", model.GalleryId);
                     cmd.Parameters.AddWithValue("Title", model.Title);
@@ -660,6 +660,8 @@ namespace WeddingShare.Helpers.Database
                     cmd.Parameters.AddWithValue("MediaType", (int)model.MediaType);
                     cmd.Parameters.AddWithValue("Orientation", (int)model.Orientation);
                     cmd.Parameters.AddWithValue("FileSize", (int)model.FileSize);
+                    cmd.Parameters.AddWithValue("DeviceUuid", !string.IsNullOrWhiteSpace(model.DeviceUuid) ? model.DeviceUuid : DBNull.Value);
+                    cmd.Parameters.AddWithValue("IsOfficial", model.IsOfficial ? 1 : 0);
 
                     await conn.OpenAsync();
                     var tran = await CreateTransaction(conn);
@@ -751,6 +753,230 @@ namespace WeddingShare.Helpers.Database
                     await tran.RollbackAsync();
                 }
 
+                await conn.CloseAsync();
+            }
+
+            return result;
+        }
+
+        public async Task<List<GalleryItemModel>> GetGalleryItemsByDeviceUuid(int? galleryId, string deviceUuid)
+        {
+            List<GalleryItemModel> result = new List<GalleryItemModel>();
+
+            using (var conn = await GetConnection())
+            {
+                var cmd = CreateCommand($"SELECT gi.* FROM `gallery_items` AS gi WHERE gi.`device_uuid`=@DeviceUuid {(galleryId.HasValue ? "AND gi.`gallery_id`=@GalleryId" : "")} ORDER BY gi.`uploaded_date` DESC;", conn);
+                cmd.CommandType = CommandType.Text;
+                cmd.Parameters.AddWithValue("DeviceUuid", deviceUuid);
+                if (galleryId.HasValue)
+                {
+                    cmd.Parameters.AddWithValue("GalleryId", galleryId.Value);
+                }
+
+                await conn.OpenAsync();
+                using (var reader = await cmd.ExecuteReaderAsync())
+                {
+                    result = await ReadGalleryItems(reader);
+                }
+                await conn.CloseAsync();
+            }
+
+            return result;
+        }
+
+        public async Task<bool> DeleteGalleryItemByDeviceUuid(int itemId, string deviceUuid)
+        {
+            bool result = false;
+
+            using (var conn = await GetConnection())
+            {
+                var cmd = CreateCommand($"DELETE FROM `gallery_items` WHERE `id`=@Id AND `device_uuid`=@DeviceUuid;", conn);
+                cmd.CommandType = CommandType.Text;
+                cmd.Parameters.AddWithValue("Id", itemId);
+                cmd.Parameters.AddWithValue("DeviceUuid", deviceUuid);
+
+                await conn.OpenAsync();
+                var tran = await CreateTransaction(conn);
+
+                try
+                {
+                    cmd.Transaction = tran;
+                    result = (await cmd.ExecuteNonQueryAsync()) > 0;
+                    await tran.CommitAsync();
+                }
+                catch
+                {
+                    await tran.RollbackAsync();
+                }
+
+                await conn.CloseAsync();
+            }
+
+            return result;
+        }
+
+        public async Task<bool> ToggleLike(int galleryItemId, string deviceUuid)
+        {
+            bool result = false;
+
+            using (var conn = await GetConnection())
+            {
+                await conn.OpenAsync();
+                var tran = await CreateTransaction(conn);
+
+                try
+                {
+                    // Check if like exists
+                    var checkCmd = CreateCommand($"SELECT COUNT(*) FROM `gallery_item_likes` WHERE `gallery_item_id`=@GalleryItemId AND `device_uuid`=@DeviceUuid;", conn);
+                    checkCmd.CommandType = CommandType.Text;
+                    checkCmd.Transaction = tran;
+                    checkCmd.Parameters.AddWithValue("GalleryItemId", galleryItemId);
+                    checkCmd.Parameters.AddWithValue("DeviceUuid", deviceUuid);
+
+                    var exists = (long)(await checkCmd.ExecuteScalarAsync()) > 0;
+
+                    if (exists)
+                    {
+                        // Remove like
+                        var deleteCmd = CreateCommand($"DELETE FROM `gallery_item_likes` WHERE `gallery_item_id`=@GalleryItemId AND `device_uuid`=@DeviceUuid;", conn);
+                        deleteCmd.CommandType = CommandType.Text;
+                        deleteCmd.Transaction = tran;
+                        deleteCmd.Parameters.AddWithValue("GalleryItemId", galleryItemId);
+                        deleteCmd.Parameters.AddWithValue("DeviceUuid", deviceUuid);
+                        result = (await deleteCmd.ExecuteNonQueryAsync()) > 0;
+                    }
+                    else
+                    {
+                        // Add like
+                        var insertCmd = CreateCommand($"INSERT INTO `gallery_item_likes` (`gallery_item_id`, `device_uuid`, `created_at`) VALUES (@GalleryItemId, @DeviceUuid, @CreatedAt);", conn);
+                        insertCmd.CommandType = CommandType.Text;
+                        insertCmd.Transaction = tran;
+                        insertCmd.Parameters.AddWithValue("GalleryItemId", galleryItemId);
+                        insertCmd.Parameters.AddWithValue("DeviceUuid", deviceUuid);
+                        insertCmd.Parameters.AddWithValue("CreatedAt", (DateTime.UtcNow - new DateTime(1970, 1, 1)).TotalSeconds);
+                        result = (await insertCmd.ExecuteNonQueryAsync()) > 0;
+                    }
+
+                    await tran.CommitAsync();
+                }
+                catch
+                {
+                    await tran.RollbackAsync();
+                }
+
+                await conn.CloseAsync();
+            }
+
+            return result;
+        }
+
+        public async Task<int> GetLikeCount(int galleryItemId)
+        {
+            int result = 0;
+
+            using (var conn = await GetConnection())
+            {
+                var cmd = CreateCommand($"SELECT COUNT(*) FROM `gallery_item_likes` WHERE `gallery_item_id`=@GalleryItemId;", conn);
+                cmd.CommandType = CommandType.Text;
+                cmd.Parameters.AddWithValue("GalleryItemId", galleryItemId);
+
+                await conn.OpenAsync();
+                result = (int)(long)(await cmd.ExecuteScalarAsync());
+                await conn.CloseAsync();
+            }
+
+            return result;
+        }
+
+        public async Task<bool> HasUserLiked(int galleryItemId, string deviceUuid)
+        {
+            bool result = false;
+
+            using (var conn = await GetConnection())
+            {
+                var cmd = CreateCommand($"SELECT COUNT(*) FROM `gallery_item_likes` WHERE `gallery_item_id`=@GalleryItemId AND `device_uuid`=@DeviceUuid;", conn);
+                cmd.CommandType = CommandType.Text;
+                cmd.Parameters.AddWithValue("GalleryItemId", galleryItemId);
+                cmd.Parameters.AddWithValue("DeviceUuid", deviceUuid);
+
+                await conn.OpenAsync();
+                result = (long)(await cmd.ExecuteScalarAsync()) > 0;
+                await conn.CloseAsync();
+            }
+
+            return result;
+        }
+
+        public async Task<bool> AddPhotographerToGallery(int galleryId, int userId)
+        {
+            using (var conn = await GetConnection())
+            {
+                var cmd = CreateCommand($"INSERT OR IGNORE INTO `gallery_photographers` (`gallery_id`, `user_id`, `created_at`) VALUES (@GalleryId, @UserId, @CreatedAt);", conn);
+                cmd.CommandType = CommandType.Text;
+                cmd.Parameters.AddWithValue("GalleryId", galleryId);
+                cmd.Parameters.AddWithValue("UserId", userId);
+                cmd.Parameters.AddWithValue("CreatedAt", (DateTime.UtcNow - new DateTime(1970, 1, 1)).TotalSeconds);
+
+                await conn.OpenAsync();
+                var result = (await cmd.ExecuteNonQueryAsync()) > 0;
+                await conn.CloseAsync();
+
+                return result;
+            }
+        }
+
+        public async Task<bool> RemovePhotographerFromGallery(int galleryId, int userId)
+        {
+            using (var conn = await GetConnection())
+            {
+                var cmd = CreateCommand($"DELETE FROM `gallery_photographers` WHERE `gallery_id`=@GalleryId AND `user_id`=@UserId;", conn);
+                cmd.CommandType = CommandType.Text;
+                cmd.Parameters.AddWithValue("GalleryId", galleryId);
+                cmd.Parameters.AddWithValue("UserId", userId);
+
+                await conn.OpenAsync();
+                var result = (await cmd.ExecuteNonQueryAsync()) > 0;
+                await conn.CloseAsync();
+
+                return result;
+            }
+        }
+
+        public async Task<bool> IsPhotographerForGallery(int galleryId, int userId)
+        {
+            using (var conn = await GetConnection())
+            {
+                var cmd = CreateCommand($"SELECT COUNT(*) FROM `gallery_photographers` WHERE `gallery_id`=@GalleryId AND `user_id`=@UserId;", conn);
+                cmd.CommandType = CommandType.Text;
+                cmd.Parameters.AddWithValue("GalleryId", galleryId);
+                cmd.Parameters.AddWithValue("UserId", userId);
+
+                await conn.OpenAsync();
+                var result = (long)(await cmd.ExecuteScalarAsync()) > 0;
+                await conn.CloseAsync();
+
+                return result;
+            }
+        }
+
+        public async Task<List<int>> GetPhotographerGalleries(int userId)
+        {
+            var result = new List<int>();
+
+            using (var conn = await GetConnection())
+            {
+                var cmd = CreateCommand($"SELECT `gallery_id` FROM `gallery_photographers` WHERE `user_id`=@UserId;", conn);
+                cmd.CommandType = CommandType.Text;
+                cmd.Parameters.AddWithValue("UserId", userId);
+
+                await conn.OpenAsync();
+                using (var reader = await cmd.ExecuteReaderAsync())
+                {
+                    while (await reader.ReadAsync())
+                    {
+                        result.Add(reader.GetInt32(0));
+                    }
+                }
                 await conn.CloseAsync();
             }
 
@@ -1806,6 +2032,8 @@ namespace WeddingShare.Helpers.Database
                                 Orientation = !await reader.IsDBNullAsync("orientation") ? (ImageOrientation)reader.GetInt32("orientation") : ImageOrientation.None,
                                 State = !await reader.IsDBNullAsync("state") ? (GalleryItemState)reader.GetInt32("state") : GalleryItemState.Pending,
                                 FileSize = !await reader.IsDBNullAsync("file_size") ? reader.GetInt32("file_size") : 0,
+                                DeviceUuid = !await reader.IsDBNullAsync("device_uuid") ? reader.GetString("device_uuid") : null,
+                                IsOfficial = !await reader.IsDBNullAsync("is_official") && reader.GetInt32("is_official") == 1,
                             });
                         }
                     }
