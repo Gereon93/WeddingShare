@@ -42,9 +42,11 @@
 
                 var slidetimer = null;
                 var transitionTimer = null;
+                var resizeTimeout = null;
 
-                $(window).off('resize').on('resize', function () {
-                    setTimeout(function () {
+                $(window).on('resize', function () {
+                    clearTimeout(resizeTimeout);
+                    resizeTimeout = setTimeout(function () {
                         init();
                     }, 200);
                 });

@@ -1,4 +1,5 @@
-﻿using WeddingShare.Enums;
+﻿using System.Text.Json.Serialization;
+using WeddingShare.Enums;
 using WeddingShare.Models.Database;
 
 namespace WeddingShare.Models
@@ -64,7 +65,36 @@ namespace WeddingShare.Models
         public DateTime? UploadDate { get; set; }
         public string? ImagePath { get; set; }
         public string? ThumbnailPath { get; set; }
-        public string? ThumbnailPathFallback { get; set; }
         public MediaType MediaType { get; set; }
+    }
+
+    public class PhotoGalleryImageExtended
+    {
+        public PhotoGalleryImageExtended()
+        {
+            this.Likes = new PhotoGalleryImageLikes();
+        }
+
+        [JsonPropertyName("likes")]
+        public PhotoGalleryImageLikes Likes { get; set; }
+    }
+
+    public class PhotoGalleryImageLikes
+    {
+        public PhotoGalleryImageLikes()
+        {
+        }
+
+        [JsonPropertyName("enabled")]
+        public bool Enabled { get; set; } = false;
+
+        [JsonPropertyName("can_like")]
+        public bool CanUserLike { get; set; } = false;
+
+        [JsonPropertyName("has_liked")]
+        public bool HasUserLiked { get; set; } = false;
+
+        [JsonPropertyName("count")]
+        public long Count { get; set; } = 0;
     }
 }

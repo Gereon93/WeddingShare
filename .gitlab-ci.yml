@@ -33,14 +33,15 @@ test:
     - 'dotnet restore'
     - 'dotnet test'
     
-push_pre_release:
+push_release:
   variables:
     GIT_STRATEGY: none
   stage: push
   only:
+    - /^(feature\/|release\/).+/
     - /^(prerel|rc|release)-.+/
   script:
-    - 'docker buildx build --tag $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA --tag $CI_REGISTRY_IMAGE:$CI_COMMIT_BRANCH --tag $CI_REGISTRY_IMAGE:pre_release --platform $BUILD_PLATFORMS --builder $BUILD_BUILDER_NAME --push -f $BUILD_DOCKERFILE .'
+    - 'docker buildx build --tag $CI_REGISTRY_IMAGE:pre_release --platform $BUILD_PLATFORMS --builder $BUILD_BUILDER_NAME --push -f $BUILD_DOCKERFILE .'
   needs:
     - test
 
@@ -52,7 +53,7 @@ push_latest:
     - main
     - master
   script:
-    - 'docker buildx build --tag $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA --tag $CI_REGISTRY_IMAGE:$CI_COMMIT_BRANCH --tag $CI_REGISTRY_IMAGE:latest --platform $BUILD_PLATFORMS --builder $BUILD_BUILDER_NAME --push -f $BUILD_DOCKERFILE .'
+    - 'docker buildx build --tag $CI_REGISTRY_IMAGE:latest --platform $BUILD_PLATFORMS --builder $BUILD_BUILDER_NAME --push -f $BUILD_DOCKERFILE .'
   needs:
     - test
     
@@ -63,7 +64,7 @@ push_tag:
   only:
     - tags
   script:
-    - 'docker buildx build --tag $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA --tag $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME --platform $BUILD_PLATFORMS --builder $BUILD_BUILDER_NAME --push -f $BUILD_DOCKERFILE .'
+    - 'docker buildx build --tag $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME --platform $BUILD_PLATFORMS --builder $BUILD_BUILDER_NAME --push -f $BUILD_DOCKERFILE .'
   needs:
     - test
 

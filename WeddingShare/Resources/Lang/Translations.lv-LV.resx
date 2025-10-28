@@ -94,6 +94,18 @@
   <data name="406_Error_Title" xml:space="preserve">
     <value>Nederīga galerija</value>
   </data>
+  <data name="407_Error_Message" xml:space="preserve">
+    <value>Bija kāds jautājums, mēģinot pārbaudīt jūsu kontu. Lūdzu, pārliecinieties, ka verifikācijas saite ir derīga.</value>
+  </data>
+  <data name="407_Error_Title" xml:space="preserve">
+    <value>Nederīga pārbaude Saikne</value>
+  </data>
+  <data name="408_Error_Message" xml:space="preserve">
+    <value>Bija jautājums, mēģinot atiestatīt konta paroli. Lūdzu, pārliecinieties, ka verifikācijas saite ir derīga.</value>
+  </data>
+  <data name="408_Error_Title" xml:space="preserve">
+    <value>Nepareiza parole</value>
+  </data>
   <data name="Accept" xml:space="preserve">
     <value>Pieņemt</value>
   </data>
@@ -120,6 +132,12 @@
   </data>
   <data name="Audit" xml:space="preserve">
     <value>Revīzija</value>
+  </data>
+  <data name="Audit_Account_Registered" xml:space="preserve">
+    <value>Lietotāja reģistrēts konts</value>
+  </data>
+  <data name="Audit_ActivateUser" xml:space="preserve">
+    <value>Aktivizēts lietotājs</value>
   </data>
   <data name="Audit_BulkApproveReviews" xml:space="preserve">
     <value>Bulk apstiprināja visas gaidāmās pārskatīšanas</value>
@@ -148,6 +166,9 @@
   <data name="Audit_DeletedUser" xml:space="preserve">
     <value>Dzēsts lietotājs</value>
   </data>
+  <data name="Audit_Email_Verified" xml:space="preserve">
+    <value>Lietotājs pārbaudīja savu e- pasta adresi</value>
+  </data>
   <data name="Audit_ExportedBackup" xml:space="preserve">
     <value>Eksportēts rezerves kopijas</value>
   </data>
@@ -156,6 +177,9 @@
   </data>
   <data name="Audit_FailedLoginAttemptReset" xml:space="preserve">
     <value>Neizdevās pieteikties mēģinājumu skaita atiestatīšana</value>
+  </data>
+  <data name="Audit_Forgot_Password" xml:space="preserve">
+    <value>Lietotājs pieprasīja paroles atiestatīšanu</value>
   </data>
   <data name="Audit_FrozeUser" xml:space="preserve">
     <value>Froze lietotājs</value>
@@ -198,6 +222,9 @@
   </data>
   <data name="Audit_MultiFactorResetUser" xml:space="preserve">
     <value>Atstatīt daudzfaktoru lietotājam</value>
+  </data>
+  <data name="Audit_Password_Reset" xml:space="preserve">
+    <value>Lietotājs pieprasīja paroles atiestatīšanu</value>
   </data>
   <data name="Audit_SearchTerm_Help" xml:space="preserve">
     <value>Filtrēt žurnālus pamatojoties uz meklēšanas terminu</value>
@@ -379,6 +406,21 @@
   <data name="Filter" xml:space="preserve">
     <value>Filtrs</value>
   </data>
+  <data name="Forgot_Password" xml:space="preserve">
+    <value>Aizmirsta parole</value>
+  </data>
+  <data name="ForgotPassword" xml:space="preserve">
+    <value>Aizmirsta parole</value>
+  </data>
+  <data name="ForgotPassword_Email_Help" xml:space="preserve">
+    <value>Lūdzu ievadiet konta e-pasta adresi.</value>
+  </data>
+  <data name="ForgotPassword_Email_Label" xml:space="preserve">
+    <value>E- pasta adrese</value>
+  </data>
+  <data name="ForgotPassword_Failed" xml:space="preserve">
+    <value>Neizdevās nosūtīt paroli reset email</value>
+  </data>
   <data name="Galleries" xml:space="preserve">
     <value>Galerijas</value>
   </data>
@@ -535,6 +577,24 @@
   <data name="None" xml:space="preserve">
     <value>Nav</value>
   </data>
+  <data name="Password_Reset_Changed_Message" xml:space="preserve">
+    <value>Jūsu parole tagad ir atiestatīta. Ja neesat pieprasījis paroles atiestatīšanu, nekavējoties vērsieties pie administratora.</value>
+  </data>
+  <data name="Password_Reset_Changed_Title" xml:space="preserve">
+    <value>Jūsu parole ir atjaunināta!</value>
+  </data>
+  <data name="Password_Reset_Requested_Message" xml:space="preserve">
+    <value>Jūsu kontā ir pieprasīta paroles atiestatīšana. Ja jūs pieprasījāt paroles maiņu, lūdzu, noklikšķiniet uz saites zemāk, lai to atjauninātu.</value>
+  </data>
+  <data name="Password_Reset_Requested_Title" xml:space="preserve">
+    <value>Grūti piekļūt savam kontam?</value>
+  </data>
+  <data name="PasswordReset" xml:space="preserve">
+    <value>Paroles atiestatīt</value>
+  </data>
+  <data name="PasswordReset_Failed" xml:space="preserve">
+    <value>Neizdevās nosūtīt paroli atiestatīšanas e- pastu.</value>
+  </data>
   <data name="Pending" xml:space="preserve">
     <value>Gaida</value>
   </data>
@@ -553,6 +613,75 @@
   <data name="Random" xml:space="preserve">
     <value>Nejaušs</value>
   </data>
+  <data name="Register" xml:space="preserve">
+    <value>Reģistrs</value>
+  </data>
+  <data name="Register_Account" xml:space="preserve">
+    <value>Reģistra konts</value>
+  </data>
+  <data name="Register_CPassword_Help" xml:space="preserve">
+    <value>Apstiprināt paroli</value>
+  </data>
+  <data name="Register_CPassword_Label" xml:space="preserve">
+    <value>Apstiprināt paroli</value>
+  </data>
+  <data name="Register_Email_Help" xml:space="preserve">
+    <value>Lūdzu ievadiet konta e-pasta adresi.</value>
+  </data>
+  <data name="Register_Email_Label" xml:space="preserve">
+    <value>E- pasta adrese</value>
+  </data>
+  <data name="Register_Password_Help" xml:space="preserve">
+    <value>Parole ievadiet paroli.</value>
+  </data>
+  <data name="Register_Password_Label" xml:space="preserve">
+    <value>Parole</value>
+  </data>
+  <data name="Register_Username_Help" xml:space="preserve">
+    <value>Lūdzu ievadiet konta lietotājvārdu.</value>
+  </data>
+  <data name="Register_Username_Label" xml:space="preserve">
+    <value>Lietotājvārds</value>
+  </data>
+  <data name="Registration_Confirm_Password_Missmatch" xml:space="preserve">
+    <value>Paroles apstiprināšana nesakrīt</value>
+  </data>
+  <data name="Registration_Email_Send_Failed" xml:space="preserve">
+    <value>Neizdevās nosūtīt reģistrācijas e- pastu lietotājam.</value>
+  </data>
+  <data name="Registration_Email_Taken" xml:space="preserve">
+    <value>Konts ar norādīto e- pasta adresi jau eksistē</value>
+  </data>
+  <data name="Registration_Failed" xml:space="preserve">
+    <value>Neizdevās reģistrēt jaunu lietotāju</value>
+  </data>
+  <data name="Registration_Invalid_Email" xml:space="preserve">
+    <value>Lūdzu norādiet derīgu e- pasta adresi</value>
+  </data>
+  <data name="Registration_Invalid_Password" xml:space="preserve">
+    <value>Lūdzu, norādiet derīgu paroli starp 8 un 100 rakstzīmēm, kas satur vismaz 1 lielo burtu, 1 mazo burtu, 1 numuru un 1 īpašo rakstzīmi</value>
+  </data>
+  <data name="Registration_Invalid_Username" xml:space="preserve">
+    <value>Lūdzu, norādiet derīgu lietotājvārdu starp 5 un 50 rakstzīmēm</value>
+  </data>
+  <data name="Registration_Invalid_Verification_Link" xml:space="preserve">
+    <value>Bija jautājums apstrādes e-pasta pārbaudes saiti</value>
+  </data>
+  <data name="Registration_Success_Message" xml:space="preserve">
+    <value>Jūsu konts ir veiksmīgi reģistrēts un gaida, lai jūs varētu piekļūt</value>
+  </data>
+  <data name="Registration_Success_Title" xml:space="preserve">
+    <value>Laipni lūdzam!</value>
+  </data>
+  <data name="Registration_Success_Verification" xml:space="preserve">
+    <value>Jūsu konts ir reģistrēts, bet ir jāpārbauda, pirms tam var piekļūt. Lūdzu, aktivizējiet savu kontu, noklikšķinot uz saites zemāk.</value>
+  </data>
+  <data name="Registration_Username_Taken" xml:space="preserve">
+    <value>Lietotājvārds jau eksistē. Lūdzu, izvēlieties jaunu</value>
+  </data>
+  <data name="Registration_Weak_Password" xml:space="preserve">
+    <value>Norādītā parole ir viegli uzminēt. Lūdzu izvēlieties drošāku paroli.</value>
+  </data>
   <data name="Reject" xml:space="preserve">
     <value>Noraidīt</value>
   </data>
@@ -561,6 +690,9 @@
   </data>
   <data name="Rename" xml:space="preserve">
     <value>Pārdēvēt</value>
+  </data>
+  <data name="ResetPassword_Invalid_Reset_Link" xml:space="preserve">
+    <value>Paroles atiestatīšanas saites apstrāde notika</value>
   </data>
   <data name="Resources" xml:space="preserve">
     <value>Resursi</value>
@@ -603,6 +735,18 @@
   </data>
   <data name="Settings_Account_Profile_Icon_Label" xml:space="preserve">
     <value>Profila ikona</value>
+  </data>
+  <data name="Settings_Account_Registration_Enabled_Help" xml:space="preserve">
+    <value>Vai viesiem ir atļauts reģistrēt kontus?</value>
+  </data>
+  <data name="Settings_Account_Registration_Enabled_Label" xml:space="preserve">
+    <value>Reģistrācija ieslēgta</value>
+  </data>
+  <data name="Settings_Account_Registration_RequireEmailValidation_Help" xml:space="preserve">
+    <value>Vai lietotājiem ir nepieciešams pārbaudīt savu e-pastu, lai aktivizētu savu kontu?</value>
+  </data>
+  <data name="Settings_Account_Registration_RequireEmailValidation_Label" xml:space="preserve">
+    <value>Pieprasīt e- pasta apstiprināšanu</value>
   </data>
   <data name="Settings_Alerts" xml:space="preserve">
     <value>Brīdinājumi</value>
@@ -1162,6 +1306,9 @@
   <data name="Square" xml:space="preserve">
     <value>Kvadrāts</value>
   </data>
+  <data name="Submit" xml:space="preserve">
+    <value>Nosūtīt</value>
+  </data>
   <data name="Supporters" xml:space="preserve">
     <value>Atbalstītāji</value>
   </data>
@@ -1176,6 +1323,12 @@
   </data>
   <data name="Update" xml:space="preserve">
     <value>Atjaunināt</value>
+  </data>
+  <data name="Upgrade" xml:space="preserve">
+    <value>Modernizēt</value>
+  </data>
+  <data name="Upgrade_Account_Message" xml:space="preserve">
+    <value>Jūs pašlaik izmantojat bezmaksas versiju. Lai atbloķētu vairāk galerija uzglabāšanas un citas lieliskas funkcijas apsvērt uzlabot savu kontu</value>
   </data>
   <data name="Upload_Media" xml:space="preserve">
     <value>&amp; Projekts</value>
@@ -1203,6 +1356,9 @@
   </data>
   <data name="Users_List_Failed" xml:space="preserve">
     <value>Neizdevās iegūt lietotāju sarakstu</value>
+  </data>
+  <data name="Verify" xml:space="preserve">
+    <value>Pārbaudīt</value>
   </data>
   <data name="Videos" xml:space="preserve">
     <value>Video</value>

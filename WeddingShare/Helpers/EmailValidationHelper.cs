@@ -7,7 +7,7 @@ namespace WeddingShare.Helpers
     {
         public static bool IsValid(string? email)
         {
-            if (!string.IsNullOrWhiteSpace(email))
+            if (!string.IsNullOrWhiteSpace(email) && email.Length < 100)
             {
                 try
                 {

@@ -1,6 +1,9 @@
 using System.IO.Compression;
 using System.Net;
 using System.Security.Claims;
+using System.Text;
+using System.Text.Json;
+using System.Web;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
@@ -16,6 +19,7 @@ using WeddingShare.Helpers.Database;
 using WeddingShare.Helpers.Notifications;
 using WeddingShare.Models;
 using WeddingShare.Models.Database;
+using WeddingShare.Resources.Templates.Email;
 using WeddingShare.Views.Account;
 
 namespace WeddingShare.Controllers
@@ -30,8 +34,10 @@ namespace WeddingShare.Controllers
         private readonly IFileHelper _fileHelper;
         private readonly IEncryptionHelper _encryption;
         private readonly INotificationHelper _notificationHelper;
+        private readonly ISmtpClientWrapper _smtpClientWrapper;
         private readonly Helpers.IUrlHelper _url;
         private readonly IAuditHelper _audit;
+        private readonly ILoggerFactory _loggerFactory;
         private readonly ILogger _logger;
         private readonly IStringLocalizer<Lang.Translations> _localizer;
 
@@ -40,7 +46,9 @@ namespace WeddingShare.Controllers
         private readonly string ThumbnailsDirectory;
         private readonly string CustomResourcesDirectory;
 
-        public AccountController(IWebHostEnvironment hostingEnvironment, ISettingsHelper settings, IDatabaseHelper database, IDeviceDetector deviceDetector, IFileHelper fileHelper, IEncryptionHelper encryption, INotificationHelper notificationHelper, Helpers.IUrlHelper url, IAuditHelper audit, ILogger<AccountController> logger, IStringLocalizer<Lang.Translations> localizer)
+        private const string DefaultUserGalleryName = "Default";
+
+        public AccountController(IWebHostEnvironment hostingEnvironment, ISettingsHelper settings, IDatabaseHelper database, IDeviceDetector deviceDetector, IFileHelper fileHelper, IEncryptionHelper encryption, INotificationHelper notificationHelper, ISmtpClientWrapper smtpClientWrapper, Helpers.IUrlHelper url, IAuditHelper audit, ILoggerFactory loggerFactory, IStringLocalizer<Lang.Translations> localizer)
             : base()
         {
             _hostingEnvironment = hostingEnvironment;
@@ -50,9 +58,11 @@ namespace WeddingShare.Controllers
             _fileHelper = fileHelper;
             _encryption = encryption;
             _notificationHelper = notificationHelper;
+            _smtpClientWrapper = smtpClientWrapper;
             _url = url;
             _audit = audit;
-            _logger = logger;
+            _loggerFactory = loggerFactory;
+            _logger = loggerFactory.CreateLogger<AccountController>();
             _localizer = localizer;
 
             TempDirectory = Path.Combine(_hostingEnvironment.WebRootPath, Directories.TempFiles);
@@ -83,38 +93,373 @@ namespace WeddingShare.Controllers
             {
                 model.Username = model.Username.Trim();
 
-                var user = await _database.GetUser(model.Username);
-                if (user != null && user.State == AccountState.Active && !user.IsLockedOut)
+                var user = await _database.GetUserByUsername(model.Username);
+                if (user != null)
                 {
-                    if (await _database.ValidateCredentials(user.Username, _encryption.Encrypt(model.Password, user.Username)))
+                    if (user.State == AccountState.PendingActivation)
                     {
-                        if (user.FailedLogins > 0)
+                        return Json(new LoginResponse(true)
                         {
-                            await _database.ResetLockoutCount(user.Id);
-                        }
-
-                        var mfaSet = !string.IsNullOrEmpty(user.MultiFactorToken);
-                        HttpContext.Session.SetString(SessionKey.MultiFactorTokenSet, mfaSet.ToString().ToLower());
-
-                        if (mfaSet)
+                            PendingActivation = true
+                        });
+                    }
+                    else if (user.State == AccountState.Active && !user.IsLockedOut)
+                    {
+                        if (await _database.ValidateCredentials(user.Username, _encryption.Encrypt(model.Password, user.Username.ToLower())))
                         {
-                            return Json(new { success = true, mfa = true });
+                            if (user.FailedLogins > 0)
+                            {
+                                await _database.ResetLockoutCount(user.Id);
+                            }
+
+                            var mfaSet = !string.IsNullOrEmpty(user.MultiFactorToken);
+                            HttpContext.Session.SetString(SessionKey.MultiFactorTokenSet, mfaSet.ToString().ToLower());
+
+                            if (mfaSet)
+                            {
+                                return Json(new LoginResponse(true)
+                                {
+                                    MFAEnabled = true
+                                });
+                            }
+                            else
+                            {
+                                await _audit.LogAction(user?.Username, _localizer["Audit_UserLoggedIn"].Value);
+
+                                return Json(new LoginResponse(await this.SetUserClaims(this.HttpContext, user)));
+                            }
                         }
                         else
                         {
-                            await _audit.LogAction(user?.Username, _localizer["Audit_UserLoggedIn"].Value);
-                            return Json(new { success = await this.SetUserClaims(this.HttpContext, user), mfa = false });
+                            await this.FailedLoginDetected(model, user);
                         }
-                    }
-                    else
-                    {
-                        await this.FailedLoginDetected(model, user);
                     }
                 }
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, $"{_localizer["Login_Failed"].Value} - {ex?.Message}");
+            }
+
+            return Json(new LoginResponse(false));
+        }
+
+        [AllowAnonymous]
+        [HttpGet]
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult Register()
+        {
+            if (User?.Identity != null && User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Account");
+            }
+
+            return View();
+        }
+
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        [HttpPost]
+        public async Task<IActionResult> Register(RegisterModel model)
+        {
+            if (await _settings.GetOrDefault(Settings.Account.Registration.Enabled, true))
+            {
+                try
+                {
+                    if (string.IsNullOrWhiteSpace(model?.Username) || model.Username.Length < 5 || model.Username.Length > 50)
+                    {
+                        return Json(new { success = false, message = _localizer["Registration_Invalid_Username"].Value });
+                    }
+                    else if (string.IsNullOrWhiteSpace(model?.EmailAddress) || !EmailValidationHelper.IsValid(model.EmailAddress))
+                    {
+                        return Json(new { success = false, message = _localizer["Registration_Invalid_Email"].Value });
+                    }
+                    else if (string.IsNullOrWhiteSpace(model?.Password) || !PasswordHelper.IsValid(model.Password))
+                    {
+                        return Json(new { success = false, message = _localizer["Registration_Invalid_Password"].Value });
+                    }
+                    else if (PasswordHelper.IsWeak(model.Password))
+                    {
+                        return Json(new { success = false, message = _localizer["Registration_Weak_Password"].Value });
+                    }
+                    else if (string.IsNullOrWhiteSpace(model?.ConfirmPassword) || !model.ConfirmPassword.Equals(model.Password))
+                    {
+                        return Json(new { success = false, message = _localizer["Registration_Confirm_Password_Missmatch"].Value });
+                    }
+                    else if (await _database.GetUserByUsername(model.Username) != null)
+                    {
+                        return Json(new { success = false, message = _localizer["Registration_Username_Taken"].Value });
+                    }
+                    else if (await _database.GetUserByEmail(model.EmailAddress) != null)
+                    {
+                        return Json(new { success = false, message = _localizer["Registration_Email_Taken"].Value });
+                    }
+                    else
+                    {
+                        var requireEmailValidation = await _settings.GetOrDefault(Notifications.Smtp.Enabled, false)
+                            && await _settings.GetOrDefault(Settings.Account.Registration.RequireEmailValidation, true);
+
+                        var user = await _database.AddUser(new UserModel()
+                        {
+                            Username = model.Username.Trim().ToLower(),
+                            Email = model.EmailAddress.Trim().ToLower(),
+                            Password = _encryption.Encrypt(model.Password, model.Username.ToLower()),
+                            State = requireEmailValidation ? AccountState.PendingActivation : AccountState.Active,
+                            Level = UserLevel.Paid // TODO - Update to Free once payment logic is completed
+                        });
+
+                        if (user?.Id != null && user.Id > 0 && !string.IsNullOrWhiteSpace(user.Email))
+                        {
+                            try
+                            {
+                                var emailHelper = new EmailHelper(_settings, _smtpClientWrapper, _loggerFactory.CreateLogger<EmailHelper>(), _localizer);
+                                if (requireEmailValidation)
+                                {
+                                    await emailHelper.SendTo(user.Email, _localizer["Registration_Success_Title"].Value, new BasicEmail()
+                                        {
+                                            Title = _localizer["Registration_Success_Title"].Value,
+                                            Message = _localizer["Registration_Success_Verification"].Value,
+                                            Link = new BasicEmailLink()
+                                            {
+                                                Heading = _localizer["Verify"].Value,
+                                                Value = _url.GenerateFullUrl(HttpContext?.Request, "/Account/VerifyEmail", new List<KeyValuePair<string, string>>
+                                                {
+                                                    new KeyValuePair<string, string>("data", EncodingHelper.Base64Encode(JsonSerializer.Serialize(new EmailVerificationModel()
+                                                    {
+                                                        Username = user.Username,
+                                                        Validator = await _database.SetUserSecret(user.Id, PasswordHelper.GenerateSecretCode())
+                                                    })))
+                                                })
+                                            }
+                                        });
+                                }
+                                else
+                                {
+                                    await CreateDefaultUserGallery(user);
+
+                                    await emailHelper.SendTo(model.EmailAddress, _localizer["Registration_Success_Title"].Value, new BasicEmail()
+                                    {
+                                        Title = _localizer["Registration_Success_Title"].Value,
+                                        Message = _localizer["Registration_Success_Message"].Value,
+                                        Link = new BasicEmailLink()
+                                        {
+                                            Heading = _localizer["Visit"].Value,
+                                            Value = _url.GenerateBaseUrl(HttpContext?.Request, "/Account/Login")
+                                        }
+                                    });
+                                }
+
+                                await _audit.LogAction(user.Username, $"{_localizer["Audit_Account_Registered"].Value}");
+                            }
+                            catch (Exception ex)
+                            {
+                                _logger.LogError(ex, $"{_localizer["Registration_Email_Send_Failed"].Value} Email: '{model.EmailAddress}'");
+                            }
+
+                            return Json(new { success = true, validation = requireEmailValidation });
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogError(ex, $"{_localizer["Registration_Failed"].Value} - {ex?.Message}");
+                }
+            }
+
+            return Json(new { success = false });
+        }
+
+        [AllowAnonymous]
+        [HttpGet]
+        public async Task<IActionResult> VerifyEmail(string data)
+        {
+            if (!string.IsNullOrWhiteSpace(data) && await _settings.GetOrDefault(Settings.Account.Registration.Enabled, true))
+            {
+                try
+                {
+                    var json = EncodingHelper.Base64Decode(HttpUtility.UrlDecode(data));
+                    var model = JsonSerializer.Deserialize<EmailVerificationModel>(json);
+                    if (!string.IsNullOrWhiteSpace(model?.Username) && !string.IsNullOrWhiteSpace(model?.Validator))
+                    {
+                        var user = await _database.GetUserByUsername(model.Username);
+                        if (user != null)
+                        { 
+                            if (await _database.VerifyUserSecret(user.Id, model.Validator))
+                            {
+                                user.State = AccountState.Active;
+
+                                await _database.SetUserSecret(user.Id, PasswordHelper.GenerateSecretCode());
+                                await CreateDefaultUserGallery(user);
+
+                                await _audit.LogAction(user.Username, $"{_localizer["Audit_Email_Verified"].Value}");
+
+                                if ((await _database.EditUser(user))?.State == user.State && await this.SetUserClaims(this.HttpContext, user))
+                                {
+                                    return new RedirectToActionResult("Index", "Account", null, false);
+                                }
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogError(ex, $"{_localizer["Registration_Invalid_Verification_Link"].Value} - {ex?.Message}");
+                }
+            }
+
+            return new RedirectToActionResult("Index", "Error", new { Reason = ErrorCode.InvalidVerificationLink }, false);
+        }
+
+        [AllowAnonymous]
+        [HttpGet]
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult ForgotPassword()
+        {
+            return View();
+        }
+
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        [HttpPost]
+        public async Task<IActionResult> ForgotPassword(string emailAddress)
+        {
+            if (!string.IsNullOrWhiteSpace(emailAddress))
+            {
+                try
+                {
+                    var user = await _database.GetUserByEmail(emailAddress);
+                    if (user != null && !string.IsNullOrWhiteSpace(user?.Email))
+                    {
+                        await new EmailHelper(_settings, _smtpClientWrapper, _loggerFactory.CreateLogger<EmailHelper>(), _localizer)
+                            .SendTo(user.Email, _localizer["Password_Reset_Requested_Title"].Value, new BasicEmail()
+                            {
+                                Title = _localizer["PasswordReset"].Value,
+                                Message = _localizer["Password_Reset_Requested_Message"].Value,
+                                Link = new BasicEmailLink()
+                                {
+                                    Heading = _localizer["Visit"].Value,
+                                    Value = _url.GenerateFullUrl(HttpContext?.Request, "/Account/ResetPassword", new List<KeyValuePair<string, string>>
+                                    {
+                                        new KeyValuePair<string, string>("data", EncodingHelper.Base64Encode(JsonSerializer.Serialize(new EmailVerificationModel()
+                                        {
+                                            Username = user.Username,
+                                            Validator = await _database.SetUserSecret(user.Id, PasswordHelper.GenerateSecretCode())
+                                        })))
+                                    })
+                                }
+                            });
+
+                        await _audit.LogAction(user.Username, $"{_localizer["Audit_Forgot_Password"].Value}");
+
+                        return Json(new { success = true });
+                    }
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogError(ex, $"{_localizer["ForgotPassword_Failed"].Value}. EmailAddress: '{emailAddress}' - {ex?.Message}");
+                }
+            }
+
+            return Json(new { success = false });
+        }
+
+        [AllowAnonymous]
+        [HttpGet]
+        public async Task<IActionResult> ResetPassword(string data)
+        {
+            if (!string.IsNullOrWhiteSpace(data) && await _settings.GetOrDefault(Settings.Account.Registration.Enabled, true))
+            {
+                try
+                {
+                    var json = EncodingHelper.Base64Decode(HttpUtility.UrlDecode(data));
+                    var model = JsonSerializer.Deserialize<EmailVerificationModel>(json);
+                    if (!string.IsNullOrWhiteSpace(model?.Username) && !string.IsNullOrWhiteSpace(model?.Validator))
+                    {
+                        var user = await _database.GetUserByUsername(model.Username);
+                        if (user != null && !string.IsNullOrWhiteSpace(user.Email))
+                        {
+                            if (await _database.VerifyUserSecret(user.Id, model.Validator))
+                            {
+                                return View(new ResetPasswordViewModel()
+                                {
+                                    Data = data
+                                });
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogError(ex, $"{_localizer["ResetPassword_Invalid_Reset_Link"].Value} - {ex?.Message}");
+                }
+            }
+
+            return new RedirectToActionResult("Index", "Error", new { Reason = ErrorCode.InvalidPasswordResetLink }, false);
+        }
+
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        [HttpPost]
+        public async Task<IActionResult> ResetPassword(ResetPasswordModel model)
+        {
+            if (await _settings.GetOrDefault(Settings.Account.Registration.Enabled, true) && !string.IsNullOrWhiteSpace(model?.Data))
+            {
+                try
+                {
+                    if (string.IsNullOrWhiteSpace(model?.Password) || !PasswordHelper.IsValid(model.Password))
+                    {
+                        return Json(new { success = false, message = _localizer["Registration_Invalid_Password"].Value });
+                    }
+                    else if (PasswordHelper.IsWeak(model.Password))
+                    {
+                        return Json(new { success = false, message = _localizer["Registration_Weak_Password"].Value });
+                    }
+                    else if (string.IsNullOrWhiteSpace(model?.ConfirmPassword) || !model.ConfirmPassword.Equals(model.Password))
+                    {
+                        return Json(new { success = false, message = _localizer["Registration_Confirm_Password_Missmatch"].Value });
+                    }
+                    else
+                    {
+                        var json = EncodingHelper.Base64Decode(HttpUtility.UrlDecode(model.Data));
+                        var data = JsonSerializer.Deserialize<EmailVerificationModel>(json);
+                        if (!string.IsNullOrWhiteSpace(data?.Username) && !string.IsNullOrWhiteSpace(data?.Validator))
+                        {
+                            var user = await _database.GetUserByUsername(data.Username);
+                            if (user != null && !string.IsNullOrWhiteSpace(user.Email))
+                            {
+                                if (await _database.VerifyUserSecret(user.Id, data.Validator))
+                                {
+                                    user.Password = _encryption.Encrypt(model.Password, user.Username.ToLower());
+
+                                    if (await _database.ChangePassword(user))
+                                    {
+                                        await _database.SetUserSecret(user.Id, PasswordHelper.GenerateSecretCode());
+
+                                        await new EmailHelper(_settings, _smtpClientWrapper, _loggerFactory.CreateLogger<EmailHelper>(), _localizer)
+                                            .SendTo(user.Email, _localizer["Password_Reset_Changed_Title"].Value, new BasicEmail() 
+                                            {
+                                                Title = _localizer["PasswordReset"].Value,
+                                                Message = _localizer["Password_Reset_Changed_Message"].Value,
+                                                Link = new BasicEmailLink()
+                                                {
+                                                    Heading = _localizer["Visit"].Value,
+                                                    Value = _url.GenerateBaseUrl(HttpContext?.Request, "/Account/Login")
+                                                }
+                                            });
+
+                                        await _audit.LogAction(user.Username, $"{_localizer["Audit_Password_Reset"].Value}");
+
+                                        return Json(new { success = true, username = user.Username, mfa = !string.IsNullOrWhiteSpace(user.MultiFactorToken) });
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogError(ex, $"{_localizer["PasswordReset_Failed"].Value} - {ex?.Message}");
+                }
             }
 
             return Json(new { success = false });
@@ -131,10 +476,10 @@ namespace WeddingShare.Controllers
                 {
                     model.Username = model.Username.Trim();
 
-                    var user = await _database.GetUser(model.Username);
+                    var user = await _database.GetUserByUsername(model.Username);
                     if (user != null && user.State == AccountState.Active && !user.IsLockedOut)
                     {
-                        if (await _database.ValidateCredentials(user.Username, _encryption.Encrypt(model.Password, user.Username)))
+                        if (await _database.ValidateCredentials(user.Username, _encryption.Encrypt(model.Password, user.Username.ToLower())))
                         {
                             if (user.FailedLogins > 0)
                             {
@@ -186,7 +531,7 @@ namespace WeddingShare.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Index(AccountTabs tab = AccountTabs.Reviews)
+        public async Task<IActionResult> Index(AccountTabs? tab = null)
         {
             if (User?.Identity == null || !User.Identity.IsAuthenticated)
             { 
@@ -195,7 +540,7 @@ namespace WeddingShare.Controllers
 
             var model = new IndexModel()
             {
-                ActiveTab = tab
+                ActiveTab = tab ?? (User?.Identity?.GetDefaultTab() ?? AccountTabs.Reviews)
             };
 
             var deviceType = HttpContext.Session.GetString(SessionKey.DeviceType);
@@ -210,38 +555,68 @@ namespace WeddingShare.Controllers
                 var user = await _database.GetUser(User.Identity.GetUserId());
                 if (user != null)
                 {
-                    if (tab == AccountTabs.Reviews)
+                    if (User?.Identity?.IsPrivilegedUser() ?? false)
                     {
-                        model.PendingRequests = await GetPendingReviews();
-                    }
-                    else if (tab == AccountTabs.Galleries)
-                    {
-                        model.Galleries = (await _database.GetAllGalleries())?.Where(x => !x.Identifier.Equals("All", StringComparison.OrdinalIgnoreCase))?.ToList();
-                        if (model.Galleries != null)
+                        if (model.ActiveTab == AccountTabs.Reviews)
                         {
-                            var all = await _database.GetAllGallery();
-                            if (all != null)
+                            model.PendingRequests = await GetPendingReviews();
+                        }
+                        else if (model.ActiveTab == AccountTabs.Galleries)
+                        {
+                            model.Galleries = (await _database.GetAllGalleries())?.Where(x => !x.Identifier.Equals("All", StringComparison.OrdinalIgnoreCase))?.ToList();
+                            if (model.Galleries != null)
                             {
-                                model.Galleries.Add(all);
+                                var all = await _database.GetAllGallery();
+                                if (all != null)
+                                {
+                                    model.Galleries.Add(all);
+                                }
                             }
                         }
+                        else if (model.ActiveTab == AccountTabs.Users)
+                        {
+                            model.Users = await _database.GetAllUsers();
+                        }
+                        else if (model.ActiveTab == AccountTabs.Resources)
+                        {
+                            model.CustomResources = await _database.GetAllCustomResources();
+                        }
+                        else if (model.ActiveTab == AccountTabs.Settings)
+                        {
+                            model.Settings = (await _database.GetAllSettings())?.ToDictionary(x => x.Id.ToUpper(), x => x.Value ?? string.Empty);
+                            model.CustomResources = await _database.GetAllCustomResources();
+                        }
+                        else if (model.ActiveTab == AccountTabs.Audit)
+                        {
+                            model.AuditLogs = await _database.GetAuditLogs();
+                        }
                     }
-                    else if (tab == AccountTabs.Users)
+                    else
                     {
-                        model.Users = await _database.GetAllUsers();
-                    }
-                    else if (tab == AccountTabs.Resources)
-                    {
-                        model.CustomResources = await _database.GetAllCustomResources();
-                    }
-                    else if (tab == AccountTabs.Settings)
-                    {
-                        model.Settings = (await _database.GetAllSettings())?.ToDictionary(x => x.Id.ToUpper(), x => x.Value ?? string.Empty);
-                        model.CustomResources = await _database.GetAllCustomResources();
-                    }
-                    else if (tab == AccountTabs.Audit)
-                    {
-                        model.AuditLogs = await _database.GetAuditLogs();
+                        if (model.ActiveTab == AccountTabs.Reviews)
+                        {
+                            model.PendingRequests = await GetPendingReviews(user.Id);
+                        }
+                        else if (model.ActiveTab == AccountTabs.Galleries)
+                        {
+                            model.Galleries = await _database.GetUserGalleries(user.Id);
+                        }
+                        else if (model.ActiveTab == AccountTabs.Users)
+                        {
+                            model.Users = new List<UserModel>() { user };
+                        }
+                        else if (model.ActiveTab == AccountTabs.Resources)
+                        {
+                            model.CustomResources = await _database.GetUserCustomResources(user.Id);
+                        }
+                        else if (model.ActiveTab == AccountTabs.Settings)
+                        {
+                            // Basic users do not have access to global site settings
+                        }
+                        else if (model.ActiveTab == AccountTabs.Audit)
+                        {
+                            model.AuditLogs = await _database.GetUserAuditLogs(user.Id);
+                        }
                     }
                 }
             }
@@ -254,7 +629,7 @@ namespace WeddingShare.Controllers
         }
 
         [HttpGet]
-        [RequiresRole(Permission = AccessPermissions.Gallery_View)]
+        [RequiresRole(GalleryPermission = GalleryPermissions.View)]
         public async Task<IActionResult> GalleriesList()
         {
             if (User?.Identity == null || !User.Identity.IsAuthenticated)
@@ -269,14 +644,21 @@ namespace WeddingShare.Controllers
                 var user = await _database.GetUser(User.Identity.GetUserId());
                 if (user != null)
                 {
-                    result = (await _database.GetAllGalleries())?.Where(x => !x.Identifier.Equals("All", StringComparison.OrdinalIgnoreCase))?.ToList();
-                    if (result != null)
+                    if (User?.Identity?.IsPrivilegedUser() ?? false)
                     {
-                        var all = await _database.GetAllGallery();
-                        if (all != null)
+                        result = (await _database.GetAllGalleries())?.Where(x => !x.Identifier.Equals("All", StringComparison.OrdinalIgnoreCase))?.ToList();
+                        if (result != null)
                         {
-                            result.Add(all);
+                            var all = await _database.GetAllGallery();
+                            if (all != null)
+                            {
+                                result.Add(all);
+                            }
                         }
+                    }
+                    else
+                    {
+                        result = await _database.GetUserGalleries(user.Id);
                     }
                 }
             }
@@ -289,7 +671,7 @@ namespace WeddingShare.Controllers
         }
 
         [HttpGet]
-        [RequiresRole(Permission = AccessPermissions.Review_View)]
+        [RequiresRole(ReviewPermission = ReviewPermissions.View)]
         public async Task<IActionResult> PendingReviews()
         {
             var galleries = new List<PhotoGallery>();
@@ -304,7 +686,14 @@ namespace WeddingShare.Controllers
                 var user = await _database.GetUser(User.Identity.GetUserId());
                 if (user != null)
                 {
-                    galleries = await GetPendingReviews();
+                    if (User?.Identity?.IsPrivilegedUser() ?? false)
+                    {
+                        galleries = await GetPendingReviews();
+                    }
+                    else
+                    {
+                        galleries = await GetPendingReviews(user.Id);
+                    }
                 }
             }
             catch (Exception ex)
@@ -316,7 +705,7 @@ namespace WeddingShare.Controllers
         }
 
         [HttpGet]
-        [RequiresRole(Permission = AccessPermissions.User_View)]
+        [RequiresRole(UserPermission = UserPermissions.View)]
         public async Task<IActionResult> UsersList()
         {
             if (User?.Identity == null || !User.Identity.IsAuthenticated)
@@ -331,7 +720,14 @@ namespace WeddingShare.Controllers
                 var user = await _database.GetUser(User.Identity.GetUserId());
                 if (user != null)
                 {
-                    result = await _database.GetAllUsers();
+                    if (User?.Identity?.IsPrivilegedUser() ?? false)
+                    {
+                        result = await _database.GetAllUsers();
+                    }
+                    else 
+                    {
+                        result = new List<UserModel>() { user };
+                    }
                 }
             }
             catch (Exception ex)
@@ -343,7 +739,7 @@ namespace WeddingShare.Controllers
         }
 
         [HttpGet]
-        [RequiresRole(Permission = AccessPermissions.CustomResource_View)]
+        [RequiresRole(CustomResourcePermission = CustomResourcePermissions.View)]
         public async Task<IActionResult> CustomResources()
         {
             if (User?.Identity == null || !User.Identity.IsAuthenticated)
@@ -355,7 +751,18 @@ namespace WeddingShare.Controllers
 
             try
             {
-                result = await _database.GetAllCustomResources();
+                var user = await _database.GetUser(User.Identity.GetUserId());
+                if (user != null)
+                {
+                    if (User?.Identity?.IsPrivilegedUser() ?? false)
+                    {
+                        result = await _database.GetAllCustomResources();
+                    }
+                    else
+                    { 
+                        result = await _database.GetUserCustomResources(user.Id);
+                    }
+                }
             }
             catch (Exception ex)
             {
@@ -366,7 +773,7 @@ namespace WeddingShare.Controllers
         }
 
         [HttpGet]
-        [RequiresRole(Permission = AccessPermissions.Settings_View)]
+        [RequiresRole(SettingsPermission = SettingsPermissions.View)]
         public async Task<IActionResult> SettingsPartial()
         {
             if (User?.Identity == null || !User.Identity.IsAuthenticated)
@@ -378,8 +785,15 @@ namespace WeddingShare.Controllers
 
             try
             {
-                model.Settings = (await _database.GetAllSettings())?.ToDictionary(x => x.Id.ToUpper(), x => x.Value ?? string.Empty);
-                model.CustomResources = await _database.GetAllCustomResources();
+                var user = await _database.GetUser(User.Identity.GetUserId());
+                if (user != null)
+                {
+                    if (User?.Identity?.IsPrivilegedUser() ?? false)
+                    {
+                        model.Settings = (await _database.GetAllSettings())?.ToDictionary(x => x.Id.ToUpper(), x => x.Value ?? string.Empty);
+                        model.CustomResources = await _database.GetAllCustomResources();
+                    }
+                }
             }
             catch (Exception ex)
             {
@@ -390,7 +804,7 @@ namespace WeddingShare.Controllers
         }
 
         [HttpPost]
-        [RequiresRole(Permission = AccessPermissions.Audit_View)]
+        [RequiresRole(AuditPermission = AuditPermissions.View)]
         public async Task<IActionResult> AuditList(string term = "", int limit = 100)
         {
             if (User?.Identity == null || !User.Identity.IsAuthenticated)
@@ -402,8 +816,20 @@ namespace WeddingShare.Controllers
 
             try
             {
-                limit = limit >= 5 ? limit : 5;
-                result = await _database.GetAuditLogs(term, limit);
+                var user = await _database.GetUser(User.Identity.GetUserId());
+                if (user != null)
+                {
+                    limit = limit >= 5 ? limit : 5;
+
+                    if (User?.Identity?.IsPrivilegedUser() ?? false)
+                    {
+                        result = await _database.GetAuditLogs(term, limit);
+                    }
+                    else
+                    {
+                        result = await _database.GetUserAuditLogs(user.Id, term, limit);
+                    }
+                }
             }
             catch (Exception ex)
             {
@@ -414,7 +840,7 @@ namespace WeddingShare.Controllers
         }
 
         [HttpGet]
-        [RequiresRole(Permission = AccessPermissions.Settings_Gallery_Update)]
+        [RequiresRole(SettingsPermission = SettingsPermissions.Gallery_Update)]
         [Route("Account/Settings/{galleryId}")]
         public async Task<IActionResult> GallerySettingsPartial(int galleryId)
         {
@@ -443,7 +869,7 @@ namespace WeddingShare.Controllers
         }
 
         [HttpPost]
-        [RequiresRole(Permission = AccessPermissions.Review_View)]
+        [RequiresRole(ReviewPermission = ReviewPermissions.View)]
         public async Task<IActionResult> ReviewPhoto(int id, ReviewAction action)
         {
             if (User?.Identity != null && User.Identity.IsAuthenticated)
@@ -454,7 +880,7 @@ namespace WeddingShare.Controllers
                     if (review != null)
                     {
                         var gallery = await _database.GetGallery(review.GalleryId);
-                        if (gallery != null)
+                        if (gallery != null && User.Identity.CanEdit(ReviewPermissions.View, gallery.Owner))
                         { 
                             var galleryDir = Path.Combine(UploadsDirectory, gallery.Identifier);
                             var reviewFile = Path.Combine(galleryDir, "Pending", review.Title);
@@ -508,7 +934,7 @@ namespace WeddingShare.Controllers
         }
 
         [HttpPost]
-        [RequiresRole(Permission = AccessPermissions.Review_View)]
+        [RequiresRole(ReviewPermission = ReviewPermissions.View)]
         public async Task<IActionResult> BulkReview(ReviewAction action)
         {
             if (User?.Identity != null && User.Identity.IsAuthenticated)
@@ -521,7 +947,7 @@ namespace WeddingShare.Controllers
                         foreach (var galleryGroup in items.GroupBy(x => x.GalleryId))
                         {
                             var gallery = await _database.GetGallery(galleryGroup.Key);
-                            if (gallery != null)
+                            if (gallery != null && User.Identity.CanEdit(ReviewPermissions.View, gallery.Owner))
                             {
                                 foreach (var review in galleryGroup)
                                 {
@@ -575,7 +1001,7 @@ namespace WeddingShare.Controllers
         }
 
         [HttpPost]
-        [RequiresRole(Permission = AccessPermissions.Gallery_Create)]
+        [RequiresRole(GalleryPermission = GalleryPermissions.Create)]
         public async Task<IActionResult> AddGallery(GalleryModel model)
         {
             if (User?.Identity != null && User.Identity.IsAuthenticated)
@@ -619,7 +1045,7 @@ namespace WeddingShare.Controllers
         }
 
         [HttpPut]
-        [RequiresRole(Permission = AccessPermissions.Gallery_Update)]
+        [RequiresRole(GalleryPermission = GalleryPermissions.Update)]
         public async Task<IActionResult> EditGallery(GalleryModel model)
         {
             if (User?.Identity != null && User.Identity.IsAuthenticated)
@@ -632,7 +1058,7 @@ namespace WeddingShare.Controllers
                         if (check == null || model.Id == check.Id)
                         {
                             var gallery = await _database.GetGallery(model.Id);
-                            if (gallery != null)
+                            if (gallery != null && User.Identity.CanEdit(GalleryPermissions.Update, gallery.Owner))
                             {
                                 gallery.Name = model.Name;
                                 gallery.SecretKey = model.SecretKey;
@@ -666,7 +1092,7 @@ namespace WeddingShare.Controllers
         }
 
         [HttpDelete]
-        [RequiresRole(Permission = AccessPermissions.Gallery_Wipe)]
+        [RequiresRole(GalleryPermission = GalleryPermissions.Wipe)]
         public async Task<IActionResult> WipeGallery(int id)
         {
             if (User?.Identity != null && User.Identity.IsAuthenticated)
@@ -674,7 +1100,7 @@ namespace WeddingShare.Controllers
                 try
                 {
                     var gallery = await _database.GetGallery(id);
-                    if (gallery != null)
+                    if (gallery != null && User.Identity.CanEdit(GalleryPermissions.Wipe, gallery.Owner))
                     {
                         var galleryDir = Path.Combine(UploadsDirectory, gallery.Identifier);
                         if (_fileHelper.DirectoryExists(galleryDir))
@@ -713,10 +1139,10 @@ namespace WeddingShare.Controllers
         }
 
         [HttpDelete]
-        [RequiresRole(Permission = AccessPermissions.Gallery_Wipe)]
+        [RequiresRole(GalleryPermission = GalleryPermissions.Wipe)]
         public async Task<IActionResult> WipeAllGalleries()
         {
-            if (User?.Identity != null && User.Identity.IsAuthenticated)
+            if (User?.Identity != null && User.Identity.IsAuthenticated && (User?.Identity?.IsPrivilegedUser() ?? false))
             {
                 try
                 {
@@ -754,7 +1180,7 @@ namespace WeddingShare.Controllers
         }
 
         [HttpDelete]
-        [RequiresRole(Permission = AccessPermissions.Gallery_Delete)]
+        [RequiresRole(GalleryPermission = GalleryPermissions.Delete)]
         public async Task<IActionResult> DeleteGallery(int id)
         {
             if (User?.Identity != null && User.Identity.IsAuthenticated)
@@ -762,7 +1188,7 @@ namespace WeddingShare.Controllers
                 try
                 {
                     var gallery = await _database.GetGallery(id);
-                    if (gallery != null && gallery.Id > 1)
+                    if (gallery != null && gallery.Id > 1 && User.Identity.CanEdit(GalleryPermissions.Delete, gallery.Owner))
                     {
                         var galleryDir = Path.Combine(UploadsDirectory, gallery.Identifier);
                         _fileHelper.DeleteDirectoryIfExists(galleryDir);
@@ -772,7 +1198,7 @@ namespace WeddingShare.Controllers
                             await _notificationHelper.Send(_localizer["Destructive_Action_Performed"].Value, $"The destructive action 'Delete' was performed on gallery '{gallery.Name}'.", _url.GenerateBaseUrl(HttpContext?.Request, "/Account"));
                         }
 
-                        await _audit.LogAction(User?.Identity?.Name, $"{_localizer["Audit_DeletedGallery"].Value} '{gallery?.Name}'");
+                        await _audit.LogAction(User?.Identity?.Name, $"{_localizer["Audit_DeletedGallery"].Value} '{gallery?.Name} ({gallery?.OwnerName})'");
 
                         return Json(new { success = await _database.DeleteGallery(gallery) });
                     }
@@ -791,7 +1217,7 @@ namespace WeddingShare.Controllers
         }
 
         [HttpDelete]
-        [RequiresRole(Permission = AccessPermissions.Review_Delete)]
+        [RequiresRole(ReviewPermission = ReviewPermissions.Delete)]
         public async Task<IActionResult> DeletePhoto(int id)
         {
             if (User?.Identity != null && User.Identity.IsAuthenticated)
@@ -802,7 +1228,7 @@ namespace WeddingShare.Controllers
                     if (photo != null)
                     {
                         var gallery = await _database.GetGallery(photo.GalleryId);
-                        if (gallery != null)
+                        if (gallery != null && User.Identity.CanEdit(ReviewPermissions.Delete, gallery.Owner))
                         { 
                             var photoPath = Path.Combine(UploadsDirectory, gallery.Identifier, photo.Title);
                             _fileHelper.DeleteFileIfExists(photoPath);
@@ -827,16 +1253,16 @@ namespace WeddingShare.Controllers
         }
 
         [HttpPost]
-        [RequiresRole(Permission = AccessPermissions.User_Create)]
+        [RequiresRole(UserPermission = UserPermissions.Create)]
         public async Task<IActionResult> AddUser(UserModel model)
         {
-            if (User?.Identity != null && User.Identity.IsAuthenticated)
+            if (User?.Identity != null && User.Identity.IsAuthenticated && (User?.Identity?.IsPrivilegedUser() ?? false))
             {
                 if (!string.IsNullOrWhiteSpace(model?.Username) && !string.IsNullOrWhiteSpace(model?.Password) && string.Equals(model.Password, model.CPassword))
                 {
                     try
                     {
-                        var check = await _database.GetUser(model.Username);
+                        var check = await _database.GetUserByUsername(model.Username);
                         if (check == null)
                         {
                             model.Password = _encryption.Encrypt(model.Password, model.Username.ToLower());
@@ -866,7 +1292,7 @@ namespace WeddingShare.Controllers
         }
 
         [HttpPut]
-        [RequiresRole(Permission = AccessPermissions.User_Update)]
+        [RequiresRole(UserPermission = UserPermissions.Update)]
         public async Task<IActionResult> EditUser(UserModel model)
         {
             if (User?.Identity != null && User.Identity.IsAuthenticated)
@@ -876,10 +1302,14 @@ namespace WeddingShare.Controllers
                     try
                     {
                         var user = await _database.GetUser(model.Id);
-                        if (user != null)
+                        if (user != null && User.Identity.CanEdit(UserPermissions.Update, user.Id))
                         {
                             user.Email = model.Email;
-                            user.Level = model.Level;
+
+                            if (User.Identity.IsPrivilegedUser() && User.Identity.GetUserPermissions().Users.HasFlag(UserPermissions.Change_Permissions_Level))
+                            { 
+                                user.Level = model.Level;
+                            }
                          
                             await _audit.LogAction(User?.Identity?.Name, $"{_localizer["Audit_UpdatedUser"].Value} '{user?.Username}'");
 
@@ -905,7 +1335,7 @@ namespace WeddingShare.Controllers
         }
 
         [HttpPut]
-        [RequiresRole(Permission = AccessPermissions.User_Change_Password)]
+        [RequiresRole(UserPermission = UserPermissions.Change_Password)]
         public async Task<IActionResult> ChangeUserPassword(UserModel model)
         {
             if (User?.Identity != null && User.Identity.IsAuthenticated)
@@ -915,7 +1345,7 @@ namespace WeddingShare.Controllers
                     try
                     {
                         var user = await _database.GetUser(model.Id);
-                        if (user != null)
+                        if (user != null && User.Identity.CanEdit(UserPermissions.Change_Password, user.Id))
                         {
                             user.Password = _encryption.Encrypt(model.Password, user.Username.ToLower());
 
@@ -943,7 +1373,7 @@ namespace WeddingShare.Controllers
         }
 
         [HttpPut]
-        [RequiresRole(Permission = AccessPermissions.User_Freeze)]
+        [RequiresRole(UserPermission = UserPermissions.Freeze)]
         public async Task<IActionResult> FreezeUser(int id)
         {
             if (User?.Identity != null && User.Identity.IsAuthenticated)
@@ -951,7 +1381,7 @@ namespace WeddingShare.Controllers
                 try
                 {
                     var user = await _database.GetUser(id);
-                    if (user != null)
+                    if (user != null && User.Identity.CanEdit(UserPermissions.Freeze, user.Id))
                     {
                         user.State = AccountState.Frozen;
 
@@ -974,7 +1404,7 @@ namespace WeddingShare.Controllers
         }
 
         [HttpPut]
-        [RequiresRole(Permission = AccessPermissions.User_Freeze)]
+        [RequiresRole(UserPermission = UserPermissions.Freeze)]
         public async Task<IActionResult> UnfreezeUser(int id)
         {
             if (User?.Identity != null && User.Identity.IsAuthenticated)
@@ -982,7 +1412,7 @@ namespace WeddingShare.Controllers
                 try
                 {
                     var user = await _database.GetUser(id);
-                    if (user != null)
+                    if (user != null && User.Identity.CanEdit(UserPermissions.Freeze, user.Id))
                     {
                         user.State = AccountState.Active;
 
@@ -1004,8 +1434,42 @@ namespace WeddingShare.Controllers
             return Json(new { success = false });
         }
 
+        [HttpPut]
+        [RequiresRole(UserPermission = UserPermissions.Freeze)]
+        public async Task<IActionResult> ActivateUser(int id)
+        {
+            if (User?.Identity != null && User.Identity.IsAuthenticated)
+            {
+                try
+                {
+                    var user = await _database.GetUser(id);
+                    if (user != null && User.Identity.CanEdit(UserPermissions.Freeze, user.Id))
+                    {
+                        user.State = AccountState.Active;
+
+                        await _database.SetUserSecret(user.Id, PasswordHelper.GenerateSecretCode());
+                        await CreateDefaultUserGallery(user);
+
+                        await _audit.LogAction(User?.Identity?.Name, $"{_localizer["Audit_ActivateUser"].Value} '{user?.Username}'");
+
+                        return Json(new { success = (await _database.EditUser(user))?.State == user.State });
+                    }
+                    else
+                    {
+                        return Json(new { success = false, message = _localizer["Failed_Edit_User"].Value });
+                    }
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogError(ex, $"{_localizer["Failed_Edit_User"].Value} - {ex?.Message}");
+                }
+            }
+
+            return Json(new { success = false });
+        }
+
         [HttpDelete]
-        [RequiresRole(Permission = AccessPermissions.User_Delete)]
+        [RequiresRole(UserPermission = UserPermissions.Delete)]
         public async Task<IActionResult> DeleteUser(int id)
         {
             if (User?.Identity != null && User.Identity.IsAuthenticated)
@@ -1013,8 +1477,20 @@ namespace WeddingShare.Controllers
                 try
                 {
                     var user = await _database.GetUser(id);
-                    if (user != null && user.Id > 1)
+                    if (user != null && user.Id > 1 && User.Identity.CanEdit(UserPermissions.Delete, user.Id))
                     {
+                        var galleries = await _database.GetUserGalleries(user.Id);
+                        foreach (var gallery in galleries)
+                        {
+                            await DeleteGallery(gallery.Id);
+                        }
+
+                        var customResources = await _database.GetUserCustomResources(user.Id);
+                        foreach (var customResource in customResources)
+                        {
+                            await RemoveCustomResource(customResource.Id);
+                        }
+
                         if (await _settings.GetOrDefault(Notifications.Alerts.DestructiveAction, true))
                         {
                             await _notificationHelper.Send(_localizer["Destructive_Action_Performed"].Value, $"The destructive action 'Delete' was performed on user '{user.Username}'.", _url.GenerateBaseUrl(HttpContext?.Request, "/Account"));
@@ -1039,69 +1515,24 @@ namespace WeddingShare.Controllers
         }
 
         [HttpPut]
-        [RequiresRole(Permission = AccessPermissions.Settings_Update)]
-        public async Task<IActionResult> UpdateSettings(List<UpdateSettingsModel> model, int? galleryId = null)
+        [RequiresRole(SettingsPermission = SettingsPermissions.Update)]
+        public async Task<IActionResult> UpdateSettings(List<UpdateSettingsModel> model)
         {
-            if (User?.Identity != null && User.Identity.IsAuthenticated)
-            {
-                if (model != null && model.Count() > 0)
-                {
-                    try
-                    {
-                        var success = true;
+            return await UpdateSettings(model, null, SettingsPermissions.Update);
+        }
 
-                        GalleryModel? gallery = null;
-                        if (galleryId != null)
-                        {
-                            gallery = await _database.GetGallery((int)galleryId);
-                        }
-
-                        foreach (var m in model)
-                        {
-                            try
-                            {
-                                var setting = await _database.SetSetting(new SettingModel()
-                                {
-                                    Id = m.Key,
-                                    Value = m.Value
-                                }, gallery?.Id);
-
-                                if (setting == null || (setting.Value ?? string.Empty) != (m.Value ?? string.Empty))
-                                {
-                                    success = false;
-                                }
-                                else
-                                { 
-                                    await _audit.LogAction(User?.Identity?.Name, $"{_localizer["Audit_SettingsUpdated"].Value} '{(!string.IsNullOrWhiteSpace(gallery?.Name) ? gallery.Name : "Gallery Defaults")}' - '{setting?.Id}'='{setting?.Value}'");
-                                }
-                            }
-                            catch (Exception ex)
-                            {
-                                _logger.LogError(ex, $"{_localizer["Failed_Update_Setting"].Value} - {ex?.Message}");
-                            }
-                        }
-
-                        return Json(new { success = success });
-                    }
-                    catch (Exception ex)
-                    {
-                        _logger.LogError(ex, $"{_localizer["Failed_Update_Setting"].Value} - {ex?.Message}");
-                    }
-                }
-                else
-                {
-                    return Json(new { success = false, message = _localizer["Failed_Update_Setting"].Value });
-                }
-            }
-
-            return Json(new { success = false });
+        [HttpPut]
+        [RequiresRole(SettingsPermission = SettingsPermissions.Gallery_Update)]
+        public async Task<IActionResult> UpdateGallerySettings(List<UpdateSettingsModel> model, int galleryId)
+        {
+            return await UpdateSettings(model, galleryId, SettingsPermissions.Gallery_Update);
         }
 
         [HttpPost]
-        [RequiresRole(Permission = AccessPermissions.Data_Export)]
+        [RequiresRole(DataPermission = DataPermissions.Export)]
         public async Task<IActionResult> ExportBackup(ExportOptions options)
         {
-            if (User?.Identity != null && User.Identity.IsAuthenticated)
+            if (User?.Identity != null && User.Identity.IsAuthenticated && (User?.Identity?.IsPrivilegedUser() ?? false))
             {
                 var exportDir = Path.Combine(TempDirectory, "Export");
 
@@ -1169,10 +1600,10 @@ namespace WeddingShare.Controllers
         }
 
         [HttpPost]
-        [RequiresRole(Permission = AccessPermissions.Data_Import)]
+        [RequiresRole(DataPermission = DataPermissions.Import)]
         public async Task<IActionResult> ImportBackup()
         {
-            if (User?.Identity != null && User.Identity.IsAuthenticated)
+            if (User?.Identity != null && User.Identity.IsAuthenticated && (User?.Identity?.IsPrivilegedUser() ?? false))
             {
                 var importDir = Path.Combine(TempDirectory, "Import");
 
@@ -1236,7 +1667,7 @@ namespace WeddingShare.Controllers
         }
 
         [HttpPost]
-        [RequiresRole(Permission = AccessPermissions.Login)]
+        [RequiresRole(UserPermission = UserPermissions.Login)]
         public async Task<IActionResult> RegisterMultifactorAuth(string secret, string code)
         {
             if (!string.IsNullOrWhiteSpace(secret) && !string.IsNullOrWhiteSpace(code))
@@ -1273,7 +1704,7 @@ namespace WeddingShare.Controllers
         }
 
         [HttpDelete]
-        [RequiresRole(Permission = AccessPermissions.User_Reset_MFA)]
+        [RequiresRole(UserPermission = UserPermissions.Reset_MFA)]
         public async Task<IActionResult> ResetMultifactorAuth()
         {
             if (User?.Identity != null && User.Identity.IsAuthenticated)
@@ -1294,7 +1725,7 @@ namespace WeddingShare.Controllers
         }
 
         [HttpDelete]
-        [RequiresRole(Permission = AccessPermissions.User_Reset_MFA)]
+        [RequiresRole(UserPermission = UserPermissions.Reset_MFA)]
         public async Task<IActionResult> ResetMultifactorAuthForUser(int userId)
         {
             if (User?.Identity != null && User.Identity.IsAuthenticated)
@@ -1304,7 +1735,7 @@ namespace WeddingShare.Controllers
                     if (userId > 0)
                     {
                         var user = await _database.GetUser(userId);
-                        if (user != null)
+                        if (user != null && User.Identity.CanEdit(UserPermissions.Reset_MFA, user.Id))
                         { 
                             var cleared = await _database.SetMultiFactorToken(userId, string.Empty);
                             if (cleared)
@@ -1332,7 +1763,7 @@ namespace WeddingShare.Controllers
         }
 
         [HttpPost]
-        [RequiresRole(Permission = AccessPermissions.CustomResource_Create)]
+        [RequiresRole(CustomResourcePermission = CustomResourcePermissions.Create)]
         public async Task<IActionResult> UploadCustomResource()
         {
             Response.StatusCode = (int)HttpStatusCode.BadRequest;
@@ -1344,13 +1775,16 @@ namespace WeddingShare.Controllers
                     var files = Request?.Form?.Files;
                     if (files != null && files.Count > 0)
                     {
+                        var userId = User.Identity.GetUserId();
+
                         var uploaded = 0;
                         var errors = new List<string>();
                         foreach (IFormFile file in files)
                         {
                             try
                             {
-                                var filePath = Path.Combine(CustomResourcesDirectory, file.FileName);
+                                var fileName = User.Identity.IsBasicUser() ? $"{userId}_{file.FileName}" : file.FileName;
+                                var filePath = Path.Combine(CustomResourcesDirectory, fileName);
                                 if (string.IsNullOrWhiteSpace(filePath))
                                 {
                                     continue;
@@ -1364,10 +1798,9 @@ namespace WeddingShare.Controllers
                                     _fileHelper.CreateDirectoryIfNotExists(CustomResourcesDirectory);
                                     await _fileHelper.SaveFile(file, filePath, FileMode.Create);
 
-                                    var userId = User.Identity.GetUserId();
                                     var item = await _database.AddCustomResource(new CustomResourceModel()
                                     {
-                                        FileName = file.FileName,
+                                        FileName = fileName,
                                         UploadedBy = User?.Identity.Name,
                                         Owner = userId
                                     });
@@ -1404,7 +1837,7 @@ namespace WeddingShare.Controllers
         }
 
         [HttpDelete]
-        [RequiresRole(Permission = AccessPermissions.CustomResource_Delete)]
+        [RequiresRole(CustomResourcePermission = CustomResourcePermissions.Delete)]
         public async Task<IActionResult> RemoveCustomResource(int id)
         {
             Response.StatusCode = (int)HttpStatusCode.BadRequest;
@@ -1414,7 +1847,7 @@ namespace WeddingShare.Controllers
                 try
                 {
                     var resource = await _database.GetCustomResource(id);
-                    if (resource != null)
+                    if (resource != null && User.Identity.CanEdit(CustomResourcePermissions.Delete, resource.Owner))
                     {
                         if (await _database.DeleteCustomResource(resource))
                         {
@@ -1441,7 +1874,7 @@ namespace WeddingShare.Controllers
         }
 
         [HttpGet]
-        [RequiresRole(Permission = AccessPermissions.Login)]
+        [RequiresRole(UserPermission = UserPermissions.Login)]
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public async Task<IActionResult> CheckAccountState()
         {
@@ -1452,7 +1885,7 @@ namespace WeddingShare.Controllers
                 try
                 {
                     var user = await _database.GetUser(User.Identity.GetUserId());
-                    if (user != null)
+                    if (user != null && User.Identity.CanEdit(UserPermissions.Login, user.Id))
                     {
                         Response.StatusCode = (int)HttpStatusCode.OK;
 
@@ -1466,6 +1899,66 @@ namespace WeddingShare.Controllers
             }
 
             return Json(new { active = false });
+        }
+
+        private async Task<IActionResult> UpdateSettings(List<UpdateSettingsModel> model, int? galleryId, SettingsPermissions accessPermissions)
+        {
+            if (User?.Identity != null && User.Identity.IsAuthenticated)
+            {
+                if (model != null && model.Count() > 0)
+                {
+                    try
+                    {
+                        var success = true;
+
+                        GalleryModel? gallery = null;
+                        if (galleryId != null)
+                        {
+                            gallery = await _database.GetGallery((int)galleryId);
+                        }
+
+                        if (User.Identity.CanEdit(accessPermissions, gallery?.Owner))
+                        {
+                            foreach (var m in model)
+                            {
+                                try
+                                {
+                                    var setting = await _database.SetSetting(new SettingModel()
+                                    {
+                                        Id = m.Key,
+                                        Value = m.Value
+                                    }, gallery?.Id);
+
+                                    if (setting == null || (setting.Value ?? string.Empty) != (m.Value ?? string.Empty))
+                                    {
+                                        success = false;
+                                    }
+                                    else
+                                    {
+                                        await _audit.LogAction(User?.Identity?.Name, $"{_localizer["Audit_SettingsUpdated"].Value} '{(!string.IsNullOrWhiteSpace(gallery?.Name) ? gallery.Name : "Gallery Defaults")}' - '{setting?.Id}'='{setting?.Value}'");
+                                    }
+                                }
+                                catch (Exception ex)
+                                {
+                                    _logger.LogError(ex, $"{_localizer["Failed_Update_Setting"].Value} - {ex?.Message}");
+                                }
+                            }
+                        }
+
+                        return Json(new { success = success });
+                    }
+                    catch (Exception ex)
+                    {
+                        _logger.LogError(ex, $"{_localizer["Failed_Update_Setting"].Value} - {ex?.Message}");
+                    }
+                }
+                else
+                {
+                    return Json(new { success = false, message = _localizer["Failed_Update_Setting"].Value });
+                }
+            }
+
+            return Json(new { success = false });
         }
 
         private async Task<bool> SetUserClaims(HttpContext ctx, UserModel user)
@@ -1525,11 +2018,11 @@ namespace WeddingShare.Controllers
             }
         }
 
-        private async Task<List<PhotoGallery>> GetPendingReviews()
+        private async Task<List<PhotoGallery>> GetPendingReviews(int? userId = null)
         {
             var galleries = new List<PhotoGallery>();
 
-            var items = await _database.GetPendingGalleryItems();
+            var items = userId != null ? await _database.GetUserPendingGalleryItems((int)userId) : await _database.GetPendingGalleryItems();
             if (items != null)
             {
                 foreach (var galleryGroup in items.GroupBy(x => x.GalleryId))
@@ -1550,7 +2043,6 @@ namespace WeddingShare.Controllers
                                 UploadDate = x.UploadedDate,
                                 ImagePath = $"/{Path.Combine(UploadsDirectory, gallery.Identifier).Remove(_hostingEnvironment.WebRootPath).Replace('\\', '/').TrimStart('/')}/Pending/{x.Title}",
                                 ThumbnailPath = $"/{Path.Combine(ThumbnailsDirectory, gallery.Identifier).Remove(_hostingEnvironment.WebRootPath).Replace('\\', '/').TrimStart('/')}/{Path.GetFileNameWithoutExtension(x.Title)}.webp",
-                                ThumbnailPathFallback = $"/{ThumbnailsDirectory.Remove(_hostingEnvironment.WebRootPath).Replace('\\', '/').TrimStart('/')}/{Path.GetFileNameWithoutExtension(x.Title)}.webp",
                                 MediaType = x.MediaType
                             })?.ToList(),
                             ItemsPerPage = int.MaxValue,
@@ -1560,6 +2052,30 @@ namespace WeddingShare.Controllers
             }
 
             return galleries;
+        }
+
+        private async Task<GalleryModel?> CreateDefaultUserGallery(UserModel user)
+        {
+            GalleryModel? gallery = null;
+
+            if (user != null)
+            { 
+                try
+                { 
+                    gallery = await _database.AddGallery(new GalleryModel()
+                    {
+                        Name = DefaultUserGalleryName,
+                        SecretKey = PasswordHelper.GenerateTempPassword(16),
+                        Owner = user.Id
+                    });
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogError(ex, $"Failed to create '{DefaultUserGalleryName}' gallery for user '{user.Username}'");
+                }
+            }
+
+            return gallery;
         }
     }
 }

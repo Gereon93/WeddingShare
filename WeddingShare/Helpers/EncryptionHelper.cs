@@ -10,7 +10,7 @@ namespace WeddingShare.Helpers
         string Encrypt(string value, string? salt = null);
     }
 
-    public class EncryptionHelper : IEncryptionHelper
+    public class EncryptionHelper : EncodingHelper, IEncryptionHelper
     {
         private readonly HashAlgorithmName _hashType;
         private readonly int _iterations;
@@ -18,6 +18,7 @@ namespace WeddingShare.Helpers
         private readonly string _salt;
 
         public EncryptionHelper(ISettingsHelper settings)
+            : base()
         {
             _hashType = ParseHashType(settings.GetOrDefault(Security.Encryption.HashType, "SHA256").Result);
             _iterations = settings.GetOrDefault(Security.Encryption.Iterations, 1000).Result;

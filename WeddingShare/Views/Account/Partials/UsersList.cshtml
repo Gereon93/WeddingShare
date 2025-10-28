@@ -3,10 +3,10 @@
 @using WeddingShare.Models.Database
 
 @{
-    var userPermissions = User?.Identity?.GetUserPermissions() ?? AccessPermissions.None;
+    var userPermissions = (User?.Identity?.GetUserPermissions() ?? new Permissions());
 }
 
-@if (userPermissions.HasFlag(AccessPermissions.User_View) && Model != null && Model.Any())
+@if (userPermissions.Users.HasFlag(UserPermissions.View) && Model != null && Model.Any())
 {
     <table class="table table-rounded-border">
         <tr>
@@ -15,24 +15,28 @@
         </tr>
         @foreach (var user in Model.OrderBy(x => x.Username.ToLower()))
         {
-            <tr data-user-id="@user.Id" data-user-name="@user.Username" data-user-email="@user.Email" data-user-level="@((int)user.Level)">
+            <tr data-user-id="@user.Id" data-user-name="@user.Username" data-user-email="@user.Email" data-user-level="@((int)user.Level)" data-modify-level="@userPermissions.Users.HasFlag(UserPermissions.Change_Permissions_Level).ToString().ToLower()">
                 <td class="user-name text-capitalize">@user.Username</td>
                 <td>
-                    @if (userPermissions.HasFlag(AccessPermissions.User_Update))
+                    @if (userPermissions.Users.HasFlag(UserPermissions.Update))
                     {
                         <i class="btn @(user.Id > 1 ? "btnEditUser btn-outline-success" : "btn-outline-disabled") fa-solid fa-pen-to-square" alt="Edit"></i>
                     }
-                    @if (userPermissions.HasFlag(AccessPermissions.User_Change_Password))
+                    @if (userPermissions.Users.HasFlag(UserPermissions.Change_Password))
                     {
                         <i class="btn @(user.Id > 1 ? "btnChangePassword btn-outline-success" : "btn-outline-disabled") fa-solid fa-unlock-keyhole" alt="Change Password"></i>
                     }
-                    @if (userPermissions.HasFlag(AccessPermissions.User_Reset_MFA))
+                    @if (userPermissions.Users.HasFlag(UserPermissions.Reset_MFA))
                     {
                         <i class="btn @(user.Id > 1 ? "btnWipe2FA btn-outline-danger" : "btn-outline-disabled") fa-solid fa-key" alt="Wipe 2FA"></i>
                     }
-                    @if (userPermissions.HasFlag(AccessPermissions.User_Freeze))
+                    @if (userPermissions.Users.HasFlag(UserPermissions.Freeze))
                     {
-                        if (user.State == AccountState.Frozen)
+                        if (user.State == AccountState.PendingActivation)
+                        {
+                            <i class="btn @(user.Id > 1 ? "btnActivateUser btn-outline-primary" : "btn-outline-disabled") fa-solid fa-hourglass-half" alt="Activate"></i>
+                        }
+                        else if (user.State == AccountState.Frozen)
                         {
                             <i class="btn @(user.Id > 1 ? "btnUnfreezeUser btn-outline-primary" : "btn-outline-disabled") fa-solid fa-fire" alt="Unfreeze"></i>
                         }
@@ -41,7 +45,7 @@
                             <i class="btn @(user.Id > 1 ? "btnFreezeUser btn-outline-danger" : "btn-outline-disabled") fa-solid fa-snowflake" alt="Freeze"></i>
                         }
                     }
-                    @if (userPermissions.HasFlag(AccessPermissions.User_Delete))
+                    @if (userPermissions.Users.HasFlag(UserPermissions.Delete))
                     {
                         <i class="btn @(user.Id > 1 ? "btnDeleteUser btn-outline-danger" : "btn-outline-disabled") fa-solid fa-trash-can" alt="Delete"></i>
                     }

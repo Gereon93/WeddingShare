@@ -1,8 +1,10 @@
+using System.Net;
+using System.Text;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http.Timeouts;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
-using System.Net;
 using WeddingShare.Attributes;
 using WeddingShare.Constants;
 using WeddingShare.Enums;
@@ -12,6 +14,7 @@ using WeddingShare.Helpers.Database;
 using WeddingShare.Helpers.Notifications;
 using WeddingShare.Models;
 using WeddingShare.Models.Database;
+using WeddingShare.Views.Gallery;
 
 namespace WeddingShare.Controllers
 {
@@ -227,10 +230,10 @@ namespace WeddingShare.Controllers
                     var allowedFileTypes = (await _settings.GetOrDefault(Settings.Gallery.AllowedFileTypes, ".jpg,.jpeg,.png,.mp4,.mov", gallery?.Id)).Split(',', StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries);
                     var items = (await _database.GetAllGalleryItems(gallery?.Id, GalleryItemState.Approved, mediaType, orientation, galleryGroup, galleryOrder, itemsPerPage, currentPage))?.Where(x => allowedFileTypes.Any(y => string.Equals(Path.GetExtension(x.Title).Trim('.'), y.Trim('.'), StringComparison.OrdinalIgnoreCase)));
 
-                    var userPermissions = User?.Identity?.GetUserPermissions() ?? AccessPermissions.None;
-                    var isGalleryAdmin = User?.Identity != null && User.Identity.IsAuthenticated && userPermissions.HasFlag(AccessPermissions.Gallery_Upload);
-
-                    var uploadActvated = !gallery.Identifier.Equals("All", StringComparison.OrdinalIgnoreCase) && (await _settings.GetOrDefault(Settings.Gallery.Upload, true, gallery?.Id) || isGalleryAdmin);
+                    var userPermissions = User?.Identity?.GetUserPermissions() ?? new Permissions();
+                    var isGalleryAdmin = User?.Identity != null && User.Identity.IsAuthenticated && userPermissions.Gallery.HasFlag(GalleryPermissions.Upload);
+                    
+                    var uploadActvated = !gallery.Identifier.Equals("All", StringComparison.OrdinalIgnoreCase) && (isGalleryAdmin || await _settings.GetOrDefault(Settings.Gallery.Upload, true, gallery?.Id));
                     if (uploadActvated)
                     {
                         try
@@ -273,7 +276,7 @@ namespace WeddingShare.Controllers
                     }
 
                     var itemCounts = await _database.GetGalleryItemCount(gallery?.Id, GalleryItemState.All, mediaType, orientation);
-                    var galleryIdentifiers = !gallery.Identifier.Equals("All", StringComparison.OrdinalIgnoreCase) ? new Dictionary<int, string>() { { gallery.Id, gallery.Identifier } } : items?.GroupBy(x => x.Id)?.Select(x => new KeyValuePair<int, string>(x.Key, _database.GetGalleryIdentifier(x.Key).Result))?.ToDictionary();
+                    var galleryIdentifiers = !gallery.Identifier.Equals("All", StringComparison.OrdinalIgnoreCase) ? new Dictionary<int, string>() { { gallery.Id, gallery.Identifier } } : items?.GroupBy(x => x.GalleryId)?.Select(x => new KeyValuePair<int, string>(x.Key, _database.GetGalleryIdentifier(x.Key).Result))?.ToDictionary();
                     var model = new PhotoGallery()
                     {
                         Gallery = gallery,
@@ -284,13 +287,13 @@ namespace WeddingShare.Controllers
                             {
                                 Id = x.Id,
                                 GalleryId = x.GalleryId,
+                                GalleryName = gallery.Name,
                                 Name = Path.GetFileName(x.Title),
                                 UploadedBy = x.UploadedBy,
                                 UploaderEmailAddress = x.UploaderEmailAddress,
                                 UploadDate = x.UploadedDate,
                                 ImagePath = $"/{Path.Combine(UploadsDirectory, galleryIdentifier).Remove(_hostingEnvironment.WebRootPath).Replace('\\', '/').TrimStart('/')}/{x.Title}",
                                 ThumbnailPath = $"/{Path.Combine(ThumbnailsDirectory, galleryIdentifier).Remove(_hostingEnvironment.WebRootPath).Replace('\\', '/').TrimStart('/')}/{Path.GetFileNameWithoutExtension(x.Title)}.webp",
-                                ThumbnailPathFallback = $"/{ThumbnailsDirectory.Remove(_hostingEnvironment.WebRootPath).Replace('\\', '/').TrimStart('/')}/{Path.GetFileNameWithoutExtension(x.Title)}.webp",
                                 MediaType = x.MediaType
                             };
                         })?.ToList(),
@@ -341,7 +344,9 @@ namespace WeddingShare.Controllers
                     var files = Request?.Form?.Files;
                     if (files != null && files.Count > 0)
                     {
-                        var requiresReview = await _settings.GetOrDefault(Settings.Gallery.RequireReview, true, gallery.Id);
+                        var galleryOwner = await _database.GetUser(gallery.Owner);
+                        var isFreeGallery = gallery.Owner > 0 && (galleryOwner?.Level ?? UserLevel.Free) != UserLevel.Free;
+                        var requiresReview = !isFreeGallery && await _settings.GetOrDefault(Settings.Gallery.RequireReview, true, gallery.Id);
 
                         var uploaded = 0;
                         var errors = new List<string>();
@@ -476,7 +481,9 @@ namespace WeddingShare.Controllers
                     }
 
                     var uploadedBy = HttpContext.Session.GetString(SessionKey.ViewerIdentity) ?? "Anonymous";
-                    var requiresReview = await _settings.GetOrDefault(Settings.Gallery.RequireReview, true, galleryId);
+
+                    var galleryUser = await _database.GetUser(gallery.Owner);
+                    var requiresReview = galleryUser != null && galleryUser.Level != UserLevel.Free && await _settings.GetOrDefault(Settings.Gallery.RequireReview, true, galleryId);
 
                     int uploaded = int.Parse((Request?.Form?.FirstOrDefault(x => string.Equals("Count", x.Key, StringComparison.OrdinalIgnoreCase)).Value)?.ToString() ?? "0");
                     if (uploaded > 0 && requiresReview && await _settings.GetOrDefault(Notifications.Alerts.PendingReview, true))
@@ -502,6 +509,7 @@ namespace WeddingShare.Controllers
         }
 
         [HttpPost]
+        [RequestTimeout("timeout_1h")]
         public async Task<IActionResult> DownloadGallery(int id, string? secretKey, string? group)
         {
             try

@@ -94,6 +94,18 @@
   <data name="406_Error_Title" xml:space="preserve">
     <value>Nieprawidłowa Galeria</value>
   </data>
+  <data name="407_Error_Message" xml:space="preserve">
+    <value>Był problem, próbując zweryfikować twoje konto. Proszę zapewnić poprawność łącza weryfikacji.</value>
+  </data>
+  <data name="407_Error_Title" xml:space="preserve">
+    <value>Nieprawidłowa weryfikacja Związek</value>
+  </data>
+  <data name="408_Error_Message" xml:space="preserve">
+    <value>Był problem podczas próby zresetowania hasła konta. Proszę zapewnić poprawność łącza weryfikacji.</value>
+  </data>
+  <data name="408_Error_Title" xml:space="preserve">
+    <value>Nieprawidłowe połączenie reset haseł</value>
+  </data>
   <data name="Accept" xml:space="preserve">
     <value>Akceptuj</value>
   </data>
@@ -120,6 +132,12 @@
   </data>
   <data name="Audit" xml:space="preserve">
     <value>Kontrola</value>
+  </data>
+  <data name="Audit_Account_Registered" xml:space="preserve">
+    <value>Konto zarejestrowane przez użytkownika</value>
+  </data>
+  <data name="Audit_ActivateUser" xml:space="preserve">
+    <value>Aktywowany użytkownik</value>
   </data>
   <data name="Audit_BulkApproveReviews" xml:space="preserve">
     <value>Luzem zatwierdzone wszystkie oczekujące opinie</value>
@@ -148,6 +166,9 @@
   <data name="Audit_DeletedUser" xml:space="preserve">
     <value>Usunięty użytkownik</value>
   </data>
+  <data name="Audit_Email_Verified" xml:space="preserve">
+    <value>Użytkownik zweryfikował swój adres e-mail</value>
+  </data>
   <data name="Audit_ExportedBackup" xml:space="preserve">
     <value>Wysłał kopię zapasową</value>
   </data>
@@ -156,6 +177,9 @@
   </data>
   <data name="Audit_FailedLoginAttemptReset" xml:space="preserve">
     <value>Nieudane próby logowania licz reset</value>
+  </data>
+  <data name="Audit_Forgot_Password" xml:space="preserve">
+    <value>Użytkownik zażądał resetu hasła</value>
   </data>
   <data name="Audit_FrozeUser" xml:space="preserve">
     <value>Użytkownik zamrożony</value>
@@ -198,6 +222,9 @@
   </data>
   <data name="Audit_MultiFactorResetUser" xml:space="preserve">
     <value>Zresetuj multiczynnik dla użytkownika</value>
+  </data>
+  <data name="Audit_Password_Reset" xml:space="preserve">
+    <value>Użytkownik zażądał resetu hasła</value>
   </data>
   <data name="Audit_SearchTerm_Help" xml:space="preserve">
     <value>Logi filtrów oparte na określeniu wyszukiwania</value>
@@ -379,6 +406,21 @@
   <data name="Filter" xml:space="preserve">
     <value>Filtr</value>
   </data>
+  <data name="Forgot_Password" xml:space="preserve">
+    <value>Zapomniałeś hasła</value>
+  </data>
+  <data name="ForgotPassword" xml:space="preserve">
+    <value>Zapomniałeś hasła</value>
+  </data>
+  <data name="ForgotPassword_Email_Help" xml:space="preserve">
+    <value>Proszę podać adres e-mail konta.</value>
+  </data>
+  <data name="ForgotPassword_Email_Label" xml:space="preserve">
+    <value>Adres e-mail</value>
+  </data>
+  <data name="ForgotPassword_Failed" xml:space="preserve">
+    <value>Nie udało się wysłać e- maila z resetem hasła</value>
+  </data>
   <data name="Galleries" xml:space="preserve">
     <value>Galerie</value>
   </data>
@@ -535,6 +577,24 @@
   <data name="None" xml:space="preserve">
     <value>Brak</value>
   </data>
+  <data name="Password_Reset_Changed_Message" xml:space="preserve">
+    <value>Twoje hasło zostało zresetowane. Jeśli nie zażądałeś resetowania hasła, skontaktuj się natychmiast z administratorem.</value>
+  </data>
+  <data name="Password_Reset_Changed_Title" xml:space="preserve">
+    <value>Twoje hasło zostało zaktualizowane!</value>
+  </data>
+  <data name="Password_Reset_Requested_Message" xml:space="preserve">
+    <value>Zresetowano hasło na Twoim koncie. Jeśli zażądałeś zmiany hasła, kliknij poniższy link, aby go zaktualizować.</value>
+  </data>
+  <data name="Password_Reset_Requested_Title" xml:space="preserve">
+    <value>Problemy z dostępem do twojego konta?</value>
+  </data>
+  <data name="PasswordReset" xml:space="preserve">
+    <value>Zmień hasło</value>
+  </data>
+  <data name="PasswordReset_Failed" xml:space="preserve">
+    <value>Nie udało się wysłać e- maila z resetem hasła.</value>
+  </data>
   <data name="Pending" xml:space="preserve">
     <value>Oczekiwanie</value>
   </data>
@@ -553,6 +613,75 @@
   <data name="Random" xml:space="preserve">
     <value>Przypadek</value>
   </data>
+  <data name="Register" xml:space="preserve">
+    <value>Rejestr</value>
+  </data>
+  <data name="Register_Account" xml:space="preserve">
+    <value>Rachunek rejestrowy</value>
+  </data>
+  <data name="Register_CPassword_Help" xml:space="preserve">
+    <value>Potwierdź swoje hasło</value>
+  </data>
+  <data name="Register_CPassword_Label" xml:space="preserve">
+    <value>Potwierdź hasło</value>
+  </data>
+  <data name="Register_Email_Help" xml:space="preserve">
+    <value>Proszę podać adres e-mail konta.</value>
+  </data>
+  <data name="Register_Email_Label" xml:space="preserve">
+    <value>Adres e-mail</value>
+  </data>
+  <data name="Register_Password_Help" xml:space="preserve">
+    <value>Hasło wprowadź hasło.</value>
+  </data>
+  <data name="Register_Password_Label" xml:space="preserve">
+    <value>Hasło</value>
+  </data>
+  <data name="Register_Username_Help" xml:space="preserve">
+    <value>Proszę podać nazwę konta.</value>
+  </data>
+  <data name="Register_Username_Label" xml:space="preserve">
+    <value>Nazwa użytkownika</value>
+  </data>
+  <data name="Registration_Confirm_Password_Missmatch" xml:space="preserve">
+    <value>Hasło potwierdzenia nie pasuje</value>
+  </data>
+  <data name="Registration_Email_Send_Failed" xml:space="preserve">
+    <value>Nie udało się wysłać e-maila rejestracyjnego do użytkownika.</value>
+  </data>
+  <data name="Registration_Email_Taken" xml:space="preserve">
+    <value>Konto z określonym adresem e-mail już istnieje</value>
+  </data>
+  <data name="Registration_Failed" xml:space="preserve">
+    <value>Nie udało się zarejestrować nowego użytkownika</value>
+  </data>
+  <data name="Registration_Invalid_Email" xml:space="preserve">
+    <value>Proszę podać poprawny adres e-mail</value>
+  </data>
+  <data name="Registration_Invalid_Password" xml:space="preserve">
+    <value>Proszę podać ważne hasło od 8 do 100 znaków, zawierające co najmniej 1 górną literę, 1 dolną literę, 1 numer i 1 specjalny znak</value>
+  </data>
+  <data name="Registration_Invalid_Username" xml:space="preserve">
+    <value>Proszę podać poprawną nazwę użytkownika od 5 do 50 znaków</value>
+  </data>
+  <data name="Registration_Invalid_Verification_Link" xml:space="preserve">
+    <value>Był problem z przetwarzaniem łącza weryfikacji poczty elektronicznej</value>
+  </data>
+  <data name="Registration_Success_Message" xml:space="preserve">
+    <value>Twoje konto zostało zarejestrowane pomyślnie i czeka na Twój dostęp</value>
+  </data>
+  <data name="Registration_Success_Title" xml:space="preserve">
+    <value>Witamy!</value>
+  </data>
+  <data name="Registration_Success_Verification" xml:space="preserve">
+    <value>Twoje konto zostało zarejestrowane, ale musi zostać zweryfikowane, zanim będzie można do niego dotrzeć. Proszę aktywować swoje konto klikając na poniższy link.</value>
+  </data>
+  <data name="Registration_Username_Taken" xml:space="preserve">
+    <value>Nazwa użytkownika już istnieje. Proszę wybrać nowy</value>
+  </data>
+  <data name="Registration_Weak_Password" xml:space="preserve">
+    <value>Podane hasło jest łatwo odgadnąć. Proszę wybrać bardziej bezpieczne hasło.</value>
+  </data>
   <data name="Reject" xml:space="preserve">
     <value>Odrzuć</value>
   </data>
@@ -561,6 +690,9 @@
   </data>
   <data name="Rename" xml:space="preserve">
     <value>Zmień nazwę</value>
+  </data>
+  <data name="ResetPassword_Invalid_Reset_Link" xml:space="preserve">
+    <value>Pojawił się problem przetwarzania łącza reset hasła</value>
   </data>
   <data name="Resources" xml:space="preserve">
     <value>Zasoby</value>
@@ -603,6 +735,18 @@
   </data>
   <data name="Settings_Account_Profile_Icon_Label" xml:space="preserve">
     <value>Ikona profilu</value>
+  </data>
+  <data name="Settings_Account_Registration_Enabled_Help" xml:space="preserve">
+    <value>Czy goście mogą rejestrować konta?</value>
+  </data>
+  <data name="Settings_Account_Registration_Enabled_Label" xml:space="preserve">
+    <value>Rejestracja włączona</value>
+  </data>
+  <data name="Settings_Account_Registration_RequireEmailValidation_Help" xml:space="preserve">
+    <value>Czy użytkownicy są zobowiązani do weryfikacji swojego maila w celu aktywacji konta?</value>
+  </data>
+  <data name="Settings_Account_Registration_RequireEmailValidation_Label" xml:space="preserve">
+    <value>Wymagana walidacja e-mail</value>
   </data>
   <data name="Settings_Alerts" xml:space="preserve">
     <value>Wpisy</value>
@@ -1162,6 +1306,9 @@
   <data name="Square" xml:space="preserve">
     <value>Kwadrat</value>
   </data>
+  <data name="Submit" xml:space="preserve">
+    <value>Prześlij</value>
+  </data>
   <data name="Supporters" xml:space="preserve">
     <value>Kibice</value>
   </data>
@@ -1176,6 +1323,12 @@
   </data>
   <data name="Update" xml:space="preserve">
     <value>Aktualizacja</value>
+  </data>
+  <data name="Upgrade" xml:space="preserve">
+    <value>Aktualizacja</value>
+  </data>
+  <data name="Upgrade_Account_Message" xml:space="preserve">
+    <value>Obecnie używasz darmowej wersji. Aby odblokować więcej przechowywania galerii i innych wspaniałych funkcji rozważyć modernizację konta</value>
   </data>
   <data name="Upload_Media" xml:space="preserve">
     <value>Wyślij media</value>
@@ -1203,6 +1356,9 @@
   </data>
   <data name="Users_List_Failed" xml:space="preserve">
     <value>Nie udało się uzyskać listy użytkowników</value>
+  </data>
+  <data name="Verify" xml:space="preserve">
+    <value>Weryfikacja</value>
   </data>
   <data name="Videos" xml:space="preserve">
     <value>Filmy</value>

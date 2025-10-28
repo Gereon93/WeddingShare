@@ -94,6 +94,18 @@
   <data name="406_Error_Title" xml:space="preserve">
     <value>Невалидна галерия</value>
   </data>
+  <data name="407_Error_Message" xml:space="preserve">
+    <value>Имаше проблем, докато се опитвах да проверя сметката ти. Моля, уверете се, че връзката за проверка е валидна.</value>
+  </data>
+  <data name="407_Error_Title" xml:space="preserve">
+    <value>Невалидна проверка Връзка</value>
+  </data>
+  <data name="408_Error_Message" xml:space="preserve">
+    <value>Имаше проблем, докато се опитваше да рестартира паролата на сметката ти. Моля, уверете се, че връзката за проверка е валидна.</value>
+  </data>
+  <data name="408_Error_Title" xml:space="preserve">
+    <value>Невалидна парола</value>
+  </data>
   <data name="Accept" xml:space="preserve">
     <value>Приемане</value>
   </data>
@@ -120,6 +132,12 @@
   </data>
   <data name="Audit" xml:space="preserve">
     <value>Одит</value>
+  </data>
+  <data name="Audit_Account_Registered" xml:space="preserve">
+    <value>Регистрирана сметка на потребителя</value>
+  </data>
+  <data name="Audit_ActivateUser" xml:space="preserve">
+    <value>Активиран потребител</value>
   </data>
   <data name="Audit_BulkApproveReviews" xml:space="preserve">
     <value>Bulk одобри всички висящи прегледи</value>
@@ -148,6 +166,9 @@
   <data name="Audit_DeletedUser" xml:space="preserve">
     <value>Изтрит потребител</value>
   </data>
+  <data name="Audit_Email_Verified" xml:space="preserve">
+    <value>Потребителят провери имейл адреса си</value>
+  </data>
   <data name="Audit_ExportedBackup" xml:space="preserve">
     <value>Експортиране на резервно копие</value>
   </data>
@@ -156,6 +177,9 @@
   </data>
   <data name="Audit_FailedLoginAttemptReset" xml:space="preserve">
     <value>Грешка при запис</value>
+  </data>
+  <data name="Audit_Forgot_Password" xml:space="preserve">
+    <value>Потребителят поиска рестартиране на паролата</value>
   </data>
   <data name="Audit_FrozeUser" xml:space="preserve">
     <value>Замразен потребител</value>
@@ -198,6 +222,9 @@
   </data>
   <data name="Audit_MultiFactorResetUser" xml:space="preserve">
     <value>Рестартиране на многофактора за потребителя</value>
+  </data>
+  <data name="Audit_Password_Reset" xml:space="preserve">
+    <value>Потребителят поиска рестартиране на паролата</value>
   </data>
   <data name="Audit_SearchTerm_Help" xml:space="preserve">
     <value>Филтриране на трупи въз основа на термин за търсене</value>
@@ -379,6 +406,21 @@
   <data name="Filter" xml:space="preserve">
     <value>Филтър</value>
   </data>
+  <data name="Forgot_Password" xml:space="preserve">
+    <value>Забравена парола</value>
+  </data>
+  <data name="ForgotPassword" xml:space="preserve">
+    <value>Забравена парола</value>
+  </data>
+  <data name="ForgotPassword_Email_Help" xml:space="preserve">
+    <value>Моля, въведете имейл адреса на акаунта.</value>
+  </data>
+  <data name="ForgotPassword_Email_Label" xml:space="preserve">
+    <value>Адрес на електронна поща</value>
+  </data>
+  <data name="ForgotPassword_Failed" xml:space="preserve">
+    <value>Грешка при изпращане на имейла за нулиране на паролата</value>
+  </data>
   <data name="Galleries" xml:space="preserve">
     <value>Галерии</value>
   </data>
@@ -535,6 +577,24 @@
   <data name="None" xml:space="preserve">
     <value>Няма</value>
   </data>
+  <data name="Password_Reset_Changed_Message" xml:space="preserve">
+    <value>Паролата ти е рестартирана. Ако не сте поискали рестартиране на паролата, моля свържете се незабавно с администратор.</value>
+  </data>
+  <data name="Password_Reset_Changed_Title" xml:space="preserve">
+    <value>Паролата ви е актуализирана!</value>
+  </data>
+  <data name="Password_Reset_Requested_Message" xml:space="preserve">
+    <value>По Вашата сметка е поискано рестартиране на паролата. Ако сте поискали промяна на паролата, моля кликнете върху линка по-долу, за да я актуализирате.</value>
+  </data>
+  <data name="Password_Reset_Requested_Title" xml:space="preserve">
+    <value>Проблеми с достъпа до сметката ти?</value>
+  </data>
+  <data name="PasswordReset" xml:space="preserve">
+    <value>Промяна на паролата</value>
+  </data>
+  <data name="PasswordReset_Failed" xml:space="preserve">
+    <value>Грешка при изпращане на имейл за нулиране на паролата.</value>
+  </data>
   <data name="Pending" xml:space="preserve">
     <value>В очакване</value>
   </data>
@@ -553,6 +613,75 @@
   <data name="Random" xml:space="preserve">
     <value>Случайно</value>
   </data>
+  <data name="Register" xml:space="preserve">
+    <value>Регистър</value>
+  </data>
+  <data name="Register_Account" xml:space="preserve">
+    <value>Регистрационна сметка</value>
+  </data>
+  <data name="Register_CPassword_Help" xml:space="preserve">
+    <value>Потвърдете паролата си</value>
+  </data>
+  <data name="Register_CPassword_Label" xml:space="preserve">
+    <value>Потвърдете паролата</value>
+  </data>
+  <data name="Register_Email_Help" xml:space="preserve">
+    <value>Моля, въведете имейл адреса на акаунта.</value>
+  </data>
+  <data name="Register_Email_Label" xml:space="preserve">
+    <value>Адрес на електронна поща</value>
+  </data>
+  <data name="Register_Password_Help" xml:space="preserve">
+    <value>Парола въведете парола.</value>
+  </data>
+  <data name="Register_Password_Label" xml:space="preserve">
+    <value>Парола</value>
+  </data>
+  <data name="Register_Username_Help" xml:space="preserve">
+    <value>Моля, въведете потребителско име на акаунта.</value>
+  </data>
+  <data name="Register_Username_Label" xml:space="preserve">
+    <value>Потребител</value>
+  </data>
+  <data name="Registration_Confirm_Password_Missmatch" xml:space="preserve">
+    <value>Паролата за потвърждение не съвпада</value>
+  </data>
+  <data name="Registration_Email_Send_Failed" xml:space="preserve">
+    <value>Грешка при изпращане на имейл за регистрация на потребителя.</value>
+  </data>
+  <data name="Registration_Email_Taken" xml:space="preserve">
+    <value>Вече съществува сметка с посочения имейл адрес</value>
+  </data>
+  <data name="Registration_Failed" xml:space="preserve">
+    <value>Грешка при регистриране на нов потребител</value>
+  </data>
+  <data name="Registration_Invalid_Email" xml:space="preserve">
+    <value>Моля, посочете валиден имейл адрес</value>
+  </data>
+  <data name="Registration_Invalid_Password" xml:space="preserve">
+    <value>Моля, посочете валидна парола между 8 и 100 знака, съдържаща поне 1 горна буква, 1 долна буква, 1 номер и 1 специален знак</value>
+  </data>
+  <data name="Registration_Invalid_Username" xml:space="preserve">
+    <value>Моля, посочете валидно потребителско име между 5 и 50 знака</value>
+  </data>
+  <data name="Registration_Invalid_Verification_Link" xml:space="preserve">
+    <value>Имаше проблем с обработката на връзката за проверка на имейла</value>
+  </data>
+  <data name="Registration_Success_Message" xml:space="preserve">
+    <value>Акаунтът ви е регистриран успешно и ви чака за достъп</value>
+  </data>
+  <data name="Registration_Success_Title" xml:space="preserve">
+    <value>Добре дошли!</value>
+  </data>
+  <data name="Registration_Success_Verification" xml:space="preserve">
+    <value>Вашият акаунт е регистриран, но трябва да бъде проверен преди да бъде достъпен. Моля, активирайте профила си, като кликнете върху линка по-долу.</value>
+  </data>
+  <data name="Registration_Username_Taken" xml:space="preserve">
+    <value>Потребителското име вече съществува. Моля, изберете нов</value>
+  </data>
+  <data name="Registration_Weak_Password" xml:space="preserve">
+    <value>Паролата лесно се отгатва. Моля, изберете по- сигурна парола.</value>
+  </data>
   <data name="Reject" xml:space="preserve">
     <value>Отхвърляне</value>
   </data>
@@ -561,6 +690,9 @@
   </data>
   <data name="Rename" xml:space="preserve">
     <value>Преименуване</value>
+  </data>
+  <data name="ResetPassword_Invalid_Reset_Link" xml:space="preserve">
+    <value>Имаше проблем с обработката на връзката с паролата</value>
   </data>
   <data name="Resources" xml:space="preserve">
     <value>Ресурси</value>
@@ -603,6 +735,18 @@
   </data>
   <data name="Settings_Account_Profile_Icon_Label" xml:space="preserve">
     <value>Икона на профила</value>
+  </data>
+  <data name="Settings_Account_Registration_Enabled_Help" xml:space="preserve">
+    <value>Позволено ли е на гостите да регистрират сметки?</value>
+  </data>
+  <data name="Settings_Account_Registration_Enabled_Label" xml:space="preserve">
+    <value>Регистрацията е включена</value>
+  </data>
+  <data name="Settings_Account_Registration_RequireEmailValidation_Help" xml:space="preserve">
+    <value>Необходимо ли е потребителите да проверяват имейла си, за да активират профила си?</value>
+  </data>
+  <data name="Settings_Account_Registration_RequireEmailValidation_Label" xml:space="preserve">
+    <value>Изискване за валидиране на електронна поща</value>
   </data>
   <data name="Settings_Alerts" xml:space="preserve">
     <value>Сигнали</value>
@@ -1162,6 +1306,9 @@
   <data name="Square" xml:space="preserve">
     <value>Квадрат</value>
   </data>
+  <data name="Submit" xml:space="preserve">
+    <value>Подаване</value>
+  </data>
   <data name="Supporters" xml:space="preserve">
     <value>Поддръжници</value>
   </data>
@@ -1176,6 +1323,12 @@
   </data>
   <data name="Update" xml:space="preserve">
     <value>Обновяване</value>
+  </data>
+  <data name="Upgrade" xml:space="preserve">
+    <value>Обновяване</value>
+  </data>
+  <data name="Upgrade_Account_Message" xml:space="preserve">
+    <value>В момента използвате безплатната версия. За да отключите повече съхранение галерия и други големи функции, помислете за подобряване на вашия акаунт</value>
   </data>
   <data name="Upload_Media" xml:space="preserve">
     <value>Качване на медиите</value>
@@ -1203,6 +1356,9 @@
   </data>
   <data name="Users_List_Failed" xml:space="preserve">
     <value>Грешка при получаване на списъка с потребители</value>
+  </data>
+  <data name="Verify" xml:space="preserve">
+    <value>Проверка</value>
   </data>
   <data name="Videos" xml:space="preserve">
     <value>Видео клипове</value>

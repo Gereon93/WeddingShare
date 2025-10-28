@@ -94,6 +94,18 @@
   <data name="406_Error_Title" xml:space="preserve">
     <value>Clár na dToghthóirí</value>
   </data>
+  <data name="407_Error_Message" xml:space="preserve">
+    <value>Bhí ceist agus ag iarraidh a fhíorú do chuntas. Cinntigh go bhfuil an nasc fíoraithe bailí.</value>
+  </data>
+  <data name="407_Error_Title" xml:space="preserve">
+    <value>Fíorú Marcáilte Naisc ábhartha eile</value>
+  </data>
+  <data name="408_Error_Message" xml:space="preserve">
+    <value>Bhí ceist ann agus tú ag iarraidh do phasfhocal cuntais a athshocrú. Cinntigh go bhfuil an nasc fíoraithe bailí.</value>
+  </data>
+  <data name="408_Error_Title" xml:space="preserve">
+    <value>Athshocraigh an Pasfhocal</value>
+  </data>
   <data name="Accept" xml:space="preserve">
     <value>Glacadh le</value>
   </data>
@@ -120,6 +132,12 @@
   </data>
   <data name="Audit" xml:space="preserve">
     <value>Iniúchóireacht</value>
+  </data>
+  <data name="Audit_Account_Registered" xml:space="preserve">
+    <value>Cuntas cláraithe úsáideora</value>
+  </data>
+  <data name="Audit_ActivateUser" xml:space="preserve">
+    <value>Úsáideoir Gníomhachtaithe</value>
   </data>
   <data name="Audit_BulkApproveReviews" xml:space="preserve">
     <value>Bulc ceadaithe go léir athbhreithnithe ar feitheamh</value>
@@ -148,6 +166,9 @@
   <data name="Audit_DeletedUser" xml:space="preserve">
     <value>Scriosta úsáideoir</value>
   </data>
+  <data name="Audit_Email_Verified" xml:space="preserve">
+    <value>Úsáideoir fhíorú a sheoladh ríomhphoist</value>
+  </data>
   <data name="Audit_ExportedBackup" xml:space="preserve">
     <value>Onnmhairithe cúltaca</value>
   </data>
@@ -156,6 +177,9 @@
   </data>
   <data name="Audit_FailedLoginAttemptReset" xml:space="preserve">
     <value>Iarrachtaí logáil isteach Failed athshocrú</value>
+  </data>
+  <data name="Audit_Forgot_Password" xml:space="preserve">
+    <value>Úsáideoir iarr athshocrú phasfhocal</value>
   </data>
   <data name="Audit_FrozeUser" xml:space="preserve">
     <value>Úsáideoir reoite</value>
@@ -198,6 +222,9 @@
   </data>
   <data name="Audit_MultiFactorResetUser" xml:space="preserve">
     <value>Athshocraigh ilfhachtóir don úsáideoir</value>
+  </data>
+  <data name="Audit_Password_Reset" xml:space="preserve">
+    <value>Úsáideoir iarr athshocrú phasfhocal</value>
   </data>
   <data name="Audit_SearchTerm_Help" xml:space="preserve">
     <value>Scagaire logs bunaithe ar théarma cuardaigh</value>
@@ -379,6 +406,21 @@
   <data name="Filter" xml:space="preserve">
     <value>Scagaire</value>
   </data>
+  <data name="Forgot_Password" xml:space="preserve">
+    <value>Pasfhocal dearmadta</value>
+  </data>
+  <data name="ForgotPassword" xml:space="preserve">
+    <value>Pasfhocal dearmadta</value>
+  </data>
+  <data name="ForgotPassword_Email_Help" xml:space="preserve">
+    <value>Cuir isteach seoladh ríomhphoist an chuntais.</value>
+  </data>
+  <data name="ForgotPassword_Email_Label" xml:space="preserve">
+    <value>Seoladh Ríomhphoist</value>
+  </data>
+  <data name="ForgotPassword_Failed" xml:space="preserve">
+    <value>Failed a sheoladh do phasfhocal a athshocrú ríomhphost</value>
+  </data>
   <data name="Galleries" xml:space="preserve">
     <value>An tSraith Shinsearach</value>
   </data>
@@ -535,6 +577,24 @@
   <data name="None" xml:space="preserve">
     <value>Gan a bheith ráite</value>
   </data>
+  <data name="Password_Reset_Changed_Message" xml:space="preserve">
+    <value>Tá do phasfhocal a athshocrú anois. Murar iarr tú athshocrú phasfhocal le do thoil teacht amach chuig riarthóir láithreach.</value>
+  </data>
+  <data name="Password_Reset_Changed_Title" xml:space="preserve">
+    <value>Tá do phasfhocal a nuashonrú!</value>
+  </data>
+  <data name="Password_Reset_Requested_Message" xml:space="preserve">
+    <value>Tá athshocrú phasfhocal a iarradh ar do chuntas. Má d'iarr tú athrú phasfhocal cliceáil ar an nasc thíos chun é a thabhairt cothrom le dáta.</value>
+  </data>
+  <data name="Password_Reset_Requested_Title" xml:space="preserve">
+    <value>Trioblóid rochtain ar do chuntas?</value>
+  </data>
+  <data name="PasswordReset" xml:space="preserve">
+    <value>Pasfhocal Athshocraigh</value>
+  </data>
+  <data name="PasswordReset_Failed" xml:space="preserve">
+    <value>Failed a sheoladh ríomhphoist athshocrú phasfhocal.</value>
+  </data>
   <data name="Pending" xml:space="preserve">
     <value>Go dtí go</value>
   </data>
@@ -553,6 +613,75 @@
   <data name="Random" xml:space="preserve">
     <value>Randamach</value>
   </data>
+  <data name="Register" xml:space="preserve">
+    <value>Clár na dToghthóirí</value>
+  </data>
+  <data name="Register_Account" xml:space="preserve">
+    <value>Clár na dToghthóirí</value>
+  </data>
+  <data name="Register_CPassword_Help" xml:space="preserve">
+    <value>Daingniú do phasfhocal</value>
+  </data>
+  <data name="Register_CPassword_Label" xml:space="preserve">
+    <value>Dídean Pasfhocal</value>
+  </data>
+  <data name="Register_Email_Help" xml:space="preserve">
+    <value>Cuir isteach seoladh ríomhphoist an chuntais.</value>
+  </data>
+  <data name="Register_Email_Label" xml:space="preserve">
+    <value>Seoladh Ríomhphoist</value>
+  </data>
+  <data name="Register_Password_Help" xml:space="preserve">
+    <value>Pasfhocal isteach focal faire.</value>
+  </data>
+  <data name="Register_Password_Label" xml:space="preserve">
+    <value>Post a fhógairt</value>
+  </data>
+  <data name="Register_Username_Help" xml:space="preserve">
+    <value>Cuir ainm úsáideora san áireamh.</value>
+  </data>
+  <data name="Register_Username_Label" xml:space="preserve">
+    <value>Ainm úsáideora</value>
+  </data>
+  <data name="Registration_Confirm_Password_Missmatch" xml:space="preserve">
+    <value>Ní phasfhocal a dhaingniú mheaitseáil</value>
+  </data>
+  <data name="Registration_Email_Send_Failed" xml:space="preserve">
+    <value>Failed a sheoladh ríomhphost clárúcháin chuig an úsáideoir.</value>
+  </data>
+  <data name="Registration_Email_Taken" xml:space="preserve">
+    <value>Tá cuntas leis an seoladh ríomhphoist sonraithe ann cheana</value>
+  </data>
+  <data name="Registration_Failed" xml:space="preserve">
+    <value>Failed a chlárú úsáideoir nua</value>
+  </data>
+  <data name="Registration_Invalid_Email" xml:space="preserve">
+    <value>Sonraigh seoladh ríomhphoist bailí</value>
+  </data>
+  <data name="Registration_Invalid_Password" xml:space="preserve">
+    <value>Sonraigh focal faire bailí idir 8 agus 100 carachtar, ina bhfuil ar a laghad 1 litir cás uachtair, 1 litir cás níos ísle, 1 uimhir agus 1 carachtar speisialta</value>
+  </data>
+  <data name="Registration_Invalid_Username" xml:space="preserve">
+    <value>Sonraigh ainm úsáideora bailí idir 5 agus 50 carachtair</value>
+  </data>
+  <data name="Registration_Invalid_Verification_Link" xml:space="preserve">
+    <value>Bhí saincheist a phróiseáil an nasc fíoraithe r-phost</value>
+  </data>
+  <data name="Registration_Success_Message" xml:space="preserve">
+    <value>Tá cuntas agat cláraithe go rathúil agus ag fanacht leat chun rochtain a fháil</value>
+  </data>
+  <data name="Registration_Success_Title" xml:space="preserve">
+    <value>Fáilte!</value>
+  </data>
+  <data name="Registration_Success_Verification" xml:space="preserve">
+    <value>Tá do chuntas cláraithe ach ní mór é a fhíorú sular féidir é a rochtain. Cuir do chuntas i ngníomh trí chliceáil ar an nasc thíos.</value>
+  </data>
+  <data name="Registration_Username_Taken" xml:space="preserve">
+    <value>Ainm Úsáideora ann cheana féin. Roghnaigh ceann nua</value>
+  </data>
+  <data name="Registration_Weak_Password" xml:space="preserve">
+    <value>Tá an focal faire sonraithe guessed go héasca. Roghnaigh focal faire níos slán.</value>
+  </data>
   <data name="Reject" xml:space="preserve">
     <value>Déan teagmháil</value>
   </data>
@@ -561,6 +690,9 @@
   </data>
   <data name="Rename" xml:space="preserve">
     <value>Amharc ar gach eolas</value>
+  </data>
+  <data name="ResetPassword_Invalid_Reset_Link" xml:space="preserve">
+    <value>Bhí saincheist a phróiseáil an nasc athshocrú phasfhocal</value>
   </data>
   <data name="Resources" xml:space="preserve">
     <value>Acmhainní Daonna</value>
@@ -603,6 +735,18 @@
   </data>
   <data name="Settings_Account_Profile_Icon_Label" xml:space="preserve">
     <value>Próifíl 1</value>
+  </data>
+  <data name="Settings_Account_Registration_Enabled_Help" xml:space="preserve">
+    <value>An bhfuil cead ag aíonna cuntais a chlárú?</value>
+  </data>
+  <data name="Settings_Account_Registration_Enabled_Label" xml:space="preserve">
+    <value>Clárú Cumasaithe</value>
+  </data>
+  <data name="Settings_Account_Registration_RequireEmailValidation_Help" xml:space="preserve">
+    <value>An bhfuil úsáideoirí ag teastáil chun a gcuid ríomhphoist a fhíorú d'fhonn a gcuntas a ghníomhachtú?</value>
+  </data>
+  <data name="Settings_Account_Registration_RequireEmailValidation_Label" xml:space="preserve">
+    <value>Athraigh Bailiúcháin Ríomhphost</value>
   </data>
   <data name="Settings_Alerts" xml:space="preserve">
     <value>Amharc ar gach eolas</value>
@@ -1162,6 +1306,9 @@
   <data name="Square" xml:space="preserve">
     <value>Cearnóg</value>
   </data>
+  <data name="Submit" xml:space="preserve">
+    <value>Cuir isteach</value>
+  </data>
   <data name="Supporters" xml:space="preserve">
     <value>Ag tacú le</value>
   </data>
@@ -1176,6 +1323,12 @@
   </data>
   <data name="Update" xml:space="preserve">
     <value>Tuilleadh eolais</value>
+  </data>
+  <data name="Upgrade" xml:space="preserve">
+    <value>Uasghrádú</value>
+  </data>
+  <data name="Upgrade_Account_Message" xml:space="preserve">
+    <value>Tá tú ag baint úsáide as an leagan saor in aisce faoi láthair. A dhíghlasáil níos mó stórála gailearaí agus gnéithe mór eile a mheas uasghrádú do chuntas</value>
   </data>
   <data name="Upload_Media" xml:space="preserve">
     <value>Uaslódáil Meáin</value>
@@ -1203,6 +1356,9 @@
   </data>
   <data name="Users_List_Failed" xml:space="preserve">
     <value>Failed a fháil liosta úsáideoirí</value>
+  </data>
+  <data name="Verify" xml:space="preserve">
+    <value>Fíoraigh</value>
   </data>
   <data name="Videos" xml:space="preserve">
     <value>Físeáin</value>

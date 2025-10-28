@@ -107,49 +107,6 @@ function updatePage() {
     updateAuditList();
 }
 
-function initPasswordValidation() {
-    if ($('.password-validator').length > 0) {
-        $('.password-validator').each(function () {
-            let validator = $(this);
-            let input = $(validator.data('input'));
-            if (input !== undefined && input.length > 0) {
-                let confirmField = input.parent().parent().parent().find('input.confirm-password');
-                if (confirmField !== undefined && confirmField.length === 1) {
-                    validator.find('.lbl-confirm').removeClass('visually-hidden');
-                    confirmField.off('keyup').on('keyup', function () {
-                        var value = $(input).val();
-                        setPasswordValidationField(validator.find('.lbl-confirm'), confirmField.val() === value && value.length);
-                        setPasswordValidationField(validator, validator.find('li[class^=\'lbl-\']:not([class*=\'hidden\'])').length === 0);
-                    });
-                }
-
-                $(input).off('keyup').on('keyup', function () {
-                    var value = $(this).val();
-                    setPasswordValidationField(validator.find('.lbl-lower') , /[a-z]+?/.test(value));
-                    setPasswordValidationField(validator.find('.lbl-upper') , /[A-Z]+?/.test(value));
-                    setPasswordValidationField(validator.find('.lbl-number'), /[0-9]+?/.test(value));
-                    setPasswordValidationField(validator.find('.lbl-special'), /[^A-Za-z0-9]+?/.test(value));
-                    setPasswordValidationField(validator.find('.lbl-length'), value.length >= 8);
-
-                    if (confirmField !== undefined && confirmField.length === 1) {
-                        setPasswordValidationField(validator.find('.lbl-confirm'), confirmField.val() === value && value.length);
-                    }
-
-                    setPasswordValidationField(validator, validator.find('li[class^=\'lbl-\']:not([class*=\'hidden\'])').length === 0);
-                })
-            }
-        });
-    }
-}
-
-function setPasswordValidationField(field, valid) {
-    if (valid) {
-        field.addClass('visually-hidden');
-    } else {
-        field.removeClass('visually-hidden');
-    }
-}
-
 function checkAccountState() {
     $.ajax({
         url: '/Account/CheckAccountState',
@@ -246,7 +203,7 @@ function selectActiveTab(tab) {
 
                                         displayLoader(localization.translate('Loading'));
                                         $.ajax({
-                                            url: '/Account/UpdateSettings',
+                                            url: '/Account/UpdateGallerySettings',
                                             method: 'PUT',
                                             data: { model: settingsList, galleryId: galleryId }
                                         })
@@ -296,15 +253,6 @@ function selectActiveTab(tab) {
                 return;
             }
 
-            let passwordValidation = `<ul class="password-validator" data-input="input#popup-modal-field-user-password"> \
-                    <li class="lbl-lower">${localization.translate('Password_Validation_Lower')}</li> \
-                    <li class="lbl-upper">${localization.translate('Password_Validation_Upper')}</li> \
-                    <li class="lbl-number">${localization.translate('Password_Validation_Numbers')}</li> \
-                    <li class="lbl-special">${localization.translate('Password_Validation_Special')}</li> \
-                    <li class="lbl-length">${localization.translate('Password_Validation_Length')}</li> \
-                    <li class="lbl-confirm visually-hidden">${localization.translate('Password_Validation_Confirm')}</li> \
-                </ul><script>initPasswordValidation();</script>`;
-
             displayPopup({
                 Title: localization.translate('User_Create'),
                 Fields: [{
@@ -339,26 +287,31 @@ function selectActiveTab(tab) {
                         {
                             key: '0',
                             selected: true,
-                            value: 'Basic'
+                            value: 'Free'
                         },
                         {
                             key: '1',
                             selected: false,
-                            value: 'Reviewer'
+                            value: 'Paid'
                         },
                         {
                             key: '2',
                             selected: false,
-                            value: 'Moderator'
+                            value: 'Reviewer'
                         },
                         {
                             key: '3',
+                            selected: false,
+                            value: 'Moderator'
+                        },
+                        {
+                            key: '4',
                             selected: false,
                             value: 'Admin'
                         }
                     ]
                 }],
-                FooterHtml: passwordValidation,
+                FooterHtml: `${generatePasswordValidation('input#popup-modal-field-user-password')}<script>initPasswordValidation();</script>`,
                 Buttons: [{
                     Text: localization.translate('Add'),
                     Class: 'btn-success',
@@ -762,7 +715,7 @@ function selectActiveTab(tab) {
                             .done(data => {
                                 if (data.success === true) {
                                     updatePage();
-                                    displayMessage(localization.translate('2FA_Setup'), localization.translate('2FA_Set_Successfully'));
+                                    displayMessage(localization.translate('2FA_Setup'), localization.translate('2FA_Set_Wipe'));
                                 } else if (data.message) {
                                     displayMessage(localization.translate('2FA_Setup'), localization.translate('2FA_Set_Failed'), [data.message]);
                                 } else {
@@ -877,6 +830,59 @@ function selectActiveTab(tab) {
                             })
                             .fail((xhr, error) => {
                                 displayMessage(localization.translate('Unfreeze_User'), localization.translate('Unfreeze_Failed'), [error]);
+                            });
+                    }
+                }, {
+                    Text: localization.translate('Close')
+                }]
+            });
+        });
+
+        $(document).off('click', 'i.btnActivateUser').on('click', 'i.btnActivateUser', function (e) {
+            preventDefaults(e);
+
+            if ($(this).attr('disabled') == 'disabled') {
+                return;
+            }
+
+            let row = $(this).closest('tr');
+            displayPopup({
+                Title: localization.translate('Activate_User'),
+                Message: `${localization.translate('Activate_User_Message')} '${row.data('user-name')}'`,
+                Fields: [{
+                    Id: 'user-id',
+                    Value: row.data('user-id'),
+                    Type: 'hidden'
+                }],
+                Buttons: [{
+                    Text: localization.translate('Activate'),
+                    Class: 'btn-danger',
+                    Callback: function () {
+                        displayLoader(localization.translate('Loading'));
+
+                        let id = $('#popup-modal-field-user-id').val();
+                        if (id == undefined || id.length == 0) {
+                            displayMessage(localization.translate('Activate_User'), localization.translate('User_Missing_Id'));
+                            return;
+                        }
+
+                        $.ajax({
+                            url: '/Account/ActivateUser',
+                            method: 'PUT',
+                            data: { Id: id }
+                        })
+                            .done(data => {
+                                if (data.success === true) {
+                                    updatePage();
+                                    displayMessage(localization.translate('Activate_User'), localization.translate('Activate_Successfully'));
+                                } else if (data.message) {
+                                    displayMessage(localization.translate('Activate_User'), localization.translate('Activate_Failed'), [data.message]);
+                                } else {
+                                    displayMessage(localization.translate('Activate_User'), localization.translate('Activate_Failed'));
+                                }
+                            })
+                            .fail((xhr, error) => {
+                                displayMessage(localization.translate('Activate_User'), localization.translate('Activate_Failed'), [error]);
                             });
                     }
                 }, {
@@ -1063,6 +1069,8 @@ function selectActiveTab(tab) {
             }
 
             let row = $(this).closest('tr');
+            let canModifyAccessLevel = row.data('modify-level');
+
             displayPopup({
                 Title: localization.translate('User_Edit'),
                 Fields: [{
@@ -1085,28 +1093,33 @@ function selectActiveTab(tab) {
                     Name: localization.translate('User_Level'),
                     Hint: localization.translate('User_Level_Hint'),
                     Type: 'select',
-                    SelectOptions: [
+                    SelectOptions: canModifyAccessLevel ? [
                         {
                             key: '0',
                             selected: row.data('user-level') == '0',
-                            value: 'Basic'
+                            value: 'Free'
                         },
                         {
                             key: '1',
                             selected: row.data('user-level') == '1',
-                            value: 'Reviewer'
+                            value: 'Paid'
                         },
                         {
                             key: '2',
                             selected: row.data('user-level') == '2',
-                            value: 'Moderator'
+                            value: 'Reviewer'
                         },
                         {
                             key: '3',
                             selected: row.data('user-level') == '3',
+                            value: 'Moderator'
+                        },
+                        {
+                            key: '4',
+                            selected: row.data('user-level') == '4',
                             value: 'Admin'
                         }
-                    ]
+                    ] : []
                 }],
                 Buttons: [{
                     Text: localization.translate('Update'),
@@ -1128,7 +1141,7 @@ function selectActiveTab(tab) {
                         }
 
                         let level = $('#popup-modal-field-user-level').val();
-                        if (level == undefined || level.length == 0) {
+                        if (canModifyAccessLevel && (level == undefined || level.length == 0)) {
                             displayMessage(localization.translate('User_Edit'), localization.translate('User_Invalid_Level'));
                             return;
                         }
@@ -1165,15 +1178,6 @@ function selectActiveTab(tab) {
                 return;
             }
 
-            let passwordValidation = `<ul class="password-validator" data-input="input#popup-modal-field-user-password"> \
-                    <li class="lbl-lower">Lower case letters</li> \
-                    <li class="lbl-upper">Upper case letter</li> \
-                    <li class="lbl-number">Numbers</li> \
-                    <li class="lbl-special">Special characters</li> \
-                    <li class="lbl-length">At least 8 characters</li> \
-                    <li class="lbl-confirm visually-hidden">Confirm password matches</li> \
-                </ul><script>initPasswordValidation();</script>`;
-
             let row = $(this).closest('tr');
             displayPopup({
                 Title: localization.translate('User_Edit'),
@@ -1195,7 +1199,7 @@ function selectActiveTab(tab) {
                     Type: 'password',
                     Class: 'confirm-password'
                 }],
-                FooterHtml: passwordValidation,
+                FooterHtml: `${generatePasswordValidation('input#popup-modal-field-user-password')}<script>initPasswordValidation();</script>`,
                 Buttons: [{
                     Text: localization.translate('Update'),
                     Class: 'btn-success',

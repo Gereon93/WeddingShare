@@ -7,8 +7,8 @@
     var galleryNameDropdown = await _settings.GetOrDefault(Settings.GallerySelector.Dropdown, false);
     var isDemoMode = await _settings.GetOrDefault(Settings.IsDemoMode, false);
 }
-<section class="py-1 py-lg-5">
-    <div class="container px-3 px-lg-1 my-3 mt-lg-1">
+<div id="main-content">
+    <div class="container px-3 px-lg-1 pb-4">
         @if (isDemoMode)
         {
             <div class="alert alert-success text-center mb-2" role="alert">
@@ -68,4 +68,4 @@
             </div>
         </div>
     </div>
-</section>
+</div>

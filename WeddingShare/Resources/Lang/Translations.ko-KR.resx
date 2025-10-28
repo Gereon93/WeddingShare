@@ -94,6 +94,18 @@
   <data name="406_Error_Title" xml:space="preserve">
     <value>잘못된 갤러리</value>
   </data>
+  <data name="407_Error_Message" xml:space="preserve">
+    <value>계정을 확인하는 동안 문제가 있었습니다. 인증 링크를 확인하시기 바랍니다.</value>
+  </data>
+  <data name="407_Error_Title" xml:space="preserve">
+    <value>잘못된 검증 팟캐스트</value>
+  </data>
+  <data name="408_Error_Message" xml:space="preserve">
+    <value>계정 암호를 재설정하려고 하는 동안 문제가 있었습니다. 인증 링크를 확인하시기 바랍니다.</value>
+  </data>
+  <data name="408_Error_Title" xml:space="preserve">
+    <value>잘못된 비밀번호 재설정 링크</value>
+  </data>
   <data name="Accept" xml:space="preserve">
     <value>이름 *</value>
   </data>
@@ -120,6 +132,12 @@
   </data>
   <data name="Audit" xml:space="preserve">
     <value>회사연혁</value>
+  </data>
+  <data name="Audit_Account_Registered" xml:space="preserve">
+    <value>사용자 등록 계정</value>
+  </data>
+  <data name="Audit_ActivateUser" xml:space="preserve">
+    <value>활성화된 사용자</value>
   </data>
   <data name="Audit_BulkApproveReviews" xml:space="preserve">
     <value>대량 승인 모든 pending 리뷰</value>
@@ -148,6 +166,9 @@
   <data name="Audit_DeletedUser" xml:space="preserve">
     <value>삭제 된 사용자</value>
   </data>
+  <data name="Audit_Email_Verified" xml:space="preserve">
+    <value>사용자의 이메일 주소를 확인</value>
+  </data>
   <data name="Audit_ExportedBackup" xml:space="preserve">
     <value>백업 수출</value>
   </data>
@@ -156,6 +177,9 @@
   </data>
   <data name="Audit_FailedLoginAttemptReset" xml:space="preserve">
     <value>실패한 로그인 시도 카운트 재설정</value>
+  </data>
+  <data name="Audit_Forgot_Password" xml:space="preserve">
+    <value>비밀번호 재설정 요청</value>
   </data>
   <data name="Audit_FrozeUser" xml:space="preserve">
     <value>Froze 사용자</value>
@@ -198,6 +222,9 @@
   </data>
   <data name="Audit_MultiFactorResetUser" xml:space="preserve">
     <value>사용자를 위한 Multi-factor 재설정</value>
+  </data>
+  <data name="Audit_Password_Reset" xml:space="preserve">
+    <value>비밀번호 재설정 요청</value>
   </data>
   <data name="Audit_SearchTerm_Help" xml:space="preserve">
     <value>검색 용어를 기반으로 필터 로그</value>
@@ -379,6 +406,21 @@
   <data name="Filter" xml:space="preserve">
     <value>제품정보</value>
   </data>
+  <data name="Forgot_Password" xml:space="preserve">
+    <value>비밀번호</value>
+  </data>
+  <data name="ForgotPassword" xml:space="preserve">
+    <value>비밀번호</value>
+  </data>
+  <data name="ForgotPassword_Email_Help" xml:space="preserve">
+    <value>자주 묻는 질문.</value>
+  </data>
+  <data name="ForgotPassword_Email_Label" xml:space="preserve">
+    <value>이메일 주소</value>
+  </data>
+  <data name="ForgotPassword_Failed" xml:space="preserve">
+    <value>비밀번호 재설정 이메일 보내기</value>
+  </data>
   <data name="Galleries" xml:space="preserve">
     <value>팟캐스트</value>
   </data>
@@ -535,6 +577,24 @@
   <data name="None" xml:space="preserve">
     <value>이름 *</value>
   </data>
+  <data name="Password_Reset_Changed_Message" xml:space="preserve">
+    <value>비밀번호가 재설정되었습니다. 비밀번호 재설정을 요청하지 않은 경우 즉시 관리자에 도달하십시오.</value>
+  </data>
+  <data name="Password_Reset_Changed_Title" xml:space="preserve">
+    <value>비밀번호가 업데이트되었습니다!</value>
+  </data>
+  <data name="Password_Reset_Requested_Message" xml:space="preserve">
+    <value>비밀번호 재설정은 계정에서 요청되었습니다. 비밀번호 변경을 요청하면 아래 링크를 클릭하여 업데이트하십시오.</value>
+  </data>
+  <data name="Password_Reset_Requested_Title" xml:space="preserve">
+    <value>계정에 액세스 할 수 있습니까?</value>
+  </data>
+  <data name="PasswordReset" xml:space="preserve">
+    <value>비밀번호 재설정</value>
+  </data>
+  <data name="PasswordReset_Failed" xml:space="preserve">
+    <value>비밀번호 재설정 이메일을 보내드립니다.</value>
+  </data>
   <data name="Pending" xml:space="preserve">
     <value>관련 기사</value>
   </data>
@@ -553,6 +613,75 @@
   <data name="Random" xml:space="preserve">
     <value>한국어</value>
   </data>
+  <data name="Register" xml:space="preserve">
+    <value>계정 만들기</value>
+  </data>
+  <data name="Register_Account" xml:space="preserve">
+    <value>회원가입</value>
+  </data>
+  <data name="Register_CPassword_Help" xml:space="preserve">
+    <value>비밀번호</value>
+  </data>
+  <data name="Register_CPassword_Label" xml:space="preserve">
+    <value>비밀번호</value>
+  </data>
+  <data name="Register_Email_Help" xml:space="preserve">
+    <value>자주 묻는 질문.</value>
+  </data>
+  <data name="Register_Email_Label" xml:space="preserve">
+    <value>이메일 주소</value>
+  </data>
+  <data name="Register_Password_Help" xml:space="preserve">
+    <value>비밀번호 입력.</value>
+  </data>
+  <data name="Register_Password_Label" xml:space="preserve">
+    <value>비밀번호</value>
+  </data>
+  <data name="Register_Username_Help" xml:space="preserve">
+    <value>계정 사용자 이름 입력.</value>
+  </data>
+  <data name="Register_Username_Label" xml:space="preserve">
+    <value>사용자 이름</value>
+  </data>
+  <data name="Registration_Confirm_Password_Missmatch" xml:space="preserve">
+    <value>비밀번호가 일치하지 않습니다</value>
+  </data>
+  <data name="Registration_Email_Send_Failed" xml:space="preserve">
+    <value>사용자 등록 이메일을 보낼 실패.</value>
+  </data>
+  <data name="Registration_Email_Taken" xml:space="preserve">
+    <value>지정된 이메일 주소로 계정이 이미 존재합니다</value>
+  </data>
+  <data name="Registration_Failed" xml:space="preserve">
+    <value>새로운 사용자 등록 실패</value>
+  </data>
+  <data name="Registration_Invalid_Email" xml:space="preserve">
+    <value>자주 묻는 질문</value>
+  </data>
+  <data name="Registration_Invalid_Password" xml:space="preserve">
+    <value>최소 1개의 대문자, 1개의 더 낮은 케이스 편지, 1개의 수 및 1개의 특수 문자를 포함하는 8과 100개의 특성 사이 유효한 암호를 지정하십시오</value>
+  </data>
+  <data name="Registration_Invalid_Username" xml:space="preserve">
+    <value>5과 50자 사이의 유효한 사용자를 지정하십시오</value>
+  </data>
+  <data name="Registration_Invalid_Verification_Link" xml:space="preserve">
+    <value>이메일 확인 링크를 처리하는 문제가 있었습니다</value>
+  </data>
+  <data name="Registration_Success_Message" xml:space="preserve">
+    <value>계정이 등록되었습니다</value>
+  </data>
+  <data name="Registration_Success_Title" xml:space="preserve">
+    <value>제품 정보!</value>
+  </data>
+  <data name="Registration_Success_Verification" xml:space="preserve">
+    <value>계정이 등록되었지만 액세스 할 수 있기 전에 확인해야합니다. 아래 링크를 클릭하여 계정을 활성화하십시오.</value>
+  </data>
+  <data name="Registration_Username_Taken" xml:space="preserve">
+    <value>Username은 이미 존재합니다. 새로운 것을 선택하십시오</value>
+  </data>
+  <data name="Registration_Weak_Password" xml:space="preserve">
+    <value>지정된 암호는 쉽게 추측됩니다. 더 안전한 암호를 선택하십시오.</value>
+  </data>
   <data name="Reject" xml:space="preserve">
     <value>관련 제품</value>
   </data>
@@ -561,6 +690,9 @@
   </data>
   <data name="Rename" xml:space="preserve">
     <value>이름 *</value>
+  </data>
+  <data name="ResetPassword_Invalid_Reset_Link" xml:space="preserve">
+    <value>비밀번호 재설정 링크를 처리하는 문제가 있었습니다</value>
   </data>
   <data name="Resources" xml:space="preserve">
     <value>지원하다</value>
@@ -603,6 +735,18 @@
   </data>
   <data name="Settings_Account_Profile_Icon_Label" xml:space="preserve">
     <value>프로필 Icon</value>
+  </data>
+  <data name="Settings_Account_Registration_Enabled_Help" xml:space="preserve">
+    <value>계정을 등록할 수 있습니까?</value>
+  </data>
+  <data name="Settings_Account_Registration_Enabled_Label" xml:space="preserve">
+    <value>등록하기</value>
+  </data>
+  <data name="Settings_Account_Registration_RequireEmailValidation_Help" xml:space="preserve">
+    <value>계정을 활성화하려면 이메일 확인이 필요합니까?</value>
+  </data>
+  <data name="Settings_Account_Registration_RequireEmailValidation_Label" xml:space="preserve">
+    <value>자주 묻는 질문</value>
   </data>
   <data name="Settings_Alerts" xml:space="preserve">
     <value>지원하다</value>
@@ -1162,6 +1306,9 @@
   <data name="Square" xml:space="preserve">
     <value>팟캐스트</value>
   </data>
+  <data name="Submit" xml:space="preserve">
+    <value>제출하기</value>
+  </data>
   <data name="Supporters" xml:space="preserve">
     <value>지원자</value>
   </data>
@@ -1176,6 +1323,12 @@
   </data>
   <data name="Update" xml:space="preserve">
     <value>(주)</value>
+  </data>
+  <data name="Upgrade" xml:space="preserve">
+    <value>지원하다</value>
+  </data>
+  <data name="Upgrade_Account_Message" xml:space="preserve">
+    <value>현재 무료 버전을 사용하고 있습니다. 더 많은 갤러리 저장 및 기타 훌륭한 기능을 잠금 해제하려면 계정 업그레이드</value>
   </data>
   <data name="Upload_Media" xml:space="preserve">
     <value>미디어 업로드</value>
@@ -1203,6 +1356,9 @@
   </data>
   <data name="Users_List_Failed" xml:space="preserve">
     <value>사용자 목록을 얻기 위해 실패</value>
+  </data>
+  <data name="Verify" xml:space="preserve">
+    <value>계정 만들기</value>
   </data>
   <data name="Videos" xml:space="preserve">
     <value>(주)</value>

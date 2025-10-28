@@ -94,6 +94,18 @@
   <data name="406_Error_Title" xml:space="preserve">
     <value>Ugyldigt galleri</value>
   </data>
+  <data name="407_Error_Message" xml:space="preserve">
+    <value>Der var et problem, da du prøvede at bekræfte din konto. Sørg for, at verifikationsforbindelsen er gyldig.</value>
+  </data>
+  <data name="407_Error_Title" xml:space="preserve">
+    <value>Ugyldig verifikation Link</value>
+  </data>
+  <data name="408_Error_Message" xml:space="preserve">
+    <value>Der var et problem under forsøget på at nulstille din konto adgangskode. Sørg for, at verifikationsforbindelsen er gyldig.</value>
+  </data>
+  <data name="408_Error_Title" xml:space="preserve">
+    <value>Ugyldigt adgangskodesæt link</value>
+  </data>
   <data name="Accept" xml:space="preserve">
     <value>Accepter</value>
   </data>
@@ -120,6 +132,12 @@
   </data>
   <data name="Audit" xml:space="preserve">
     <value>Revision</value>
+  </data>
+  <data name="Audit_Account_Registered" xml:space="preserve">
+    <value>Brugerregistreret konto</value>
+  </data>
+  <data name="Audit_ActivateUser" xml:space="preserve">
+    <value>Aktiveret bruger</value>
   </data>
   <data name="Audit_BulkApproveReviews" xml:space="preserve">
     <value>Bulk godkendte alle verserende anmeldelser</value>
@@ -148,6 +166,9 @@
   <data name="Audit_DeletedUser" xml:space="preserve">
     <value>Slettet bruger</value>
   </data>
+  <data name="Audit_Email_Verified" xml:space="preserve">
+    <value>Brugeren verificerede deres e-mailadresse</value>
+  </data>
   <data name="Audit_ExportedBackup" xml:space="preserve">
     <value>Eksporteret sikkerhedskopi</value>
   </data>
@@ -156,6 +177,9 @@
   </data>
   <data name="Audit_FailedLoginAttemptReset" xml:space="preserve">
     <value>Mislykkede login- forsøg tæller nulstilling</value>
+  </data>
+  <data name="Audit_Forgot_Password" xml:space="preserve">
+    <value>Brugeren anmodede om at nulstille adgangskoden</value>
   </data>
   <data name="Audit_FrozeUser" xml:space="preserve">
     <value>Froze bruger</value>
@@ -198,6 +222,9 @@
   </data>
   <data name="Audit_MultiFactorResetUser" xml:space="preserve">
     <value>Nulstil multi- faktor for brugeren</value>
+  </data>
+  <data name="Audit_Password_Reset" xml:space="preserve">
+    <value>Brugeren anmodede om at nulstille adgangskoden</value>
   </data>
   <data name="Audit_SearchTerm_Help" xml:space="preserve">
     <value>Filtrér logfiler baseret på et søgeudtryk</value>
@@ -379,6 +406,21 @@
   <data name="Filter" xml:space="preserve">
     <value>Filter</value>
   </data>
+  <data name="Forgot_Password" xml:space="preserve">
+    <value>Glemt adgangskode</value>
+  </data>
+  <data name="ForgotPassword" xml:space="preserve">
+    <value>Glemt adgangskode</value>
+  </data>
+  <data name="ForgotPassword_Email_Help" xml:space="preserve">
+    <value>Indtast venligst konto e-mailadresse.</value>
+  </data>
+  <data name="ForgotPassword_Email_Label" xml:space="preserve">
+    <value>E- mail- adresse</value>
+  </data>
+  <data name="ForgotPassword_Failed" xml:space="preserve">
+    <value>Kunne ikke sende e- mail til nulstilling af adgangskode</value>
+  </data>
   <data name="Galleries" xml:space="preserve">
     <value>Gallerier</value>
   </data>
@@ -535,6 +577,24 @@
   <data name="None" xml:space="preserve">
     <value>Ingen</value>
   </data>
+  <data name="Password_Reset_Changed_Message" xml:space="preserve">
+    <value>Dit kodeord er nu blevet nulstillet. Hvis du ikke har bedt om et kodeord nulstilles, bedes du kontakte en administrator med det samme.</value>
+  </data>
+  <data name="Password_Reset_Changed_Title" xml:space="preserve">
+    <value>Din adgangskode er blevet opdateret!</value>
+  </data>
+  <data name="Password_Reset_Requested_Message" xml:space="preserve">
+    <value>Der er blevet anmodet om at nulstille en adgangskode på din konto. Hvis du har bedt om en password-ændring, skal du klikke på nedenstående link for at opdatere den.</value>
+  </data>
+  <data name="Password_Reset_Requested_Title" xml:space="preserve">
+    <value>Problemer med at få adgang til din konto?</value>
+  </data>
+  <data name="PasswordReset" xml:space="preserve">
+    <value>Adgangskode Nulstil</value>
+  </data>
+  <data name="PasswordReset_Failed" xml:space="preserve">
+    <value>Kunne ikke sende e- mail til nulstilling af adgangskode.</value>
+  </data>
   <data name="Pending" xml:space="preserve">
     <value>Afventer</value>
   </data>
@@ -553,6 +613,75 @@
   <data name="Random" xml:space="preserve">
     <value>Tilfældig</value>
   </data>
+  <data name="Register" xml:space="preserve">
+    <value>Register</value>
+  </data>
+  <data name="Register_Account" xml:space="preserve">
+    <value>Registreringskonto</value>
+  </data>
+  <data name="Register_CPassword_Help" xml:space="preserve">
+    <value>Bekræft din adgangskode</value>
+  </data>
+  <data name="Register_CPassword_Label" xml:space="preserve">
+    <value>Bekræft adgangskode</value>
+  </data>
+  <data name="Register_Email_Help" xml:space="preserve">
+    <value>Indtast venligst konto e-mailadresse.</value>
+  </data>
+  <data name="Register_Email_Label" xml:space="preserve">
+    <value>E- mail- adresse</value>
+  </data>
+  <data name="Register_Password_Help" xml:space="preserve">
+    <value>Kodeord indtast et kodeord.</value>
+  </data>
+  <data name="Register_Password_Label" xml:space="preserve">
+    <value>Adgangskode</value>
+  </data>
+  <data name="Register_Username_Help" xml:space="preserve">
+    <value>Indtast venligst kontobrugernavn.</value>
+  </data>
+  <data name="Register_Username_Label" xml:space="preserve">
+    <value>Brugernavn</value>
+  </data>
+  <data name="Registration_Confirm_Password_Missmatch" xml:space="preserve">
+    <value>Bekræftelses adgangskode matcher ikke</value>
+  </data>
+  <data name="Registration_Email_Send_Failed" xml:space="preserve">
+    <value>Kunne ikke sende en e-mail til brugeren.</value>
+  </data>
+  <data name="Registration_Email_Taken" xml:space="preserve">
+    <value>En konto med den angivne e-mailadresse findes allerede</value>
+  </data>
+  <data name="Registration_Failed" xml:space="preserve">
+    <value>Kunne ikke registrere ny bruger</value>
+  </data>
+  <data name="Registration_Invalid_Email" xml:space="preserve">
+    <value>Angiv en gyldig e- mail- adresse</value>
+  </data>
+  <data name="Registration_Invalid_Password" xml:space="preserve">
+    <value>Angiv en gyldig adgangskode mellem 8 og 100 tegn, der indeholder mindst 1 bogstav i det øverste tilfælde, 1 bogstav i det nederste tilfælde, 1 nummer og 1 specialtegn</value>
+  </data>
+  <data name="Registration_Invalid_Username" xml:space="preserve">
+    <value>Angiv et gyldigt brugernavn mellem 5 og 50 tegn</value>
+  </data>
+  <data name="Registration_Invalid_Verification_Link" xml:space="preserve">
+    <value>Der var et problem behandling af e-mail-verifikation link</value>
+  </data>
+  <data name="Registration_Success_Message" xml:space="preserve">
+    <value>Du konto er blevet registreret med succes og venter på dig at få adgang</value>
+  </data>
+  <data name="Registration_Success_Title" xml:space="preserve">
+    <value>Velkommen!</value>
+  </data>
+  <data name="Registration_Success_Verification" xml:space="preserve">
+    <value>Din konto er blevet registreret, men skal verificeres, før den kan tilgås. Aktivér din konto ved at klikke på linket nedenfor.</value>
+  </data>
+  <data name="Registration_Username_Taken" xml:space="preserve">
+    <value>Brugernavn findes allerede. Vælg en ny</value>
+  </data>
+  <data name="Registration_Weak_Password" xml:space="preserve">
+    <value>Den angivne adgangskode er nemt gættet. Vælg en mere sikker adgangskode.</value>
+  </data>
   <data name="Reject" xml:space="preserve">
     <value>Afvis</value>
   </data>
@@ -561,6 +690,9 @@
   </data>
   <data name="Rename" xml:space="preserve">
     <value>Omdøb</value>
+  </data>
+  <data name="ResetPassword_Invalid_Reset_Link" xml:space="preserve">
+    <value>Der var et problem behandling af password reset link</value>
   </data>
   <data name="Resources" xml:space="preserve">
     <value>Ressourcer</value>
@@ -603,6 +735,18 @@
   </data>
   <data name="Settings_Account_Profile_Icon_Label" xml:space="preserve">
     <value>Profil- ikon</value>
+  </data>
+  <data name="Settings_Account_Registration_Enabled_Help" xml:space="preserve">
+    <value>Må gæster registrere konti?</value>
+  </data>
+  <data name="Settings_Account_Registration_Enabled_Label" xml:space="preserve">
+    <value>Tilmelding aktiveret</value>
+  </data>
+  <data name="Settings_Account_Registration_RequireEmailValidation_Help" xml:space="preserve">
+    <value>Er brugerne forpligtet til at kontrollere deres e-mail for at aktivere deres konto?</value>
+  </data>
+  <data name="Settings_Account_Registration_RequireEmailValidation_Label" xml:space="preserve">
+    <value>Kræv e- mail- validering</value>
   </data>
   <data name="Settings_Alerts" xml:space="preserve">
     <value>Indberetninger</value>
@@ -1162,6 +1306,9 @@
   <data name="Square" xml:space="preserve">
     <value>Square</value>
   </data>
+  <data name="Submit" xml:space="preserve">
+    <value>Indsend</value>
+  </data>
   <data name="Supporters" xml:space="preserve">
     <value>Støttere</value>
   </data>
@@ -1176,6 +1323,12 @@
   </data>
   <data name="Update" xml:space="preserve">
     <value>Opdatering</value>
+  </data>
+  <data name="Upgrade" xml:space="preserve">
+    <value>Opgradering</value>
+  </data>
+  <data name="Upgrade_Account_Message" xml:space="preserve">
+    <value>Du bruger i øjeblikket den gratis version. At låse op for mere galleri opbevaring og andre store funktioner overveje at opgradere din konto</value>
   </data>
   <data name="Upload_Media" xml:space="preserve">
     <value>Upload medier</value>
@@ -1203,6 +1356,9 @@
   </data>
   <data name="Users_List_Failed" xml:space="preserve">
     <value>Kunne ikke få brugerlisten</value>
+  </data>
+  <data name="Verify" xml:space="preserve">
+    <value>Verificér</value>
   </data>
   <data name="Videos" xml:space="preserve">
     <value>Videoer</value>

@@ -94,6 +94,18 @@
   <data name="406_Error_Title" xml:space="preserve">
     <value>無効なギャラリー</value>
   </data>
+  <data name="407_Error_Message" xml:space="preserve">
+    <value>アカウントを検証しようとすると問題がありました。 確認リンクが有効であることを確認してください.</value>
+  </data>
+  <data name="407_Error_Title" xml:space="preserve">
+    <value>無効な検証 サイトマップ</value>
+  </data>
+  <data name="408_Error_Message" xml:space="preserve">
+    <value>アカウントのパスワードをリセットしようとすると問題がありました。 確認リンクが有効であることを確認してください.</value>
+  </data>
+  <data name="408_Error_Title" xml:space="preserve">
+    <value>無効なパスワードリセットリンク</value>
+  </data>
   <data name="Accept" xml:space="preserve">
     <value>お問い合わせ</value>
   </data>
@@ -120,6 +132,12 @@
   </data>
   <data name="Audit" xml:space="preserve">
     <value>監査</value>
+  </data>
+  <data name="Audit_Account_Registered" xml:space="preserve">
+    <value>ユーザー登録アカウント</value>
+  </data>
+  <data name="Audit_ActivateUser" xml:space="preserve">
+    <value>アクティブ化されたユーザー</value>
   </data>
   <data name="Audit_BulkApproveReviews" xml:space="preserve">
     <value>バルク承認されたすべての保留レビュー</value>
@@ -148,6 +166,9 @@
   <data name="Audit_DeletedUser" xml:space="preserve">
     <value>削除されたユーザー</value>
   </data>
+  <data name="Audit_Email_Verified" xml:space="preserve">
+    <value>ユーザーがメールアドレスを確認した</value>
+  </data>
   <data name="Audit_ExportedBackup" xml:space="preserve">
     <value>バックアップをエクスポート</value>
   </data>
@@ -156,6 +177,9 @@
   </data>
   <data name="Audit_FailedLoginAttemptReset" xml:space="preserve">
     <value>失敗したログインの試みのカウントのリセット</value>
+  </data>
+  <data name="Audit_Forgot_Password" xml:space="preserve">
+    <value>パスワードリセットをリクエスト</value>
   </data>
   <data name="Audit_FrozeUser" xml:space="preserve">
     <value>Froze ユーザー</value>
@@ -198,6 +222,9 @@
   </data>
   <data name="Audit_MultiFactorResetUser" xml:space="preserve">
     <value>ユーザのマルチファクタのリセット</value>
+  </data>
+  <data name="Audit_Password_Reset" xml:space="preserve">
+    <value>パスワードリセットをリクエスト</value>
   </data>
   <data name="Audit_SearchTerm_Help" xml:space="preserve">
     <value>検索用語に基づくフィルタログ</value>
@@ -379,6 +406,21 @@
   <data name="Filter" xml:space="preserve">
     <value>フィルター</value>
   </data>
+  <data name="Forgot_Password" xml:space="preserve">
+    <value>パスワードを忘れた場合</value>
+  </data>
+  <data name="ForgotPassword" xml:space="preserve">
+    <value>パスワードを忘れた場合</value>
+  </data>
+  <data name="ForgotPassword_Email_Help" xml:space="preserve">
+    <value>メールアドレスを入力してください.</value>
+  </data>
+  <data name="ForgotPassword_Email_Label" xml:space="preserve">
+    <value>メールアドレス</value>
+  </data>
+  <data name="ForgotPassword_Failed" xml:space="preserve">
+    <value>パスワードリセットメールの送信失敗</value>
+  </data>
   <data name="Galleries" xml:space="preserve">
     <value>ギャラリー</value>
   </data>
@@ -535,6 +577,24 @@
   <data name="None" xml:space="preserve">
     <value>なし</value>
   </data>
+  <data name="Password_Reset_Changed_Message" xml:space="preserve">
+    <value>パスワードがリセットされました。 パスワードリセットをリクエストしなかった場合は、管理者にすぐに連絡してください.</value>
+  </data>
+  <data name="Password_Reset_Changed_Title" xml:space="preserve">
+    <value>パスワードが更新されました!</value>
+  </data>
+  <data name="Password_Reset_Requested_Message" xml:space="preserve">
+    <value>パスワードリセットをリクエストしました。 パスワード変更をご希望の方は、下記のリンクをクリックして更新してください.</value>
+  </data>
+  <data name="Password_Reset_Requested_Title" xml:space="preserve">
+    <value>アカウントへのアクセスのトラブル?</value>
+  </data>
+  <data name="PasswordReset" xml:space="preserve">
+    <value>パスワードリセット</value>
+  </data>
+  <data name="PasswordReset_Failed" xml:space="preserve">
+    <value>パスワードリセットメールの送信に失敗しました.</value>
+  </data>
   <data name="Pending" xml:space="preserve">
     <value>ペンディング</value>
   </data>
@@ -553,6 +613,75 @@
   <data name="Random" xml:space="preserve">
     <value>ランダム</value>
   </data>
+  <data name="Register" xml:space="preserve">
+    <value>会員登録</value>
+  </data>
+  <data name="Register_Account" xml:space="preserve">
+    <value>会員登録</value>
+  </data>
+  <data name="Register_CPassword_Help" xml:space="preserve">
+    <value>パスワードの確認</value>
+  </data>
+  <data name="Register_CPassword_Label" xml:space="preserve">
+    <value>パスワードの確認</value>
+  </data>
+  <data name="Register_Email_Help" xml:space="preserve">
+    <value>メールアドレスを入力してください.</value>
+  </data>
+  <data name="Register_Email_Label" xml:space="preserve">
+    <value>メールアドレス</value>
+  </data>
+  <data name="Register_Password_Help" xml:space="preserve">
+    <value>パスワードはパスワードを入力してください.</value>
+  </data>
+  <data name="Register_Password_Label" xml:space="preserve">
+    <value>パスワード</value>
+  </data>
+  <data name="Register_Username_Help" xml:space="preserve">
+    <value>ユーザー名を入力してください.</value>
+  </data>
+  <data name="Register_Username_Label" xml:space="preserve">
+    <value>ユーザ名</value>
+  </data>
+  <data name="Registration_Confirm_Password_Missmatch" xml:space="preserve">
+    <value>パスワードの確認は一致しません</value>
+  </data>
+  <data name="Registration_Email_Send_Failed" xml:space="preserve">
+    <value>登録メールをユーザに送信できません.</value>
+  </data>
+  <data name="Registration_Email_Taken" xml:space="preserve">
+    <value>指定したメールアドレスが既に存在するアカウント</value>
+  </data>
+  <data name="Registration_Failed" xml:space="preserve">
+    <value>新規登録失敗</value>
+  </data>
+  <data name="Registration_Invalid_Email" xml:space="preserve">
+    <value>有効なメールアドレスを入力してください</value>
+  </data>
+  <data name="Registration_Invalid_Password" xml:space="preserve">
+    <value>8文字と100文字の有効なパスワードを指定してください。上限1文字、小文字1文字、小文字1文字、特殊文字1文字</value>
+  </data>
+  <data name="Registration_Invalid_Username" xml:space="preserve">
+    <value>5文字～50文字の有効なユーザー名を入力してください</value>
+  </data>
+  <data name="Registration_Invalid_Verification_Link" xml:space="preserve">
+    <value>メール確認のリンクを処理する問題がありました</value>
+  </data>
+  <data name="Registration_Success_Message" xml:space="preserve">
+    <value>アカウントが正常に登録され、アクセスを待っています</value>
+  </data>
+  <data name="Registration_Success_Title" xml:space="preserve">
+    <value>お問い合わせ!</value>
+  </data>
+  <data name="Registration_Success_Verification" xml:space="preserve">
+    <value>アカウントが登録されていますが、アクセス可能な前に確認する必要があります。 下記のリンクからアカウントを有効化してください.</value>
+  </data>
+  <data name="Registration_Username_Taken" xml:space="preserve">
+    <value>既に存在するユーザー名。 新規登録をしてください</value>
+  </data>
+  <data name="Registration_Weak_Password" xml:space="preserve">
+    <value>指定したパスワードは簡単に推測できます。 より安全なパスワードを選択してください.</value>
+  </data>
   <data name="Reject" xml:space="preserve">
     <value>リジェクト</value>
   </data>
@@ -561,6 +690,9 @@
   </data>
   <data name="Rename" xml:space="preserve">
     <value>リネーム</value>
+  </data>
+  <data name="ResetPassword_Invalid_Reset_Link" xml:space="preserve">
+    <value>パスワードリセットリンクを処理する問題がありました</value>
   </data>
   <data name="Resources" xml:space="preserve">
     <value>リソース</value>
@@ -603,6 +735,18 @@
   </data>
   <data name="Settings_Account_Profile_Icon_Label" xml:space="preserve">
     <value>プロフィールのアイコン</value>
+  </data>
+  <data name="Settings_Account_Registration_Enabled_Help" xml:space="preserve">
+    <value>会員登録はできますか?</value>
+  </data>
+  <data name="Settings_Account_Registration_Enabled_Label" xml:space="preserve">
+    <value>登録 有効</value>
+  </data>
+  <data name="Settings_Account_Registration_RequireEmailValidation_Help" xml:space="preserve">
+    <value>ユーザーは、アカウントをアクティブにするために電子メールを確認する必要がありますか?</value>
+  </data>
+  <data name="Settings_Account_Registration_RequireEmailValidation_Label" xml:space="preserve">
+    <value>電子メールの検証が必要</value>
   </data>
   <data name="Settings_Alerts" xml:space="preserve">
     <value>アラート</value>
@@ -1162,6 +1306,9 @@
   <data name="Square" xml:space="preserve">
     <value>スクエア</value>
   </data>
+  <data name="Submit" xml:space="preserve">
+    <value>送信する</value>
+  </data>
   <data name="Supporters" xml:space="preserve">
     <value>サポーター</value>
   </data>
@@ -1176,6 +1323,12 @@
   </data>
   <data name="Update" xml:space="preserve">
     <value>新着情報</value>
+  </data>
+  <data name="Upgrade" xml:space="preserve">
+    <value>アップグレード</value>
+  </data>
+  <data name="Upgrade_Account_Message" xml:space="preserve">
+    <value>無料版を利用しています。 より多くのギャラリーストレージやその他の優れた機能のロックを解除するには、アカウントのアップグレードを検討してください</value>
   </data>
   <data name="Upload_Media" xml:space="preserve">
     <value>メディア掲載</value>
@@ -1203,6 +1356,9 @@
   </data>
   <data name="Users_List_Failed" xml:space="preserve">
     <value>ユーザーリストを取得する失敗</value>
+  </data>
+  <data name="Verify" xml:space="preserve">
+    <value>検証</value>
   </data>
   <data name="Videos" xml:space="preserve">
     <value>ビデオ</value>

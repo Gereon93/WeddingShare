@@ -1,4 +1,5 @@
 ﻿using System.Text;
+using Microsoft.Extensions.Localization;
 using NCrontab;
 using WeddingShare.Constants;
 using WeddingShare.Helpers;
@@ -7,7 +8,7 @@ using WeddingShare.Helpers.Notifications;
 
 namespace WeddingShare.BackgroundWorkers
 {
-    public sealed class NotificationReport(ISettingsHelper settingsHelper, IDatabaseHelper databaseHelper, ISmtpClientWrapper smtpHelper, ILoggerFactory loggerFactory) : BackgroundService
+    public sealed class NotificationReport(ISettingsHelper settingsHelper, IDatabaseHelper databaseHelper, ISmtpClientWrapper smtpHelper, ILoggerFactory loggerFactory, IStringLocalizer<Lang.Translations> localizer) : BackgroundService
     {
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
@@ -75,7 +76,7 @@ namespace WeddingShare.BackgroundWorkers
                             }
                         }
 
-                        var sent = await new EmailHelper(settingsHelper, smtpHelper, loggerFactory.CreateLogger<EmailHelper>()).Send("Pending Items Report", builder.ToString());
+                        var sent = await new EmailHelper(settingsHelper, smtpHelper, loggerFactory.CreateLogger<EmailHelper>(), localizer).Send("Pending Items Report", builder.ToString());
                         if (!sent)
                         {
                             loggerFactory.CreateLogger<NotificationReport>().LogWarning($"Failed to send notification report");

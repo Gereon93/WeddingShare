@@ -94,6 +94,18 @@
   <data name="406_Error_Title" xml:space="preserve">
     <value>গ্যালারি বৈধ নয়</value>
   </data>
+  <data name="407_Error_Message" xml:space="preserve">
+    <value>আপনার অ্যাকাউন্ট পরীক্ষা করতে সমস্যা হয়েছে। অনুগ্রহ করে পরীক্ষা করুন, কর্ম বৈধ কি না.</value>
+  </data>
+  <data name="407_Error_Title" xml:space="preserve">
+    <value>অবৈধ অনুমোদন লিংক</value>
+  </data>
+  <data name="408_Error_Message" xml:space="preserve">
+    <value>আপনার অ্যাকাউন্ট রিসেট করার সময় কিছু সমস্যা দেখা দিয়েছে । অনুগ্রহ করে পরীক্ষা করুন, কর্ম বৈধ কি না.</value>
+  </data>
+  <data name="408_Error_Title" xml:space="preserve">
+    <value>অবৈধ পাসওয়ার্ড রি-সেট করো</value>
+  </data>
   <data name="Accept" xml:space="preserve">
     <value>গ্রহণ করুন</value>
   </data>
@@ -120,6 +132,12 @@
   </data>
   <data name="Audit" xml:space="preserve">
     <value>তালিকা</value>
+  </data>
+  <data name="Audit_Account_Registered" xml:space="preserve">
+    <value>ব্যবহারকারীর অ্যাকাউন্ট</value>
+  </data>
+  <data name="Audit_ActivateUser" xml:space="preserve">
+    <value>ব্যবহারকারী সক্রিয় করা হয়েছে</value>
   </data>
   <data name="Audit_BulkApproveReviews" xml:space="preserve">
     <value>কালো সবার পর্যালোচনা অনুমোদন</value>
@@ -148,6 +166,9 @@
   <data name="Audit_DeletedUser" xml:space="preserve">
     <value>মুছে ফেলা হয়েছে</value>
   </data>
+  <data name="Audit_Email_Verified" xml:space="preserve">
+    <value>ব্যবহারকারী দ্বারা ই-মেইল ঠিকানা যাচাই করা হয়েছে</value>
+  </data>
   <data name="Audit_ExportedBackup" xml:space="preserve">
     <value>ব্যাক-আপ সম্পন্ন</value>
   </data>
@@ -156,6 +177,9 @@
   </data>
   <data name="Audit_FailedLoginAttemptReset" xml:space="preserve">
     <value>লগ-ইন প্রচেষ্টার প্রয়াস করতে ব্যর্থ</value>
+  </data>
+  <data name="Audit_Forgot_Password" xml:space="preserve">
+    <value>ব্যবহারকারীকে পাসওয়ার্ড পুনরায় লিখুন</value>
   </data>
   <data name="Audit_FrozeUser" xml:space="preserve">
     <value>Zoy ব্যবহারকারী</value>
@@ -198,6 +222,9 @@
   </data>
   <data name="Audit_MultiFactorResetUser" xml:space="preserve">
     <value>ব্যবহারকারীর জন্য মাল্টি- রহমত পুনরায় নির্ধারণ করুন</value>
+  </data>
+  <data name="Audit_Password_Reset" xml:space="preserve">
+    <value>ব্যবহারকারীকে পাসওয়ার্ড পুনরায় লিখুন</value>
   </data>
   <data name="Audit_SearchTerm_Help" xml:space="preserve">
     <value>অনুসন্ধানের ফিল্টার সহযোগে ফিল্টার করা হবে</value>
@@ -379,6 +406,21 @@
   <data name="Filter" xml:space="preserve">
     <value>ফিল্টার</value>
   </data>
+  <data name="Forgot_Password" xml:space="preserve">
+    <value>পাসওয়ার্ড পরিবর্তন করা যায়নি</value>
+  </data>
+  <data name="ForgotPassword" xml:space="preserve">
+    <value>পাসওয়ার্ড পরিবর্তন করা যায়নি</value>
+  </data>
+  <data name="ForgotPassword_Email_Help" xml:space="preserve">
+    <value>অনুগ্রহ করে ই-মেইল ঠিকানা লিখুন।.</value>
+  </data>
+  <data name="ForgotPassword_Email_Label" xml:space="preserve">
+    <value>ই-মেইল ঠিকানা</value>
+  </data>
+  <data name="ForgotPassword_Failed" xml:space="preserve">
+    <value>পাসওয়ার্ড রি-সেট করতে ব্যর্থ</value>
+  </data>
   <data name="Galleries" xml:space="preserve">
     <value>স্লট</value>
   </data>
@@ -535,6 +577,24 @@
   <data name="None" xml:space="preserve">
     <value>শূণ্য</value>
   </data>
+  <data name="Password_Reset_Changed_Message" xml:space="preserve">
+    <value>আপনার পাসওয়ার্ড এখনও রিসেট করা হয়নি । যদি আপনি পাসওয়ার্ড অনুরোধ না করেন, তাহলে দয়া করে এখনই প্রশাসকের সাথে যোগাযোগ করুন।.</value>
+  </data>
+  <data name="Password_Reset_Changed_Title" xml:space="preserve">
+    <value>আপনার পাসওয়ার্ড আপডেট করা হয়েছে!</value>
+  </data>
+  <data name="Password_Reset_Requested_Message" xml:space="preserve">
+    <value>আপনার অ্যাকাউন্টের পাসওয়ার্ড সঠিকরূপে সাজানো হয়েছে । যদি আপনি একটি পাসওয়ার্ড অনুরোধ করেন, তবে নিচের মেনুটি আপডেট করে নিচে ক্লিক করুন।.</value>
+  </data>
+  <data name="Password_Reset_Requested_Title" xml:space="preserve">
+    <value>আপনার অ্যাকাউন্ট ব্যবহারের সমস্যা?</value>
+  </data>
+  <data name="PasswordReset" xml:space="preserve">
+    <value>পাসওয়ার্ড পুনরায় নির্ধারণ করুন</value>
+  </data>
+  <data name="PasswordReset_Failed" xml:space="preserve">
+    <value>Reset বার্তা পাঠাতে ব্যর্থ।.</value>
+  </data>
   <data name="Pending" xml:space="preserve">
     <value>অসমাপ্ত</value>
   </data>
@@ -553,6 +613,75 @@
   <data name="Random" xml:space="preserve">
     <value>যথেচ্ছ</value>
   </data>
+  <data name="Register" xml:space="preserve">
+    <value>Western (পশ্চিমি</value>
+  </data>
+  <data name="Register_Account" xml:space="preserve">
+    <value>অ্যাকাউন্ট ইম্পোর্ট করুন</value>
+  </data>
+  <data name="Register_CPassword_Help" xml:space="preserve">
+    <value>পাসওয়ার্ড নিশ্চিত করুন</value>
+  </data>
+  <data name="Register_CPassword_Label" xml:space="preserve">
+    <value>পাসওয়ার্ড নিশ্চায়ন:</value>
+  </data>
+  <data name="Register_Email_Help" xml:space="preserve">
+    <value>অনুগ্রহ করে ই-মেইল ঠিকানা লিখুন।.</value>
+  </data>
+  <data name="Register_Email_Label" xml:space="preserve">
+    <value>ই-মেইল ঠিকানা</value>
+  </data>
+  <data name="Register_Password_Help" xml:space="preserve">
+    <value>পাসওয়ার্ড প্রবেশ করান।.</value>
+  </data>
+  <data name="Register_Password_Label" xml:space="preserve">
+    <value>পাসওয়ার্ড</value>
+  </data>
+  <data name="Register_Username_Help" xml:space="preserve">
+    <value>অনুগ্রহ করে অ্যাকাউন্টের নাম লিখুন।.</value>
+  </data>
+  <data name="Register_Username_Label" xml:space="preserve">
+    <value>ব্যবহারকারীর নাম</value>
+  </data>
+  <data name="Registration_Confirm_Password_Missmatch" xml:space="preserve">
+    <value>পাসওয়ার্ড মিলছে না</value>
+  </data>
+  <data name="Registration_Email_Send_Failed" xml:space="preserve">
+    <value>ব্যবহারকারীতে নিবন্ধন করতে ব্যর্থ.</value>
+  </data>
+  <data name="Registration_Email_Taken" xml:space="preserve">
+    <value>উল্লিখিত ঠিকানার একটি অ্যাকাউন্ট বর্তমানে উপস্থিত রয়েছে</value>
+  </data>
+  <data name="Registration_Failed" xml:space="preserve">
+    <value>নতুন ব্যবহারকারীর নিবন্ধন করতে ব্যর্থ</value>
+  </data>
+  <data name="Registration_Invalid_Email" xml:space="preserve">
+    <value>অনুগ্রহ করে একটি বৈধ ই-মেইল ঠিকানা নির্বাচন করুন</value>
+  </data>
+  <data name="Registration_Invalid_Password" xml:space="preserve">
+    <value>অনুগ্রহ করে অন্তত ১ অক্ষর বিশিষ্ট একটি বৈধ পাসওয়ার্ড লিখুন, ১ ও বিশেষ অক্ষর বিশিষ্ট ১-এ পরিবর্তন করুন</value>
+  </data>
+  <data name="Registration_Invalid_Username" xml:space="preserve">
+    <value>অনুগ্রহ করে ৫ ও ৫০ অক্ষরের মধ্যে একটি বৈধ ব্যবহারকারীর নাম উল্লেখ করুন</value>
+  </data>
+  <data name="Registration_Invalid_Verification_Link" xml:space="preserve">
+    <value>ই-মেইল যাচাই প্রক্রিয়া প্রক্রিয়াকরণ করতে সমস্যা হয়েছে</value>
+  </data>
+  <data name="Registration_Success_Message" xml:space="preserve">
+    <value>সাফল্যের সাথে অ্যাকাউন্ট নিবন্ধন করা হয়েছে এবং আপনার জন্য অপেক্ষা করা হয়েছে</value>
+  </data>
+  <data name="Registration_Success_Title" xml:space="preserve">
+    <value>স্বাগতম!</value>
+  </data>
+  <data name="Registration_Success_Verification" xml:space="preserve">
+    <value>আপনার অ্যাকাউন্ট নিবন্ধন করা গেছে কিন্তু তা ব্যবহারের পূর্বে এটি যাচাই করা আবশ্যক। অনুগ্রহ করে আপনার অ্যাকাউন্ট সক্রিয় করুন।.</value>
+  </data>
+  <data name="Registration_Username_Taken" xml:space="preserve">
+    <value>ব্যবহারকারীর নাম বর্তমানে উপস্থিত রয়েছে। অনুগ্রহ করে নতুন একটি নির্বাচন করুন</value>
+  </data>
+  <data name="Registration_Weak_Password" xml:space="preserve">
+    <value>উল্লিখিত পাসওয়ার্ড দুটি এক নয়। অনুগ্রহ করে নতুন পাসওয়ার্ড শীর্ষক ক্ষেত্রে পাসওয়ার্ড নির্বাচন করুন।.</value>
+  </data>
   <data name="Reject" xml:space="preserve">
     <value>বাতিল</value>
   </data>
@@ -561,6 +690,9 @@
   </data>
   <data name="Rename" xml:space="preserve">
     <value>পুনরায় নামকরণ</value>
+  </data>
+  <data name="ResetPassword_Invalid_Reset_Link" xml:space="preserve">
+    <value>একটি সমস্যা উৎপন্ন হয়েছে</value>
   </data>
   <data name="Resources" xml:space="preserve">
     <value>রিসোর্সসমূহ</value>
@@ -603,6 +735,18 @@
   </data>
   <data name="Settings_Account_Profile_Icon_Label" xml:space="preserve">
     <value>প্রোফাইল আইকন</value>
+  </data>
+  <data name="Settings_Account_Registration_Enabled_Help" xml:space="preserve">
+    <value>অতিথিরা কি অ্যাকাউন্ট নিবন্ধন করতে পারবে?</value>
+  </data>
+  <data name="Settings_Account_Registration_Enabled_Label" xml:space="preserve">
+    <value>নিবন্ধন ব্যবস্থা</value>
+  </data>
+  <data name="Settings_Account_Registration_RequireEmailValidation_Help" xml:space="preserve">
+    <value>তাদের অ্যাকাউন্ট সক্রিয় করার জন্য ব্যবহারকারীদের কি তাদের ইমেইল পরীক্ষা করতে হবে?</value>
+  </data>
+  <data name="Settings_Account_Registration_RequireEmailValidation_Label" xml:space="preserve">
+    <value>ই-মেইল বৈধতা প্রয়োজন</value>
   </data>
   <data name="Settings_Alerts" xml:space="preserve">
     <value>অ্যালার্ম</value>
@@ -1162,6 +1306,9 @@
   <data name="Square" xml:space="preserve">
     <value>বর্গ</value>
   </data>
+  <data name="Submit" xml:space="preserve">
+    <value>জমা করুন</value>
+  </data>
   <data name="Supporters" xml:space="preserve">
     <value>Hula সহায়তা</value>
   </data>
@@ -1176,6 +1323,12 @@
   </data>
   <data name="Update" xml:space="preserve">
     <value>আপডেট</value>
+  </data>
+  <data name="Upgrade" xml:space="preserve">
+    <value>আপগ্রেড করুন</value>
+  </data>
+  <data name="Upgrade_Account_Message" xml:space="preserve">
+    <value>আপনি বর্তমানে মুক্ত সংস্করণ ব্যবহার করছেন। আপনার অ্যাকাউন্টের সংকলন আন-লক করার জন্য অন্য একটি বৈশিষ্ট্য নির্ধারণ করুন</value>
   </data>
   <data name="Upload_Media" xml:space="preserve">
     <value>মিডিয়া আপলোড করুন</value>
@@ -1203,6 +1356,9 @@
   </data>
   <data name="Users_List_Failed" xml:space="preserve">
     <value>ব্যবহারকারীর তালিকা প্রাপ্ত করতে ব্যর্থ</value>
+  </data>
+  <data name="Verify" xml:space="preserve">
+    <value>যাচাই করা হচ্ছে</value>
   </data>
   <data name="Videos" xml:space="preserve">
     <value>ভিডিও</value>
