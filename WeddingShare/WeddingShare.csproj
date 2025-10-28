@@ -9,6 +9,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="Resources\Templates\Basic.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="SqlScripts\000 - Initialize Database.sql" />
     <None Remove="SqlScripts\MySQL\000 - Initialize Database.sql" />
     <None Remove="SqlScripts\MySQL\001 - Add Failed Login Tracking.sql" />
@@ -42,6 +46,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="SqlScripts\MySQL\018 - Add User Secret.sql" />
     <EmbeddedResource Include="SqlScripts\MySQL\017 - Add Uploader Email.sql" />
     <EmbeddedResource Include="SqlScripts\MySQL\010 - Add CustomResources Table.sql" />
     <EmbeddedResource Include="SqlScripts\MySQL\009b - Add Gallery Settings Table.sql" />
@@ -62,6 +67,8 @@
     <EmbeddedResource Include="SqlScripts\MySQL\012 - Add Resource Owners.sql" />
     <EmbeddedResource Include="SqlScripts\MySQL\016 - Add All Gallery.sql" />
     <EmbeddedResource Include="SqlScripts\MySQL\015 - Add Gallery Identifier.sql" />
+    <EmbeddedResource Include="SqlScripts\MySQL\020 - Add Free User Level.sql" />
+    <EmbeddedResource Include="SqlScripts\MySQL\019 - Add Likes Table.sql" />
     <EmbeddedResource Include="SqlScripts\SQLite\004 - Add 2FA.sql" />
     <EmbeddedResource Include="SqlScripts\SQLite\003 - Add Checksum.sql" />
     <EmbeddedResource Include="SqlScripts\SQLite\002 - Add MediaType.sql" />
@@ -82,6 +89,9 @@
     <EmbeddedResource Include="SqlScripts\SQLite\014 - Rename Background Service Settings Keys.sql" />
     <EmbeddedResource Include="SqlScripts\SQLite\016 - Add All Gallery.sql" />
     <EmbeddedResource Include="SqlScripts\SQLite\017 - Add Uploader Email.sql" />
+    <EmbeddedResource Include="SqlScripts\SQLite\019 - Add Likes Table.sql" />
+    <EmbeddedResource Include="SqlScripts\SQLite\018 - Add User Secret.sql" />
+    <EmbeddedResource Include="SqlScripts\SQLite\020 - Add Free User Level.sql" />
   </ItemGroup>
 
   <ItemGroup>
@@ -96,12 +106,13 @@
     <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="8.0.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="8.0.1" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.19.5" />
-    <PackageReference Include="MySql.Data" Version="9.4.0" />
-    <PackageReference Include="NCrontab" Version="3.3.3" />
+    <PackageReference Include="MySql.Data" Version="9.5.0" />
+    <PackageReference Include="NCrontab" Version="3.4.0" />
+    <PackageReference Include="Razor.Templating.Core" Version="2.1.0" />
     <PackageReference Include="SixLabors.ImageSharp" Version="3.1.11" />
     <PackageReference Include="TwoFactorAuth.Net" Version="1.4.0" />
-    <PackageReference Include="Xabe.FFmpeg" Version="6.0.1" />
-    <PackageReference Include="Xabe.FFmpeg.Downloader" Version="6.0.1" />
+    <PackageReference Include="Xabe.FFmpeg" Version="6.0.2" />
+    <PackageReference Include="Xabe.FFmpeg.Downloader" Version="6.0.2" />
   </ItemGroup>
 
   <ItemGroup>
@@ -118,6 +129,10 @@
     <Folder Include="wwwroot\temp\" />
     <Folder Include="wwwroot\thumbnails\" />
     <Folder Include="wwwroot\uploads\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Templates\Email\Basic.cshtml" />
   </ItemGroup>
 
   <ItemGroup>

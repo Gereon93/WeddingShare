@@ -12,21 +12,26 @@
         } else {
             if (field?.Type?.toLowerCase() == 'select') {
                 let options = ``;
-                (field?.SelectOptions ?? [])?.forEach((option, index) => {
-                    options += `<option value="${option?.key}" ${option?.selected ? "selected=\"selected\"" : ""}>${option?.value}</option>`;
-                });
-                input = `<select id="popup-modal-field-${field?.Id}" class="form-control ${field?.Class ?? ""}" aria-describedby="${field?.DescribedBy ?? ""}" placeholder="${field?.Placeholder ?? ""}" aria-label="${field?.Name}" ${field?.Disabled ? "disabled=\"disabled\"" : ""}>${options}</select>`;
+                let selectOptions = field?.SelectOptions ?? [];
+                if (selectOptions.length > 0) {
+                    selectOptions.forEach((option, index) => {
+                        options += `<option value="${option?.key}" ${option?.selected ? "selected=\"selected\"" : ""}>${option?.value}</option>`;
+                    });
+                    input = `<select id="popup-modal-field-${field?.Id}" class="form-control ${field?.Class ?? ""}" aria-describedby="${field?.DescribedBy ?? ""}" placeholder="${field?.Placeholder ?? ""}" aria-label="${field?.Name}" ${field?.Disabled ? "disabled=\"disabled\"" : ""}>${options}</select>`;
+                }
             } else {
                 input = `<input type="${field?.Type?.toLowerCase() ?? "text"}" id="popup-modal-field-${field?.Id}" class="form-control ${field?.Class ?? ""}" aria-describedby="${field?.DescribedBy ?? ""}" placeholder="${field?.Placeholder ?? ""}" value="${field?.Value ?? ""}" aria-label="${field?.Name}" ${field?.Disabled ? "disabled=\"disabled\"" : ""} ${field?.Accept ? "accept=\"" + field?.Accept + "\"" : ""} />`;
             }
 
-            fields += `<div class="row pb-3 ${field?.Type?.toLowerCase() == 'hidden' ? "d-none" : ""}">
-                <div class="col-12">
-                    <label>${field?.Name ?? ""}</label>
-                    ${input}
-                    <div class="form-text">${field?.Hint ?? ""}</div>
-                </div>
-            </div>`;
+            if (input !== undefined && input.length > 0) {
+                fields += `<div class="row pb-3 ${field?.Type?.toLowerCase() == 'hidden' ? "d-none" : ""}">
+                    <div class="col-12">
+                        <label>${field?.Name ?? ""}</label>
+                        ${input}
+                        <div class="form-text">${field?.Hint ?? ""}</div>
+                    </div>
+                </div>`;
+            }
         }
     });
 
@@ -40,7 +45,7 @@
     let buttons = '';
     (options?.Buttons ?? [{ Text: localization.translate('Close') }])?.forEach((button, index) => {
         buttons += `<div class="col-${12 / options?.Buttons?.length ?? 1}">
-            <button type="button" id="popup-modal-button-${index}" class="btn ${button?.Class ?? "btn-secondary"} col-12">${button?.Text ?? localization.translate('Close')}</button>
+            <button type="button" id="popup-modal-button-${index}" class="btn btm-sm ${button?.Class ?? "btn-secondary"} col-12">${button?.Text ?? localization.translate('Close')}</button>
         </div>`;
 
         $(document).off('click', `#popup-modal-button-${index}`).on('click', `#popup-modal-button-${index}`, function () {

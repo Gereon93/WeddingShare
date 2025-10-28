@@ -94,6 +94,18 @@
   <data name="406_Error_Title" xml:space="preserve">
     <value>Ongeldige galerij</value>
   </data>
+  <data name="407_Error_Message" xml:space="preserve">
+    <value>Er was een probleem toen ik je account probeerde te controleren. Zorg ervoor dat de verificatielink geldig is.</value>
+  </data>
+  <data name="407_Error_Title" xml:space="preserve">
+    <value>Ongeldige verificatie Verband</value>
+  </data>
+  <data name="408_Error_Message" xml:space="preserve">
+    <value>Er was een probleem bij het resetten van uw wachtwoord. Zorg ervoor dat de verificatielink geldig is.</value>
+  </data>
+  <data name="408_Error_Title" xml:space="preserve">
+    <value>Ongeldige wachtwoord-reset koppeling</value>
+  </data>
   <data name="Accept" xml:space="preserve">
     <value>Accepteren</value>
   </data>
@@ -120,6 +132,12 @@
   </data>
   <data name="Audit" xml:space="preserve">
     <value>Controle</value>
+  </data>
+  <data name="Audit_Account_Registered" xml:space="preserve">
+    <value>Gebruikersaccount</value>
+  </data>
+  <data name="Audit_ActivateUser" xml:space="preserve">
+    <value>Geactiveerde gebruiker</value>
   </data>
   <data name="Audit_BulkApproveReviews" xml:space="preserve">
     <value>Bulk goedgekeurd alle lopende beoordelingen</value>
@@ -148,6 +166,9 @@
   <data name="Audit_DeletedUser" xml:space="preserve">
     <value>Verwijderde gebruiker</value>
   </data>
+  <data name="Audit_Email_Verified" xml:space="preserve">
+    <value>Gebruiker heeft hun e-mailadres geverifieerd</value>
+  </data>
   <data name="Audit_ExportedBackup" xml:space="preserve">
     <value>Een back-up exporteren</value>
   </data>
@@ -156,6 +177,9 @@
   </data>
   <data name="Audit_FailedLoginAttemptReset" xml:space="preserve">
     <value>Aanmeldpogingen zijn mislukt</value>
+  </data>
+  <data name="Audit_Forgot_Password" xml:space="preserve">
+    <value>Gebruiker verzocht om een wachtwoord reset</value>
   </data>
   <data name="Audit_FrozeUser" xml:space="preserve">
     <value>Froze-gebruiker</value>
@@ -198,6 +222,9 @@
   </data>
   <data name="Audit_MultiFactorResetUser" xml:space="preserve">
     <value>Multifactor voor gebruiker resetten</value>
+  </data>
+  <data name="Audit_Password_Reset" xml:space="preserve">
+    <value>Gebruiker verzocht om een wachtwoord reset</value>
   </data>
   <data name="Audit_SearchTerm_Help" xml:space="preserve">
     <value>Filter logs op basis van een zoekterm</value>
@@ -379,6 +406,21 @@
   <data name="Filter" xml:space="preserve">
     <value>Filter</value>
   </data>
+  <data name="Forgot_Password" xml:space="preserve">
+    <value>Wachtwoord vergeten</value>
+  </data>
+  <data name="ForgotPassword" xml:space="preserve">
+    <value>Wachtwoord vergeten</value>
+  </data>
+  <data name="ForgotPassword_Email_Help" xml:space="preserve">
+    <value>Voer account e-mailadres in.</value>
+  </data>
+  <data name="ForgotPassword_Email_Label" xml:space="preserve">
+    <value>E-mailadres</value>
+  </data>
+  <data name="ForgotPassword_Failed" xml:space="preserve">
+    <value>Kon wachtwoord reset e-mail niet versturen</value>
+  </data>
   <data name="Galleries" xml:space="preserve">
     <value>Galerijen</value>
   </data>
@@ -535,6 +577,24 @@
   <data name="None" xml:space="preserve">
     <value>Geen</value>
   </data>
+  <data name="Password_Reset_Changed_Message" xml:space="preserve">
+    <value>Uw wachtwoord is nu gereset. Als u geen wachtwoordreset heeft aangevraagd, neem dan onmiddellijk contact op met een beheerder.</value>
+  </data>
+  <data name="Password_Reset_Changed_Title" xml:space="preserve">
+    <value>Uw wachtwoord is bijgewerkt!</value>
+  </data>
+  <data name="Password_Reset_Requested_Message" xml:space="preserve">
+    <value>Op uw account is een wachtwoordreset gevraagd. Als u een wijziging van het wachtwoord heeft gevraagd, klikt u op de onderstaande link om het bij te werken.</value>
+  </data>
+  <data name="Password_Reset_Requested_Title" xml:space="preserve">
+    <value>Problemen met toegang tot uw account?</value>
+  </data>
+  <data name="PasswordReset" xml:space="preserve">
+    <value>Wachtwoord resetten</value>
+  </data>
+  <data name="PasswordReset_Failed" xml:space="preserve">
+    <value>Kon wachtwoord reset e-mail niet versturen.</value>
+  </data>
   <data name="Pending" xml:space="preserve">
     <value>In afwachting</value>
   </data>
@@ -553,6 +613,75 @@
   <data name="Random" xml:space="preserve">
     <value>Willekeurig</value>
   </data>
+  <data name="Register" xml:space="preserve">
+    <value>Register</value>
+  </data>
+  <data name="Register_Account" xml:space="preserve">
+    <value>Account registreren</value>
+  </data>
+  <data name="Register_CPassword_Help" xml:space="preserve">
+    <value>Bevestig uw wachtwoord</value>
+  </data>
+  <data name="Register_CPassword_Label" xml:space="preserve">
+    <value>Wachtwoord bevestigen</value>
+  </data>
+  <data name="Register_Email_Help" xml:space="preserve">
+    <value>Voer account e-mailadres in.</value>
+  </data>
+  <data name="Register_Email_Label" xml:space="preserve">
+    <value>E-mailadres</value>
+  </data>
+  <data name="Register_Password_Help" xml:space="preserve">
+    <value>Wachtwoord voert een wachtwoord in.</value>
+  </data>
+  <data name="Register_Password_Label" xml:space="preserve">
+    <value>Wachtwoord</value>
+  </data>
+  <data name="Register_Username_Help" xml:space="preserve">
+    <value>Voer account gebruikersnaam in.</value>
+  </data>
+  <data name="Register_Username_Label" xml:space="preserve">
+    <value>Gebruikersnaam</value>
+  </data>
+  <data name="Registration_Confirm_Password_Missmatch" xml:space="preserve">
+    <value>Bevestigingswachtwoord komt niet overeen</value>
+  </data>
+  <data name="Registration_Email_Send_Failed" xml:space="preserve">
+    <value>Kon registratiemail niet naar de gebruiker sturen.</value>
+  </data>
+  <data name="Registration_Email_Taken" xml:space="preserve">
+    <value>Er bestaat al een account met het opgegeven e-mailadres</value>
+  </data>
+  <data name="Registration_Failed" xml:space="preserve">
+    <value>Kon nieuwe gebruiker niet registreren</value>
+  </data>
+  <data name="Registration_Invalid_Email" xml:space="preserve">
+    <value>Geef een geldig e-mailadres op</value>
+  </data>
+  <data name="Registration_Invalid_Password" xml:space="preserve">
+    <value>Geef een geldig wachtwoord tussen 8 en 100 tekens, met ten minste 1 hoofdletters, 1 kleine letters, 1 nummer en 1 speciaal teken</value>
+  </data>
+  <data name="Registration_Invalid_Username" xml:space="preserve">
+    <value>Geef een geldige gebruikersnaam op tussen 5 en 50 tekens</value>
+  </data>
+  <data name="Registration_Invalid_Verification_Link" xml:space="preserve">
+    <value>Er was een probleem met het verwerken van de e-mail verificatie link</value>
+  </data>
+  <data name="Registration_Success_Message" xml:space="preserve">
+    <value>Uw account is succesvol geregistreerd en wacht tot u toegang krijgt</value>
+  </data>
+  <data name="Registration_Success_Title" xml:space="preserve">
+    <value>Welkom!</value>
+  </data>
+  <data name="Registration_Success_Verification" xml:space="preserve">
+    <value>Uw account is geregistreerd maar moet worden geverifieerd voordat het kan worden geopend. Activeer uw account door op onderstaande link te klikken.</value>
+  </data>
+  <data name="Registration_Username_Taken" xml:space="preserve">
+    <value>Gebruikersnaam bestaat al. Selecteer een nieuwe</value>
+  </data>
+  <data name="Registration_Weak_Password" xml:space="preserve">
+    <value>Het opgegeven wachtwoord is gemakkelijk te raden. Selecteer een veiliger wachtwoord.</value>
+  </data>
   <data name="Reject" xml:space="preserve">
     <value>Weigeren</value>
   </data>
@@ -561,6 +690,9 @@
   </data>
   <data name="Rename" xml:space="preserve">
     <value>Hernoemen</value>
+  </data>
+  <data name="ResetPassword_Invalid_Reset_Link" xml:space="preserve">
+    <value>Er was een probleem met het verwerken van de wachtwoord reset koppeling</value>
   </data>
   <data name="Resources" xml:space="preserve">
     <value>Middelen</value>
@@ -603,6 +735,18 @@
   </data>
   <data name="Settings_Account_Profile_Icon_Label" xml:space="preserve">
     <value>Profielpictogram</value>
+  </data>
+  <data name="Settings_Account_Registration_Enabled_Help" xml:space="preserve">
+    <value>Mogen gasten accounts registreren?</value>
+  </data>
+  <data name="Settings_Account_Registration_Enabled_Label" xml:space="preserve">
+    <value>Registratie ingeschakeld</value>
+  </data>
+  <data name="Settings_Account_Registration_RequireEmailValidation_Help" xml:space="preserve">
+    <value>Zijn gebruikers verplicht om hun e-mail te verifiëren om hun account te activeren?</value>
+  </data>
+  <data name="Settings_Account_Registration_RequireEmailValidation_Label" xml:space="preserve">
+    <value>E-mailvalidatie vereisen</value>
   </data>
   <data name="Settings_Alerts" xml:space="preserve">
     <value>Waarschuwingen</value>
@@ -1162,6 +1306,9 @@
   <data name="Square" xml:space="preserve">
     <value>Vierkant</value>
   </data>
+  <data name="Submit" xml:space="preserve">
+    <value>Verzenden</value>
+  </data>
   <data name="Supporters" xml:space="preserve">
     <value>Aanhang</value>
   </data>
@@ -1176,6 +1323,12 @@
   </data>
   <data name="Update" xml:space="preserve">
     <value>Bijwerken</value>
+  </data>
+  <data name="Upgrade" xml:space="preserve">
+    <value>Upgrade</value>
+  </data>
+  <data name="Upgrade_Account_Message" xml:space="preserve">
+    <value>U gebruikt momenteel de gratis versie. Om meer gallery-opslag en andere geweldige functies te ontgrendelen overweeg het upgraden van uw account</value>
   </data>
   <data name="Upload_Media" xml:space="preserve">
     <value>Media uploaden</value>
@@ -1203,6 +1356,9 @@
   </data>
   <data name="Users_List_Failed" xml:space="preserve">
     <value>Ophalen gebruikerslijst mislukt</value>
+  </data>
+  <data name="Verify" xml:space="preserve">
+    <value>Verifiëren</value>
   </data>
   <data name="Videos" xml:space="preserve">
     <value>Video's</value>

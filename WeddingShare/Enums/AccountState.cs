@@ -3,6 +3,7 @@
     public enum AccountState
     {
         Active = 0,
-        Frozen = 1
+        Frozen = 1,
+        PendingActivation = 3
     }
 }

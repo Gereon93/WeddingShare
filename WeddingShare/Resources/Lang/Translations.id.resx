@@ -94,6 +94,18 @@
   <data name="406_Error_Title" xml:space="preserve">
     <value>Galeri Tidak Valid</value>
   </data>
+  <data name="407_Error_Message" xml:space="preserve">
+    <value>Ada masalah saat mencoba memverifikasi akun Anda. Harap pastikan link verifikasi valid.</value>
+  </data>
+  <data name="407_Error_Title" xml:space="preserve">
+    <value>Verifikasi Tidak Valid Taut</value>
+  </data>
+  <data name="408_Error_Message" xml:space="preserve">
+    <value>Ada masalah ketika mencoba mereset kata sandi akun Anda. Harap pastikan link verifikasi valid.</value>
+  </data>
+  <data name="408_Error_Title" xml:space="preserve">
+    <value>Sambungan Ulang Sandi Tak Valid</value>
+  </data>
   <data name="Accept" xml:space="preserve">
     <value>Terima</value>
   </data>
@@ -120,6 +132,12 @@
   </data>
   <data name="Audit" xml:space="preserve">
     <value>Audit</value>
+  </data>
+  <data name="Audit_Account_Registered" xml:space="preserve">
+    <value>Akun terdaftar pengguna</value>
+  </data>
+  <data name="Audit_ActivateUser" xml:space="preserve">
+    <value>Mengaktifkan pengguna</value>
   </data>
   <data name="Audit_BulkApproveReviews" xml:space="preserve">
     <value>Bulk menyetujui semua ulasan yang tertunda</value>
@@ -148,6 +166,9 @@
   <data name="Audit_DeletedUser" xml:space="preserve">
     <value>Dihapus pengguna</value>
   </data>
+  <data name="Audit_Email_Verified" xml:space="preserve">
+    <value>Pengguna memverifikasi alamat email mereka</value>
+  </data>
   <data name="Audit_ExportedBackup" xml:space="preserve">
     <value>Exported a backup</value>
   </data>
@@ -156,6 +177,9 @@
   </data>
   <data name="Audit_FailedLoginAttemptReset" xml:space="preserve">
     <value>Percobaan log masuk gagal menghitung reset</value>
+  </data>
+  <data name="Audit_Forgot_Password" xml:space="preserve">
+    <value>Pengguna meminta reset sandi</value>
   </data>
   <data name="Audit_FrozeUser" xml:space="preserve">
     <value>Pengguna beku</value>
@@ -198,6 +222,9 @@
   </data>
   <data name="Audit_MultiFactorResetUser" xml:space="preserve">
     <value>Reset multi- faktor bagi pengguna</value>
+  </data>
+  <data name="Audit_Password_Reset" xml:space="preserve">
+    <value>Pengguna meminta reset sandi</value>
   </data>
   <data name="Audit_SearchTerm_Help" xml:space="preserve">
     <value>Filter log berbasis pada sebuah istilah pencarian</value>
@@ -379,6 +406,21 @@
   <data name="Filter" xml:space="preserve">
     <value>Filter</value>
   </data>
+  <data name="Forgot_Password" xml:space="preserve">
+    <value>Lupa Sandi</value>
+  </data>
+  <data name="ForgotPassword" xml:space="preserve">
+    <value>Lupa Sandi</value>
+  </data>
+  <data name="ForgotPassword_Email_Help" xml:space="preserve">
+    <value>Silakan masukkan alamat email akun.</value>
+  </data>
+  <data name="ForgotPassword_Email_Label" xml:space="preserve">
+    <value>Alamat Surel</value>
+  </data>
+  <data name="ForgotPassword_Failed" xml:space="preserve">
+    <value>Gagal mengirim surel reset sandi</value>
+  </data>
   <data name="Galleries" xml:space="preserve">
     <value>Galeri</value>
   </data>
@@ -535,6 +577,24 @@
   <data name="None" xml:space="preserve">
     <value>Nihil</value>
   </data>
+  <data name="Password_Reset_Changed_Message" xml:space="preserve">
+    <value>Kata sandi Anda kini telah direset. Jika Anda tidak meminta reset sandi silakan hubungi administrator segera.</value>
+  </data>
+  <data name="Password_Reset_Changed_Title" xml:space="preserve">
+    <value>Sandi Anda telah diperbarui!</value>
+  </data>
+  <data name="Password_Reset_Requested_Message" xml:space="preserve">
+    <value>Reset sandi telah diminta pada akun Anda. Bila Anda meminta perubahan kata sandi, silakan klik link di bawah untuk memutakhirkan.</value>
+  </data>
+  <data name="Password_Reset_Requested_Title" xml:space="preserve">
+    <value>Masalah mengakses akun Anda?</value>
+  </data>
+  <data name="PasswordReset" xml:space="preserve">
+    <value>Atur Ulang Sandi</value>
+  </data>
+  <data name="PasswordReset_Failed" xml:space="preserve">
+    <value>Gagal mengirim ulang surel sandi.</value>
+  </data>
   <data name="Pending" xml:space="preserve">
     <value>Menunggu</value>
   </data>
@@ -553,6 +613,75 @@
   <data name="Random" xml:space="preserve">
     <value>Acak</value>
   </data>
+  <data name="Register" xml:space="preserve">
+    <value>Register</value>
+  </data>
+  <data name="Register_Account" xml:space="preserve">
+    <value>Akun Register</value>
+  </data>
+  <data name="Register_CPassword_Help" xml:space="preserve">
+    <value>Konfirmasi kata sandi Anda</value>
+  </data>
+  <data name="Register_CPassword_Label" xml:space="preserve">
+    <value>Konfirmasi Sandi</value>
+  </data>
+  <data name="Register_Email_Help" xml:space="preserve">
+    <value>Silakan masukkan alamat email akun.</value>
+  </data>
+  <data name="Register_Email_Label" xml:space="preserve">
+    <value>Alamat Surel</value>
+  </data>
+  <data name="Register_Password_Help" xml:space="preserve">
+    <value>Sandi masukkan sandi.</value>
+  </data>
+  <data name="Register_Password_Label" xml:space="preserve">
+    <value>Sandi</value>
+  </data>
+  <data name="Register_Username_Help" xml:space="preserve">
+    <value>Silakan masukkan nama pengguna akun.</value>
+  </data>
+  <data name="Register_Username_Label" xml:space="preserve">
+    <value>Nama pengguna</value>
+  </data>
+  <data name="Registration_Confirm_Password_Missmatch" xml:space="preserve">
+    <value>Sandi konfirmasi tidak cocok</value>
+  </data>
+  <data name="Registration_Email_Send_Failed" xml:space="preserve">
+    <value>Gagal mengirim surel pendaftaran ke pengguna.</value>
+  </data>
+  <data name="Registration_Email_Taken" xml:space="preserve">
+    <value>Akun dengan alamat surel yang dinyatakan sudah ada</value>
+  </data>
+  <data name="Registration_Failed" xml:space="preserve">
+    <value>Gagal mendaftarkan pengguna baru</value>
+  </data>
+  <data name="Registration_Invalid_Email" xml:space="preserve">
+    <value>Silakan nyatakan alamat surel yang valid</value>
+  </data>
+  <data name="Registration_Invalid_Password" xml:space="preserve">
+    <value>Mohon spesifikasikan sandi yang valid antara 8 dan 100 karakter, berisi paling tidak 1 huruf besar, 1 huruf huruf kecil, 1 nomor dan 1 karakter khusus</value>
+  </data>
+  <data name="Registration_Invalid_Username" xml:space="preserve">
+    <value>Silakan spesifikasikan nama pengguna yang valid antara 5 dan 50 karakter</value>
+  </data>
+  <data name="Registration_Invalid_Verification_Link" xml:space="preserve">
+    <value>Ada masalah dalam memproses link verifikasi email</value>
+  </data>
+  <data name="Registration_Success_Message" xml:space="preserve">
+    <value>Akun anda telah didaftarkan dengan sukses dan menunggu anda untuk mengakses</value>
+  </data>
+  <data name="Registration_Success_Title" xml:space="preserve">
+    <value>Selamat datang!</value>
+  </data>
+  <data name="Registration_Success_Verification" xml:space="preserve">
+    <value>Rekening Anda telah terdaftar tapi perlu diverifikasi sebelum dapat diakses. Silahkan aktifkan akun anda dengan mengklik link di bawah.</value>
+  </data>
+  <data name="Registration_Username_Taken" xml:space="preserve">
+    <value>Nama pengguna sudah ada. Silakan pilih yang baru</value>
+  </data>
+  <data name="Registration_Weak_Password" xml:space="preserve">
+    <value>Kata sandi yang dinyatakan mudah ditebak. Silakan pilih sandi yang lebih aman.</value>
+  </data>
   <data name="Reject" xml:space="preserve">
     <value>Tolak</value>
   </data>
@@ -561,6 +690,9 @@
   </data>
   <data name="Rename" xml:space="preserve">
     <value>Ganti Nama</value>
+  </data>
+  <data name="ResetPassword_Invalid_Reset_Link" xml:space="preserve">
+    <value>Ada masalah dalam memproses link reset sandi</value>
   </data>
   <data name="Resources" xml:space="preserve">
     <value>Sumber Daya</value>
@@ -603,6 +735,18 @@
   </data>
   <data name="Settings_Account_Profile_Icon_Label" xml:space="preserve">
     <value>Ikon Profil</value>
+  </data>
+  <data name="Settings_Account_Registration_Enabled_Help" xml:space="preserve">
+    <value>Apakah tamu diperbolehkan untuk mendaftar rekening?</value>
+  </data>
+  <data name="Settings_Account_Registration_Enabled_Label" xml:space="preserve">
+    <value>Pendaftaran Diaktifkan</value>
+  </data>
+  <data name="Settings_Account_Registration_RequireEmailValidation_Help" xml:space="preserve">
+    <value>Apakah pengguna diperlukan untuk memverifikasi email mereka untuk mengaktifkan akun mereka?</value>
+  </data>
+  <data name="Settings_Account_Registration_RequireEmailValidation_Label" xml:space="preserve">
+    <value>Perlu Validasi Surel</value>
   </data>
   <data name="Settings_Alerts" xml:space="preserve">
     <value>Alerts</value>
@@ -1162,6 +1306,9 @@
   <data name="Square" xml:space="preserve">
     <value>Kotak</value>
   </data>
+  <data name="Submit" xml:space="preserve">
+    <value>Kirim</value>
+  </data>
   <data name="Supporters" xml:space="preserve">
     <value>Pendukung</value>
   </data>
@@ -1176,6 +1323,12 @@
   </data>
   <data name="Update" xml:space="preserve">
     <value>Perbarui</value>
+  </data>
+  <data name="Upgrade" xml:space="preserve">
+    <value>Tingkatkan</value>
+  </data>
+  <data name="Upgrade_Account_Message" xml:space="preserve">
+    <value>Anda saat ini menggunakan versi bebas. Untuk membuka lebih banyak penyimpanan galeri dan fitur besar lainnya pertimbangkan untuk meningkatkan akun Anda</value>
   </data>
   <data name="Upload_Media" xml:space="preserve">
     <value>Unggah Media</value>
@@ -1203,6 +1356,9 @@
   </data>
   <data name="Users_List_Failed" xml:space="preserve">
     <value>Gagal mendapat daftar pengguna</value>
+  </data>
+  <data name="Verify" xml:space="preserve">
+    <value>Verifikasi</value>
   </data>
   <data name="Videos" xml:space="preserve">
     <value>Video</value>

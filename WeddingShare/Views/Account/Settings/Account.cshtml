@@ -5,6 +5,46 @@
 {
     <div class="row mb-4 mb-lg-4">
         <div class="col-12">
+            <label>@_localizer["Settings_Account_Registration_Enabled_Label"].Value</label>
+            <select class="setting-field form-control" data-setting-name="@Settings.Account.Registration.Enabled">
+                @foreach (var option in ViewOptions.YesNo)
+                {
+                    if (Model.GetValue(Settings.Account.Registration.Enabled.ToUpper(), "true").Equals(option.Value, StringComparison.OrdinalIgnoreCase))
+                    {
+                        <option value="@option.Value" selected="selected">@option.Key</option>
+                    }
+                    else
+                    {
+                        <option value="@option.Value">@option.Key</option>
+                    }
+                }
+            </select>
+            <div class="form-text">@_localizer["Settings_Account_Registration_Enabled_Help"].Value</div>
+        </div>
+    </div>
+
+    <div class="row mb-4 mb-lg-4">
+        <div class="col-12">
+            <label>@_localizer["Settings_Account_Registration_RequireEmailValidation_Label"].Value</label>
+            <select class="setting-field form-control" data-setting-name="@Settings.Account.Registration.RequireEmailValidation">
+                @foreach (var option in ViewOptions.YesNo)
+                {
+                    if (Model.GetValue(Settings.Account.Registration.RequireEmailValidation.ToUpper(), "true").Equals(option.Value, StringComparison.OrdinalIgnoreCase))
+                    {
+                        <option value="@option.Value" selected="selected">@option.Key</option>
+                    }
+                    else
+                    {
+                        <option value="@option.Value">@option.Key</option>
+                    }
+                }
+            </select>
+            <div class="form-text">@_localizer["Settings_Account_Registration_RequireEmailValidation_Help"].Value</div>
+        </div>
+    </div>
+
+    <div class="row mb-4 mb-lg-4">
+        <div class="col-12">
             <label>@_localizer["Settings_Account_Profile_Icon_Label"].Value</label>
             <select class="setting-field form-control" data-setting-name="@Settings.Account.ShowProfileIcon">
                 @foreach (var option in ViewOptions.YesNo)

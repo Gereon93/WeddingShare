@@ -4,11 +4,11 @@
 @using WeddingShare.Views.Account.Tabs
 
 @{
-    var userPermissions = User?.Identity?.GetUserPermissions() ?? AccessPermissions.None;
+    var userPermissions = User?.Identity?.GetUserPermissions() ?? new Permissions();
     var showMySQLFeatures = !string.Equals("mysql", await _settings.GetOrDefault(Settings.Database.Type, "sqlite"), StringComparison.OrdinalIgnoreCase);
 }
 
-@if (userPermissions.HasFlag(AccessPermissions.Data_View))
+@if (userPermissions.Data.HasFlag(DataPermissions.View))
 {
     <section class="pnl-account pnl-account-data pb-2 pb-lg-5">
         <div class="container px-3 px-lg-1 my-3 my-lg-0">
@@ -29,7 +29,7 @@
         </div>
     </section>
 
-    @if (showMySQLFeatures && (userPermissions.HasFlag(AccessPermissions.Data_Import)) || userPermissions.HasFlag(AccessPermissions.Data_Export))
+    @if (showMySQLFeatures && (userPermissions.Data.HasFlag(DataPermissions.Import)) || userPermissions.Data.HasFlag(DataPermissions.Export))
     {
         <section class="pnl-account pnl-account-data pb-0 pb-lg-4">
             <div class="container px-3 px-lg-1 my-3 my-lg-0">
@@ -42,14 +42,14 @@
                 </div>
                 <div class="row px-3 pb-3">
                     <div class="col-12 border rounded py-3 text-center">
-                        @if (userPermissions.HasFlag(AccessPermissions.Data_Import))
+                        @if (userPermissions.Data.HasFlag(DataPermissions.Import))
                         {
                             <div class="mx-0 mx-sm-5 px-5 px-xl-5 text-primary d-inline-block">
                                 <i class="btnImport fa-solid fa-upload fa-2x pointer" alt="@_localizer["Import"].Value"></i>
                                 <h6 class="mb-0">@_localizer["Import"].Value</h6>
                             </div>
                         }
-                        @if (userPermissions.HasFlag(AccessPermissions.Data_Export))
+                        @if (userPermissions.Data.HasFlag(DataPermissions.Export))
                         {
                             <div class="mx-0 mx-sm-5 px-5 px-xl-5 text-primary d-inline-block">
                                 <i class="btnExport fa-solid fa-download fa-2x pointer" alt="@_localizer["Export"].Value"></i>
@@ -62,7 +62,7 @@
         </section>
     }
 
-    @if (userPermissions.HasFlag(AccessPermissions.Data_Wipe))
+    @if (userPermissions.Data.HasFlag(DataPermissions.Wipe))
     {
         <section class="pnl-account pnl-account-data pb-2 pb-lg-5">
             <div class="container px-3 px-lg-1 my-3 my-lg-0">

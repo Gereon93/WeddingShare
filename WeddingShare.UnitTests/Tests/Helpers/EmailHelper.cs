@@ -1,4 +1,5 @@
 using System.Net.Mail;
+using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 using NSubstitute;
 using WeddingShare.Helpers;
@@ -11,6 +12,7 @@ namespace WeddingShare.UnitTests.Tests.Helpers
         private readonly ISettingsHelper _settings = Substitute.For<ISettingsHelper>();
         private readonly ISmtpClientWrapper _smtp = Substitute.For<ISmtpClientWrapper>();
         private readonly ILogger<EmailHelper> _logger = Substitute.For<ILogger<EmailHelper>>();
+        private readonly IStringLocalizer<Lang.Translations> _localizer = Substitute.For<IStringLocalizer<Lang.Translations>>();
 
         public EmailHelperTests()
         {
@@ -35,7 +37,7 @@ namespace WeddingShare.UnitTests.Tests.Helpers
         [TestCase("unit", "test")]
         public async Task EmailHelper_Success(string title, string message)
         {
-            var actual = await new EmailHelper(_settings, _smtp, _logger).Send(title, message);
+            var actual = await new EmailHelper(_settings, _smtp, _logger, _localizer).Send(title, message);
             Assert.That(actual, Is.EqualTo(true));
         }
 
@@ -45,7 +47,7 @@ namespace WeddingShare.UnitTests.Tests.Helpers
         {
             _settings.GetOrDefault(Constants.Notifications.Smtp.Enabled, Arg.Any<bool>()).Returns(enabled);
 
-            var actual = await new EmailHelper(_settings, _smtp, _logger).Send("unit", "test");
+            var actual = await new EmailHelper(_settings, _smtp, _logger, _localizer).Send("unit", "test");
             Assert.That(actual, Is.EqualTo(expected));
         }
 
@@ -56,7 +58,7 @@ namespace WeddingShare.UnitTests.Tests.Helpers
         {
             _settings.GetOrDefault(Constants.Notifications.Smtp.Recipient, Arg.Any<string>()).Returns(recipient);
 
-            var actual = await new EmailHelper(_settings, _smtp, _logger).Send("unit", "test");
+            var actual = await new EmailHelper(_settings, _smtp, _logger, _localizer).Send("unit", "test");
             Assert.That(actual, Is.EqualTo(expected));
         }
 
@@ -67,7 +69,7 @@ namespace WeddingShare.UnitTests.Tests.Helpers
         {
             _settings.GetOrDefault(Constants.Notifications.Smtp.Host, Arg.Any<string>()).Returns(host);
 
-            var actual = await new EmailHelper(_settings, _smtp, _logger).Send("unit", "test");
+            var actual = await new EmailHelper(_settings, _smtp, _logger, _localizer).Send("unit", "test");
             Assert.That(actual, Is.EqualTo(expected));
         }
 
@@ -79,7 +81,7 @@ namespace WeddingShare.UnitTests.Tests.Helpers
         {
             _settings.GetOrDefault(Constants.Notifications.Smtp.Port, Arg.Any<int>()).Returns(port);
 
-            var actual = await new EmailHelper(_settings, _smtp, _logger).Send("unit", "test");
+            var actual = await new EmailHelper(_settings, _smtp, _logger, _localizer).Send("unit", "test");
             Assert.That(actual, Is.EqualTo(expected));
         }
 
@@ -90,7 +92,7 @@ namespace WeddingShare.UnitTests.Tests.Helpers
         {
             _settings.GetOrDefault(Constants.Notifications.Smtp.From, Arg.Any<string>()).Returns(from);
 
-            var actual = await new EmailHelper(_settings, _smtp, _logger).Send("unit", "test");
+            var actual = await new EmailHelper(_settings, _smtp, _logger, _localizer).Send("unit", "test");
             Assert.That(actual, Is.EqualTo(expected));
         }
 
@@ -101,7 +103,7 @@ namespace WeddingShare.UnitTests.Tests.Helpers
         {
             _settings.GetOrDefault(Constants.Notifications.Smtp.DisplayName, Arg.Any<string>()).Returns(displayName);
 
-            var actual = await new EmailHelper(_settings, _smtp, _logger).Send("unit", "test");
+            var actual = await new EmailHelper(_settings, _smtp, _logger, _localizer).Send("unit", "test");
             Assert.That(actual, Is.EqualTo(expected));
         }
     }

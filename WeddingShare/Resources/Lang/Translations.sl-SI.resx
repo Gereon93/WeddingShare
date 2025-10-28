@@ -94,6 +94,18 @@
   <data name="406_Error_Title" xml:space="preserve">
     <value>Neveljavna galerija</value>
   </data>
+  <data name="407_Error_Message" xml:space="preserve">
+    <value>Med preverjanjem računa je bila težava. Preverite, ali je povezava za preverjanje veljavna.</value>
+  </data>
+  <data name="407_Error_Title" xml:space="preserve">
+    <value>Neveljavno preverjanje Povezava</value>
+  </data>
+  <data name="408_Error_Message" xml:space="preserve">
+    <value>Prišlo je do težave pri ponastavitvi gesla računa. Preverite, ali je povezava za preverjanje veljavna.</value>
+  </data>
+  <data name="408_Error_Title" xml:space="preserve">
+    <value>Neveljavno geslo Ponastavi povezavo</value>
+  </data>
   <data name="Accept" xml:space="preserve">
     <value>Sprejmi</value>
   </data>
@@ -120,6 +132,12 @@
   </data>
   <data name="Audit" xml:space="preserve">
     <value>Revizija</value>
+  </data>
+  <data name="Audit_Account_Registered" xml:space="preserve">
+    <value>Registrirani uporabniški račun</value>
+  </data>
+  <data name="Audit_ActivateUser" xml:space="preserve">
+    <value>Aktivirani uporabnik</value>
   </data>
   <data name="Audit_BulkApproveReviews" xml:space="preserve">
     <value>Odobreni vsi nerešeni pregledi</value>
@@ -148,6 +166,9 @@
   <data name="Audit_DeletedUser" xml:space="preserve">
     <value>Zbrisan uporabnik</value>
   </data>
+  <data name="Audit_Email_Verified" xml:space="preserve">
+    <value>Uporabnik je preveril e-poštni naslov</value>
+  </data>
   <data name="Audit_ExportedBackup" xml:space="preserve">
     <value>Izvozi varnostno kopijo</value>
   </data>
@@ -156,6 +177,9 @@
   </data>
   <data name="Audit_FailedLoginAttemptReset" xml:space="preserve">
     <value>Ponastavitev poskusov prijave ni uspela</value>
+  </data>
+  <data name="Audit_Forgot_Password" xml:space="preserve">
+    <value>Uporabnik je zahteval ponastavitev gesla</value>
   </data>
   <data name="Audit_FrozeUser" xml:space="preserve">
     <value>Uporabnik Froze</value>
@@ -198,6 +222,9 @@
   </data>
   <data name="Audit_MultiFactorResetUser" xml:space="preserve">
     <value>Ponastavi večfaktor za uporabnika</value>
+  </data>
+  <data name="Audit_Password_Reset" xml:space="preserve">
+    <value>Uporabnik je zahteval ponastavitev gesla</value>
   </data>
   <data name="Audit_SearchTerm_Help" xml:space="preserve">
     <value>Filtrirni dnevniki na osnovi iskalnega izraza</value>
@@ -379,6 +406,21 @@
   <data name="Filter" xml:space="preserve">
     <value>Filter</value>
   </data>
+  <data name="Forgot_Password" xml:space="preserve">
+    <value>Pozabil sem geslo</value>
+  </data>
+  <data name="ForgotPassword" xml:space="preserve">
+    <value>Pozabil sem geslo</value>
+  </data>
+  <data name="ForgotPassword_Email_Help" xml:space="preserve">
+    <value>Prosim vnesite e-poštni naslov računa.</value>
+  </data>
+  <data name="ForgotPassword_Email_Label" xml:space="preserve">
+    <value>E- poštni naslov</value>
+  </data>
+  <data name="ForgotPassword_Failed" xml:space="preserve">
+    <value>Ponastavitev gesla ni uspela</value>
+  </data>
   <data name="Galleries" xml:space="preserve">
     <value>Galerije</value>
   </data>
@@ -535,6 +577,24 @@
   <data name="None" xml:space="preserve">
     <value>Brez</value>
   </data>
+  <data name="Password_Reset_Changed_Message" xml:space="preserve">
+    <value>Vaše geslo je bilo ponastavljeno. Če niste zahtevali ponastavitve gesla, se takoj obrnite na skrbnika.</value>
+  </data>
+  <data name="Password_Reset_Changed_Title" xml:space="preserve">
+    <value>Vaše geslo je bilo posodobljeno!</value>
+  </data>
+  <data name="Password_Reset_Requested_Message" xml:space="preserve">
+    <value>Na vaš račun je bila zahtevana ponastavitev gesla. Če ste zahtevali spremembo gesla, kliknite na spodnjo povezavo, da jo posodobite.</value>
+  </data>
+  <data name="Password_Reset_Requested_Title" xml:space="preserve">
+    <value>Težave z dostopom do računa?</value>
+  </data>
+  <data name="PasswordReset" xml:space="preserve">
+    <value>Ponastavitev gesla</value>
+  </data>
+  <data name="PasswordReset_Failed" xml:space="preserve">
+    <value>Ponastavitev gesla ni uspela.</value>
+  </data>
   <data name="Pending" xml:space="preserve">
     <value>Čakanje</value>
   </data>
@@ -553,6 +613,75 @@
   <data name="Random" xml:space="preserve">
     <value>Naključno</value>
   </data>
+  <data name="Register" xml:space="preserve">
+    <value>Register</value>
+  </data>
+  <data name="Register_Account" xml:space="preserve">
+    <value>Registrski račun</value>
+  </data>
+  <data name="Register_CPassword_Help" xml:space="preserve">
+    <value>Potrdite geslo</value>
+  </data>
+  <data name="Register_CPassword_Label" xml:space="preserve">
+    <value>Potrdi geslo</value>
+  </data>
+  <data name="Register_Email_Help" xml:space="preserve">
+    <value>Prosim vnesite e-poštni naslov računa.</value>
+  </data>
+  <data name="Register_Email_Label" xml:space="preserve">
+    <value>E- poštni naslov</value>
+  </data>
+  <data name="Register_Password_Help" xml:space="preserve">
+    <value>Geslo vnesite geslo.</value>
+  </data>
+  <data name="Register_Password_Label" xml:space="preserve">
+    <value>Geslo</value>
+  </data>
+  <data name="Register_Username_Help" xml:space="preserve">
+    <value>Vnesite uporabniško ime računa.</value>
+  </data>
+  <data name="Register_Username_Label" xml:space="preserve">
+    <value>Uporabniško ime</value>
+  </data>
+  <data name="Registration_Confirm_Password_Missmatch" xml:space="preserve">
+    <value>Geslo za potrditev se ne ujema</value>
+  </data>
+  <data name="Registration_Email_Send_Failed" xml:space="preserve">
+    <value>Uporabniku ni uspelo poslati prijavne e-pošte.</value>
+  </data>
+  <data name="Registration_Email_Taken" xml:space="preserve">
+    <value>Račun z določenim elektronskim naslovom že obstaja</value>
+  </data>
+  <data name="Registration_Failed" xml:space="preserve">
+    <value>Ni moč registrirati novega uporabnika</value>
+  </data>
+  <data name="Registration_Invalid_Email" xml:space="preserve">
+    <value>Prosimo, navedite veljaven e-poštni naslov</value>
+  </data>
+  <data name="Registration_Invalid_Password" xml:space="preserve">
+    <value>Prosimo, navedite veljavno geslo med 8 in 100 znaki, ki vsebuje vsaj 1 črko velike črke, 1 črko majhne črke, 1 številko in 1 poseben znak</value>
+  </data>
+  <data name="Registration_Invalid_Username" xml:space="preserve">
+    <value>Navedite veljavno uporabniško ime med 5 in 50 znaki</value>
+  </data>
+  <data name="Registration_Invalid_Verification_Link" xml:space="preserve">
+    <value>Prišlo je vprašanje obdelovanje e-pošte preverjanje povezavo</value>
+  </data>
+  <data name="Registration_Success_Message" xml:space="preserve">
+    <value>Račun je bil uspešno registriran in čaka na vas za dostop</value>
+  </data>
+  <data name="Registration_Success_Title" xml:space="preserve">
+    <value>Dobrodošli!</value>
+  </data>
+  <data name="Registration_Success_Verification" xml:space="preserve">
+    <value>Vaš račun je bil registriran, vendar ga je treba preveriti, preden lahko dostopate do njega. Aktivirajte svoj račun s klikom na spodnjo povezavo.</value>
+  </data>
+  <data name="Registration_Username_Taken" xml:space="preserve">
+    <value>Uporabniško ime že obstaja. Prosim izberite novega</value>
+  </data>
+  <data name="Registration_Weak_Password" xml:space="preserve">
+    <value>Navedeno geslo je enostavno uganiti. Prosim izberite varnejše geslo.</value>
+  </data>
   <data name="Reject" xml:space="preserve">
     <value>Zavrni</value>
   </data>
@@ -561,6 +690,9 @@
   </data>
   <data name="Rename" xml:space="preserve">
     <value>Preimenuj</value>
+  </data>
+  <data name="ResetPassword_Invalid_Reset_Link" xml:space="preserve">
+    <value>Prišlo je vprašanje obdelovanje geslo reset povezavo</value>
   </data>
   <data name="Resources" xml:space="preserve">
     <value>Viri</value>
@@ -603,6 +735,18 @@
   </data>
   <data name="Settings_Account_Profile_Icon_Label" xml:space="preserve">
     <value>Ikona profila</value>
+  </data>
+  <data name="Settings_Account_Registration_Enabled_Help" xml:space="preserve">
+    <value>Ali lahko gostje registrirajo račune?</value>
+  </data>
+  <data name="Settings_Account_Registration_Enabled_Label" xml:space="preserve">
+    <value>Registracija omogočena</value>
+  </data>
+  <data name="Settings_Account_Registration_RequireEmailValidation_Help" xml:space="preserve">
+    <value>Ali morajo uporabniki preveriti svojo e-pošto, da bi aktivirali svoj račun?</value>
+  </data>
+  <data name="Settings_Account_Registration_RequireEmailValidation_Label" xml:space="preserve">
+    <value>Zahtevaj potrditev e- pošte</value>
   </data>
   <data name="Settings_Alerts" xml:space="preserve">
     <value>Opozorila</value>
@@ -1162,6 +1306,9 @@
   <data name="Square" xml:space="preserve">
     <value>Kvadrat</value>
   </data>
+  <data name="Submit" xml:space="preserve">
+    <value>Pošlji</value>
+  </data>
   <data name="Supporters" xml:space="preserve">
     <value>Podporniki</value>
   </data>
@@ -1176,6 +1323,12 @@
   </data>
   <data name="Update" xml:space="preserve">
     <value>Posodobi</value>
+  </data>
+  <data name="Upgrade" xml:space="preserve">
+    <value>Nadgradnja</value>
+  </data>
+  <data name="Upgrade_Account_Message" xml:space="preserve">
+    <value>Trenutno uporabljate brezplačno različico. Če želite odkleniti več shranjevanje galerije in druge odlične funkcije menijo nadgradnjo svojega računa</value>
   </data>
   <data name="Upload_Media" xml:space="preserve">
     <value>Pošlji večpredstavnostne datoteke</value>
@@ -1203,6 +1356,9 @@
   </data>
   <data name="Users_List_Failed" xml:space="preserve">
     <value>Ni moč dobiti seznama uporabnikov</value>
+  </data>
+  <data name="Verify" xml:space="preserve">
+    <value>Preveri</value>
   </data>
   <data name="Videos" xml:space="preserve">
     <value>Video posnetki</value>

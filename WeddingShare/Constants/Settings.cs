@@ -24,6 +24,13 @@
                 public const string Password = "Settings:Account:Owner:Password";
                 public const string LogPassword = "Settings:Account:Owner:Log_Password";
             }
+
+            public class Registration
+            {
+                public const string BaseKey = "Settings:Account:Registration:";
+                public const string Enabled = "Settings:Account:Registration:Enabled";
+                public const string RequireEmailValidation = "Settings:Account:Registration:Require_Email_Validation";
+            }
         }
 
         public class Basic
@@ -63,6 +70,7 @@
             public const string ItemsPerPage = "Settings:Gallery:Items_Per_Page";
             public const string FullWidth = "Settings:Gallery:Full_Width";
             public const string RetainRejectedItems = "Settings:Gallery:Retain_Rejected_Items";
+            public const string Likes = "Settings:Gallery:Likes";
             public const string Upload = "Settings:Gallery:Upload";
             public const string Download = "Settings:Gallery:Download";
             public const string RequireReview = "Settings:Gallery:Require_Review";

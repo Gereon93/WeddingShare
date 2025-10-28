@@ -94,6 +94,18 @@
   <data name="406_Error_Title" xml:space="preserve">
     <value>Invalid Galleri</value>
   </data>
+  <data name="407_Error_Message" xml:space="preserve">
+    <value>Det fanns ett problem när du försökte verifiera ditt konto. Se till att verifieringslänken är giltig.</value>
+  </data>
+  <data name="407_Error_Title" xml:space="preserve">
+    <value>Invalid verifiering Länk</value>
+  </data>
+  <data name="408_Error_Message" xml:space="preserve">
+    <value>Det fanns ett problem när du försökte återställa ditt konto lösenord. Se till att verifieringslänken är giltig.</value>
+  </data>
+  <data name="408_Error_Title" xml:space="preserve">
+    <value>Invalid Password Reset Link</value>
+  </data>
   <data name="Accept" xml:space="preserve">
     <value>Acceptera</value>
   </data>
@@ -120,6 +132,12 @@
   </data>
   <data name="Audit" xml:space="preserve">
     <value>Revision</value>
+  </data>
+  <data name="Audit_Account_Registered" xml:space="preserve">
+    <value>Användarregistrerat konto</value>
+  </data>
+  <data name="Audit_ActivateUser" xml:space="preserve">
+    <value>Aktiverad användare</value>
   </data>
   <data name="Audit_BulkApproveReviews" xml:space="preserve">
     <value>Bulk godkände alla väntande recensioner</value>
@@ -148,6 +166,9 @@
   <data name="Audit_DeletedUser" xml:space="preserve">
     <value>Raderad användare</value>
   </data>
+  <data name="Audit_Email_Verified" xml:space="preserve">
+    <value>Användaren verifierade sin e-postadress</value>
+  </data>
   <data name="Audit_ExportedBackup" xml:space="preserve">
     <value>Exporterade en backup</value>
   </data>
@@ -156,6 +177,9 @@
   </data>
   <data name="Audit_FailedLoginAttemptReset" xml:space="preserve">
     <value>Misslyckade inloggningsförsök räkna återställning</value>
+  </data>
+  <data name="Audit_Forgot_Password" xml:space="preserve">
+    <value>Användare begärde en lösenordsåterställning</value>
   </data>
   <data name="Audit_FrozeUser" xml:space="preserve">
     <value>Froze användare</value>
@@ -198,6 +222,9 @@
   </data>
   <data name="Audit_MultiFactorResetUser" xml:space="preserve">
     <value>Återställ multifaktor för användaren</value>
+  </data>
+  <data name="Audit_Password_Reset" xml:space="preserve">
+    <value>Användare begärde en lösenordsåterställning</value>
   </data>
   <data name="Audit_SearchTerm_Help" xml:space="preserve">
     <value>Filterloggar baserade på en sökterm</value>
@@ -379,6 +406,21 @@
   <data name="Filter" xml:space="preserve">
     <value>Filter</value>
   </data>
+  <data name="Forgot_Password" xml:space="preserve">
+    <value>Glömt lösenord</value>
+  </data>
+  <data name="ForgotPassword" xml:space="preserve">
+    <value>Glömt lösenord</value>
+  </data>
+  <data name="ForgotPassword_Email_Help" xml:space="preserve">
+    <value>Vänligen ange konto e-postadress.</value>
+  </data>
+  <data name="ForgotPassword_Email_Label" xml:space="preserve">
+    <value>E-postadress</value>
+  </data>
+  <data name="ForgotPassword_Failed" xml:space="preserve">
+    <value>Misslyckades med att skicka lösenord återställning e-post</value>
+  </data>
   <data name="Galleries" xml:space="preserve">
     <value>Gallerier</value>
   </data>
@@ -535,6 +577,24 @@
   <data name="None" xml:space="preserve">
     <value>Ingen</value>
   </data>
+  <data name="Password_Reset_Changed_Message" xml:space="preserve">
+    <value>Ditt lösenord har nu återställts. Om du inte begär en lösenordsåterställning, vänligen nå ut till en administratör omedelbart.</value>
+  </data>
+  <data name="Password_Reset_Changed_Title" xml:space="preserve">
+    <value>Ditt lösenord har uppdaterats!</value>
+  </data>
+  <data name="Password_Reset_Requested_Message" xml:space="preserve">
+    <value>En lösenordsåterställning har begärts på ditt konto. Om du begärde en lösenordsändring klickar du på länken nedan för att uppdatera den.</value>
+  </data>
+  <data name="Password_Reset_Requested_Title" xml:space="preserve">
+    <value>Fel åtkomst till ditt konto?</value>
+  </data>
+  <data name="PasswordReset" xml:space="preserve">
+    <value>Lösenord Återställ</value>
+  </data>
+  <data name="PasswordReset_Failed" xml:space="preserve">
+    <value>Misslyckades med att skicka lösenord återställning e-post.</value>
+  </data>
   <data name="Pending" xml:space="preserve">
     <value>I väntan</value>
   </data>
@@ -553,6 +613,75 @@
   <data name="Random" xml:space="preserve">
     <value>Random</value>
   </data>
+  <data name="Register" xml:space="preserve">
+    <value>Registrera</value>
+  </data>
+  <data name="Register_Account" xml:space="preserve">
+    <value>Registrera konto</value>
+  </data>
+  <data name="Register_CPassword_Help" xml:space="preserve">
+    <value>Bekräfta ditt lösenord</value>
+  </data>
+  <data name="Register_CPassword_Label" xml:space="preserve">
+    <value>Bekräfta lösenord</value>
+  </data>
+  <data name="Register_Email_Help" xml:space="preserve">
+    <value>Vänligen ange konto e-postadress.</value>
+  </data>
+  <data name="Register_Email_Label" xml:space="preserve">
+    <value>E-postadress</value>
+  </data>
+  <data name="Register_Password_Help" xml:space="preserve">
+    <value>Lösenord ange ett lösenord.</value>
+  </data>
+  <data name="Register_Password_Label" xml:space="preserve">
+    <value>Lösenord</value>
+  </data>
+  <data name="Register_Username_Help" xml:space="preserve">
+    <value>Ange kontoanvändarnamn.</value>
+  </data>
+  <data name="Register_Username_Label" xml:space="preserve">
+    <value>Användarnamn</value>
+  </data>
+  <data name="Registration_Confirm_Password_Missmatch" xml:space="preserve">
+    <value>Bekräftelse lösenord matchar inte</value>
+  </data>
+  <data name="Registration_Email_Send_Failed" xml:space="preserve">
+    <value>Misslyckades med att skicka registreringsmail till användaren.</value>
+  </data>
+  <data name="Registration_Email_Taken" xml:space="preserve">
+    <value>Ett konto med den angivna e-postadressen finns redan</value>
+  </data>
+  <data name="Registration_Failed" xml:space="preserve">
+    <value>Misslyckades med att registrera nya användare</value>
+  </data>
+  <data name="Registration_Invalid_Email" xml:space="preserve">
+    <value>Ange en giltig e-postadress</value>
+  </data>
+  <data name="Registration_Invalid_Password" xml:space="preserve">
+    <value>Ange ett giltigt lösenord mellan 8 och 100 tecken, som innehåller minst 1 övre fallbrev, 1 nedre fallbrev, 1 nummer och 1 speciell karaktär</value>
+  </data>
+  <data name="Registration_Invalid_Username" xml:space="preserve">
+    <value>Ange ett giltigt användarnamn mellan 5 och 50 tecken</value>
+  </data>
+  <data name="Registration_Invalid_Verification_Link" xml:space="preserve">
+    <value>Det fanns en problembehandling av e-postverifieringslänken</value>
+  </data>
+  <data name="Registration_Success_Message" xml:space="preserve">
+    <value>Du konto har registrerats framgångsrikt och väntar på att du ska komma åt</value>
+  </data>
+  <data name="Registration_Success_Title" xml:space="preserve">
+    <value>Välkommen!</value>
+  </data>
+  <data name="Registration_Success_Verification" xml:space="preserve">
+    <value>Ditt konto har registrerats men måste verifieras innan det kan nås. Vänligen aktivera ditt konto genom att klicka på länken nedan.</value>
+  </data>
+  <data name="Registration_Username_Taken" xml:space="preserve">
+    <value>Användarnamn finns redan. Vänligen välj en ny</value>
+  </data>
+  <data name="Registration_Weak_Password" xml:space="preserve">
+    <value>Det angivna lösenordet är lätt gissat. Välj ett säkrare lösenord.</value>
+  </data>
   <data name="Reject" xml:space="preserve">
     <value>Reject</value>
   </data>
@@ -561,6 +690,9 @@
   </data>
   <data name="Rename" xml:space="preserve">
     <value>Rename</value>
+  </data>
+  <data name="ResetPassword_Invalid_Reset_Link" xml:space="preserve">
+    <value>Det fanns ett problem som bearbetade länken lösenordsåterställning</value>
   </data>
   <data name="Resources" xml:space="preserve">
     <value>Resurser</value>
@@ -603,6 +735,18 @@
   </data>
   <data name="Settings_Account_Profile_Icon_Label" xml:space="preserve">
     <value>Profil Icon</value>
+  </data>
+  <data name="Settings_Account_Registration_Enabled_Help" xml:space="preserve">
+    <value>Är gästerna tillåtna att registrera konton?</value>
+  </data>
+  <data name="Settings_Account_Registration_Enabled_Label" xml:space="preserve">
+    <value>Registrering aktiverad</value>
+  </data>
+  <data name="Settings_Account_Registration_RequireEmailValidation_Help" xml:space="preserve">
+    <value>Är användare skyldiga att verifiera sin e-post för att aktivera sitt konto?</value>
+  </data>
+  <data name="Settings_Account_Registration_RequireEmailValidation_Label" xml:space="preserve">
+    <value>Kräver Email Validation</value>
   </data>
   <data name="Settings_Alerts" xml:space="preserve">
     <value>Varningar</value>
@@ -1162,6 +1306,9 @@
   <data name="Square" xml:space="preserve">
     <value>Square</value>
   </data>
+  <data name="Submit" xml:space="preserve">
+    <value>Inlämning</value>
+  </data>
   <data name="Supporters" xml:space="preserve">
     <value>Supporters</value>
   </data>
@@ -1176,6 +1323,12 @@
   </data>
   <data name="Update" xml:space="preserve">
     <value>Uppdatering</value>
+  </data>
+  <data name="Upgrade" xml:space="preserve">
+    <value>Uppgradera</value>
+  </data>
+  <data name="Upgrade_Account_Message" xml:space="preserve">
+    <value>Du använder för närvarande gratisversionen. För att låsa upp mer gallerilagring och andra bra funktioner överväga att uppgradera ditt konto</value>
   </data>
   <data name="Upload_Media" xml:space="preserve">
     <value>Ladda upp media</value>
@@ -1203,6 +1356,9 @@
   </data>
   <data name="Users_List_Failed" xml:space="preserve">
     <value>Misslyckades med att få användarlista</value>
+  </data>
+  <data name="Verify" xml:space="preserve">
+    <value>Verifiera</value>
   </data>
   <data name="Videos" xml:space="preserve">
     <value>Videor</value>

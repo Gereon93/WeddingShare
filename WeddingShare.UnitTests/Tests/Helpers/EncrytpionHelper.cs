@@ -3,11 +3,11 @@ using WeddingShare.Helpers;
 
 namespace WeddingShare.UnitTests.Tests.Helpers
 {
-    public class EncrytpionHelper
+    public class EncrytpionHelperTests
     {
         private readonly ISettingsHelper _settings = Substitute.For<ISettingsHelper>();
 
-        public EncrytpionHelper() 
+        public EncrytpionHelperTests()
         {
             _settings.GetOrDefault(Security.Encryption.HashType, Arg.Any<string>()).Returns("SHA256");
             _settings.GetOrDefault(Security.Encryption.Iterations, Arg.Any<int>()).Returns(1000);

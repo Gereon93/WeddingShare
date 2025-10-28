@@ -94,6 +94,18 @@
   <data name="406_Error_Title" xml:space="preserve">
     <value>Galeria Inválida</value>
   </data>
+  <data name="407_Error_Message" xml:space="preserve">
+    <value>Houve um problema ao tentar verificar sua conta. Certifique-se de que o link de verificação é válido.</value>
+  </data>
+  <data name="407_Error_Title" xml:space="preserve">
+    <value>Verificação inválida Link</value>
+  </data>
+  <data name="408_Error_Message" xml:space="preserve">
+    <value>Houve um problema ao tentar redefinir sua senha de conta. Certifique-se de que o link de verificação é válido.</value>
+  </data>
+  <data name="408_Error_Title" xml:space="preserve">
+    <value>Invalid Password Reset Link</value>
+  </data>
   <data name="Accept" xml:space="preserve">
     <value>Aceitar</value>
   </data>
@@ -120,6 +132,12 @@
   </data>
   <data name="Audit" xml:space="preserve">
     <value>Auditoria</value>
+  </data>
+  <data name="Audit_Account_Registered" xml:space="preserve">
+    <value>Conta registada pelo utilizador</value>
+  </data>
+  <data name="Audit_ActivateUser" xml:space="preserve">
+    <value>Usuário ativado</value>
   </data>
   <data name="Audit_BulkApproveReviews" xml:space="preserve">
     <value>Bulk aprovou todas as avaliações pendentes</value>
@@ -148,6 +166,9 @@
   <data name="Audit_DeletedUser" xml:space="preserve">
     <value>Usuário excluído</value>
   </data>
+  <data name="Audit_Email_Verified" xml:space="preserve">
+    <value>Usuário verificou seu endereço de e-mail</value>
+  </data>
   <data name="Audit_ExportedBackup" xml:space="preserve">
     <value>Exportou um backup</value>
   </data>
@@ -156,6 +177,9 @@
   </data>
   <data name="Audit_FailedLoginAttemptReset" xml:space="preserve">
     <value>Falhadas tentativas de login contagem reset</value>
+  </data>
+  <data name="Audit_Forgot_Password" xml:space="preserve">
+    <value>O usuário solicitou uma redefinição de senha</value>
   </data>
   <data name="Audit_FrozeUser" xml:space="preserve">
     <value>Usuário congelado</value>
@@ -198,6 +222,9 @@
   </data>
   <data name="Audit_MultiFactorResetUser" xml:space="preserve">
     <value>Redefinir multi-factor para o usuário</value>
+  </data>
+  <data name="Audit_Password_Reset" xml:space="preserve">
+    <value>O usuário solicitou uma redefinição de senha</value>
   </data>
   <data name="Audit_SearchTerm_Help" xml:space="preserve">
     <value>Registos de filtro com base em um termo de pesquisa</value>
@@ -379,6 +406,21 @@
   <data name="Filter" xml:space="preserve">
     <value>Filtro</value>
   </data>
+  <data name="Forgot_Password" xml:space="preserve">
+    <value>Esqueceu a senha</value>
+  </data>
+  <data name="ForgotPassword" xml:space="preserve">
+    <value>Esqueceu a senha</value>
+  </data>
+  <data name="ForgotPassword_Email_Help" xml:space="preserve">
+    <value>Por favor, insira o endereço de e-mail da conta.</value>
+  </data>
+  <data name="ForgotPassword_Email_Label" xml:space="preserve">
+    <value>Endereço de email</value>
+  </data>
+  <data name="ForgotPassword_Failed" xml:space="preserve">
+    <value>Falhado para enviar senha redefinir e-mail</value>
+  </data>
   <data name="Galleries" xml:space="preserve">
     <value>Galerias</value>
   </data>
@@ -535,6 +577,24 @@
   <data name="None" xml:space="preserve">
     <value>Nenhuma</value>
   </data>
+  <data name="Password_Reset_Changed_Message" xml:space="preserve">
+    <value>Sua senha foi agora redefinida. Se você não solicitou uma redefinição de senha, por favor, acesse um administrador imediatamente.</value>
+  </data>
+  <data name="Password_Reset_Changed_Title" xml:space="preserve">
+    <value>Sua senha foi atualizada!</value>
+  </data>
+  <data name="Password_Reset_Requested_Message" xml:space="preserve">
+    <value>Uma redefinição de senha foi solicitada em sua conta. Se você solicitou uma alteração de senha, clique no link abaixo para atualizá-lo.</value>
+  </data>
+  <data name="Password_Reset_Requested_Title" xml:space="preserve">
+    <value>Problemas em aceder à sua conta?</value>
+  </data>
+  <data name="PasswordReset" xml:space="preserve">
+    <value>Redefinição de senha</value>
+  </data>
+  <data name="PasswordReset_Failed" xml:space="preserve">
+    <value>Falhado para enviar senha redefinir e-mail.</value>
+  </data>
   <data name="Pending" xml:space="preserve">
     <value>Pendente</value>
   </data>
@@ -553,6 +613,75 @@
   <data name="Random" xml:space="preserve">
     <value>Random</value>
   </data>
+  <data name="Register" xml:space="preserve">
+    <value>Registo</value>
+  </data>
+  <data name="Register_Account" xml:space="preserve">
+    <value>Registar conta</value>
+  </data>
+  <data name="Register_CPassword_Help" xml:space="preserve">
+    <value>Confirme sua senha</value>
+  </data>
+  <data name="Register_CPassword_Label" xml:space="preserve">
+    <value>Confirmar senha</value>
+  </data>
+  <data name="Register_Email_Help" xml:space="preserve">
+    <value>Por favor, insira o endereço de e-mail da conta.</value>
+  </data>
+  <data name="Register_Email_Label" xml:space="preserve">
+    <value>Endereço de email</value>
+  </data>
+  <data name="Register_Password_Help" xml:space="preserve">
+    <value>Senha digite uma senha.</value>
+  </data>
+  <data name="Register_Password_Label" xml:space="preserve">
+    <value>Senha</value>
+  </data>
+  <data name="Register_Username_Help" xml:space="preserve">
+    <value>Por favor, insira o nome de usuário da conta.</value>
+  </data>
+  <data name="Register_Username_Label" xml:space="preserve">
+    <value>Nome de utilizador</value>
+  </data>
+  <data name="Registration_Confirm_Password_Missmatch" xml:space="preserve">
+    <value>A senha de confirmação não corresponde</value>
+  </data>
+  <data name="Registration_Email_Send_Failed" xml:space="preserve">
+    <value>Falhado em enviar e-mail de registro para o usuário.</value>
+  </data>
+  <data name="Registration_Email_Taken" xml:space="preserve">
+    <value>Uma conta com o endereço de email especificado já existe</value>
+  </data>
+  <data name="Registration_Failed" xml:space="preserve">
+    <value>Falhado para registrar novo usuário</value>
+  </data>
+  <data name="Registration_Invalid_Email" xml:space="preserve">
+    <value>Por favor, especifique um endereço de email válido</value>
+  </data>
+  <data name="Registration_Invalid_Password" xml:space="preserve">
+    <value>Por favor, especifique uma senha válida entre 8 e 100 caracteres, contendo pelo menos 1 letra maiúscula, 1 letra minúscula, 1 número e 1 caractere especial</value>
+  </data>
+  <data name="Registration_Invalid_Username" xml:space="preserve">
+    <value>Por favor, especifique um nome de usuário válido entre 5 e 50 caracteres</value>
+  </data>
+  <data name="Registration_Invalid_Verification_Link" xml:space="preserve">
+    <value>Houve um problema processando o link de verificação de e-mail</value>
+  </data>
+  <data name="Registration_Success_Message" xml:space="preserve">
+    <value>Sua conta foi registrada com sucesso e esperando que você acesse</value>
+  </data>
+  <data name="Registration_Success_Title" xml:space="preserve">
+    <value>Bem-vindo!</value>
+  </data>
+  <data name="Registration_Success_Verification" xml:space="preserve">
+    <value>Sua conta foi registrada, mas precisa ser verificada antes que possa ser acessada. Por favor, ative sua conta clicando no link abaixo.</value>
+  </data>
+  <data name="Registration_Username_Taken" xml:space="preserve">
+    <value>O nome de usuário já existe. Por favor, selecione um novo</value>
+  </data>
+  <data name="Registration_Weak_Password" xml:space="preserve">
+    <value>A senha especificada é facilmente adivinhada. Por favor, selecione uma senha mais segura.</value>
+  </data>
   <data name="Reject" xml:space="preserve">
     <value>Rejeição</value>
   </data>
@@ -561,6 +690,9 @@
   </data>
   <data name="Rename" xml:space="preserve">
     <value>Renomear</value>
+  </data>
+  <data name="ResetPassword_Invalid_Reset_Link" xml:space="preserve">
+    <value>Houve um problema processando o link de redefinição de senha</value>
   </data>
   <data name="Resources" xml:space="preserve">
     <value>Recursos</value>
@@ -603,6 +735,18 @@
   </data>
   <data name="Settings_Account_Profile_Icon_Label" xml:space="preserve">
     <value>Ícone de perfil</value>
+  </data>
+  <data name="Settings_Account_Registration_Enabled_Help" xml:space="preserve">
+    <value>Os hóspedes podem registrar contas?</value>
+  </data>
+  <data name="Settings_Account_Registration_Enabled_Label" xml:space="preserve">
+    <value>Registro habilitado</value>
+  </data>
+  <data name="Settings_Account_Registration_RequireEmailValidation_Help" xml:space="preserve">
+    <value>Os usuários são obrigados a verificar seu e-mail para ativar sua conta?</value>
+  </data>
+  <data name="Settings_Account_Registration_RequireEmailValidation_Label" xml:space="preserve">
+    <value>Requer validação de e-mail</value>
   </data>
   <data name="Settings_Alerts" xml:space="preserve">
     <value>Alertas</value>
@@ -1162,6 +1306,9 @@
   <data name="Square" xml:space="preserve">
     <value>Praça</value>
   </data>
+  <data name="Submit" xml:space="preserve">
+    <value>Submeter-me</value>
+  </data>
   <data name="Supporters" xml:space="preserve">
     <value>Suportes</value>
   </data>
@@ -1176,6 +1323,12 @@
   </data>
   <data name="Update" xml:space="preserve">
     <value>Atualização</value>
+  </data>
+  <data name="Upgrade" xml:space="preserve">
+    <value>Upgrade</value>
+  </data>
+  <data name="Upgrade_Account_Message" xml:space="preserve">
+    <value>Você está usando a versão gratuita. Para desbloquear mais armazenamento de galerias e outros grandes recursos consideram atualizar sua conta</value>
   </data>
   <data name="Upload_Media" xml:space="preserve">
     <value>Fazer upload de mídia</value>
@@ -1203,6 +1356,9 @@
   </data>
   <data name="Users_List_Failed" xml:space="preserve">
     <value>Falhado para obter lista de usuários</value>
+  </data>
+  <data name="Verify" xml:space="preserve">
+    <value>Verificar</value>
   </data>
   <data name="Videos" xml:space="preserve">
     <value>Vídeos</value>
