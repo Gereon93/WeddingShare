@@ -439,6 +439,15 @@
   <data name="Gallery_Full" xml:space="preserve">
     <value>Galerii on täis ja ületanud max-suuruse</value>
   </data>
+  <data name="Gallery_Identifier" xml:space="preserve">
+    <value>Galerii identifikaator</value>
+  </data>
+  <data name="Gallery_Identifier_Help" xml:space="preserve">
+    <value>Palun sisestage galerii identifikaator, mida soovite külastada.</value>
+  </data>
+  <data name="Gallery_Identifier_Placeholder" xml:space="preserve">
+    <value>pulmagalerii</value>
+  </data>
   <data name="Gallery_Key" xml:space="preserve">
     <value>Galerii võti</value>
   </data>
@@ -459,12 +468,6 @@
   </data>
   <data name="Gallery_Name_Already_Exists" xml:space="preserve">
     <value>Galerii nimi on juba olemas</value>
-  </data>
-  <data name="Gallery_Name_Help" xml:space="preserve">
-    <value>Palun sisestage selle galerii nimi, mida soovite külastada.</value>
-  </data>
-  <data name="Gallery_Name_Placeholder" xml:space="preserve">
-    <value>pulmagalerii</value>
   </data>
   <data name="Gallery_Selector_Title" xml:space="preserve">
     <value>Galeriivalija</value>
@@ -1035,12 +1038,6 @@
   </data>
   <data name="Settings_Gallery_ReviewCounter_Label" xml:space="preserve">
     <value>Review Counter</value>
-  </data>
-  <data name="Settings_Gallery_SecretKey_Help" xml:space="preserve">
-    <value>Galerii avamise paroolName</value>
-  </data>
-  <data name="Settings_Gallery_SecretKey_Label" xml:space="preserve">
-    <value>Salavõti</value>
   </data>
   <data name="Settings_Gallery_ShowFilters_Help" xml:space="preserve">
     <value>Kas kasutaja saab filtreerida ja rühmitada meediat?</value>

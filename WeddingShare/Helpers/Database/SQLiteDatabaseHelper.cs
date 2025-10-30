@@ -66,13 +66,13 @@ namespace WeddingShare.Helpers.Database
             return result ?? 0;
         }
 
-        public async Task<IEnumerable<string>> GetGalleryNames()
+        public async Task<IDictionary<string, string>> GetGalleryNames()
         {
-            List<string> result = new List<string>();
+            var result = new Dictionary<string, string>();
 
             using (var conn = await GetConnection())
             {
-                var cmd = CreateCommand($"SELECT g.`id`, g.`name`, u.`username` AS `owner` FROM `galleries` AS g LEFT JOIN `users` AS u ON g.`owner` = u.`id` ORDER BY g.`name` ASC;", conn);
+                var cmd = CreateCommand($"SELECT g.`id`, g.`identifier`, g.`name`, u.`username` AS `owner` FROM `galleries` AS g LEFT JOIN `users` AS u ON g.`owner` = u.`id` ORDER BY g.`name` ASC;", conn);
                 cmd.CommandType = CommandType.Text;
 
                 await conn.OpenAsync();
@@ -87,15 +87,16 @@ namespace WeddingShare.Helpers.Database
                                 var id = !await reader.IsDBNullAsync("id") ? reader.GetInt32("id") : 0;
                                 if (id > 0)
                                 {
+                                    var identifier = !await reader.IsDBNullAsync("identifier") ? reader.GetString("identifier") : null;
                                     var name = !await reader.IsDBNullAsync("name") ? reader.GetString("name") : null;
                                     var owner = !await reader.IsDBNullAsync("owner") ? reader.GetString("owner") : null;
                                     if (!string.IsNullOrWhiteSpace(name) && !string.IsNullOrWhiteSpace(owner))
                                     {
-                                        result.Add($"{name} ({owner})");
+                                        result.Add(identifier, $"{name} ({owner})");
                                     }
                                     else if (!string.IsNullOrWhiteSpace(name))
                                     {
-                                        result.Add(name);
+                                        result.Add(identifier, name);
                                     }
                                 }
                             }
@@ -320,15 +321,6 @@ namespace WeddingShare.Helpers.Database
                 }
 
                 await conn.CloseAsync();
-            }
-
-            if (result != null) 
-            {
-                await this.AddSetting(new SettingModel() 
-                {
-                    Id = Settings.Gallery.SecretKey,
-                    Value = model.SecretKey
-                }, result.Id);
             }
 
             return result;

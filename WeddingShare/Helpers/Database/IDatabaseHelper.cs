@@ -7,7 +7,7 @@ namespace WeddingShare.Helpers.Database
     {
         #region Gallery
         Task<int> GetGalleryCount();
-        Task<IEnumerable<string>> GetGalleryNames();
+        Task<IDictionary<string, string>> GetGalleryNames();
         Task<List<GalleryModel>> GetAllGalleries();
         Task<List<GalleryModel>> GetUserGalleries(int userId);
         Task<int?> GetGalleryId(string identifier);

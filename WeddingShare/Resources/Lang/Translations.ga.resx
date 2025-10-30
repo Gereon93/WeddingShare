@@ -439,6 +439,15 @@
   <data name="Gallery_Full" xml:space="preserve">
     <value>Tá Gailearaí iomlán agus tá níos mó ná an méid max</value>
   </data>
+  <data name="Gallery_Identifier" xml:space="preserve">
+    <value>Amharc ar gach eolas</value>
+  </data>
+  <data name="Gallery_Identifier_Help" xml:space="preserve">
+    <value>Cuir aitheantóir an gailearaí ar mian leat cuairt a thabhairt air.</value>
+  </data>
+  <data name="Gallery_Identifier_Placeholder" xml:space="preserve">
+    <value>mogallóireacht bainise-</value>
+  </data>
   <data name="Gallery_Key" xml:space="preserve">
     <value>Amharc ar gach eolas</value>
   </data>
@@ -459,12 +468,6 @@
   </data>
   <data name="Gallery_Name_Already_Exists" xml:space="preserve">
     <value>Ainm an Gailearaí ann cheana féin</value>
-  </data>
-  <data name="Gallery_Name_Help" xml:space="preserve">
-    <value>Cuir isteach ainm an gailearaí is mian leat cuairt a thabhairt.</value>
-  </data>
-  <data name="Gallery_Name_Placeholder" xml:space="preserve">
-    <value>mogallóireacht bainise-</value>
   </data>
   <data name="Gallery_Selector_Title" xml:space="preserve">
     <value>Clár na dToghthóirí</value>
@@ -1035,12 +1038,6 @@
   </data>
   <data name="Settings_Gallery_ReviewCounter_Label" xml:space="preserve">
     <value>Athbhreithniú Counter</value>
-  </data>
-  <data name="Settings_Gallery_SecretKey_Help" xml:space="preserve">
-    <value>A focal faire a dhíghlasáil an gailearaí</value>
-  </data>
-  <data name="Settings_Gallery_SecretKey_Label" xml:space="preserve">
-    <value>Gach ceart ar cosaint</value>
   </data>
   <data name="Settings_Gallery_ShowFilters_Help" xml:space="preserve">
     <value>Ar chóir an t-úsáideoir a bheith in ann a scagadh agus na meáin ghrúpa?</value>

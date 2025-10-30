@@ -64,6 +64,7 @@
             "Gallery_Edit": "Галерея редагування",
             "Gallery_Edit_Failed": "Не вдалося оновити галерею",
             "Gallery_Edit_Success": "Успішно оновлена галерея",
+            "Gallery_Invalid_Gallery_Or_Secret_Key": "Будь ласка, спробуйте знову",
             "Gallery_Invalid_Name": "Будь ласка, вкажіть назву галереї",
             "Gallery_Invalid_Secret_Key": "Invalid секрет ключ, будь ласка, спробуйте знову",
             "Gallery_Missing_Id": "Видання Я не можу бути порожнім",

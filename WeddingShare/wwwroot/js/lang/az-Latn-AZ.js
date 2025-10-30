@@ -64,6 +64,7 @@
             "Gallery_Edit": "Bakı",
             "Gallery_Edit_Failed": "Gallery yeniləndirilməsi",
             "Gallery_Edit_Success": "Ətraflı yeniləndirilmiş gallery",
+            "Gallery_Invalid_Gallery_Or_Secret_Key": "Invalid gallery adı və ya gizli key, əlavə et",
             "Gallery_Invalid_Name": "Daxil ol",
             "Gallery_Invalid_Secret_Key": "Invalid gizli əsas, əlavə et",
             "Gallery_Missing_Id": "Bakı Id boş deyil",

@@ -64,6 +64,7 @@
             "Gallery_Edit": "Sunting Galeri",
             "Gallery_Edit_Failed": "Gagal memperbarui galeri",
             "Gallery_Edit_Success": "Galeri yang telah diperbarui dengan sukses",
+            "Gallery_Invalid_Gallery_Or_Secret_Key": "Nama galeri atau kunci rahasia tak valid, silakan coba lagi",
             "Gallery_Invalid_Name": "Silakan nyatakan nama galeri yang valid",
             "Gallery_Invalid_Secret_Key": "Kunci rahasia tak valid, silakan coba lagi",
             "Gallery_Missing_Id": "Galeri Id tidak dapat kosong",

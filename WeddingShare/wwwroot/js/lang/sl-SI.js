@@ -64,6 +64,7 @@
             "Gallery_Edit": "Uredi galerijo",
             "Gallery_Edit_Failed": "Ni moč posodobiti galerije",
             "Gallery_Edit_Success": "Uspešno posodobljena galerija",
+            "Gallery_Invalid_Gallery_Or_Secret_Key": "Neveljavno ime galerije ali skrivni ključ, prosim poskusite znova",
             "Gallery_Invalid_Name": "Prosimo, navedite veljavno ime galerije",
             "Gallery_Invalid_Secret_Key": "Neveljaven skrivni ključ, prosim poskusite znova",
             "Gallery_Missing_Id": "Galerija Id ne more biti prazna",

@@ -64,6 +64,7 @@
             "Gallery_Edit": "본문 바로가기",
             "Gallery_Edit_Failed": "업데이트 갤러리에 실패",
             "Gallery_Edit_Success": "성공적으로 업데이트 된 갤러리",
+            "Gallery_Invalid_Gallery_Or_Secret_Key": "잘못된 갤러리 이름 또는 비밀 키, 다시 시도",
             "Gallery_Invalid_Name": "이용 약관",
             "Gallery_Invalid_Secret_Key": "잘못된 비밀 키, 다시 시도",
             "Gallery_Missing_Id": "회사연혁 나는 비어있을 수 없다",

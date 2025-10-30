@@ -64,6 +64,7 @@
             "Gallery_Edit": "Upravit galerii",
             "Gallery_Edit_Failed": "Nepodařilo se aktualizovat galerii",
             "Gallery_Edit_Success": "Úspěšně aktualizovaná galerie",
+            "Gallery_Invalid_Gallery_Or_Secret_Key": "Neplatné jméno galerie nebo tajný klíč, zkuste to prosím znovu",
             "Gallery_Invalid_Name": "Uveďte prosím platný název galerie",
             "Gallery_Invalid_Secret_Key": "Neplatný tajný klíč, zkuste to znovu",
             "Gallery_Missing_Id": "Galerie Id nemůže být prázdný",

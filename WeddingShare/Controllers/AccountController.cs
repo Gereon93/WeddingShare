@@ -855,9 +855,9 @@ namespace WeddingShare.Controllers
             {
                 var gallery = await _database.GetGallery(galleryId);
                 if (!string.IsNullOrWhiteSpace(gallery?.Name))
-                { 
+                {
                     model.Settings = (await _database.GetAllSettings(gallery.Id))?.Where(x => x.Id.StartsWith(Settings.Gallery.BaseKey, StringComparison.OrdinalIgnoreCase))?.ToDictionary(x => x.Id.ToUpper(), x => x.Value ?? string.Empty);
-                    model.CustomResources = await _database.GetAllCustomResources();
+                    model.CustomResources = User.Identity.IsPrivilegedUser() ? await _database.GetAllCustomResources() : await _database.GetUserCustomResources(User.Identity.GetUserId());
                 }
             }
             catch (Exception ex)
@@ -1010,15 +1010,27 @@ namespace WeddingShare.Controllers
                 {
                     try
                     {
-                        var alreadyExists = ((await _database.GetGalleryNames()).Any(x => x.Equals(model.Name, StringComparison.OrdinalIgnoreCase))) || ((await _database.GetGalleryId(model.Identifier)) != null);
+                        var userId = User.Identity.GetUserId();
+                        var userGalleries = await _database.GetUserGalleries(userId);
+
+                        var alreadyExists = userGalleries.Any(x => x.Name.Equals(model.Name, StringComparison.OrdinalIgnoreCase)) || ((await _database.GetGalleryId(model.Identifier)) != null);
                         if (!alreadyExists)
                         {
-                            if (await _database.GetGalleryCount() < await _settings.GetOrDefault(Settings.Basic.MaxGalleryCount, 1000000))
+                            if (userGalleries.Count() < User.Identity.GetGalleryLimit() && await _database.GetGalleryCount() < await _settings.GetOrDefault(Settings.Basic.MaxGalleryCount, 1000000))
                             {
-                                model.Owner = User.Identity.GetUserId();
+                                model.Owner = userId;
 
-                                await _audit.LogAction(User?.Identity?.Name, $"{_localizer["Audit_CreatedGallery"].Value} '{model?.Name}'");
-                                return Json(new { success = string.Equals(model?.Name, (await _database.AddGallery(model))?.Name, StringComparison.OrdinalIgnoreCase) });
+                                var gallery = await _database.AddGallery(model);
+                                if (gallery != null)
+                                {
+                                    await _audit.LogAction(User?.Identity?.Name, $"{_localizer["Audit_CreatedGallery"].Value} '{model?.Name}'");
+
+                                    return Json(new { success = string.Equals(model?.Name, gallery?.Name, StringComparison.OrdinalIgnoreCase) });
+                                }
+                                else
+                                {
+                                    return Json(new { success = false, message = _localizer["Failed_Add_Gallery"].Value });
+                                }
                             }
                             else
                             {
@@ -1063,9 +1075,17 @@ namespace WeddingShare.Controllers
                                 gallery.Name = model.Name;
                                 gallery.SecretKey = model.SecretKey;
 
-                                await _audit.LogAction(User?.Identity?.Name, $"{_localizer["Audit_UpdatedGallery"].Value} '{model?.Name}'");
-
-                                return Json(new { success = string.Equals(model?.Name, (await _database.EditGallery(gallery))?.Name, StringComparison.OrdinalIgnoreCase) });
+                                gallery = await _database.EditGallery(gallery);
+                                if (gallery != null)
+                                {
+                                    await _audit.LogAction(User?.Identity?.Name, $"{_localizer["Audit_UpdatedGallery"].Value} '{model?.Name}'");
+                                
+                                    return Json(new { success = string.Equals(model?.Name, gallery?.Name, StringComparison.OrdinalIgnoreCase) });
+                                }
+                                else
+                                {
+                                    return Json(new { success = false, message = _localizer["Failed_Edit_Gallery"].Value });
+                                }
                             }
                             else
                             {
@@ -2061,11 +2081,11 @@ namespace WeddingShare.Controllers
             if (user != null)
             { 
                 try
-                { 
+                {
                     gallery = await _database.AddGallery(new GalleryModel()
                     {
                         Name = DefaultUserGalleryName,
-                        SecretKey = PasswordHelper.GenerateTempPassword(16),
+                        SecretKey = PasswordHelper.GenerateGallerySecretKey(),
                         Owner = user.Id
                     });
                 }

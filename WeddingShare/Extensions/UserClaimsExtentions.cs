@@ -85,6 +85,29 @@ namespace WeddingShare.Extensions
             return new Permissions();
         }
 
+        public static int GetGalleryLimit(this IIdentity identity)
+        {
+            try
+            {
+                switch (identity.GetUserLevel())
+                {
+                    case UserLevel.Free:
+                        return 0;
+                    case UserLevel.Paid:
+                        return 3;
+                    case UserLevel.Reviewer:
+                    case UserLevel.Moderator:
+                    case UserLevel.Admin:
+                        return 10;
+                    case UserLevel.Owner:
+                        return int.MaxValue;
+                }
+            }
+            catch { }
+
+            return 0;
+        }
+
         public static AccountTabs GetDefaultTab(this IIdentity identity)
         {
             var userPermissions = identity?.GetUserPermissions() ?? new Permissions();

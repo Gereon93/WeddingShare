@@ -64,6 +64,7 @@
             "Gallery_Edit": "گیلری مرتب کریں",
             "Gallery_Edit_Failed": "گیلری کی تجدید کرنے میں ناکامی",
             "Gallery_Edit_Success": "کامیابی سے تعمیر ہونے والی گیلری",
+            "Gallery_Invalid_Gallery_Or_Secret_Key": "خفیہ لفظ یا خفیہ کلید میں دوبارہ کوشش کریں۔",
             "Gallery_Invalid_Name": "براہ راست گیلری کا نام متعین کریں",
             "Gallery_Invalid_Secret_Key": "خفیہ کلید میں، براہ مہربانی دوبارہ کوشش کریں",
             "Gallery_Missing_Id": "گیلری محفوظ نہیں کیا جاسکتا",

@@ -64,6 +64,7 @@
             "Gallery_Edit": "Edit Gallery",
             "Gallery_Edit_Failed": "Misslyckades med att uppdatera galleriet",
             "Gallery_Edit_Success": "Framgångsrikt uppdaterat galleri",
+            "Gallery_Invalid_Gallery_Or_Secret_Key": "Ogiltigt gallerinamn eller hemlig nyckel, försök igen",
             "Gallery_Invalid_Name": "Ange ett giltigt gallerinamn",
             "Gallery_Invalid_Secret_Key": "Ogiltig hemlig nyckel, försök igen",
             "Gallery_Missing_Id": "Galleriet Id kan inte vara tom",

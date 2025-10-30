@@ -332,12 +332,13 @@ function resizeLayout() {
         let windowWidth = $(window).width();
         let windowHeight = $(window).height();
         let navHeight = $('nav.navbar').outerHeight();
+        let alertHeight = $('.header-alert').length > 0 ? $('.header-alert').outerHeight() : 0;
         let footerHeight = $('footer').outerHeight();
-        let bodyHeight = windowHeight - (navHeight + footerHeight);
+        let bodyHeight = windowHeight - (navHeight + footerHeight + alertHeight);
 
         $('div#main-wrapper').css({
-            'height': `${bodyHeight}px`,
-            'max-height': `${bodyHeight}px`,
+            'height': `${bodyHeight + alertHeight}px`,
+            'max-height': `${bodyHeight + alertHeight}px`,
             'top': `${navHeight}px`
         });
 
@@ -528,17 +529,17 @@ function resizeLayout() {
             var galleryId = $('input#gallery-id,select#gallery-id').val().trim();
             var secretKey = $('input#gallery-key').val().trim();
 
-            const regex = /^[a-zA-Z0-9\-\s-_~]+$/;
+            const regex = /^[a-zA-Z0-9\-\s\-_~]+$/;
             if (galleryId && galleryId.length > 0 && regex.test(galleryId)) {
                 $.ajax({
                     type: "POST",
                     url: '/Gallery/Login',
-                    data: { id: galleryId, key: secretKey },
+                    data: { identifier: galleryId, key: secretKey },
                     success: function (data) {
                         if (data.success && data.redirectUrl) {
                             window.location = data.redirectUrl;
                         } else {
-                            displayMessage(localization.translate('Gallery'), localization.translate('Gallery_Invalid_Secret_Key'));
+                            displayMessage(localization.translate('Gallery'), localization.translate('Gallery_Invalid_Gallery_Or_Secret_Key'));
                         }
                     }
                 });

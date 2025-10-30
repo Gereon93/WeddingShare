@@ -39,6 +39,7 @@
             public const string Title = "Settings:Title";
             public const string Logo = "Settings:Logo";
             public const string BaseUrl = "Settings:Base_Url";
+            public const string DefaultGallerySecretKey = "Settings:Gallery_Secret_Key";
             public const string ForceHttps = "Settings:Force_Https";
             public const string SingleGalleryMode = "Settings:Single_Gallery_Mode";
             public const string MaxGalleryCount = "Settings:Max_Gallery_Count";
@@ -65,7 +66,6 @@
             public const string ShowTitle = "Settings:Gallery:Show_Title";
             public const string BannerImage = "Settings:Gallery:Banner_Image";
             public const string Quote = "Settings:Gallery:Quote";
-            public const string SecretKey = "Settings:Gallery:Secret_Key";
             public const string Columns = "Settings:Gallery:Columns";
             public const string ItemsPerPage = "Settings:Gallery:Items_Per_Page";
             public const string FullWidth = "Settings:Gallery:Full_Width";

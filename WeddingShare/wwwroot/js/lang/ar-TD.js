@@ -64,6 +64,7 @@
             "Gallery_Edit": "Edit Gallery",
             "Gallery_Edit_Failed": "فشل في تحديث المعرض",
             "Gallery_Edit_Success": "المعرض المستكمل بنجاح",
+            "Gallery_Invalid_Gallery_Or_Secret_Key": "اسم المعرض الفاشل أو المفتاح السري، يرجى محاولة مرة أخرى",
             "Gallery_Invalid_Name": "يرجى تحديد اسم المعرض الصحيح",
             "Gallery_Invalid_Secret_Key": "مفتاح سري لا يُصدّق، رجاءً حاولْ ثانيةً",
             "Gallery_Missing_Id": "Gallery لا يمكن أن تكون فارغة",

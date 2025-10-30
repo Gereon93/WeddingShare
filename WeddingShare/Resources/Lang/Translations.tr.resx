@@ -439,6 +439,15 @@
   <data name="Gallery_Full" xml:space="preserve">
     <value>Galeri dolu ve max boyutunu aştı</value>
   </data>
+  <data name="Gallery_Identifier" xml:space="preserve">
+    <value>Gallery Identifier</value>
+  </data>
+  <data name="Gallery_Identifier_Help" xml:space="preserve">
+    <value>Lütfen ziyaret etmek istediğiniz galerinin tanımlayıcısına girin.</value>
+  </data>
+  <data name="Gallery_Identifier_Placeholder" xml:space="preserve">
+    <value>my-wedding-gallery</value>
+  </data>
   <data name="Gallery_Key" xml:space="preserve">
     <value>Galeri Key</value>
   </data>
@@ -459,12 +468,6 @@
   </data>
   <data name="Gallery_Name_Already_Exists" xml:space="preserve">
     <value>Gallery adı zaten var</value>
-  </data>
-  <data name="Gallery_Name_Help" xml:space="preserve">
-    <value>Lütfen ziyaret etmek istediğiniz galerinin adını girin.</value>
-  </data>
-  <data name="Gallery_Name_Placeholder" xml:space="preserve">
-    <value>my-wedding-gallery</value>
   </data>
   <data name="Gallery_Selector_Title" xml:space="preserve">
     <value>Gallery Selector</value>
@@ -1035,12 +1038,6 @@
   </data>
   <data name="Settings_Gallery_ReviewCounter_Label" xml:space="preserve">
     <value>İnceleme Counter Counter</value>
-  </data>
-  <data name="Settings_Gallery_SecretKey_Help" xml:space="preserve">
-    <value>Galeriyi açmak için bir şifre</value>
-  </data>
-  <data name="Settings_Gallery_SecretKey_Label" xml:space="preserve">
-    <value>Gizli Anahtar</value>
   </data>
   <data name="Settings_Gallery_ShowFilters_Help" xml:space="preserve">
     <value>Kullanıcı filtre ve grup medyayı filtreleyebilmeli mi?</value>

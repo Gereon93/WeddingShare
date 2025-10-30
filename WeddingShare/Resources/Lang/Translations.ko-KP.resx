@@ -439,6 +439,15 @@
   <data name="Gallery_Full" xml:space="preserve">
     <value>갤러리는 전체이며 최대 크기를 초과했습니다</value>
   </data>
+  <data name="Gallery_Identifier" xml:space="preserve">
+    <value>갤러리 Identifier</value>
+  </data>
+  <data name="Gallery_Identifier_Help" xml:space="preserve">
+    <value>방문하고 싶은 갤러리의 식별자를 입력하십시오.</value>
+  </data>
+  <data name="Gallery_Identifier_Placeholder" xml:space="preserve">
+    <value>나의 결혼식-gallery</value>
+  </data>
   <data name="Gallery_Key" xml:space="preserve">
     <value>갤러리 키</value>
   </data>
@@ -459,12 +468,6 @@
   </data>
   <data name="Gallery_Name_Already_Exists" xml:space="preserve">
     <value>갤러리 이름 이미 존재</value>
-  </data>
-  <data name="Gallery_Name_Help" xml:space="preserve">
-    <value>방문하고 싶은 갤러리의 이름을 입력하십시오.</value>
-  </data>
-  <data name="Gallery_Name_Placeholder" xml:space="preserve">
-    <value>나의 결혼식-gallery</value>
   </data>
   <data name="Gallery_Selector_Title" xml:space="preserve">
     <value>갤러리 선택</value>
@@ -1035,12 +1038,6 @@
   </data>
   <data name="Settings_Gallery_ReviewCounter_Label" xml:space="preserve">
     <value>회사소개</value>
-  </data>
-  <data name="Settings_Gallery_SecretKey_Help" xml:space="preserve">
-    <value>갤러리를 잠금 해제하는 암호</value>
-  </data>
-  <data name="Settings_Gallery_SecretKey_Label" xml:space="preserve">
-    <value>비밀 키</value>
   </data>
   <data name="Settings_Gallery_ShowFilters_Help" xml:space="preserve">
     <value>사용자는 필터 및 그룹 미디어를 할 수 있습니까?</value>

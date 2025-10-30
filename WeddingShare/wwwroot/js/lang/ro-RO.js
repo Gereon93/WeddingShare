@@ -64,6 +64,7 @@
             "Gallery_Edit": "Editează galeria",
             "Gallery_Edit_Failed": "Eroare la actualizarea galeriei",
             "Gallery_Edit_Success": "Galerie actualizată cu succes",
+            "Gallery_Invalid_Gallery_Or_Secret_Key": "Nume de galerie nevalidă sau cheie secretă, vă rugăm să încercați din nou",
             "Gallery_Invalid_Name": "Vă rugăm să specificați un nume valid al galeriei",
             "Gallery_Invalid_Secret_Key": "Cheie secretă nevalidă, încercaţi din nou",
             "Gallery_Missing_Id": "Galerie Nu poate fi gol",

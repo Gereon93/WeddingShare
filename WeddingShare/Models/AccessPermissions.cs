@@ -58,7 +58,9 @@ namespace WeddingShare.Models
                 | ReviewPermissions.Reject;
             Gallery =
                 GalleryPermissions.View
+                | GalleryPermissions.Create
                 | GalleryPermissions.Update
+                | GalleryPermissions.Delete
                 | GalleryPermissions.Upload
                 | GalleryPermissions.Download
                 | GalleryPermissions.Wipe;
@@ -136,6 +138,7 @@ namespace WeddingShare.Models
                 | ReviewPermissions.Delete;
             Gallery =
                 GalleryPermissions.View
+                | GalleryPermissions.ViewAllGallery
                 | GalleryPermissions.Create
                 | GalleryPermissions.Update
                 | GalleryPermissions.Delete
@@ -176,6 +179,7 @@ namespace WeddingShare.Models
                 | ReviewPermissions.Delete;
             Gallery =
                 GalleryPermissions.View
+                | GalleryPermissions.ViewAllGallery
                 | GalleryPermissions.Create
                 | GalleryPermissions.Update
                 | GalleryPermissions.Delete

@@ -64,6 +64,7 @@
             "Gallery_Edit": "Edita Gallery",
             "Gallery_Edit_Failed": "Ha fallat en actualitzar la galeria",
             "Gallery_Edit_Success": "S' ha actualitzat correctament la galeria",
+            "Gallery_Invalid_Gallery_Or_Secret_Key": "Nom de la galeria o clau secreta no vàlid, si us plau, torneu- ho a provar",
             "Gallery_Invalid_Name": "Si us plau, especifiqueu una galeria vàlida",
             "Gallery_Invalid_Secret_Key": "Clau secreta no vàlida, torneu- ho a provar",
             "Gallery_Missing_Id": "Galeria No puc estar buida",

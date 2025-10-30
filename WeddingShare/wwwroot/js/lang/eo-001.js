@@ -64,6 +64,7 @@
             "Gallery_Edit": "Edit Gallery",
             "Gallery_Edit_Failed": "Malsukcesas ĝisdatigi galerion",
             "Gallery_Edit_Success": "Sukcesa ĝisdatigita galerio",
+            "Gallery_Invalid_Gallery_Or_Secret_Key": "La nomo aŭ sekreta ŝlosilo, bonvolu provi denove",
             "Gallery_Invalid_Name": "Bonvolu specifi validan galerion nomo",
             "Gallery_Invalid_Secret_Key": "La sekreta ŝlosilo, bonvolu provi denove",
             "Gallery_Missing_Id": "Galerio de galerio Mi ne povas esti malplena",

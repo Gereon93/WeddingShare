@@ -64,6 +64,7 @@
             "Gallery_Edit": "Inis dúinn, le do thoil..",
             "Gallery_Edit_Failed": "Failed chun gailearaí cothrom le dáta",
             "Gallery_Edit_Success": "Go rathúil cothrom le dáta gailearaí",
+            "Gallery_Invalid_Gallery_Or_Secret_Key": "Ainm gailearaí luachmhar nó eochair rúnda, déan iarracht arís",
             "Gallery_Invalid_Name": "Sonraigh ainm bailí gailearaí",
             "Gallery_Invalid_Secret_Key": "Eochair rúnda luachmhar, déan iarracht arís",
             "Gallery_Missing_Id": "Amharc ar gach eolas Ní féidir liom a bheith folamh",

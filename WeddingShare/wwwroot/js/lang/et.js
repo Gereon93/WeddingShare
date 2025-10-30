@@ -64,6 +64,7 @@
             "Gallery_Edit": "Muuda galeriid",
             "Gallery_Edit_Failed": "Galerii uuendamine nurjus",
             "Gallery_Edit_Success": "Edukalt uuendatud galerii",
+            "Gallery_Invalid_Gallery_Or_Secret_Key": "Vigane galerii nimi või salajane võti, palun proovi uuesti",
             "Gallery_Invalid_Name": "Palun määra sobiv galerii nimi",
             "Gallery_Invalid_Secret_Key": "Vigane salajane võti, palun proovi uuesti",
             "Gallery_Missing_Id": "Galeriis Id ei saa olla tühi",

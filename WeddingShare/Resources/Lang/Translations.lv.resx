@@ -439,6 +439,15 @@
   <data name="Gallery_Full" xml:space="preserve">
     <value>Galerija ir pilna un ir pārsniegusi maksimālo izmēru</value>
   </data>
+  <data name="Gallery_Identifier" xml:space="preserve">
+    <value>Galerijas identifikators</value>
+  </data>
+  <data name="Gallery_Identifier_Help" xml:space="preserve">
+    <value>Lūdzu ievadiet galerijas identifikatoru, kuru vēlaties apmeklēt.</value>
+  </data>
+  <data name="Gallery_Identifier_Placeholder" xml:space="preserve">
+    <value>mana kāzu galerija</value>
+  </data>
   <data name="Gallery_Key" xml:space="preserve">
     <value>Galerijas atslēga</value>
   </data>
@@ -459,12 +468,6 @@
   </data>
   <data name="Gallery_Name_Already_Exists" xml:space="preserve">
     <value>Galerijas nosaukums jau eksistē</value>
-  </data>
-  <data name="Gallery_Name_Help" xml:space="preserve">
-    <value>Lūdzu ievadiet galerijas nosaukumu, kuru vēlaties apmeklēt.</value>
-  </data>
-  <data name="Gallery_Name_Placeholder" xml:space="preserve">
-    <value>mana kāzu galerija</value>
   </data>
   <data name="Gallery_Selector_Title" xml:space="preserve">
     <value>Galerijas Selektors</value>
@@ -1035,12 +1038,6 @@
   </data>
   <data name="Settings_Gallery_ReviewCounter_Label" xml:space="preserve">
     <value>Atkārtojuma skaitītājs</value>
-  </data>
-  <data name="Settings_Gallery_SecretKey_Help" xml:space="preserve">
-    <value>Parole galerijas atslēgšanai</value>
-  </data>
-  <data name="Settings_Gallery_SecretKey_Label" xml:space="preserve">
-    <value>Slepenā atslēga</value>
   </data>
   <data name="Settings_Gallery_ShowFilters_Help" xml:space="preserve">
     <value>Vai lietotājam vajadzētu būt iespējai filtrēt un grupēt datu nesēju?</value>

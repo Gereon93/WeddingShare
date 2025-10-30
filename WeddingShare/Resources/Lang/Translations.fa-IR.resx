@@ -439,6 +439,15 @@
   <data name="Gallery_Full" xml:space="preserve">
     <value>گالری پر است و حداکثر اندازه را دارد</value>
   </data>
+  <data name="Gallery_Identifier" xml:space="preserve">
+    <value>گالری Identifier</value>
+  </data>
+  <data name="Gallery_Identifier_Help" xml:space="preserve">
+    <value>لطفا شناسه گالری را که می خواهید بازدید کنید وارد کنید.</value>
+  </data>
+  <data name="Gallery_Identifier_Placeholder" xml:space="preserve">
+    <value>دانلود بازی my-gallery</value>
+  </data>
   <data name="Gallery_Key" xml:space="preserve">
     <value>گالری Key</value>
   </data>
@@ -459,12 +468,6 @@
   </data>
   <data name="Gallery_Name_Already_Exists" xml:space="preserve">
     <value>نام گالری در حال حاضر وجود دارد</value>
-  </data>
-  <data name="Gallery_Name_Help" xml:space="preserve">
-    <value>لطفا نام گالری را که می خواهید بازدید کنید وارد کنید.</value>
-  </data>
-  <data name="Gallery_Name_Placeholder" xml:space="preserve">
-    <value>دانلود بازی my-gallery</value>
   </data>
   <data name="Gallery_Selector_Title" xml:space="preserve">
     <value>گالری Selector</value>
@@ -1035,12 +1038,6 @@
   </data>
   <data name="Settings_Gallery_ReviewCounter_Label" xml:space="preserve">
     <value>دانلود بازی Counter</value>
-  </data>
-  <data name="Settings_Gallery_SecretKey_Help" xml:space="preserve">
-    <value>یک رمز عبور برای باز کردن گالری</value>
-  </data>
-  <data name="Settings_Gallery_SecretKey_Label" xml:space="preserve">
-    <value>کلید راز</value>
   </data>
   <data name="Settings_Gallery_ShowFilters_Help" xml:space="preserve">
     <value>آیا کاربر باید قادر به فیلتر کردن و رسانه های گروهی باشد؟?</value>

@@ -64,6 +64,7 @@
             "Gallery_Edit": "Edit Gallery",
             "Gallery_Edit_Failed": "נכשל לעדכן את הגלריה",
             "Gallery_Edit_Success": "גלריה מעודכנת",
+            "Gallery_Invalid_Gallery_Or_Secret_Key": "שם גלריה לא חוקי או מפתח סודי, אנא נסה שוב",
             "Gallery_Invalid_Name": "נא לציין שם גלריה בתוקף",
             "Gallery_Invalid_Secret_Key": "מפתח סודי, אנא נסה שוב",
             "Gallery_Missing_Id": "גלריה לא יכול להיות ריק",

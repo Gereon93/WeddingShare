@@ -85,14 +85,6 @@
 
     <div class="row mb-4 mb-lg-4">
         <div class="col-12">
-            <label>@_localizer["Settings_Gallery_SecretKey_Label"].Value</label>
-            <input class="setting-field form-control" data-setting-name="@Settings.Gallery.SecretKey" placeholder="MySuperSecretKey" value="@Model.Settings.GetValue(Settings.Gallery.SecretKey.ToUpper(), string.Empty)" type="password" />
-            <div class="form-text">@_localizer["Settings_Gallery_SecretKey_Help"].Value</div>
-        </div>
-    </div>
-
-    <div class="row mb-4 mb-lg-4">
-        <div class="col-12">
             <label>@_localizer["Settings_Gallery_FullWidth_Label"].Value</label>
             <select class="setting-field form-control" data-setting-name="@Settings.Gallery.FullWidth">
                 @foreach (var option in ViewOptions.GalleryWidth)

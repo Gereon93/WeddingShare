@@ -439,6 +439,15 @@
   <data name="Gallery_Full" xml:space="preserve">
     <value>Galéria je plná a prekročila maximálnu veľkosť</value>
   </data>
+  <data name="Gallery_Identifier" xml:space="preserve">
+    <value>Identifikátor galérie</value>
+  </data>
+  <data name="Gallery_Identifier_Help" xml:space="preserve">
+    <value>Prosím zadajte identifikátor galérie, ktorú chcete navštíviť.</value>
+  </data>
+  <data name="Gallery_Identifier_Placeholder" xml:space="preserve">
+    <value>my-svadobné-galéria</value>
+  </data>
   <data name="Gallery_Key" xml:space="preserve">
     <value>Kľúč k galérii</value>
   </data>
@@ -459,12 +468,6 @@
   </data>
   <data name="Gallery_Name_Already_Exists" xml:space="preserve">
     <value>Názov galérie už existuje</value>
-  </data>
-  <data name="Gallery_Name_Help" xml:space="preserve">
-    <value>Prosím, zadajte názov galérie, ktorú chcete navštíviť.</value>
-  </data>
-  <data name="Gallery_Name_Placeholder" xml:space="preserve">
-    <value>my-svadobné-galéria</value>
   </data>
   <data name="Gallery_Selector_Title" xml:space="preserve">
     <value>Výber galérií</value>
@@ -1035,12 +1038,6 @@
   </data>
   <data name="Settings_Gallery_ReviewCounter_Label" xml:space="preserve">
     <value>Počítadlo preskúmania</value>
-  </data>
-  <data name="Settings_Gallery_SecretKey_Help" xml:space="preserve">
-    <value>Heslo pre odomknutie galérie</value>
-  </data>
-  <data name="Settings_Gallery_SecretKey_Label" xml:space="preserve">
-    <value>Tajný kľúč</value>
   </data>
   <data name="Settings_Gallery_ShowFilters_Help" xml:space="preserve">
     <value>Mal by byť užívateľ schopný filtrovať a zoskupiť médiá?</value>

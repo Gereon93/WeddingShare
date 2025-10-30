@@ -64,6 +64,7 @@
             "Gallery_Edit": "گالری Edit",
             "Gallery_Edit_Failed": "شکست برای به روز رسانی گالری",
             "Gallery_Edit_Success": "موفق به روز گالری",
+            "Gallery_Invalid_Gallery_Or_Secret_Key": "نام گالری Invalid یا کلید مخفی، لطفا دوباره امتحان کنید",
             "Gallery_Invalid_Name": "لطفا نام گالری معتبر را مشخص کنید",
             "Gallery_Invalid_Secret_Key": "کلید مخفی Invalid لطفا دوباره امتحان کنید",
             "Gallery_Missing_Id": "گالری گالری گالری نمی توانم خالی باشم",

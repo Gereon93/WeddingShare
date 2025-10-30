@@ -64,6 +64,7 @@
             "Gallery_Edit": "Rediģēt galeriju",
             "Gallery_Edit_Failed": "Neizdevās atjaunināt galeriju",
             "Gallery_Edit_Success": "Veiksmīgi atjaunināta galerija",
+            "Gallery_Invalid_Gallery_Or_Secret_Key": "Nederīgs galerijas nosaukums vai slepenā atslēga, lūdzu mēģiniet vēlreiz",
             "Gallery_Invalid_Name": "Lūdzu norādiet derīgu galerijas nosaukumu",
             "Gallery_Invalid_Secret_Key": "Nederīga slepenā atslēga, lūdzu mēģiniet vēlreiz",
             "Gallery_Missing_Id": "Galerija Id nevar būt tukšs",

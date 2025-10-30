@@ -64,6 +64,7 @@
             "Gallery_Edit": "Editatu galeria",
             "Gallery_Edit_Failed": "Huts egin du galeria eguneratzean",
             "Gallery_Edit_Success": "Galeria ongi eguneratu da",
+            "Gallery_Invalid_Gallery_Or_Secret_Key": "Galeriaren izen baliogabea edo ezkutuko gakoa, saiatu berriro",
             "Gallery_Invalid_Name": "Zehaztu baliozko galeria-izena",
             "Gallery_Invalid_Secret_Key": "Gako sekretu baliogabea, saiatu berriro",
             "Gallery_Missing_Id": "Galeria Id ezin da hutsik egon",

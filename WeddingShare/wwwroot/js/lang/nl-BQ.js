@@ -64,6 +64,7 @@
             "Gallery_Edit": "Galerij bewerken",
             "Gallery_Edit_Failed": "Kon galerij niet bijwerken",
             "Gallery_Edit_Success": "Galerie succesvol bijgewerkt",
+            "Gallery_Invalid_Gallery_Or_Secret_Key": "Ongeldige galerienaam of geheime sleutel, probeer het opnieuw",
             "Gallery_Invalid_Name": "Geef een geldige galerienaam",
             "Gallery_Invalid_Secret_Key": "Ongeldige geheime sleutel, probeer het opnieuw",
             "Gallery_Missing_Id": "Galerij Id kan niet leeg zijn",

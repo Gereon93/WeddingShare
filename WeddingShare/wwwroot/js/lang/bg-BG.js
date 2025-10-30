@@ -64,6 +64,7 @@
             "Gallery_Edit": "Редактиране на галерия",
             "Gallery_Edit_Failed": "Грешка при обновяване на галерията",
             "Gallery_Edit_Success": "Успешно актуализирана галерия",
+            "Gallery_Invalid_Gallery_Or_Secret_Key": "Невалидно име на галерия или таен ключ, моля опитайте отново",
             "Gallery_Invalid_Name": "Моля, посочете валидно име на галерията",
             "Gallery_Invalid_Secret_Key": "Невалиден таен ключ, моля опитайте отново",
             "Gallery_Missing_Id": "Галерия Не може да е празен",

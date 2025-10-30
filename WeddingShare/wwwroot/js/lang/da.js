@@ -64,6 +64,7 @@
             "Gallery_Edit": "Redigér galleri",
             "Gallery_Edit_Failed": "Kunne ikke opdatere galleri",
             "Gallery_Edit_Success": "Galleri opdateret med succes",
+            "Gallery_Invalid_Gallery_Or_Secret_Key": "Ugyldigt galleri navn eller hemmelig nøgle, prøv venligst igen",
             "Gallery_Invalid_Name": "Angiv venligst et gyldigt galleri navn",
             "Gallery_Invalid_Secret_Key": "Ugyldig hemmelig nøgle, prøv venligst igen",
             "Gallery_Missing_Id": "Galleri Id kan ikke være tomt",

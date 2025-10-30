@@ -64,6 +64,7 @@
             "Gallery_Edit": "Edit Gallery",
             "Gallery_Edit_Failed": "Bigo sa update gallery",
             "Gallery_Edit_Success": "Matagumpay na binagong galerya",
+            "Gallery_Invalid_Gallery_Or_Secret_Key": "Hindi tanggap na pangalan ng galerya o sekretong susi, pakisuyong subukan muli",
             "Gallery_Invalid_Name": "Pakisuyong magtakda ng angkop na pangalan sa galerya",
             "Gallery_Invalid_Secret_Key": "Hindi tanggap na susing susi, pakisuyong subukan muli",
             "Gallery_Missing_Id": "Gallery Hindi maaaring walang laman ang Id",

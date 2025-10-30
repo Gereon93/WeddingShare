@@ -439,6 +439,15 @@
   <data name="Gallery_Full" xml:space="preserve">
     <value>Galleria on täynnä ja on ylittänyt max koko</value>
   </data>
+  <data name="Gallery_Identifier" xml:space="preserve">
+    <value>Gallerian tunniste</value>
+  </data>
+  <data name="Gallery_Identifier_Help" xml:space="preserve">
+    <value>Anna haluamasi gallerian tunniste.</value>
+  </data>
+  <data name="Gallery_Identifier_Placeholder" xml:space="preserve">
+    <value>minun häägalleriani</value>
+  </data>
   <data name="Gallery_Key" xml:space="preserve">
     <value>Gallerian avain</value>
   </data>
@@ -459,12 +468,6 @@
   </data>
   <data name="Gallery_Name_Already_Exists" xml:space="preserve">
     <value>Gallerian nimi on jo olemassa</value>
-  </data>
-  <data name="Gallery_Name_Help" xml:space="preserve">
-    <value>Anna haluamasi gallerian nimi.</value>
-  </data>
-  <data name="Gallery_Name_Placeholder" xml:space="preserve">
-    <value>minun häägalleriani</value>
   </data>
   <data name="Gallery_Selector_Title" xml:space="preserve">
     <value>Gallerian valitsija</value>
@@ -1035,12 +1038,6 @@
   </data>
   <data name="Settings_Gallery_ReviewCounter_Label" xml:space="preserve">
     <value>Tarkista laskuri</value>
-  </data>
-  <data name="Settings_Gallery_SecretKey_Help" xml:space="preserve">
-    <value>Salasana gallerian avaamiseen</value>
-  </data>
-  <data name="Settings_Gallery_SecretKey_Label" xml:space="preserve">
-    <value>Salainen avain</value>
   </data>
   <data name="Settings_Gallery_ShowFilters_Help" xml:space="preserve">
     <value>Pitäisikö käyttäjän pystyä suodattamaan ja ryhmittelemään mediaa?</value>
