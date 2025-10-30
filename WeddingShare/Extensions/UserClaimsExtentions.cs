@@ -92,10 +92,10 @@ namespace WeddingShare.Extensions
                 switch (identity.GetUserLevel())
                 {
                     case UserLevel.Free:
+                    case UserLevel.Reviewer:
                         return 0;
                     case UserLevel.Paid:
                         return 3;
-                    case UserLevel.Reviewer:
                     case UserLevel.Moderator:
                     case UserLevel.Admin:
                         return 10;
