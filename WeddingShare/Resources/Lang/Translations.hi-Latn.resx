@@ -136,6 +136,9 @@
   <data name="Audit_Account_Registered" xml:space="preserve">
     <value>उपयोगकर्ता पंजीकृत खाता</value>
   </data>
+  <data name="Audit_ActivateUser" xml:space="preserve">
+    <value>सक्रिय उपयोगकर्ता</value>
+  </data>
   <data name="Audit_BulkApproveReviews" xml:space="preserve">
     <value>थोक ने सभी लंबित समीक्षाओं को मंजूरी दी</value>
   </data>
@@ -436,6 +439,15 @@
   <data name="Gallery_Full" xml:space="preserve">
     <value>गैलरी पूर्ण है और अधिकतम आकार से अधिक है</value>
   </data>
+  <data name="Gallery_Identifier" xml:space="preserve">
+    <value>गैलरी पहचानकर्ता</value>
+  </data>
+  <data name="Gallery_Identifier_Help" xml:space="preserve">
+    <value>कृपया गैलरी के पहचानकर्ता को दर्ज करें जिसे आप देखना चाहते हैं।.</value>
+  </data>
+  <data name="Gallery_Identifier_Placeholder" xml:space="preserve">
+    <value>मेरी शादी गैलरी</value>
+  </data>
   <data name="Gallery_Key" xml:space="preserve">
     <value>गैलरी कुंजी</value>
   </data>
@@ -456,12 +468,6 @@
   </data>
   <data name="Gallery_Name_Already_Exists" xml:space="preserve">
     <value>गैलरी का नाम पहले से मौजूद है</value>
-  </data>
-  <data name="Gallery_Name_Help" xml:space="preserve">
-    <value>कृपया उस गैलरी का नाम दर्ज करें जिसे आप देखना चाहते हैं।.</value>
-  </data>
-  <data name="Gallery_Name_Placeholder" xml:space="preserve">
-    <value>मेरी शादी गैलरी</value>
   </data>
   <data name="Gallery_Selector_Title" xml:space="preserve">
     <value>गैलरी चयनकर्ता</value>
@@ -1033,12 +1039,6 @@
   <data name="Settings_Gallery_ReviewCounter_Label" xml:space="preserve">
     <value>समीक्षा काउंटर</value>
   </data>
-  <data name="Settings_Gallery_SecretKey_Help" xml:space="preserve">
-    <value>गैलरी अनलॉक करने के लिए एक पासवर्ड</value>
-  </data>
-  <data name="Settings_Gallery_SecretKey_Label" xml:space="preserve">
-    <value>गुप्त कुंजी</value>
-  </data>
   <data name="Settings_Gallery_ShowFilters_Help" xml:space="preserve">
     <value>क्या उपयोगकर्ता मीडिया को फ़िल्टर और समूहित करने में सक्षम होना चाहिए?</value>
   </data>
@@ -1320,6 +1320,12 @@
   </data>
   <data name="Update" xml:space="preserve">
     <value>अपडेट</value>
+  </data>
+  <data name="Upgrade" xml:space="preserve">
+    <value>अपग्रेड</value>
+  </data>
+  <data name="Upgrade_Account_Message" xml:space="preserve">
+    <value>वर्तमान में आप मुफ्त संस्करण का उपयोग कर रहे हैं। अधिक गैलरी भंडारण और अन्य महान सुविधाओं को अनलॉक करने के लिए अपने खाते को अपग्रेड करने पर विचार करें</value>
   </data>
   <data name="Upload_Media" xml:space="preserve">
     <value>मीडिया अपलोड करें</value>

@@ -87,6 +87,7 @@ namespace WeddingShare.BackgroundWorkers
                                     {
                                         Identifier = identifier,
                                         Name = galleryName,
+                                        SecretKey = PasswordHelper.GenerateGallerySecretKey(),
                                         Owner = 0
                                     }))?.Id;
                                 }

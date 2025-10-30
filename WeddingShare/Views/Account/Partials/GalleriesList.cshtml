@@ -29,21 +29,20 @@
                 new KeyValuePair<string, string>("identifier", gallery.Identifier)
             };
 
-            var secretKey = await _settings.GetOrDefault(Settings.Gallery.SecretKey, string.Empty, gallery.Id);
-            if (!string.IsNullOrWhiteSpace(secretKey))
+            if (!string.IsNullOrWhiteSpace(gallery.SecretKey))
             {
                 var enc = _encryption.IsEncryptionEnabled();
-                append.Add(new KeyValuePair<string, string>("key", enc ? _encryption.Encrypt(secretKey) : secretKey));
+                append.Add(new KeyValuePair<string, string>("key", enc ? _encryption.Encrypt(gallery.SecretKey) : gallery.SecretKey));
                 append.Add(new KeyValuePair<string, string>("enc", enc.ToString().ToLower()));
             }
 
-            <tr data-gallery-id="@gallery.Id" data-gallery-name="@gallery.Name" data-gallery-key="@secretKey">
+            <tr data-gallery-id="@gallery.Id" data-gallery-name="@gallery.Name" data-gallery-key="@gallery.SecretKey">
                 <td class="gallery-name text-capitalize">@gallery.Name (@gallery.OwnerName)</td>
                 <td class="d-none d-md-table-cell text-center">@gallery.TotalItems</td>
                 <td class="d-none d-md-table-cell text-center">@gallery.ApprovedItems</td>
                 <td class="d-none d-md-table-cell text-center">@gallery.PendingItems</td>
                 <td class="d-none d-md-table-cell text-center">
-                    <i class="fa-solid @(!string.IsNullOrWhiteSpace(secretKey) ? "fa-lock" : "fa-lock-open") m-0"></i>
+                    <i class="fa-solid @(gallery.Identifier.Equals("All", StringComparison.OrdinalIgnoreCase) || !string.IsNullOrWhiteSpace(gallery.SecretKey) ? "fa-lock" : "fa-lock-open") m-0"></i>
                 </td>
                 <td class="d-none d-md-table-cell text-center">
                     @(gallery.Identifier.Equals("All", StringComparison.OrdinalIgnoreCase) ? _file.BytesToHumanReadable(gallery.TotalGallerySize, 2) : $"{_file.BytesToHumanReadable(gallery.TotalGallerySize, 2)} ({gallery.CalculateUsage(await _settings.GetOrDefault(Settings.Gallery.MaxSizeMB, long.MaxValue, gallery?.Id))})")
@@ -63,7 +62,7 @@
                     }
                     @if (userPermissions.Gallery.HasFlag(GalleryPermissions.Update))
                     {
-                        <i class="btn @(gallery.Id > 1 ? "btnEditGallery btn-outline-success" : "btn-outline-disabled") fa-solid fa-pen-to-square" alt="Edit"></i>
+                        <i class="btn @(gallery.Id > 0 ? "btnEditGallery btn-outline-success" : "btn-outline-disabled") fa-solid fa-pen-to-square" alt="Edit"></i>
                     }
                     @if (userPermissions.Gallery.HasFlag(GalleryPermissions.Wipe))
                     {

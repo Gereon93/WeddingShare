@@ -387,60 +387,67 @@ function selectActiveTab(tab) {
                 return;
             }
 
-            displayPopup({
-                Title: localization.translate('Gallery_Create'),
-                Fields: [{
-                    Id: 'gallery-name',
-                    Name: localization.translate('Gallery_Name'),
-                    Hint: localization.translate('Gallery_Name_Hint')
-                }, {
-                    Id: 'gallery-key',
-                    Name: localization.translate('Gallery_Secret_Key'),
-                    Hint: localization.translate('Gallery_Secret_Key_Hint')
-                }],
-                Buttons: [{
-                    Text: localization.translate('Create'),
-                    Class: 'btn-success',
-                    Callback: function () {
-                        displayLoader(localization.translate('Loading'));
+            $.ajax({
+                url: '/Gallery/GenerateSecretKey',
+                method: 'GET'
+            })
+                .done(secretKey => {
+                    displayPopup({
+                        Title: localization.translate('Gallery_Create'),
+                        Fields: [{
+                            Id: 'gallery-name',
+                            Name: localization.translate('Gallery_Name'),
+                            Hint: localization.translate('Gallery_Name_Hint')
+                        }, {
+                            Id: 'gallery-key',
+                            Name: localization.translate('Gallery_Secret_Key'),
+                            Hint: localization.translate('Gallery_Secret_Key_Hint'),
+                            Value: secretKey
+                        }],
+                        Buttons: [{
+                            Text: localization.translate('Create'),
+                            Class: 'btn-success',
+                            Callback: function () {
+                                displayLoader(localization.translate('Loading'));
 
-                        let name = $('#popup-modal-field-gallery-name').val();
-                        if (name == undefined || name.length == 0) {
-                            displayMessage(localization.translate('Gallery_Create'), localization.translate('Gallery_Missing_Name'));
-                            return;
-                        }
-
-                        const regex = /^[a-zA-Z0-9\-\s-_~]+$/;
-                        if (!regex.test(name)) {
-                            displayMessage(localization.translate('Gallery_Create'), localization.translate('Gallery_Invalid_Name'));
-                            return;
-                        }
-
-                        let key = $('#popup-modal-field-gallery-key').val();
-
-                        $.ajax({
-                            url: '/Account/AddGallery',
-                            method: 'POST',
-                            data: { Id: 0, Name: name, SecretKey: key }
-                        })
-                            .done(data => {
-                                if (data.success === true) {
-                                    updateGalleryList();
-                                    displayMessage(localization.translate('Gallery_Create'), localization.translate('Gallery_Create_Success'));
-                                } else if (data.message) {
-                                    displayMessage(localization.translate('Gallery_Create'), localization.translate('Gallery_Create_Failed'), [data.message]);
-                                } else {
-                                    displayMessage(localization.translate('Gallery_Create'), localization.translate('Gallery_Create_Failed'));
+                                let name = $('#popup-modal-field-gallery-name').val();
+                                if (name == undefined || name.length == 0) {
+                                    displayMessage(localization.translate('Gallery_Create'), localization.translate('Gallery_Missing_Name'));
+                                    return;
                                 }
-                            })
-                            .fail((xhr, error) => {
-                                displayMessage(localization.translate('Gallery_Create'), localization.translate('Gallery_Create_Failed'), [error]);
-                            });
-                    }
-                }, {
-                    Text: localization.translate('Close')
-                }]
-            });
+
+                                const regex = /^[a-zA-Z0-9\-\s-_~]+$/;
+                                if (!regex.test(name)) {
+                                    displayMessage(localization.translate('Gallery_Create'), localization.translate('Gallery_Invalid_Name'));
+                                    return;
+                                }
+
+                                let key = $('#popup-modal-field-gallery-key').val();
+
+                                $.ajax({
+                                    url: '/Account/AddGallery',
+                                    method: 'POST',
+                                    data: { Id: 0, Name: name, SecretKey: key }
+                                })
+                                    .done(data => {
+                                        if (data.success === true) {
+                                            updateGalleryList();
+                                            displayMessage(localization.translate('Gallery_Create'), localization.translate('Gallery_Create_Success'));
+                                        } else if (data.message) {
+                                            displayMessage(localization.translate('Gallery_Create'), localization.translate('Gallery_Create_Failed'), [data.message]);
+                                        } else {
+                                            displayMessage(localization.translate('Gallery_Create'), localization.translate('Gallery_Create_Failed'));
+                                        }
+                                    })
+                                    .fail((xhr, error) => {
+                                        displayMessage(localization.translate('Gallery_Create'), localization.translate('Gallery_Create_Failed'), [error]);
+                                    });
+                            }
+                        }, {
+                            Text: localization.translate('Close')
+                        }]
+                    });
+                });
         });
 
         $(document).off('click', 'i.btnBulkReview').on('click', 'i.btnBulkReview', function (e) {

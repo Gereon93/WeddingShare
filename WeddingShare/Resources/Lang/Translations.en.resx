@@ -439,6 +439,15 @@
   <data name="Gallery_Full" xml:space="preserve">
     <value>Gallery is full and has exceeded the max size of</value>
   </data>
+  <data name="Gallery_Identifier" xml:space="preserve">
+    <value>Gallery Identifier</value>
+  </data>
+  <data name="Gallery_Identifier_Help" xml:space="preserve">
+    <value>Please enter the identifier of the gallery you want to visit.</value>
+  </data>
+  <data name="Gallery_Identifier_Placeholder" xml:space="preserve">
+    <value>my-wedding-gallery</value>
+  </data>
   <data name="Gallery_Key" xml:space="preserve">
     <value>Gallery Key</value>
   </data>
@@ -459,12 +468,6 @@
   </data>
   <data name="Gallery_Name_Already_Exists" xml:space="preserve">
     <value>Gallery name already exists</value>
-  </data>
-  <data name="Gallery_Name_Help" xml:space="preserve">
-    <value>Please enter the name of the gallery you want to visit.</value>
-  </data>
-  <data name="Gallery_Name_Placeholder" xml:space="preserve">
-    <value>my-wedding-gallery</value>
   </data>
   <data name="Gallery_Selector_Title" xml:space="preserve">
     <value>Gallery Selector</value>
@@ -1035,12 +1038,6 @@
   </data>
   <data name="Settings_Gallery_ReviewCounter_Label" xml:space="preserve">
     <value>Review Counter</value>
-  </data>
-  <data name="Settings_Gallery_SecretKey_Help" xml:space="preserve">
-    <value>A password to unlock the gallery</value>
-  </data>
-  <data name="Settings_Gallery_SecretKey_Label" xml:space="preserve">
-    <value>Secret Key</value>
   </data>
   <data name="Settings_Gallery_ShowFilters_Help" xml:space="preserve">
     <value>Should the user be able to filter and group media?</value>

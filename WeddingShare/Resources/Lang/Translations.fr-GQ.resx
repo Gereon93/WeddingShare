@@ -439,6 +439,15 @@
   <data name="Gallery_Full" xml:space="preserve">
     <value>Galerie est pleine et a dépassé la taille maximale de</value>
   </data>
+  <data name="Gallery_Identifier" xml:space="preserve">
+    <value>Identification de la galerie</value>
+  </data>
+  <data name="Gallery_Identifier_Help" xml:space="preserve">
+    <value>Veuillez saisir l'identifiant de la galerie que vous souhaitez visiter.</value>
+  </data>
+  <data name="Gallery_Identifier_Placeholder" xml:space="preserve">
+    <value>mon-mariage-gallery</value>
+  </data>
   <data name="Gallery_Key" xml:space="preserve">
     <value>Clé de la galerie</value>
   </data>
@@ -459,12 +468,6 @@
   </data>
   <data name="Gallery_Name_Already_Exists" xml:space="preserve">
     <value>Nom de galerie existe déjà</value>
-  </data>
-  <data name="Gallery_Name_Help" xml:space="preserve">
-    <value>Veuillez saisir le nom de la galerie que vous souhaitez visiter.</value>
-  </data>
-  <data name="Gallery_Name_Placeholder" xml:space="preserve">
-    <value>mon-mariage-gallery</value>
   </data>
   <data name="Gallery_Selector_Title" xml:space="preserve">
     <value>Sélecteur de galerie</value>
@@ -1035,12 +1038,6 @@
   </data>
   <data name="Settings_Gallery_ReviewCounter_Label" xml:space="preserve">
     <value>Compteur de réexamen</value>
-  </data>
-  <data name="Settings_Gallery_SecretKey_Help" xml:space="preserve">
-    <value>Un mot de passe pour débloquer la galerie</value>
-  </data>
-  <data name="Settings_Gallery_SecretKey_Label" xml:space="preserve">
-    <value>Clé secrète</value>
   </data>
   <data name="Settings_Gallery_ShowFilters_Help" xml:space="preserve">
     <value>L'utilisateur devrait-il être en mesure de filtrer et de grouper les médias?</value>

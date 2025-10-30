@@ -64,6 +64,7 @@
             "Gallery_Edit": "Edit Galería",
             "Gallery_Edit_Failed": "Non se pode actualizar a galería",
             "Gallery_Edit_Success": "Galería actualizada con éxito",
+            "Gallery_Invalid_Gallery_Or_Secret_Key": "Nome da galería non válido ou clave secreta, por favor, ténteo de novo",
             "Gallery_Invalid_Name": "Indique un nome de galería válido",
             "Gallery_Invalid_Secret_Key": "Chave secreta non válida, por favor, ténteo de novo",
             "Gallery_Missing_Id": "Galería Non se pode estar baleiro",

@@ -439,6 +439,15 @@
   <data name="Gallery_Full" xml:space="preserve">
     <value>Galeria është plot dhe ka tejkaluar madhësinë maksimum të</value>
   </data>
+  <data name="Gallery_Identifier" xml:space="preserve">
+    <value>Identifikuesi i galerisë</value>
+  </data>
+  <data name="Gallery_Identifier_Help" xml:space="preserve">
+    <value>Shkruaj i pari shtegu.</value>
+  </data>
+  <data name="Gallery_Identifier_Placeholder" xml:space="preserve">
+    <value>mi-veshur-galleri im</value>
+  </data>
   <data name="Gallery_Key" xml:space="preserve">
     <value>Kyçi i koleksionit</value>
   </data>
@@ -459,12 +468,6 @@
   </data>
   <data name="Gallery_Name_Already_Exists" xml:space="preserve">
     <value>Emri i koleksionit ekziston</value>
-  </data>
-  <data name="Gallery_Name_Help" xml:space="preserve">
-    <value>Ju lutem shkruani emrin e koleksionit që dëshironi të vizitoni.</value>
-  </data>
-  <data name="Gallery_Name_Placeholder" xml:space="preserve">
-    <value>mi-veshur-galleri im</value>
   </data>
   <data name="Gallery_Selector_Title" xml:space="preserve">
     <value>Zgjedhësi i Galerisë</value>
@@ -1035,12 +1038,6 @@
   </data>
   <data name="Settings_Gallery_ReviewCounter_Label" xml:space="preserve">
     <value>Rishikim kundër</value>
-  </data>
-  <data name="Settings_Gallery_SecretKey_Help" xml:space="preserve">
-    <value>Një fjalëkalim për të zhbllokuar galerinë</value>
-  </data>
-  <data name="Settings_Gallery_SecretKey_Label" xml:space="preserve">
-    <value>Kyçi sekret</value>
   </data>
   <data name="Settings_Gallery_ShowFilters_Help" xml:space="preserve">
     <value>A duhet të jetë përdoruesi në gjendje të filtrojë dhe grupojë media?</value>

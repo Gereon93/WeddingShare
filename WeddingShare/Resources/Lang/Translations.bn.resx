@@ -439,6 +439,15 @@
   <data name="Gallery_Full" xml:space="preserve">
     <value>গ্যালারিটি পূর্ণ এবং সর্বাধিক মাপ কাছাকাছি রয়েছে</value>
   </data>
+  <data name="Gallery_Identifier" xml:space="preserve">
+    <value>গ্যালারি আইডেন্টিফায়ার</value>
+  </data>
+  <data name="Gallery_Identifier_Help" xml:space="preserve">
+    <value>অনুগ্রহ করে গ্যালারির নাম লিখুন ।.</value>
+  </data>
+  <data name="Gallery_Identifier_Placeholder" xml:space="preserve">
+    <value>আমার উপদেবতা</value>
+  </data>
   <data name="Gallery_Key" xml:space="preserve">
     <value>গ্যালারি কী</value>
   </data>
@@ -459,12 +468,6 @@
   </data>
   <data name="Gallery_Name_Already_Exists" xml:space="preserve">
     <value>গ্যালারির নাম বর্তমানে উপস্থিত রয়েছে</value>
-  </data>
-  <data name="Gallery_Name_Help" xml:space="preserve">
-    <value>অনুগ্রহ করে গ্যালারির নাম লিখুন ।.</value>
-  </data>
-  <data name="Gallery_Name_Placeholder" xml:space="preserve">
-    <value>আমার উপদেবতা</value>
   </data>
   <data name="Gallery_Selector_Title" xml:space="preserve">
     <value>গ্যালারি নির্বাচক</value>
@@ -1035,12 +1038,6 @@
   </data>
   <data name="Settings_Gallery_ReviewCounter_Label" xml:space="preserve">
     <value>পর্যালোচনা</value>
-  </data>
-  <data name="Settings_Gallery_SecretKey_Help" xml:space="preserve">
-    <value>সংকলন আন-লক করার জন্য পাসওয়ার্ড লিখুন</value>
-  </data>
-  <data name="Settings_Gallery_SecretKey_Label" xml:space="preserve">
-    <value>গোপনীয় কি</value>
   </data>
   <data name="Settings_Gallery_ShowFilters_Help" xml:space="preserve">
     <value>ব্যবহারকারী কি ফিল্টার ও দলগুলোকে মিডিয়া করতে ইচ্ছুক?</value>

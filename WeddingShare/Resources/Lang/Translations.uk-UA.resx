@@ -439,6 +439,15 @@
   <data name="Gallery_Full" xml:space="preserve">
     <value>Галерея повністю перевищила розмір макс</value>
   </data>
+  <data name="Gallery_Identifier" xml:space="preserve">
+    <value>Галерея Ідентифікатор</value>
+  </data>
+  <data name="Gallery_Identifier_Help" xml:space="preserve">
+    <value>Будь ласка, введіть ідентифікатор галереї, який ви хочете відвідати.</value>
+  </data>
+  <data name="Gallery_Identifier_Placeholder" xml:space="preserve">
+    <value>мирослава</value>
+  </data>
   <data name="Gallery_Key" xml:space="preserve">
     <value>Галерея ключ</value>
   </data>
@@ -459,12 +468,6 @@
   </data>
   <data name="Gallery_Name_Already_Exists" xml:space="preserve">
     <value>Назва галереї вже існує</value>
-  </data>
-  <data name="Gallery_Name_Help" xml:space="preserve">
-    <value>Будь ласка, введіть назву галереї, яку ви хочете відвідати.</value>
-  </data>
-  <data name="Gallery_Name_Placeholder" xml:space="preserve">
-    <value>мирослава</value>
   </data>
   <data name="Gallery_Selector_Title" xml:space="preserve">
     <value>Галерея Selector</value>
@@ -1035,12 +1038,6 @@
   </data>
   <data name="Settings_Gallery_ReviewCounter_Label" xml:space="preserve">
     <value>Огляд лічильника</value>
-  </data>
-  <data name="Settings_Gallery_SecretKey_Help" xml:space="preserve">
-    <value>Пароль для розблокування галереї</value>
-  </data>
-  <data name="Settings_Gallery_SecretKey_Label" xml:space="preserve">
-    <value>Таємний ключ</value>
   </data>
   <data name="Settings_Gallery_ShowFilters_Help" xml:space="preserve">
     <value>Чи зможе користувач фільтрувати та групувати медіа?</value>

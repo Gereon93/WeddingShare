@@ -439,6 +439,15 @@
   <data name="Gallery_Full" xml:space="preserve">
     <value>La galeria està plena i ha excedit la mida màxima de</value>
   </data>
+  <data name="Gallery_Identifier" xml:space="preserve">
+    <value>Identificador de la galeria</value>
+  </data>
+  <data name="Gallery_Identifier_Help" xml:space="preserve">
+    <value>Si us plau, introduïu l' identificador de la galeria que voleu visitar.</value>
+  </data>
+  <data name="Gallery_Identifier_Placeholder" xml:space="preserve">
+    <value>la meva passada d'un costat</value>
+  </data>
   <data name="Gallery_Key" xml:space="preserve">
     <value>Clau de Gallery</value>
   </data>
@@ -459,12 +468,6 @@
   </data>
   <data name="Gallery_Name_Already_Exists" xml:space="preserve">
     <value>El nom de la galeria ja existeix</value>
-  </data>
-  <data name="Gallery_Name_Help" xml:space="preserve">
-    <value>Si us plau, introduïu el nom de la galeria que voleu visitar.</value>
-  </data>
-  <data name="Gallery_Name_Placeholder" xml:space="preserve">
-    <value>la meva passada d'un costat</value>
   </data>
   <data name="Gallery_Selector_Title" xml:space="preserve">
     <value>Selector de galeria</value>
@@ -1035,12 +1038,6 @@
   </data>
   <data name="Settings_Gallery_ReviewCounter_Label" xml:space="preserve">
     <value>Comptador de revisió</value>
-  </data>
-  <data name="Settings_Gallery_SecretKey_Help" xml:space="preserve">
-    <value>Una contrasenya per desbloquejar la galeria</value>
-  </data>
-  <data name="Settings_Gallery_SecretKey_Label" xml:space="preserve">
-    <value>Clau secreta</value>
   </data>
   <data name="Settings_Gallery_ShowFilters_Help" xml:space="preserve">
     <value>L' usuari hauria de filtrar i agrupar els suports?</value>

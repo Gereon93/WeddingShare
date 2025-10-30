@@ -439,6 +439,15 @@
   <data name="Gallery_Full" xml:space="preserve">
     <value>Galerija je polna in presega največjo velikost</value>
   </data>
+  <data name="Gallery_Identifier" xml:space="preserve">
+    <value>Identifikator galerije</value>
+  </data>
+  <data name="Gallery_Identifier_Help" xml:space="preserve">
+    <value>Vnesite identifikator galerije, ki jo želite obiskati.</value>
+  </data>
+  <data name="Gallery_Identifier_Placeholder" xml:space="preserve">
+    <value>moja-poročna-galerija</value>
+  </data>
   <data name="Gallery_Key" xml:space="preserve">
     <value>Ključ galerije</value>
   </data>
@@ -459,12 +468,6 @@
   </data>
   <data name="Gallery_Name_Already_Exists" xml:space="preserve">
     <value>Ime galerije že obstaja</value>
-  </data>
-  <data name="Gallery_Name_Help" xml:space="preserve">
-    <value>Vnesite ime galerije, ki jo želite obiskati.</value>
-  </data>
-  <data name="Gallery_Name_Placeholder" xml:space="preserve">
-    <value>moja-poročna-galerija</value>
   </data>
   <data name="Gallery_Selector_Title" xml:space="preserve">
     <value>Izbirnik galerije</value>
@@ -1035,12 +1038,6 @@
   </data>
   <data name="Settings_Gallery_ReviewCounter_Label" xml:space="preserve">
     <value>Števec pregledovanja</value>
-  </data>
-  <data name="Settings_Gallery_SecretKey_Help" xml:space="preserve">
-    <value>Geslo za odklepanje galerije</value>
-  </data>
-  <data name="Settings_Gallery_SecretKey_Label" xml:space="preserve">
-    <value>Skrivni ključ</value>
   </data>
   <data name="Settings_Gallery_ShowFilters_Help" xml:space="preserve">
     <value>Ali naj uporabnik lahko filtrira in združi medije?</value>

@@ -439,6 +439,15 @@
   <data name="Gallery_Full" xml:space="preserve">
     <value>Galéria tele van, és túllépte a maximális méretét</value>
   </data>
+  <data name="Gallery_Identifier" xml:space="preserve">
+    <value>Galéria azonosítója</value>
+  </data>
+  <data name="Gallery_Identifier_Help" xml:space="preserve">
+    <value>Kérjük, adja meg a látogatni kívánt galéria azonosítóját.</value>
+  </data>
+  <data name="Gallery_Identifier_Placeholder" xml:space="preserve">
+    <value>az esküvőm galériája</value>
+  </data>
   <data name="Gallery_Key" xml:space="preserve">
     <value>Galéria kulcsa</value>
   </data>
@@ -459,12 +468,6 @@
   </data>
   <data name="Gallery_Name_Already_Exists" xml:space="preserve">
     <value>A galéria neve már létezik</value>
-  </data>
-  <data name="Gallery_Name_Help" xml:space="preserve">
-    <value>Kérem, adja meg a galéria nevét, ahová el szeretne menni.</value>
-  </data>
-  <data name="Gallery_Name_Placeholder" xml:space="preserve">
-    <value>az esküvőm galériája</value>
   </data>
   <data name="Gallery_Selector_Title" xml:space="preserve">
     <value>Galéria választó</value>
@@ -1035,12 +1038,6 @@
   </data>
   <data name="Settings_Gallery_ReviewCounter_Label" xml:space="preserve">
     <value>Felülvizsgálati számláló</value>
-  </data>
-  <data name="Settings_Gallery_SecretKey_Help" xml:space="preserve">
-    <value>Jelszó a galéria megnyitásához</value>
-  </data>
-  <data name="Settings_Gallery_SecretKey_Label" xml:space="preserve">
-    <value>Titkos kulcs</value>
   </data>
   <data name="Settings_Gallery_ShowFilters_Help" xml:space="preserve">
     <value>Lehetővé kell tenni a felhasználó számára, hogy szűrje és csoportosítsa a médiát?</value>

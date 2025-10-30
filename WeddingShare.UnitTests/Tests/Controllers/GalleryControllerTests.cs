@@ -71,9 +71,6 @@ namespace WeddingShare.UnitTests.Tests.Helpers
             _database.GetAllGalleryItems(Arg.Any<int>(), GalleryItemState.Approved, Arg.Any<MediaType>(), Arg.Any<ImageOrientation>(), Arg.Any<GalleryGroup>(), Arg.Any<GalleryOrder>(), Arg.Any<int>(), Arg.Any<int>()).Returns(Task.FromResult(MockData.MockGalleryItems(10, 1, GalleryItemState.Approved)));
 			_database.GetGalleryItemByChecksum(Arg.Any<int>(), Arg.Any<string>()).ReturnsNull();
 
-            _settings.GetOrDefault(Settings.Gallery.SecretKey, Arg.Any<string>(), Arg.Any<int>()).Returns("password");
-            _settings.GetOrDefault(Settings.Gallery.SecretKey, Arg.Any<string>(), 2).Returns("456789");
-            _settings.GetOrDefault(Settings.Gallery.SecretKey, Arg.Any<string>(), 101).Returns("123456");
 			_settings.GetOrDefault(Settings.Gallery.Upload, Arg.Any<bool>(), Arg.Any<int>()).Returns(true);
 			_settings.GetOrDefault(Settings.Gallery.Download, Arg.Any<bool>(), Arg.Any<int>()).Returns(true);
 			_settings.GetOrDefault(Settings.Gallery.UploadPeriod, Arg.Any<string>(), Arg.Any<int>()).Returns("1970-01-01 00:00:00");

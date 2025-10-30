@@ -21,6 +21,7 @@
         Upload = 16,
         Download = 32,
         Wipe = 64,
+        ViewAllGallery = 128
     }
 
     [Flags]

@@ -64,6 +64,7 @@
             "Gallery_Edit": "एडिट गैलरी",
             "Gallery_Edit_Failed": "गैलरी अद्यतन करने में विफल",
             "Gallery_Edit_Success": "सफलतापूर्वक अद्यतन गैलरी",
+            "Gallery_Invalid_Gallery_Or_Secret_Key": "Invalid गैलरी नाम या गुप्त कुंजी, कृपया फिर से प्रयास करें",
             "Gallery_Invalid_Name": "कृपया एक वैध गैलरी नाम निर्दिष्ट करें",
             "Gallery_Invalid_Secret_Key": "Invalid secret key, कृपया फिर से प्रयास करें",
             "Gallery_Missing_Id": "गैलरी आईडी खाली नहीं हो सकता",

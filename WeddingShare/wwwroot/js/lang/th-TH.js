@@ -64,6 +64,7 @@
             "Gallery_Edit": "แก้ไขคลังภาพ",
             "Gallery_Edit_Failed": "ล้มเหลวในการอัปเดตคลังภาพ",
             "Gallery_Edit_Success": "ปรับปรุงคลังภาพเรียบร้อยแล้ว",
+            "Gallery_Invalid_Gallery_Or_Secret_Key": "ชื่อคลังภาพหรือกุญแจลับไม่ถูกต้อง โปรดลองใหม่อีกครั้ง",
             "Gallery_Invalid_Name": "โปรดระบุชื่อของคลังภาพที่ถูกต้อง",
             "Gallery_Invalid_Secret_Key": "กุญแจลับไม่ถูกต้อง โปรดลองใหม่อีกครั้ง",
             "Gallery_Missing_Id": "คลังภาพ ไม่สามารถว่างได้",

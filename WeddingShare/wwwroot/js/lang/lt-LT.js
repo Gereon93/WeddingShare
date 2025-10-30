@@ -64,6 +64,7 @@
             "Gallery_Edit": "Keisti galeriją",
             "Gallery_Edit_Failed": "Nepavyko atnaujinti galerijos",
             "Gallery_Edit_Success": "Sėkmingai atnaujinta galerija",
+            "Gallery_Invalid_Gallery_Or_Secret_Key": "Blogas galerijos pavadinimas arba slaptas raktas, bandykite dar kartą",
             "Gallery_Invalid_Name": "Prašome nurodyti galiojantį galerijos pavadinimą",
             "Gallery_Invalid_Secret_Key": "Blogas slaptas raktas, bandykite dar kartą",
             "Gallery_Missing_Id": "Galerija Id negali būti tuščias",

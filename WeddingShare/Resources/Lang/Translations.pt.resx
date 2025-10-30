@@ -439,6 +439,15 @@
   <data name="Gallery_Full" xml:space="preserve">
     <value>Galeria está cheia e excedeu o tamanho máximo de</value>
   </data>
+  <data name="Gallery_Identifier" xml:space="preserve">
+    <value>Galeria Identificador</value>
+  </data>
+  <data name="Gallery_Identifier_Help" xml:space="preserve">
+    <value>Digite o identificador da galeria que deseja visitar.</value>
+  </data>
+  <data name="Gallery_Identifier_Placeholder" xml:space="preserve">
+    <value>meu casamento-gallery</value>
+  </data>
   <data name="Gallery_Key" xml:space="preserve">
     <value>Galeria chave</value>
   </data>
@@ -459,12 +468,6 @@
   </data>
   <data name="Gallery_Name_Already_Exists" xml:space="preserve">
     <value>Nome da galeria já existe</value>
-  </data>
-  <data name="Gallery_Name_Help" xml:space="preserve">
-    <value>Digite o nome da galeria que deseja visitar.</value>
-  </data>
-  <data name="Gallery_Name_Placeholder" xml:space="preserve">
-    <value>meu casamento-gallery</value>
   </data>
   <data name="Gallery_Selector_Title" xml:space="preserve">
     <value>Seletor de galeria</value>
@@ -1035,12 +1038,6 @@
   </data>
   <data name="Settings_Gallery_ReviewCounter_Label" xml:space="preserve">
     <value>Contador de avaliação</value>
-  </data>
-  <data name="Settings_Gallery_SecretKey_Help" xml:space="preserve">
-    <value>Uma senha para desbloquear a galeria</value>
-  </data>
-  <data name="Settings_Gallery_SecretKey_Label" xml:space="preserve">
-    <value>Chave secreta</value>
   </data>
   <data name="Settings_Gallery_ShowFilters_Help" xml:space="preserve">
     <value>O usuário deve ser capaz de filtrar e agrupar mídia?</value>

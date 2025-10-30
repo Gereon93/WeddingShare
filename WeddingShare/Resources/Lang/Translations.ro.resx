@@ -439,6 +439,15 @@
   <data name="Gallery_Full" xml:space="preserve">
     <value>Galeria este plină și a depășit dimensiunea maximă a</value>
   </data>
+  <data name="Gallery_Identifier" xml:space="preserve">
+    <value>Identificatorul galeriei</value>
+  </data>
+  <data name="Gallery_Identifier_Help" xml:space="preserve">
+    <value>Introduceți identificatorul galeriei pe care doriți să o vizitați.</value>
+  </data>
+  <data name="Gallery_Identifier_Placeholder" xml:space="preserve">
+    <value>galeria mea de nuntă</value>
+  </data>
   <data name="Gallery_Key" xml:space="preserve">
     <value>Cheie galerie</value>
   </data>
@@ -459,12 +468,6 @@
   </data>
   <data name="Gallery_Name_Already_Exists" xml:space="preserve">
     <value>Numele galeriei există deja</value>
-  </data>
-  <data name="Gallery_Name_Help" xml:space="preserve">
-    <value>Introduceți numele galeriei pe care doriți să o vizitați.</value>
-  </data>
-  <data name="Gallery_Name_Placeholder" xml:space="preserve">
-    <value>galeria mea de nuntă</value>
   </data>
   <data name="Gallery_Selector_Title" xml:space="preserve">
     <value>Selector galerie</value>
@@ -1035,12 +1038,6 @@
   </data>
   <data name="Settings_Gallery_ReviewCounter_Label" xml:space="preserve">
     <value>Contor de revizuire</value>
-  </data>
-  <data name="Settings_Gallery_SecretKey_Help" xml:space="preserve">
-    <value>O parolă pentru a debloca galeria</value>
-  </data>
-  <data name="Settings_Gallery_SecretKey_Label" xml:space="preserve">
-    <value>Cheie secretă</value>
   </data>
   <data name="Settings_Gallery_ShowFilters_Help" xml:space="preserve">
     <value>Ar trebui ca utilizatorul să fie capabil să filtreze și să grupeze medii?</value>

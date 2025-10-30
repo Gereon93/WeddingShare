@@ -53,26 +53,18 @@ namespace WeddingShare.Attributes
 
                                     filterContext.Result = new RedirectResult($"/Gallery?{queryString.ToString()}");
                                 }
-                                else
-                                {
-                                    var settingsHelper = filterContext.HttpContext.RequestServices.GetService<ISettingsHelper>();
-                                    if (settingsHelper != null)
+                                else if (!string.IsNullOrWhiteSpace(gallery.SecretKey))
+                                { 
+                                    var secretKey = encryptionHelper.IsEncryptionEnabled() ? encryptionHelper.Encrypt(gallery.SecretKey) : gallery.SecretKey;
+                                    if (!string.IsNullOrWhiteSpace(secretKey) && !string.Equals(secretKey, key))
                                     {
-                                        var secretKey = settingsHelper.GetOrDefault(Settings.Gallery.SecretKey, string.Empty, galleryId).Result ?? string.Empty;
-                                        if (!string.IsNullOrWhiteSpace(secretKey))
+                                        var logger = filterContext.HttpContext.RequestServices.GetService<ILogger<RequiresSecretKeyAttribute>>();
+                                        if (logger != null)
                                         {
-                                            secretKey = encryptionHelper.IsEncryptionEnabled() ? encryptionHelper.Encrypt(secretKey) : secretKey;
-                                            if (!string.IsNullOrWhiteSpace(secretKey) && !string.Equals(secretKey, key))
-                                            {
-                                                var logger = filterContext.HttpContext.RequestServices.GetService<ILogger<RequiresSecretKeyAttribute>>();
-                                                if (logger != null)
-                                                {
-                                                    logger.LogWarning($"A request was made to an endpoint with an invalid secure key");
-                                                }
-
-                                                filterContext.Result = new RedirectToActionResult("Index", "Error", new { Reason = ErrorCode.InvalidSecretKey }, false);
-                                            }
+                                            logger.LogWarning($"A request was made to an endpoint with an invalid secure key");
                                         }
+
+                                        filterContext.Result = new RedirectToActionResult("Index", "Error", new { Reason = ErrorCode.InvalidSecretKey }, false);
                                     }
                                 }
                             }

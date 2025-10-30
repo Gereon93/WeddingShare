@@ -64,6 +64,7 @@
             "Gallery_Edit": "গ্যালারি সম্পাদনা করুন",
             "Gallery_Edit_Failed": "সংকলন আপডেট করতে ব্যর্থ",
             "Gallery_Edit_Success": "সাফল্যের সাথে আপডেট করা হয়েছে",
+            "Gallery_Invalid_Gallery_Or_Secret_Key": "অবৈধ গ্যালারির নাম অথবা গোপন কী, অনুগ্রহ করে পুনরায় প্রচেষ্টা করুন",
             "Gallery_Invalid_Name": "অনুগ্রহ করে একটি বৈধ গ্যালারির নাম নির্ধারণ করুন",
             "Gallery_Invalid_Secret_Key": "অবৈধ গোপনীয় কি, অনুগ্রহ করে পুনরায় প্রচেষ্টা করুন",
             "Gallery_Missing_Id": "গ্যালারি ফাঁকা রাখা যাবে না",

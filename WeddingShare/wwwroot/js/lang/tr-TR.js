@@ -64,6 +64,7 @@
             "Gallery_Edit": "Edit Gallery",
             "Gallery_Edit_Failed": "Galeriyi güncellemek için başarısız oldu",
             "Gallery_Edit_Success": "Başarılı bir şekilde güncellendi galeri",
+            "Gallery_Invalid_Gallery_Or_Secret_Key": "Invalid galeri adı veya gizli anahtar, lütfen tekrar deneyin",
             "Gallery_Invalid_Name": "Lütfen geçerli bir galeri ismini belirtin",
             "Gallery_Invalid_Secret_Key": "Invalid gizli anahtarı, lütfen tekrar deneyin",
             "Gallery_Missing_Id": "Gallery Gallery Boş olamaz",

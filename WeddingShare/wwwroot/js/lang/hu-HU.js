@@ -64,6 +64,7 @@
             "Gallery_Edit": "Galéria szerkesztése",
             "Gallery_Edit_Failed": "Nem sikerült frissíteni a galériát",
             "Gallery_Edit_Success": "Sikeresen frissített galéria",
+            "Gallery_Invalid_Gallery_Or_Secret_Key": "Érvénytelen galéria neve vagy titkos kulcs, kérjük próbálja újra",
             "Gallery_Invalid_Name": "Kérjük, adja meg az érvényes galéria nevét",
             "Gallery_Invalid_Secret_Key": "Érvénytelen titkos kulcs, próbálja újra",
             "Gallery_Missing_Id": "Galéria Nem lehet üres",

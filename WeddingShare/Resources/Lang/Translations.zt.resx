@@ -439,6 +439,15 @@
   <data name="Gallery_Full" xml:space="preserve">
     <value>相簿已滿并已超過最大大小</value>
   </data>
+  <data name="Gallery_Identifier" xml:space="preserve">
+    <value>相簿辨識符</value>
+  </data>
+  <data name="Gallery_Identifier_Help" xml:space="preserve">
+    <value>請輸入您要參觀的畫廊的识别符 .</value>
+  </data>
+  <data name="Gallery_Identifier_Placeholder" xml:space="preserve">
+    <value>我 -- -- 有 -- -- 有</value>
+  </data>
   <data name="Gallery_Key" xml:space="preserve">
     <value>相簿金鑰</value>
   </data>
@@ -459,12 +468,6 @@
   </data>
   <data name="Gallery_Name_Already_Exists" xml:space="preserve">
     <value>相簿名稱已存在</value>
-  </data>
-  <data name="Gallery_Name_Help" xml:space="preserve">
-    <value>請輸入您要參觀的畫廊名 .</value>
-  </data>
-  <data name="Gallery_Name_Placeholder" xml:space="preserve">
-    <value>我 -- -- 有 -- -- 有</value>
   </data>
   <data name="Gallery_Selector_Title" xml:space="preserve">
     <value>相簿選擇器</value>
@@ -1035,12 +1038,6 @@
   </data>
   <data name="Settings_Gallery_ReviewCounter_Label" xml:space="preserve">
     <value>審查分機</value>
-  </data>
-  <data name="Settings_Gallery_SecretKey_Help" xml:space="preserve">
-    <value>有解鎖畫廊的口令</value>
-  </data>
-  <data name="Settings_Gallery_SecretKey_Label" xml:space="preserve">
-    <value>密钥</value>
   </data>
   <data name="Settings_Gallery_ShowFilters_Help" xml:space="preserve">
     <value>使用者是否能过滤和群組媒體?</value>

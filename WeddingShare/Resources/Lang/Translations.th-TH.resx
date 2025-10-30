@@ -439,6 +439,15 @@
   <data name="Gallery_Full" xml:space="preserve">
     <value>แกลเลอรีภาพเต็มและมีขนาดสูงสุด</value>
   </data>
+  <data name="Gallery_Identifier" xml:space="preserve">
+    <value>ตัวระบุแกลเลอรี</value>
+  </data>
+  <data name="Gallery_Identifier_Help" xml:space="preserve">
+    <value>โปรดป้อนส่วนแสดงตัวของคลังภาพที่คุณต้องการจะเยี่ยมชม.</value>
+  </data>
+  <data name="Gallery_Identifier_Placeholder" xml:space="preserve">
+    <value>งานแต่งของฉัน</value>
+  </data>
   <data name="Gallery_Key" xml:space="preserve">
     <value>กุญแจของแกลเลอรี</value>
   </data>
@@ -459,12 +468,6 @@
   </data>
   <data name="Gallery_Name_Already_Exists" xml:space="preserve">
     <value>มีชื่อแกลเลอรีอยู่แล้ว</value>
-  </data>
-  <data name="Gallery_Name_Help" xml:space="preserve">
-    <value>โปรดป้อนชื่อของคลังภาพที่คุณต้องการจะเยี่ยมชม.</value>
-  </data>
-  <data name="Gallery_Name_Placeholder" xml:space="preserve">
-    <value>งานแต่งของฉัน</value>
   </data>
   <data name="Gallery_Selector_Title" xml:space="preserve">
     <value>เครื่องมือเลือกคลังภาพ</value>
@@ -1035,12 +1038,6 @@
   </data>
   <data name="Settings_Gallery_ReviewCounter_Label" xml:space="preserve">
     <value>ตัวโต้แย้งการทบทวน</value>
-  </data>
-  <data name="Settings_Gallery_SecretKey_Help" xml:space="preserve">
-    <value>รหัสผ่านที่จะปลดล็อคคลังภาพ</value>
-  </data>
-  <data name="Settings_Gallery_SecretKey_Label" xml:space="preserve">
-    <value>กุญแจลับ</value>
   </data>
   <data name="Settings_Gallery_ShowFilters_Help" xml:space="preserve">
     <value>จะให้ผู้ใช้สามารถกรองและจัดกลุ่มสื่อได้หรือไม่?</value>

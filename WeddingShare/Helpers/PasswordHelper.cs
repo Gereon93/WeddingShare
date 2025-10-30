@@ -5,45 +5,55 @@ namespace WeddingShare.Helpers
 {
     public class PasswordHelper
     {
-        public static string GenerateSecretCode()
+        public static string GenerateGallerySecretKey()
         {
-            return EncodingHelper.Base64Encode(GenerateTempPassword(20, true));
+            return GenerateTempPassword(lower: true, upper: true, numbers: true, symbols: false, length: 30);
         }
 
-        public static string GenerateTempPassword(int length = 12, bool includeSymbol = true)
+        public static string GenerateSecretCode()
+        {
+            return EncodingHelper.Base64Encode(GenerateTempPassword(lower: true, upper: true, numbers: true, symbols: true, length: 20));
+        }
+
+        public static string GenerateTempPassword(bool lower, bool upper, bool numbers, bool symbols, int length = 12)
         {
             var rand = new Random();
-            var characterSet = BuildCharacterSet(lower: true, upper: true, numbers: true, symbols: includeSymbol);
+            var characterSet = BuildCharacterSet(lower, upper, numbers, symbols);
 
-            var passwordBuilder = new StringBuilder();
-            for (var i = 0; i < length; i++)
-            {
-                passwordBuilder.Append(PickRandomCharacter(rand, characterSet));
+            if (characterSet != null && characterSet.Length > 0)
+            { 
+                var passwordBuilder = new StringBuilder();
+                for (var i = 0; i < length; i++)
+                {
+                    passwordBuilder.Append(PickRandomCharacter(rand, characterSet));
+                }
+
+                var password = passwordBuilder.ToString();
+
+                if (lower && !HasLowerCaseLetter(password))
+                {
+                    password = ReplaceRandomCharacter(rand, password, PickRandomCharacter(rand, BuildCharacterSet(lower: true, upper: false, numbers: false, symbols: false)));
+                }
+
+                if (upper && !HasUpperCaseLetter(password))
+                {
+                    password = ReplaceRandomCharacter(rand, password, PickRandomCharacter(rand, BuildCharacterSet(lower: false, upper: true, numbers: false, symbols: false)));
+                }
+
+                if (numbers && !HasNumber(password))
+                {
+                    password = ReplaceRandomCharacter(rand, password, PickRandomCharacter(rand, BuildCharacterSet(lower: false, upper: false, numbers: true, symbols: false)));
+                }
+
+                if (symbols && !HasSymbol(password))
+                {
+                    password = ReplaceRandomCharacter(rand, password, PickRandomCharacter(rand, BuildCharacterSet(lower: false, upper: false, numbers: false, symbols: true)));
+                }
+
+                return password.ToString();
             }
 
-            var password = passwordBuilder.ToString();
-
-            if (!HasLowerCaseLetter(password))
-            {
-                password = ReplaceRandomCharacter(rand, password, PickRandomCharacter(rand, BuildCharacterSet(lower: true, upper: false, numbers: false, symbols: false)));
-            }
-
-            if (!HasUpperCaseLetter(password))
-            {
-                password = ReplaceRandomCharacter(rand, password, PickRandomCharacter(rand, BuildCharacterSet(lower: false, upper: true, numbers: false, symbols: false)));
-            }
-
-            if (!HasNumber(password))
-            {
-                password = ReplaceRandomCharacter(rand, password, PickRandomCharacter(rand, BuildCharacterSet(lower: false, upper: false, numbers: true, symbols: false)));
-            }
-
-            if (includeSymbol && !HasSymbol(password))
-            {
-                password = ReplaceRandomCharacter(rand, password, PickRandomCharacter(rand, BuildCharacterSet(lower: false, upper: false, numbers: false, symbols: true)));
-            }
-
-            return password.ToString();
+            return string.Empty;
         }
 
         public static bool IsValid(string? password)

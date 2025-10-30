@@ -439,6 +439,15 @@
   <data name="Gallery_Full" xml:space="preserve">
     <value>المعرض ممتلئ وقد تجاوز الحد الأقصى لحجم</value>
   </data>
+  <data name="Gallery_Identifier" xml:space="preserve">
+    <value>تحديد الهوية</value>
+  </data>
+  <data name="Gallery_Identifier_Help" xml:space="preserve">
+    <value>رجاءً إدخلْ رمزَ المعرضَ تُريدُ أَنْ تُزورَ.</value>
+  </data>
+  <data name="Gallery_Identifier_Placeholder" xml:space="preserve">
+    <value>حفل زفافي</value>
+  </data>
   <data name="Gallery_Key" xml:space="preserve">
     <value>مفتاح المعرض</value>
   </data>
@@ -459,12 +468,6 @@
   </data>
   <data name="Gallery_Name_Already_Exists" xml:space="preserve">
     <value>اسم المعرض موجود بالفعل</value>
-  </data>
-  <data name="Gallery_Name_Help" xml:space="preserve">
-    <value>رجاءً أدخلي اسم المعرض الذي تريدين زيارته.</value>
-  </data>
-  <data name="Gallery_Name_Placeholder" xml:space="preserve">
-    <value>حفل زفافي</value>
   </data>
   <data name="Gallery_Selector_Title" xml:space="preserve">
     <value>Gallery Selector</value>
@@ -1035,12 +1038,6 @@
   </data>
   <data name="Settings_Gallery_ReviewCounter_Label" xml:space="preserve">
     <value>الاستعراض</value>
-  </data>
-  <data name="Settings_Gallery_SecretKey_Help" xml:space="preserve">
-    <value>كلمة سر لفتح المعرض</value>
-  </data>
-  <data name="Settings_Gallery_SecretKey_Label" xml:space="preserve">
-    <value>المفتاح السري</value>
   </data>
   <data name="Settings_Gallery_ShowFilters_Help" xml:space="preserve">
     <value>هل يجب أن يكون المستعمل قادراً على التصفية و وسائل الإعلام؟?</value>

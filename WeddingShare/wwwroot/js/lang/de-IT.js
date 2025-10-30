@@ -64,6 +64,7 @@
             "Gallery_Edit": "Seite nicht gefunden",
             "Gallery_Edit_Failed": "Versäumt, die Galerie zu aktualisieren",
             "Gallery_Edit_Success": "Erfolgreich aktualisierte Galerie",
+            "Gallery_Invalid_Gallery_Or_Secret_Key": "Invalider Galeriename oder geheimer Schlüssel, bitte versuchen Sie es erneut",
             "Gallery_Invalid_Name": "Bitte geben Sie einen gültigen Galerienamen an",
             "Gallery_Invalid_Secret_Key": "Ungültiger geheimer Schlüssel, bitte versuchen Sie es wieder",
             "Gallery_Missing_Id": "Galerie Kann nicht leer sein",

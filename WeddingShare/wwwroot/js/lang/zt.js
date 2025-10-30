@@ -64,6 +64,7 @@
             "Gallery_Edit": "編輯相簿",
             "Gallery_Edit_Failed": "更新相簿失敗",
             "Gallery_Edit_Success": "已成功更新相簿",
+            "Gallery_Invalid_Gallery_Or_Secret_Key": "不合法的相簿名稱或密钥, 請再試一次",
             "Gallery_Invalid_Name": "請指定有效的畫廊名",
             "Gallery_Invalid_Secret_Key": "不合法的密钥, 請再試一次",
             "Gallery_Missing_Id": "相簿 Id 不能是空的",

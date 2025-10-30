@@ -64,6 +64,7 @@
             "Gallery_Edit": "Muokkaa galleriaa",
             "Gallery_Edit_Failed": "Gallerian päivitys epäonnistui",
             "Gallery_Edit_Success": "Päivitetty galleria onnistuneesti",
+            "Gallery_Invalid_Gallery_Or_Secret_Key": "Virheellinen gallerian nimi tai salainen avain, yritä uudelleen",
             "Gallery_Invalid_Name": "Määrittele kelvollinen gallerian name",
             "Gallery_Invalid_Secret_Key": "Virheellinen salainen avain, yritä uudelleen",
             "Gallery_Missing_Id": "Galleria Id ei voi olla tyhjä",

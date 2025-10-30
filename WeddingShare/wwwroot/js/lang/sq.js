@@ -64,6 +64,7 @@
             "Gallery_Edit": "Ndrysho Galerinë",
             "Gallery_Edit_Failed": "I pamundur rifreskimi i koleksionit",
             "Gallery_Edit_Success": "Koleksion i përditësuar me sukses",
+            "Gallery_Invalid_Gallery_Or_Secret_Key": "Emri i koleksionit të pavlefshëm apo kyçi sekret, ju lutem riprovo",
             "Gallery_Invalid_Name": "Shkruaj a emri",
             "Gallery_Invalid_Secret_Key": "Kyç sekret i pavlefshëm, ju lutem provoni përsëri",
             "Gallery_Missing_Id": "Koleksioni Id nuk mund të jetë bosh",

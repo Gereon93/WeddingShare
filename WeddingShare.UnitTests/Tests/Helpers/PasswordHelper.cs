@@ -34,15 +34,27 @@ namespace WeddingShare.UnitTests.Tests.Helpers
             Assert.That(actual, Is.EqualTo(expected));
         }
 
-        [TestCase(12, true, true)]
-        [TestCase(4, true, false)]
-        [TestCase(12, false, false)]
-        [TestCase(4, false, false)]
-        public void PasswordHelper_GenerateTempPassword(int length, bool includeSpecial, bool isStrong)
+        [TestCase(true, true, true, true, 30, true)]
+        [TestCase(true, true, true, true, 10, true)]
+        [TestCase(true, true, true, true, 5, false)]
+        [TestCase(false, true, true, true, 30, false)]
+        [TestCase(true, false, true, true, 30, false)]
+        [TestCase(true, true, false, true, 30, false)]
+        [TestCase(true, true, true, false, 30, false)]
+        [TestCase(false, false, false, false, 30, false)]
+        public void PasswordHelper_GenerateTempPassword(bool lower, bool upper, bool numbers, bool symbols, int length, bool isStrong)
         {
-            var password = PasswordHelper.GenerateTempPassword(length, includeSpecial);
+            var password = PasswordHelper.GenerateTempPassword(lower: lower, upper: upper, numbers: numbers, symbols: symbols, length: length);
             var actual = PasswordHelper.IsValid(password) && !PasswordHelper.IsWeak(password);
             Assert.That(actual, Is.EqualTo(isStrong), $"Password: '{password}' is not valid");
+        }
+
+        [TestCase()]
+        public void PasswordHelper_GenerateGallerySecretKey()
+        {
+            var actual = PasswordHelper.GenerateGallerySecretKey();
+            Assert.That(actual, Is.Not.Null);
+            Assert.That(actual.Length, Is.AtLeast(30));
         }
 
         [TestCase()]

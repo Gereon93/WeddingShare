@@ -64,6 +64,7 @@
             "Gallery_Edit": "編集ギャラリー",
             "Gallery_Edit_Failed": "更新ギャラリーに失敗",
             "Gallery_Edit_Success": "更新されたギャラリー",
+            "Gallery_Invalid_Gallery_Or_Secret_Key": "無効なギャラリー名または秘密鍵、もう一度お試しください",
             "Gallery_Invalid_Name": "有効なギャラリー名を入力してください",
             "Gallery_Invalid_Secret_Key": "無効な秘密鍵は、もう一度お試しください",
             "Gallery_Missing_Id": "ギャラリー 空に入らない",

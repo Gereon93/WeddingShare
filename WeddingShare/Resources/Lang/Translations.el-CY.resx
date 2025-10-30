@@ -439,6 +439,15 @@
   <data name="Gallery_Full" xml:space="preserve">
     <value>Η γκαλερί είναι γεμάτη και έχει ξεπεράσει το μέγιστο μέγεθος της</value>
   </data>
+  <data name="Gallery_Identifier" xml:space="preserve">
+    <value>Αναγνωριστικό γκαλερί</value>
+  </data>
+  <data name="Gallery_Identifier_Help" xml:space="preserve">
+    <value>Παρακαλώ εισάγετε το αναγνωριστικό της γκαλερί που θέλετε να επισκεφθείτε.</value>
+  </data>
+  <data name="Gallery_Identifier_Placeholder" xml:space="preserve">
+    <value>η γάγγραινα μου</value>
+  </data>
   <data name="Gallery_Key" xml:space="preserve">
     <value>Κλειδί συλλογής</value>
   </data>
@@ -459,12 +468,6 @@
   </data>
   <data name="Gallery_Name_Already_Exists" xml:space="preserve">
     <value>Το όνομα της γκαλερί υπάρχει ήδη</value>
-  </data>
-  <data name="Gallery_Name_Help" xml:space="preserve">
-    <value>Παρακαλώ εισάγετε το όνομα της γκαλερί που θέλετε να επισκεφθείτε.</value>
-  </data>
-  <data name="Gallery_Name_Placeholder" xml:space="preserve">
-    <value>η γάγγραινα μου</value>
   </data>
   <data name="Gallery_Selector_Title" xml:space="preserve">
     <value>Επιλογέας συλλογής</value>
@@ -1035,12 +1038,6 @@
   </data>
   <data name="Settings_Gallery_ReviewCounter_Label" xml:space="preserve">
     <value>Μετρητής αναθεώρησης</value>
-  </data>
-  <data name="Settings_Gallery_SecretKey_Help" xml:space="preserve">
-    <value>Ένας κωδικός πρόσβασης για να ξεκλειδώσετε τη γκαλερί</value>
-  </data>
-  <data name="Settings_Gallery_SecretKey_Label" xml:space="preserve">
-    <value>Μυστικό κλειδί</value>
   </data>
   <data name="Settings_Gallery_ShowFilters_Help" xml:space="preserve">
     <value>Θα πρέπει ο χρήστης να μπορεί να φιλτράρει και να ομαδοποιήσει τα μέσα?</value>

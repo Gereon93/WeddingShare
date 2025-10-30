@@ -64,6 +64,7 @@
             "Gallery_Edit": "编辑图片库",
             "Gallery_Edit_Failed": "更新画廊失败",
             "Gallery_Edit_Success": "成功更新画廊",
+            "Gallery_Invalid_Gallery_Or_Secret_Key": "无效的画廊名称或密钥, 请再次尝试",
             "Gallery_Invalid_Name": "请指定一个有效的画廊名称",
             "Gallery_Invalid_Secret_Key": "无效的密钥, 请再次尝试",
             "Gallery_Missing_Id": "图片库 无法为空",
