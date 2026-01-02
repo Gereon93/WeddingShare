@@ -1,15 +1,16 @@
+body {
+}
+
 #main-wrapper {
-  position: relative;
-  top: 75px;
+    position: fixed;
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 @media (max-width: 700px) {
     .fa-2x {
         font-size: 1.5em !important;
-    }
-
-    #main-wrapper {
-        top: 60px;
     }
 }
 
@@ -52,6 +53,20 @@ tr td i {
 
 .card {
     overflow: hidden;
+}
+
+.banner-message {
+    color: var(--bs-gallery-warning-color);
+    background-color: var(--bs-gallery-warning-bg-color);
+    font-style: oblique;
+    font-weight: 400;
+    font-size: 1.2rem;
+}
+
+@media (max-width: 700px) {
+    .banner-message {
+        font-size: 0.8rem;
+    }
 }
 
 .quote {
@@ -212,7 +227,7 @@ tr td i {
         }
 
 .table-rounded-border {
-    border-radius: 5px;
+    border-radius: 3px;
     overflow: hidden !important;
     outline: 1px solid #DEDEDE;
     border-collapse: collapse !important;
@@ -319,4 +334,16 @@ tr td i {
     .sponsor-card-small .sponsor-card-logo {
         width: 35px !important;
         height: 35px !important;
+    }
+
+.nav-horizontal-scroller {
+    overflow-x: auto;
+    overflow-y: hidden;
+    flex-wrap: nowrap !important;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+    .nav-horizontal-scroller::-webkit-scrollbar {
+        display: none;
     }

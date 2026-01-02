@@ -1,5 +1,6 @@
 using System.Net;
 using System.Net.Mail;
+using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 using WeddingShare.Helpers;
 using WeddingShare.Helpers.Notifications;
@@ -13,6 +14,7 @@ namespace WeddingShare.UnitTests.Tests.Helpers
         private readonly IHttpClientFactory _clientFactory = Substitute.For<IHttpClientFactory>();
         private readonly ISmtpClientWrapper _smtp = Substitute.For<ISmtpClientWrapper>();
         private readonly ILoggerFactory _logger = Substitute.For<ILoggerFactory>();
+        private readonly IStringLocalizer<Lang.Translations> _localizer = Substitute.For<IStringLocalizer<Lang.Translations>>();
 
         public NotificationBrokerTests()
         {
@@ -61,7 +63,7 @@ namespace WeddingShare.UnitTests.Tests.Helpers
             _settings.GetOrDefault(Constants.Notifications.Ntfy.Enabled, Arg.Any<bool>()).Returns(ntfy);
             _settings.GetOrDefault(Constants.Notifications.Gotify.Enabled, Arg.Any<bool>()).Returns(gotify);
 
-            var actual = await new NotificationBroker(_settings, _smtp, _clientFactory, _logger).Send("unit", "test");
+            var actual = await new NotificationBroker(_settings, _smtp, _clientFactory, _logger, _localizer).Send("unit", "test");
             Assert.That(actual, Is.EqualTo(expected));
         }
 
@@ -70,7 +72,7 @@ namespace WeddingShare.UnitTests.Tests.Helpers
         {
             _settings.GetOrDefault(Constants.Notifications.Smtp.Host, Arg.Any<string>()).Returns(string.Empty);
 
-            var actual = await new NotificationBroker(_settings, _smtp, _clientFactory, _logger).Send("unit", "test");
+            var actual = await new NotificationBroker(_settings, _smtp, _clientFactory, _logger, _localizer).Send("unit", "test");
             Assert.That(actual, Is.EqualTo(false));
         }
 
@@ -79,7 +81,7 @@ namespace WeddingShare.UnitTests.Tests.Helpers
         {
             _settings.GetOrDefault(Constants.Notifications.Ntfy.Endpoint, Arg.Any<string>()).Returns(string.Empty);
 
-            var actual = await new NotificationBroker(_settings, _smtp, _clientFactory, _logger).Send("unit", "test");
+            var actual = await new NotificationBroker(_settings, _smtp, _clientFactory, _logger, _localizer).Send("unit", "test");
             Assert.That(actual, Is.EqualTo(false));
         }
 
@@ -88,7 +90,7 @@ namespace WeddingShare.UnitTests.Tests.Helpers
         {
             _settings.GetOrDefault(Constants.Notifications.Gotify.Endpoint, Arg.Any<string>()).Returns(string.Empty);
 
-            var actual = await new NotificationBroker(_settings, _smtp, _clientFactory, _logger).Send("unit", "test");
+            var actual = await new NotificationBroker(_settings, _smtp, _clientFactory, _logger, _localizer).Send("unit", "test");
             Assert.That(actual, Is.EqualTo(false));
         }
     }

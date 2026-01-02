@@ -94,6 +94,18 @@
   <data name="406_Error_Title" xml:space="preserve">
     <value>Neplatná galéria</value>
   </data>
+  <data name="407_Error_Message" xml:space="preserve">
+    <value>Tam bol problém, zatiaľ čo sa snaží overiť svoj účet. Prosím, uistite sa, že overovací odkaz je platný.</value>
+  </data>
+  <data name="407_Error_Title" xml:space="preserve">
+    <value>Neplatné overenie Spojenie</value>
+  </data>
+  <data name="408_Error_Message" xml:space="preserve">
+    <value>Tam bol problém, zatiaľ čo sa snaží resetovať heslo účtu. Prosím, uistite sa, že overovací odkaz je platný.</value>
+  </data>
+  <data name="408_Error_Title" xml:space="preserve">
+    <value>Neplatný odkaz na obnovenie hesla</value>
+  </data>
   <data name="Accept" xml:space="preserve">
     <value>Akceptovať</value>
   </data>
@@ -120,6 +132,12 @@
   </data>
   <data name="Audit" xml:space="preserve">
     <value>Audit</value>
+  </data>
+  <data name="Audit_Account_Registered" xml:space="preserve">
+    <value>Užívateľ registrovaný účet</value>
+  </data>
+  <data name="Audit_ActivateUser" xml:space="preserve">
+    <value>Aktivovaný užívateľ</value>
   </data>
   <data name="Audit_BulkApproveReviews" xml:space="preserve">
     <value>Bulk schválené všetky prebiehajúce preskúmania</value>
@@ -148,6 +166,9 @@
   <data name="Audit_DeletedUser" xml:space="preserve">
     <value>Vypustený užívateľ</value>
   </data>
+  <data name="Audit_Email_Verified" xml:space="preserve">
+    <value>Užívateľ overil svoju e-mailovú adresu</value>
+  </data>
   <data name="Audit_ExportedBackup" xml:space="preserve">
     <value>Exportovať zálohu</value>
   </data>
@@ -156,6 +177,9 @@
   </data>
   <data name="Audit_FailedLoginAttemptReset" xml:space="preserve">
     <value>Zlyhaný počet prihlasovacích pokusov</value>
+  </data>
+  <data name="Audit_Forgot_Password" xml:space="preserve">
+    <value>Užívateľ požadoval obnovenie hesla</value>
   </data>
   <data name="Audit_FrozeUser" xml:space="preserve">
     <value>Zamrzol užívateľ</value>
@@ -198,6 +222,9 @@
   </data>
   <data name="Audit_MultiFactorResetUser" xml:space="preserve">
     <value>Resetovať multifaktor pre používateľa</value>
+  </data>
+  <data name="Audit_Password_Reset" xml:space="preserve">
+    <value>Užívateľ požadoval obnovenie hesla</value>
   </data>
   <data name="Audit_SearchTerm_Help" xml:space="preserve">
     <value>Záznamy filtrov založené na vyhľadávacom výraze</value>
@@ -379,6 +406,21 @@
   <data name="Filter" xml:space="preserve">
     <value>Filter</value>
   </data>
+  <data name="Forgot_Password" xml:space="preserve">
+    <value>Zabudli heslo</value>
+  </data>
+  <data name="ForgotPassword" xml:space="preserve">
+    <value>Zabudli heslo</value>
+  </data>
+  <data name="ForgotPassword_Email_Help" xml:space="preserve">
+    <value>Zadajte e-mailovú adresu účtu.</value>
+  </data>
+  <data name="ForgotPassword_Email_Label" xml:space="preserve">
+    <value>E-mailová adresa</value>
+  </data>
+  <data name="ForgotPassword_Failed" xml:space="preserve">
+    <value>Nepodarilo sa poslať resetovanie hesla emailu</value>
+  </data>
   <data name="Galleries" xml:space="preserve">
     <value>Galérie</value>
   </data>
@@ -396,6 +438,15 @@
   </data>
   <data name="Gallery_Full" xml:space="preserve">
     <value>Galéria je plná a prekročila maximálnu veľkosť</value>
+  </data>
+  <data name="Gallery_Identifier" xml:space="preserve">
+    <value>Identifikátor galérie</value>
+  </data>
+  <data name="Gallery_Identifier_Help" xml:space="preserve">
+    <value>Prosím zadajte identifikátor galérie, ktorú chcete navštíviť.</value>
+  </data>
+  <data name="Gallery_Identifier_Placeholder" xml:space="preserve">
+    <value>my-svadobné-galéria</value>
   </data>
   <data name="Gallery_Key" xml:space="preserve">
     <value>Kľúč k galérii</value>
@@ -417,12 +468,6 @@
   </data>
   <data name="Gallery_Name_Already_Exists" xml:space="preserve">
     <value>Názov galérie už existuje</value>
-  </data>
-  <data name="Gallery_Name_Help" xml:space="preserve">
-    <value>Prosím, zadajte názov galérie, ktorú chcete navštíviť.</value>
-  </data>
-  <data name="Gallery_Name_Placeholder" xml:space="preserve">
-    <value>my-svadobné-galéria</value>
   </data>
   <data name="Gallery_Selector_Title" xml:space="preserve">
     <value>Výber galérií</value>
@@ -535,6 +580,24 @@
   <data name="None" xml:space="preserve">
     <value>Žiadne</value>
   </data>
+  <data name="Password_Reset_Changed_Message" xml:space="preserve">
+    <value>Vaše heslo bolo resetované. Ak ste nepožiadali o obnovenie hesla, okamžite kontaktujte administrátora.</value>
+  </data>
+  <data name="Password_Reset_Changed_Title" xml:space="preserve">
+    <value>Vaše heslo bolo aktualizované!</value>
+  </data>
+  <data name="Password_Reset_Requested_Message" xml:space="preserve">
+    <value>Na vašom účte bol požadovaný reset hesla. Ak ste požiadali o zmenu hesla, kliknite na nižšie uvedený odkaz pre aktualizáciu.</value>
+  </data>
+  <data name="Password_Reset_Requested_Title" xml:space="preserve">
+    <value>Problémy s prístupom k vášmu účtu?</value>
+  </data>
+  <data name="PasswordReset" xml:space="preserve">
+    <value>Obnoviť heslo</value>
+  </data>
+  <data name="PasswordReset_Failed" xml:space="preserve">
+    <value>Nepodarilo sa poslať e-mail s resetom hesla.</value>
+  </data>
   <data name="Pending" xml:space="preserve">
     <value>Čakanie</value>
   </data>
@@ -553,6 +616,75 @@
   <data name="Random" xml:space="preserve">
     <value>Náhodne</value>
   </data>
+  <data name="Register" xml:space="preserve">
+    <value>Register</value>
+  </data>
+  <data name="Register_Account" xml:space="preserve">
+    <value>Účet registra</value>
+  </data>
+  <data name="Register_CPassword_Help" xml:space="preserve">
+    <value>Potvrdiť heslo</value>
+  </data>
+  <data name="Register_CPassword_Label" xml:space="preserve">
+    <value>Potvrdiť heslo</value>
+  </data>
+  <data name="Register_Email_Help" xml:space="preserve">
+    <value>Zadajte e-mailovú adresu účtu.</value>
+  </data>
+  <data name="Register_Email_Label" xml:space="preserve">
+    <value>E-mailová adresa</value>
+  </data>
+  <data name="Register_Password_Help" xml:space="preserve">
+    <value>Heslo zadá heslo.</value>
+  </data>
+  <data name="Register_Password_Label" xml:space="preserve">
+    <value>Heslo</value>
+  </data>
+  <data name="Register_Username_Help" xml:space="preserve">
+    <value>Prosím zadajte užívateľské meno účtu.</value>
+  </data>
+  <data name="Register_Username_Label" xml:space="preserve">
+    <value>Užívateľské meno</value>
+  </data>
+  <data name="Registration_Confirm_Password_Missmatch" xml:space="preserve">
+    <value>Potvrdenie hesla nezodpovedá</value>
+  </data>
+  <data name="Registration_Email_Send_Failed" xml:space="preserve">
+    <value>Nepodarilo sa poslať registračný e-mail užívateľovi.</value>
+  </data>
+  <data name="Registration_Email_Taken" xml:space="preserve">
+    <value>Účet so špecifikovanou e-mailovou adresou už existuje</value>
+  </data>
+  <data name="Registration_Failed" xml:space="preserve">
+    <value>Nepodarilo sa zaregistrovať nového užívateľa</value>
+  </data>
+  <data name="Registration_Invalid_Email" xml:space="preserve">
+    <value>Uveďte platnú e-mailovú adresu</value>
+  </data>
+  <data name="Registration_Invalid_Password" xml:space="preserve">
+    <value>Uveďte platné heslo medzi 8 a 100 znakmi, ktoré obsahuje aspoň 1 veľké písmeno, 1 malé písmeno, 1 číslo a 1 špeciálny znak</value>
+  </data>
+  <data name="Registration_Invalid_Username" xml:space="preserve">
+    <value>Zadajte platné užívateľské meno medzi 5 a 50 znakov</value>
+  </data>
+  <data name="Registration_Invalid_Verification_Link" xml:space="preserve">
+    <value>Tam bol problém spracovanie e-mailu overenie odkaz</value>
+  </data>
+  <data name="Registration_Success_Message" xml:space="preserve">
+    <value>Vaše konto bolo úspešne registrované a čakáte na prístup</value>
+  </data>
+  <data name="Registration_Success_Title" xml:space="preserve">
+    <value>Vitajte!</value>
+  </data>
+  <data name="Registration_Success_Verification" xml:space="preserve">
+    <value>Váš účet bol registrovaný, ale musí byť overený pred jeho prístupom. Aktivujte svoj účet kliknutím na odkaz nižšie.</value>
+  </data>
+  <data name="Registration_Username_Taken" xml:space="preserve">
+    <value>Užívateľské meno už existuje. Prosím vyberte nový</value>
+  </data>
+  <data name="Registration_Weak_Password" xml:space="preserve">
+    <value>Zadané heslo je ľahko uhádnuť. Prosím vyberte bezpečnejšie heslo.</value>
+  </data>
   <data name="Reject" xml:space="preserve">
     <value>Odmietnuť</value>
   </data>
@@ -561,6 +693,9 @@
   </data>
   <data name="Rename" xml:space="preserve">
     <value>Premenovať</value>
+  </data>
+  <data name="ResetPassword_Invalid_Reset_Link" xml:space="preserve">
+    <value>Tam bol problém spracovanie hesla reset odkaz</value>
   </data>
   <data name="Resources" xml:space="preserve">
     <value>Zdroje</value>
@@ -603,6 +738,18 @@
   </data>
   <data name="Settings_Account_Profile_Icon_Label" xml:space="preserve">
     <value>Ikona profilu</value>
+  </data>
+  <data name="Settings_Account_Registration_Enabled_Help" xml:space="preserve">
+    <value>Môžu hostia registrovať účty?</value>
+  </data>
+  <data name="Settings_Account_Registration_Enabled_Label" xml:space="preserve">
+    <value>Registrácia povolená</value>
+  </data>
+  <data name="Settings_Account_Registration_RequireEmailValidation_Help" xml:space="preserve">
+    <value>Sú používatelia povinní overiť svoj e-mail s cieľom aktivovať svoj účet?</value>
+  </data>
+  <data name="Settings_Account_Registration_RequireEmailValidation_Label" xml:space="preserve">
+    <value>Požadovať e-mailové overenie</value>
   </data>
   <data name="Settings_Alerts" xml:space="preserve">
     <value>Upozornenia</value>
@@ -892,12 +1039,6 @@
   <data name="Settings_Gallery_ReviewCounter_Label" xml:space="preserve">
     <value>Počítadlo preskúmania</value>
   </data>
-  <data name="Settings_Gallery_SecretKey_Help" xml:space="preserve">
-    <value>Heslo pre odomknutie galérie</value>
-  </data>
-  <data name="Settings_Gallery_SecretKey_Label" xml:space="preserve">
-    <value>Tajný kľúč</value>
-  </data>
   <data name="Settings_Gallery_ShowFilters_Help" xml:space="preserve">
     <value>Mal by byť užívateľ schopný filtrovať a zoskupiť médiá?</value>
   </data>
@@ -1162,6 +1303,9 @@
   <data name="Square" xml:space="preserve">
     <value>Štvorec</value>
   </data>
+  <data name="Submit" xml:space="preserve">
+    <value>Predložiť</value>
+  </data>
   <data name="Supporters" xml:space="preserve">
     <value>Priaznivci</value>
   </data>
@@ -1176,6 +1320,12 @@
   </data>
   <data name="Update" xml:space="preserve">
     <value>Aktualizácia</value>
+  </data>
+  <data name="Upgrade" xml:space="preserve">
+    <value>Aktualizácia</value>
+  </data>
+  <data name="Upgrade_Account_Message" xml:space="preserve">
+    <value>Momentálne používate bezplatnú verziu. Ak chcete odomknúť viac úložiska galérie a ďalšie skvelé funkcie zvážiť modernizáciu svoj účet</value>
   </data>
   <data name="Upload_Media" xml:space="preserve">
     <value>Odoslať médiá</value>
@@ -1203,6 +1353,9 @@
   </data>
   <data name="Users_List_Failed" xml:space="preserve">
     <value>Nepodarilo sa získať zoznam používateľov</value>
+  </data>
+  <data name="Verify" xml:space="preserve">
+    <value>Overiť</value>
   </data>
   <data name="Videos" xml:space="preserve">
     <value>Videá</value>

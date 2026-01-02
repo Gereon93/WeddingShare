@@ -2,10 +2,11 @@
 
 @{
     var isDemoMode = await _settings.GetOrDefault(Settings.IsDemoMode, false);
+    var isRegistrationEnabled = await _settings.GetOrDefault(Settings.Account.Registration.Enabled, true);
 }
 
-<section class="py-1 py-lg-5">
-    <div class="container px-3 px-lg-1 my-3 mt-lg-1">
+<div id="main-content">
+    <div class="container px-3 px-lg-1 pb-4">
         @if (isDemoMode)
         {
             <div class="alert alert-success text-center mb-2" role="alert">
@@ -38,8 +39,17 @@
                             <button id="btnLogin" class="btn btn-primary w-100" type="submit">@_localizer["Login"].Value</button>
                         </div>
                     </div>
+
+                    @if (isRegistrationEnabled)
+                    {
+                        <div class="row mt-4 mt-lg-5 text-center">
+                            <div class="col-12">
+                                @Html.ActionLink(_localizer["Register_Account"].Value, "Register", "Account", null, new { @class = "text-link mx-2" }) | @Html.ActionLink(_localizer["Forgot_Password"].Value, "ForgotPassword", "Account", null, new { @class = "text-link mx-2" })
+                            </div>
+                        </div>
+                    }
                 </form>
             </div>
         </div>
     </div>
-</section>
+</div>

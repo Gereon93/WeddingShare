@@ -40,6 +40,8 @@ namespace WeddingShare
             var dbHelper = services.AddDatabaseConfiguration(config, _loggerFactory);
 
             var settings = new SettingsHelper(dbHelper, config, _loggerFactory.CreateLogger<SettingsHelper>());
+            _logger.LogInformation($"Release Version - '{settings.GetReleaseVersion(4).Result}'");
+
             services.AddNotificationConfiguration(settings);
             services.AddLocalizationConfiguration(settings);
 
@@ -47,6 +49,7 @@ namespace WeddingShare
             services.AddHostedService<NotificationReport>();
             services.AddHostedService<CleanupService>();
 
+            services.AddResponseCaching();
             services.AddRazorPages();
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
 
@@ -93,6 +96,11 @@ namespace WeddingShare
             services.AddDataProtection()
                 .SetApplicationName("WeddingShare")
                 .PersistKeysToFileSystem(new DirectoryInfo(Directories.Config));
+
+            services.AddRequestTimeouts(options =>
+            {
+                options.AddPolicy("timeout_1h", TimeSpan.FromHours(1));
+            });
 
             var localizer = services.BuildServiceProvider().GetRequiredService<IStringLocalizer<Lang.Translations>>();
             var ffmpegPath = config.GetOrDefault(FFMPEG.InstallPath, "/ffmpeg");
@@ -166,6 +174,8 @@ namespace WeddingShare
             app.UseAuthorization();
             app.UseRequestLocalization();
             app.UseSession();
+            app.UseRequestTimeouts();
+            app.UseResponseCaching();
 
             // Device UUID Middleware - SECURITY HARDENED
             app.Use(async (context, next) =>

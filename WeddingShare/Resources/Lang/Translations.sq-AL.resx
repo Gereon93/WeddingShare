@@ -94,6 +94,18 @@
   <data name="406_Error_Title" xml:space="preserve">
     <value>Koleksion i pavlefshëm</value>
   </data>
+  <data name="407_Error_Message" xml:space="preserve">
+    <value>Kishte një problem gjatë përpjekjes për të verifikuar llogarinë tënde. Sigurohu që lidhja e verifikimit të jetë e vlefshme.</value>
+  </data>
+  <data name="407_Error_Title" xml:space="preserve">
+    <value>Verifikimi i pavlefshëm Lidhje</value>
+  </data>
+  <data name="408_Error_Message" xml:space="preserve">
+    <value>U ndesh një problem gjatë përpjekjes për të rivendosur fjalëkalimin e profilit tuaj. Sigurohu që lidhja e verifikimit të jetë e vlefshme.</value>
+  </data>
+  <data name="408_Error_Title" xml:space="preserve">
+    <value>Lidhje e pasaktë password</value>
+  </data>
   <data name="Accept" xml:space="preserve">
     <value>Prano</value>
   </data>
@@ -120,6 +132,12 @@
   </data>
   <data name="Audit" xml:space="preserve">
     <value>Kontrollo</value>
+  </data>
+  <data name="Audit_Account_Registered" xml:space="preserve">
+    <value>Profili i regjistruar i përdoruesit</value>
+  </data>
+  <data name="Audit_ActivateUser" xml:space="preserve">
+    <value>Përdoruesi i aktivizuar</value>
   </data>
   <data name="Audit_BulkApproveReviews" xml:space="preserve">
     <value>Blek miratoi të gjitha vlerësimet në pritje</value>
@@ -148,6 +166,9 @@
   <data name="Audit_DeletedUser" xml:space="preserve">
     <value>Përdoruesi i fshirë</value>
   </data>
+  <data name="Audit_Email_Verified" xml:space="preserve">
+    <value>Përdoruesi ka verifikuar adresën e tyre email</value>
+  </data>
   <data name="Audit_ExportedBackup" xml:space="preserve">
     <value>Eksporto</value>
   </data>
@@ -156,6 +177,9 @@
   </data>
   <data name="Audit_FailedLoginAttemptReset" xml:space="preserve">
     <value>Përpjekjet e hyrjes në menyrë të dëshërueshme për t'u anulluar</value>
+  </data>
+  <data name="Audit_Forgot_Password" xml:space="preserve">
+    <value>Përdoruesi ka kërkuar relexon</value>
   </data>
   <data name="Audit_FrozeUser" xml:space="preserve">
     <value>Froze përdorues</value>
@@ -198,6 +222,9 @@
   </data>
   <data name="Audit_MultiFactorResetUser" xml:space="preserve">
     <value>Nga fillimi nga përdorues</value>
+  </data>
+  <data name="Audit_Password_Reset" xml:space="preserve">
+    <value>Përdoruesi ka kërkuar relexon</value>
   </data>
   <data name="Audit_SearchTerm_Help" xml:space="preserve">
     <value>Filtro në bazë të një termi kërkimi</value>
@@ -379,6 +406,21 @@
   <data name="Filter" xml:space="preserve">
     <value>Filtra</value>
   </data>
+  <data name="Forgot_Password" xml:space="preserve">
+    <value>_Harro fjalëkalimin</value>
+  </data>
+  <data name="ForgotPassword" xml:space="preserve">
+    <value>_Harro fjalëkalimin</value>
+  </data>
+  <data name="ForgotPassword_Email_Help" xml:space="preserve">
+    <value>Të lutem shkruaj adresën e profilit email.</value>
+  </data>
+  <data name="ForgotPassword_Email_Label" xml:space="preserve">
+    <value>Adresa email</value>
+  </data>
+  <data name="ForgotPassword_Failed" xml:space="preserve">
+    <value>Dërgimi i fjalëkalimit dështoi</value>
+  </data>
   <data name="Galleries" xml:space="preserve">
     <value>Galleritë</value>
   </data>
@@ -396,6 +438,15 @@
   </data>
   <data name="Gallery_Full" xml:space="preserve">
     <value>Galeria është plot dhe ka tejkaluar madhësinë maksimum të</value>
+  </data>
+  <data name="Gallery_Identifier" xml:space="preserve">
+    <value>Identifikuesi i galerisë</value>
+  </data>
+  <data name="Gallery_Identifier_Help" xml:space="preserve">
+    <value>Shkruaj i pari shtegu.</value>
+  </data>
+  <data name="Gallery_Identifier_Placeholder" xml:space="preserve">
+    <value>mi-veshur-galleri im</value>
   </data>
   <data name="Gallery_Key" xml:space="preserve">
     <value>Kyçi i koleksionit</value>
@@ -417,12 +468,6 @@
   </data>
   <data name="Gallery_Name_Already_Exists" xml:space="preserve">
     <value>Emri i koleksionit ekziston</value>
-  </data>
-  <data name="Gallery_Name_Help" xml:space="preserve">
-    <value>Ju lutem shkruani emrin e koleksionit që dëshironi të vizitoni.</value>
-  </data>
-  <data name="Gallery_Name_Placeholder" xml:space="preserve">
-    <value>mi-veshur-galleri im</value>
   </data>
   <data name="Gallery_Selector_Title" xml:space="preserve">
     <value>Zgjedhësi i Galerisë</value>
@@ -535,6 +580,24 @@
   <data name="None" xml:space="preserve">
     <value>Asnjë</value>
   </data>
+  <data name="Password_Reset_Changed_Message" xml:space="preserve">
+    <value>Fjalëkalimi juaj tani është rivendosur. Nëse nuk keni kërkuar një fjalëkalim të rirelexuar, ju lutem synoni menjëherë një administrator.</value>
+  </data>
+  <data name="Password_Reset_Changed_Title" xml:space="preserve">
+    <value>Fjalëkalimi juaj është përditësuar!</value>
+  </data>
+  <data name="Password_Reset_Requested_Message" xml:space="preserve">
+    <value>Për profilin tuaj është kërkuar një fjalëkalim i ri. Nëse keni kërkuar një ndryshim fjalëkalimi, klikoni në lidhjen e mëposhtme për t'a rifreskuar.</value>
+  </data>
+  <data name="Password_Reset_Requested_Title" xml:space="preserve">
+    <value>Telashe në llogarinë tënde?</value>
+  </data>
+  <data name="PasswordReset" xml:space="preserve">
+    <value>Rikthe fjalëkalimin</value>
+  </data>
+  <data name="PasswordReset_Failed" xml:space="preserve">
+    <value>Dërgimi i fjalëkalimit dështoi.</value>
+  </data>
   <data name="Pending" xml:space="preserve">
     <value>Në pritje</value>
   </data>
@@ -553,6 +616,75 @@
   <data name="Random" xml:space="preserve">
     <value>I zakonshëm</value>
   </data>
+  <data name="Register" xml:space="preserve">
+    <value>I regjistruar</value>
+  </data>
+  <data name="Register_Account" xml:space="preserve">
+    <value>I regjistruar</value>
+  </data>
+  <data name="Register_CPassword_Help" xml:space="preserve">
+    <value>Konfermo fjalëkalimin</value>
+  </data>
+  <data name="Register_CPassword_Label" xml:space="preserve">
+    <value>Konfirmo fjalëkalimin</value>
+  </data>
+  <data name="Register_Email_Help" xml:space="preserve">
+    <value>Të lutem shkruaj adresën e profilit email.</value>
+  </data>
+  <data name="Register_Email_Label" xml:space="preserve">
+    <value>Adresa email</value>
+  </data>
+  <data name="Register_Password_Help" xml:space="preserve">
+    <value>Fjalëkalimi.</value>
+  </data>
+  <data name="Register_Password_Label" xml:space="preserve">
+    <value>Fjalëkalimi</value>
+  </data>
+  <data name="Register_Username_Help" xml:space="preserve">
+    <value>Të lutem shkruaj emrin e përdoruesit të profilit.</value>
+  </data>
+  <data name="Register_Username_Label" xml:space="preserve">
+    <value>Përdoruesi</value>
+  </data>
+  <data name="Registration_Confirm_Password_Missmatch" xml:space="preserve">
+    <value>Konfirmo fjalëkalimin nuk korrispondon</value>
+  </data>
+  <data name="Registration_Email_Send_Failed" xml:space="preserve">
+    <value>Dërgimi i postës së regjistrimit dështoi.</value>
+  </data>
+  <data name="Registration_Email_Taken" xml:space="preserve">
+    <value>Një profil me adresën e specifikuar email ekziston</value>
+  </data>
+  <data name="Registration_Failed" xml:space="preserve">
+    <value>Regjistrimi i përdoruesit të ri dështoi</value>
+  </data>
+  <data name="Registration_Invalid_Email" xml:space="preserve">
+    <value>Të lutem specifiko një adresë të vlefshme email</value>
+  </data>
+  <data name="Registration_Invalid_Password" xml:space="preserve">
+    <value>Ju lutem specifikoni një fjalëkalim të vlefshëm midis 8 dhe 100 shkronja, që përmban të paktën 1 shkronja të sipërme, 1 shkronja më e ulët, 1 numër dhe 1 karakter të veçantë</value>
+  </data>
+  <data name="Registration_Invalid_Username" xml:space="preserve">
+    <value>Ju lutem zgjidhni një përdorues të vlefshëm midis 5 dhe 50 simbole</value>
+  </data>
+  <data name="Registration_Invalid_Verification_Link" xml:space="preserve">
+    <value>U bë një problem gjatë proçesimit të lidhjes së verifikimit të email-it</value>
+  </data>
+  <data name="Registration_Success_Message" xml:space="preserve">
+    <value>Llogaria juaj është regjistruar me sukses dhe pret që ju të hyni</value>
+  </data>
+  <data name="Registration_Success_Title" xml:space="preserve">
+    <value>Mirë se erdhët!</value>
+  </data>
+  <data name="Registration_Success_Verification" xml:space="preserve">
+    <value>Llogaria juaj është regjistruar por duhet verifikuar para se të mund të hyjë. Ju lutem aktivizojeni profilin tuaj duke klikuar në lidhjen e mëposhtme.</value>
+  </data>
+  <data name="Registration_Username_Taken" xml:space="preserve">
+    <value>Përdoruesi ekziston. Ju lutem zgjidhni një tjetër</value>
+  </data>
+  <data name="Registration_Weak_Password" xml:space="preserve">
+    <value>Fjalëkalimi i specifikuar u gjet lehtësisht. Zgjidhni fjalëkalimin më të sigurt.</value>
+  </data>
   <data name="Reject" xml:space="preserve">
     <value>_Refuzo</value>
   </data>
@@ -561,6 +693,9 @@
   </data>
   <data name="Rename" xml:space="preserve">
     <value>Riemërto</value>
+  </data>
+  <data name="ResetPassword_Invalid_Reset_Link" xml:space="preserve">
+    <value>U ndesh një çështje gjatë proçesimit të fjalëkalimit për rinisjen e lidhjes</value>
   </data>
   <data name="Resources" xml:space="preserve">
     <value>Gjëndja</value>
@@ -603,6 +738,18 @@
   </data>
   <data name="Settings_Account_Profile_Icon_Label" xml:space="preserve">
     <value>Ikona e profilit</value>
+  </data>
+  <data name="Settings_Account_Registration_Enabled_Help" xml:space="preserve">
+    <value>A lejohen të ftuarit të regjistrojnë llogaritë?</value>
+  </data>
+  <data name="Settings_Account_Registration_Enabled_Label" xml:space="preserve">
+    <value>Aktivizohet regjistrimi</value>
+  </data>
+  <data name="Settings_Account_Registration_RequireEmailValidation_Help" xml:space="preserve">
+    <value>A u kërkohet përdoruesve të verifikojnë e-mail-in e tyre për të aktivizuar profilin e tyre?</value>
+  </data>
+  <data name="Settings_Account_Registration_RequireEmailValidation_Label" xml:space="preserve">
+    <value>Kërko Vlefshmërinë email</value>
   </data>
   <data name="Settings_Alerts" xml:space="preserve">
     <value>Paralajmërime</value>
@@ -892,12 +1039,6 @@
   <data name="Settings_Gallery_ReviewCounter_Label" xml:space="preserve">
     <value>Rishikim kundër</value>
   </data>
-  <data name="Settings_Gallery_SecretKey_Help" xml:space="preserve">
-    <value>Një fjalëkalim për të zhbllokuar galerinë</value>
-  </data>
-  <data name="Settings_Gallery_SecretKey_Label" xml:space="preserve">
-    <value>Kyçi sekret</value>
-  </data>
   <data name="Settings_Gallery_ShowFilters_Help" xml:space="preserve">
     <value>A duhet të jetë përdoruesi në gjendje të filtrojë dhe grupojë media?</value>
   </data>
@@ -1162,6 +1303,9 @@
   <data name="Square" xml:space="preserve">
     <value>Në katror</value>
   </data>
+  <data name="Submit" xml:space="preserve">
+    <value>Dërgo</value>
+  </data>
   <data name="Supporters" xml:space="preserve">
     <value>Përkrahësit</value>
   </data>
@@ -1176,6 +1320,12 @@
   </data>
   <data name="Update" xml:space="preserve">
     <value>Përditëso</value>
+  </data>
+  <data name="Upgrade" xml:space="preserve">
+    <value>Përditëso</value>
+  </data>
+  <data name="Upgrade_Account_Message" xml:space="preserve">
+    <value>Ju aktualisht jeni duke përdorur versionin e lirë. Për të zbllokuar më shumë ruajtje galerie dhe veçori të tjera të mëdha konsiderojnë përmirësimin e llogarisë suaj</value>
   </data>
   <data name="Upload_Media" xml:space="preserve">
     <value>Ngarko</value>
@@ -1203,6 +1353,9 @@
   </data>
   <data name="Users_List_Failed" xml:space="preserve">
     <value>Gabim gjatë marrjes së listës së përdoruesve</value>
+  </data>
+  <data name="Verify" xml:space="preserve">
+    <value>Verifikimi</value>
   </data>
   <data name="Videos" xml:space="preserve">
     <value>Videot</value>

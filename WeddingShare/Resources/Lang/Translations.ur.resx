@@ -94,6 +94,18 @@
   <data name="406_Error_Title" xml:space="preserve">
     <value>گلی‌کوچوں میں</value>
   </data>
+  <data name="407_Error_Message" xml:space="preserve">
+    <value>آپ کے اکاؤنٹ کی تصدیق کرنے کی کوشش میں ایک مسئلہ تھا۔ برائے مہربانی تصدیقی تعلق جائز ہے.</value>
+  </data>
+  <data name="407_Error_Title" xml:space="preserve">
+    <value>اصلاح لنک</value>
+  </data>
+  <data name="408_Error_Message" xml:space="preserve">
+    <value>آپ کا اکاؤنٹ پاس ورڈ دوبارہ لکھنے کی کوشش میں ایک مسئلہ تھا۔ برائے مہربانی تصدیقی تعلق جائز ہے.</value>
+  </data>
+  <data name="408_Error_Title" xml:space="preserve">
+    <value>خفیہ لفظ پاس ورڈ لنک میں</value>
+  </data>
   <data name="Accept" xml:space="preserve">
     <value>قبول کرو</value>
   </data>
@@ -120,6 +132,12 @@
   </data>
   <data name="Audit" xml:space="preserve">
     <value>حد سے زیادہ</value>
+  </data>
+  <data name="Audit_Account_Registered" xml:space="preserve">
+    <value>صارف نامزد کردہ اکاؤنٹ</value>
+  </data>
+  <data name="Audit_ActivateUser" xml:space="preserve">
+    <value>فعال صارف</value>
   </data>
   <data name="Audit_BulkApproveReviews" xml:space="preserve">
     <value>بلک نے تمام پیکنگ جائزوں کو منظور کر لیا۔</value>
@@ -148,6 +166,9 @@
   <data name="Audit_DeletedUser" xml:space="preserve">
     <value>صارف حذف کردیا گیا ہے</value>
   </data>
+  <data name="Audit_Email_Verified" xml:space="preserve">
+    <value>صارف ان کے ای میل کی تصدیق کرتا ہے</value>
+  </data>
   <data name="Audit_ExportedBackup" xml:space="preserve">
     <value>واپس لوٹنے کا عمل</value>
   </data>
@@ -156,6 +177,9 @@
   </data>
   <data name="Audit_FailedLoginAttemptReset" xml:space="preserve">
     <value>غیر متصلہ کوششیں</value>
+  </data>
+  <data name="Audit_Forgot_Password" xml:space="preserve">
+    <value>صارفین نے پاس ورڈ واپسی کی درخواست کی</value>
   </data>
   <data name="Audit_FrozeUser" xml:space="preserve">
     <value>سوفٹ ویئر صارف</value>
@@ -198,6 +222,9 @@
   </data>
   <data name="Audit_MultiFactorResetUser" xml:space="preserve">
     <value>صارف کے لیے کثیر استعمال کريں</value>
+  </data>
+  <data name="Audit_Password_Reset" xml:space="preserve">
+    <value>صارفین نے پاس ورڈ واپسی کی درخواست کی</value>
   </data>
   <data name="Audit_SearchTerm_Help" xml:space="preserve">
     <value>تلاش کی اصطلاح پر مبنی ذیلی لاگس</value>
@@ -379,6 +406,21 @@
   <data name="Filter" xml:space="preserve">
     <value>فائلز</value>
   </data>
+  <data name="Forgot_Password" xml:space="preserve">
+    <value>پاس ورڈ</value>
+  </data>
+  <data name="ForgotPassword" xml:space="preserve">
+    <value>پاس ورڈ</value>
+  </data>
+  <data name="ForgotPassword_Email_Help" xml:space="preserve">
+    <value>برائے مہربانی ای میل پتہ داخل کریں.</value>
+  </data>
+  <data name="ForgotPassword_Email_Label" xml:space="preserve">
+    <value>ای میل پتہ</value>
+  </data>
+  <data name="ForgotPassword_Failed" xml:space="preserve">
+    <value>خفیہ لفظ ای میل بھیجنے میں ناکامی</value>
+  </data>
   <data name="Galleries" xml:space="preserve">
     <value>گلابی رنگ</value>
   </data>
@@ -396,6 +438,15 @@
   </data>
   <data name="Gallery_Full" xml:space="preserve">
     <value>گیلری مکمل ہے اور مکس حجم سے تجاوز کر چکی ہے۔</value>
+  </data>
+  <data name="Gallery_Identifier" xml:space="preserve">
+    <value>گیلریاں</value>
+  </data>
+  <data name="Gallery_Identifier_Help" xml:space="preserve">
+    <value>براہ کرم آپ جانا چاہتے ہیں گیلری کے شناخت کنندہ داخل کریں۔.</value>
+  </data>
+  <data name="Gallery_Identifier_Placeholder" xml:space="preserve">
+    <value>میری ہفتہ وار گیلری</value>
   </data>
   <data name="Gallery_Key" xml:space="preserve">
     <value>گیلری کلیدی</value>
@@ -417,12 +468,6 @@
   </data>
   <data name="Gallery_Name_Already_Exists" xml:space="preserve">
     <value>گیلری نام پہلے ہی موجود ہے</value>
-  </data>
-  <data name="Gallery_Name_Help" xml:space="preserve">
-    <value>براہ مہربانی آپ اس گیلری کا نام داخل کریں جس سے آپ ملنا چاہتے ہیں۔.</value>
-  </data>
-  <data name="Gallery_Name_Placeholder" xml:space="preserve">
-    <value>میری ہفتہ وار گیلری</value>
   </data>
   <data name="Gallery_Selector_Title" xml:space="preserve">
     <value>گیلری منتخب کنندہ</value>
@@ -535,6 +580,24 @@
   <data name="None" xml:space="preserve">
     <value>کچھ نہیں</value>
   </data>
+  <data name="Password_Reset_Changed_Message" xml:space="preserve">
+    <value>اب آپ کا پاس ورڈ دوبارہ درج ہوچکا ہے اگر آپ کوئی پاس ورڈ ری سیٹ درخواست نہ کریں تو فوراً ایک منتظم تک رسائی حاصل کریں۔.</value>
+  </data>
+  <data name="Password_Reset_Changed_Title" xml:space="preserve">
+    <value>آپ کا خفیہ لفظ اپلوڈ کیا گیا ہے!</value>
+  </data>
+  <data name="Password_Reset_Requested_Message" xml:space="preserve">
+    <value>آپ کے اکاؤنٹ پر پاس ورڈ ری سیٹ طلب کیا گیا ہے۔ اگر آپ پاس ورڈ تبدیل کریں تو پھر اس کی تجدید کے لیے مندرجہ ذیل لنک کلک کریں.</value>
+  </data>
+  <data name="Password_Reset_Requested_Title" xml:space="preserve">
+    <value>آپ کے اکاؤنٹ تک رسائی؟?</value>
+  </data>
+  <data name="PasswordReset" xml:space="preserve">
+    <value>پاس ورڈ</value>
+  </data>
+  <data name="PasswordReset_Failed" xml:space="preserve">
+    <value>پاس ورڈ بھیجنے سے انکار نہیں.</value>
+  </data>
   <data name="Pending" xml:space="preserve">
     <value>پَک</value>
   </data>
@@ -553,6 +616,75 @@
   <data name="Random" xml:space="preserve">
     <value>رنگ</value>
   </data>
+  <data name="Register" xml:space="preserve">
+    <value>لکھی ہوئی کتاب</value>
+  </data>
+  <data name="Register_Account" xml:space="preserve">
+    <value>اکاؤنٹ لکھیں</value>
+  </data>
+  <data name="Register_CPassword_Help" xml:space="preserve">
+    <value>اپنا خفیہ لفظ تصدیق کریں</value>
+  </data>
+  <data name="Register_CPassword_Label" xml:space="preserve">
+    <value>پاس ورڈ کی تصدیق کریں</value>
+  </data>
+  <data name="Register_Email_Help" xml:space="preserve">
+    <value>برائے مہربانی ای میل پتہ داخل کریں.</value>
+  </data>
+  <data name="Register_Email_Label" xml:space="preserve">
+    <value>ای میل پتہ</value>
+  </data>
+  <data name="Register_Password_Help" xml:space="preserve">
+    <value>پاس ورڈ د_کھائیں.</value>
+  </data>
+  <data name="Register_Password_Label" xml:space="preserve">
+    <value>پاس ورڈ</value>
+  </data>
+  <data name="Register_Username_Help" xml:space="preserve">
+    <value>براہ کرم اكاؤنٹ داخل كیجیے۔.</value>
+  </data>
+  <data name="Register_Username_Label" xml:space="preserve">
+    <value>پرنٹ</value>
+  </data>
+  <data name="Registration_Confirm_Password_Missmatch" xml:space="preserve">
+    <value>پاس ورڈ کی تصدیق نہیں ہے</value>
+  </data>
+  <data name="Registration_Email_Send_Failed" xml:space="preserve">
+    <value>صارف کو ای میل بھیجنے میں غلطی.</value>
+  </data>
+  <data name="Registration_Email_Taken" xml:space="preserve">
+    <value>مقررہ ای میل پتہ کے ساتھ پہلے ہی موجود ہے</value>
+  </data>
+  <data name="Registration_Failed" xml:space="preserve">
+    <value>نیا صارف رجسٹر کرنے میں ناکامی</value>
+  </data>
+  <data name="Registration_Invalid_Email" xml:space="preserve">
+    <value>براہ راست ای میل پتہ متعین کریں</value>
+  </data>
+  <data name="Registration_Invalid_Password" xml:space="preserve">
+    <value>برائے مہربانی 8 سے 100 حروف کے درمیان ایک موزوں پاس ورڈ متعین کریں، جس میں کم از کم 1 اوپری کیس خط، 1 درج ذیل حروف تہجی، 1 عدد اور 1 خصوصی حروف تہجی شامل ہیں۔</value>
+  </data>
+  <data name="Registration_Invalid_Username" xml:space="preserve">
+    <value>برائے مہربانی 5 سے 50 حروف کے درمیان مناسب فائل مرتب کریں</value>
+  </data>
+  <data name="Registration_Invalid_Verification_Link" xml:space="preserve">
+    <value>اس میں ای میل کی تیاری کر رہا تھا</value>
+  </data>
+  <data name="Registration_Success_Message" xml:space="preserve">
+    <value>آپ کو کامیابی سے نامزد کیا گیا ہے اور آپ تک رسائی کے لئے انتظار کر رہے ہیں</value>
+  </data>
+  <data name="Registration_Success_Title" xml:space="preserve">
+    <value>خوش آمدید!</value>
+  </data>
+  <data name="Registration_Success_Verification" xml:space="preserve">
+    <value>آپ کا اکاؤنٹ نامزد کیا گیا ہے لیکن اس تک رسائی ممکن ہونے سے پہلے توثیق ضروری ہے۔ براہِ‌مہربانی نیچے موجود لنک پر کلک کرنے سے اپنے اکاؤنٹ کو فعال کریں ۔.</value>
+  </data>
+  <data name="Registration_Username_Taken" xml:space="preserve">
+    <value>پہلے ہی موجود ہے. براہ كرم نیا منتخب کريں</value>
+  </data>
+  <data name="Registration_Weak_Password" xml:space="preserve">
+    <value>خفیہ لفظ آسانی سے استعمال کیا گیا ہے. برائے مہربانی زیادہ محفوظ پاس ورڈ منتخب کریں.</value>
+  </data>
   <data name="Reject" xml:space="preserve">
     <value>غیر متصل</value>
   </data>
@@ -561,6 +693,9 @@
   </data>
   <data name="Rename" xml:space="preserve">
     <value>نام بدلیں</value>
+  </data>
+  <data name="ResetPassword_Invalid_Reset_Link" xml:space="preserve">
+    <value>پاس ورڈ ری سیٹ لنکنگ کرنے کا معاملہ تھا۔</value>
   </data>
   <data name="Resources" xml:space="preserve">
     <value>وسائل</value>
@@ -603,6 +738,18 @@
   </data>
   <data name="Settings_Account_Profile_Icon_Label" xml:space="preserve">
     <value>پرو فا ئل</value>
+  </data>
+  <data name="Settings_Account_Registration_Enabled_Help" xml:space="preserve">
+    <value>کیا مہمانوں کو اکاؤنٹ ریکارڈ کرنے کی اجازت ہے ؟?</value>
+  </data>
+  <data name="Settings_Account_Registration_Enabled_Label" xml:space="preserve">
+    <value>جگہ</value>
+  </data>
+  <data name="Settings_Account_Registration_RequireEmailValidation_Help" xml:space="preserve">
+    <value>کیا صارفین کو اپنے اکاؤنٹ کو فعال کرنے کے لیے ان کے ای میل کی تصدیق کرنے کی ضرورت ہے؟?</value>
+  </data>
+  <data name="Settings_Account_Registration_RequireEmailValidation_Label" xml:space="preserve">
+    <value>ای میل کی توثیق درکار ہے</value>
   </data>
   <data name="Settings_Alerts" xml:space="preserve">
     <value>جمع</value>
@@ -892,12 +1039,6 @@
   <data name="Settings_Gallery_ReviewCounter_Label" xml:space="preserve">
     <value>تجدید کار</value>
   </data>
-  <data name="Settings_Gallery_SecretKey_Help" xml:space="preserve">
-    <value>گیلری کا نام</value>
-  </data>
-  <data name="Settings_Gallery_SecretKey_Label" xml:space="preserve">
-    <value>راز</value>
-  </data>
   <data name="Settings_Gallery_ShowFilters_Help" xml:space="preserve">
     <value>صارف کو فیلڈر اور گروپ میڈیا کے قابل ہونا چاہیے؟?</value>
   </data>
@@ -1162,6 +1303,9 @@
   <data name="Square" xml:space="preserve">
     <value>مربع</value>
   </data>
+  <data name="Submit" xml:space="preserve">
+    <value>غیر متصل</value>
+  </data>
   <data name="Supporters" xml:space="preserve">
     <value>غیر متصل</value>
   </data>
@@ -1176,6 +1320,12 @@
   </data>
   <data name="Update" xml:space="preserve">
     <value>تجدید</value>
+  </data>
+  <data name="Upgrade" xml:space="preserve">
+    <value>تجدید</value>
+  </data>
+  <data name="Upgrade_Account_Message" xml:space="preserve">
+    <value>آپ اس وقت مفت نسخہ استعمال کر رہے ہیں. مزید گیلری ذخیرہ کرنے کے لئے اور دیگر بڑی خصوصیات پر غور کریں</value>
   </data>
   <data name="Upload_Media" xml:space="preserve">
     <value>میڈیا اپ لوڈ کریں</value>
@@ -1203,6 +1353,9 @@
   </data>
   <data name="Users_List_Failed" xml:space="preserve">
     <value>صارفین فہرست حاصل کرنے میں ناکامی</value>
+  </data>
+  <data name="Verify" xml:space="preserve">
+    <value>رنگ</value>
   </data>
   <data name="Videos" xml:space="preserve">
     <value>ویڈیوز</value>

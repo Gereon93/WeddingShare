@@ -94,6 +94,18 @@
   <data name="406_Error_Title" xml:space="preserve">
     <value>גלריית Invalid</value>
   </data>
+  <data name="407_Error_Message" xml:space="preserve">
+    <value>יש בעיה בעת ניסיון לאמת את החשבון שלך. אנא ודא כי קישור אימות הוא בתוקף.</value>
+  </data>
+  <data name="407_Error_Title" xml:space="preserve">
+    <value>המונחים: invalid Verification קישור</value>
+  </data>
+  <data name="408_Error_Message" xml:space="preserve">
+    <value>הייתה בעיה בעת ניסיון לאפס את הסיסמה של החשבון שלך. אנא ודא כי קישור אימות הוא בתוקף.</value>
+  </data>
+  <data name="408_Error_Title" xml:space="preserve">
+    <value>תגית: איפוס קישורים</value>
+  </data>
   <data name="Accept" xml:space="preserve">
     <value>קבלה</value>
   </data>
@@ -120,6 +132,12 @@
   </data>
   <data name="Audit" xml:space="preserve">
     <value>ביקורת</value>
+  </data>
+  <data name="Audit_Account_Registered" xml:space="preserve">
+    <value>חשבון רשום</value>
+  </data>
+  <data name="Audit_ActivateUser" xml:space="preserve">
+    <value>משתמש פעיל</value>
   </data>
   <data name="Audit_BulkApproveReviews" xml:space="preserve">
     <value>Bulk אישר את כל חוות הדעת</value>
@@ -148,6 +166,9 @@
   <data name="Audit_DeletedUser" xml:space="preserve">
     <value>משתמש</value>
   </data>
+  <data name="Audit_Email_Verified" xml:space="preserve">
+    <value>המשתמש אימות כתובת הדואר האלקטרוני שלהם</value>
+  </data>
   <data name="Audit_ExportedBackup" xml:space="preserve">
     <value>ייצוא גיבוי</value>
   </data>
@@ -156,6 +177,9 @@
   </data>
   <data name="Audit_FailedLoginAttemptReset" xml:space="preserve">
     <value>ניסיונות כניסה כושלים לספור מחדש</value>
+  </data>
+  <data name="Audit_Forgot_Password" xml:space="preserve">
+    <value>המשתמש ביקש איפוס סיסמה</value>
   </data>
   <data name="Audit_FrozeUser" xml:space="preserve">
     <value>להקפיא משתמשים</value>
@@ -198,6 +222,9 @@
   </data>
   <data name="Audit_MultiFactorResetUser" xml:space="preserve">
     <value>איפוס רב-ספק למשתמש</value>
+  </data>
+  <data name="Audit_Password_Reset" xml:space="preserve">
+    <value>המשתמש ביקש איפוס סיסמה</value>
   </data>
   <data name="Audit_SearchTerm_Help" xml:space="preserve">
     <value>יומני מסנן המבוססים על מונח חיפוש</value>
@@ -379,6 +406,21 @@
   <data name="Filter" xml:space="preserve">
     <value>Filter</value>
   </data>
+  <data name="Forgot_Password" xml:space="preserve">
+    <value>שכח סיסמה</value>
+  </data>
+  <data name="ForgotPassword" xml:space="preserve">
+    <value>שכח סיסמה</value>
+  </data>
+  <data name="ForgotPassword_Email_Help" xml:space="preserve">
+    <value>אנא הכנס את כתובת הדואר האלקטרוני.</value>
+  </data>
+  <data name="ForgotPassword_Email_Label" xml:space="preserve">
+    <value>כתובת דואר אלקטרוני</value>
+  </data>
+  <data name="ForgotPassword_Failed" xml:space="preserve">
+    <value>נכשל לשלוח דואר אלקטרוני של סיסמה</value>
+  </data>
   <data name="Galleries" xml:space="preserve">
     <value>גלריות</value>
   </data>
@@ -396,6 +438,15 @@
   </data>
   <data name="Gallery_Full" xml:space="preserve">
     <value>הגלריה מלאה והתגברה על הגודל המקסימלי של</value>
+  </data>
+  <data name="Gallery_Identifier" xml:space="preserve">
+    <value>גלריה Identifier</value>
+  </data>
+  <data name="Gallery_Identifier_Help" xml:space="preserve">
+    <value>אנא הזן את המזה של הגלריה שברצונך לבקר.</value>
+  </data>
+  <data name="Gallery_Identifier_Placeholder" xml:space="preserve">
+    <value>הצחוק שלי</value>
   </data>
   <data name="Gallery_Key" xml:space="preserve">
     <value>גלריה מפתח</value>
@@ -417,12 +468,6 @@
   </data>
   <data name="Gallery_Name_Already_Exists" xml:space="preserve">
     <value>שם הגלריה כבר קיים</value>
-  </data>
-  <data name="Gallery_Name_Help" xml:space="preserve">
-    <value>אנא הזן את שם הגלריה שברצונך לבקר.</value>
-  </data>
-  <data name="Gallery_Name_Placeholder" xml:space="preserve">
-    <value>הצחוק שלי</value>
   </data>
   <data name="Gallery_Selector_Title" xml:space="preserve">
     <value>גלריה Selector</value>
@@ -535,6 +580,24 @@
   <data name="None" xml:space="preserve">
     <value>אף אחד לא</value>
   </data>
+  <data name="Password_Reset_Changed_Message" xml:space="preserve">
+    <value>הסיסמה שלך כבר בוטלה. אם לא ביקשת איפוס סיסמה בבקשה להגיע מיד למנהל המערכת.</value>
+  </data>
+  <data name="Password_Reset_Changed_Title" xml:space="preserve">
+    <value>הסיסמה שלך כבר מעודכנת!</value>
+  </data>
+  <data name="Password_Reset_Requested_Message" xml:space="preserve">
+    <value>איפוס סיסמה נדרש בחשבון שלך. אם ביקשת שינוי סיסמה, לחץ על הקישור למטה כדי לעדכן אותו.</value>
+  </data>
+  <data name="Password_Reset_Requested_Title" xml:space="preserve">
+    <value>בעיות בגישה לחשבון שלך?</value>
+  </data>
+  <data name="PasswordReset" xml:space="preserve">
+    <value>סיסמה איפוס</value>
+  </data>
+  <data name="PasswordReset_Failed" xml:space="preserve">
+    <value>נכשל לשלוח דואר אלקטרוני לאפסת סיסמה.</value>
+  </data>
   <data name="Pending" xml:space="preserve">
     <value>עקבו</value>
   </data>
@@ -553,6 +616,75 @@
   <data name="Random" xml:space="preserve">
     <value>אקראי</value>
   </data>
+  <data name="Register" xml:space="preserve">
+    <value>רשום</value>
+  </data>
+  <data name="Register_Account" xml:space="preserve">
+    <value>חשבון רישום</value>
+  </data>
+  <data name="Register_CPassword_Help" xml:space="preserve">
+    <value>לאשר את הסיסמה שלך</value>
+  </data>
+  <data name="Register_CPassword_Label" xml:space="preserve">
+    <value>אישור סיסמה</value>
+  </data>
+  <data name="Register_Email_Help" xml:space="preserve">
+    <value>אנא הכנס את כתובת הדואר האלקטרוני.</value>
+  </data>
+  <data name="Register_Email_Label" xml:space="preserve">
+    <value>כתובת דואר אלקטרוני</value>
+  </data>
+  <data name="Register_Password_Help" xml:space="preserve">
+    <value>הסיסמה נכנסת לסיסמה.</value>
+  </data>
+  <data name="Register_Password_Label" xml:space="preserve">
+    <value>סיסמה</value>
+  </data>
+  <data name="Register_Username_Help" xml:space="preserve">
+    <value>אנא הכנס את שם המשתמש.</value>
+  </data>
+  <data name="Register_Username_Label" xml:space="preserve">
+    <value>שם המשתמש</value>
+  </data>
+  <data name="Registration_Confirm_Password_Missmatch" xml:space="preserve">
+    <value>סיסמה לא תואמת</value>
+  </data>
+  <data name="Registration_Email_Send_Failed" xml:space="preserve">
+    <value>לא הצליח לשלוח דואר אלקטרוני למשתמש.</value>
+  </data>
+  <data name="Registration_Email_Taken" xml:space="preserve">
+    <value>חשבון עם כתובת הדואר האלקטרוני המפורטת כבר קיים</value>
+  </data>
+  <data name="Registration_Failed" xml:space="preserve">
+    <value>נכשל לרשום משתמש חדש</value>
+  </data>
+  <data name="Registration_Invalid_Email" xml:space="preserve">
+    <value>נא לציין כתובת דואר אלקטרוני בתוקף</value>
+  </data>
+  <data name="Registration_Invalid_Password" xml:space="preserve">
+    <value>נא לציין סיסמה בתוקף בין 8 ל -100 תווים, המכילה לפחות מכתב מקרה עליון אחד, מכתב מקרה אחד נמוך יותר, מספר 1 ו 1 מיוחד אופי</value>
+  </data>
+  <data name="Registration_Invalid_Username" xml:space="preserve">
+    <value>נא לציין שם משתמש תקף בין 5 ל-50 תווים</value>
+  </data>
+  <data name="Registration_Invalid_Verification_Link" xml:space="preserve">
+    <value>היה נושא עיבוד הקישור אימות הדואר האלקטרוני</value>
+  </data>
+  <data name="Registration_Success_Message" xml:space="preserve">
+    <value>אתה נרשם בהצלחה ומחכה לך לגשת</value>
+  </data>
+  <data name="Registration_Success_Title" xml:space="preserve">
+    <value>ברוכים הבאים!</value>
+  </data>
+  <data name="Registration_Success_Verification" xml:space="preserve">
+    <value>החשבון שלך נרשם אך צריך לבדוק לפני שניתן לגשת אליו. אנא להפעיל את החשבון שלך על ידי לחיצה על הקישור למטה.</value>
+  </data>
+  <data name="Registration_Username_Taken" xml:space="preserve">
+    <value>שם המשתמש כבר קיים. אנא בחרו אחד חדש</value>
+  </data>
+  <data name="Registration_Weak_Password" xml:space="preserve">
+    <value>את הסיסמה המפורטת ניתן לנחש בקלות. אנא בחר סיסמה בטוחה יותר.</value>
+  </data>
   <data name="Reject" xml:space="preserve">
     <value>Reject</value>
   </data>
@@ -561,6 +693,9 @@
   </data>
   <data name="Rename" xml:space="preserve">
     <value>שם מקור</value>
+  </data>
+  <data name="ResetPassword_Invalid_Reset_Link" xml:space="preserve">
+    <value>היה נושא עיבוד הקישור איפוס סיסמה</value>
   </data>
   <data name="Resources" xml:space="preserve">
     <value>משאבים</value>
@@ -603,6 +738,18 @@
   </data>
   <data name="Settings_Account_Profile_Icon_Label" xml:space="preserve">
     <value>פרופיל אייקון</value>
+  </data>
+  <data name="Settings_Account_Registration_Enabled_Help" xml:space="preserve">
+    <value>האם האורחים מורשים לרשום חשבונות?</value>
+  </data>
+  <data name="Settings_Account_Registration_Enabled_Label" xml:space="preserve">
+    <value>רישום</value>
+  </data>
+  <data name="Settings_Account_Registration_RequireEmailValidation_Help" xml:space="preserve">
+    <value>האם משתמשים נדרשים לאמת את האימייל שלהם כדי להפעיל את החשבון שלהם?</value>
+  </data>
+  <data name="Settings_Account_Registration_RequireEmailValidation_Label" xml:space="preserve">
+    <value>נדרש אישור</value>
   </data>
   <data name="Settings_Alerts" xml:space="preserve">
     <value>התראות</value>
@@ -892,12 +1039,6 @@
   <data name="Settings_Gallery_ReviewCounter_Label" xml:space="preserve">
     <value>תגית: Counter</value>
   </data>
-  <data name="Settings_Gallery_SecretKey_Help" xml:space="preserve">
-    <value>סיסמה כדי לפתוח את הגלריה</value>
-  </data>
-  <data name="Settings_Gallery_SecretKey_Label" xml:space="preserve">
-    <value>מפתח סודי</value>
-  </data>
   <data name="Settings_Gallery_ShowFilters_Help" xml:space="preserve">
     <value>האם המשתמש יכול לסנן ולארגן מדיה?</value>
   </data>
@@ -1162,6 +1303,9 @@
   <data name="Square" xml:space="preserve">
     <value>כיכר Square</value>
   </data>
+  <data name="Submit" xml:space="preserve">
+    <value>הגשת</value>
+  </data>
   <data name="Supporters" xml:space="preserve">
     <value>תומכים</value>
   </data>
@@ -1176,6 +1320,12 @@
   </data>
   <data name="Update" xml:space="preserve">
     <value>עדכון Update</value>
+  </data>
+  <data name="Upgrade" xml:space="preserve">
+    <value>שדרוג</value>
+  </data>
+  <data name="Upgrade_Account_Message" xml:space="preserve">
+    <value>עכשיו אתה משתמש בגרסה החינמית. כדי לפתוח יותר אחסון גלריה ותכונות גדולות אחרות לשקול שדרוג החשבון שלך</value>
   </data>
   <data name="Upload_Media" xml:space="preserve">
     <value>Upload Media</value>
@@ -1203,6 +1353,9 @@
   </data>
   <data name="Users_List_Failed" xml:space="preserve">
     <value>לא מצליחים לקבל רשימת משתמשים</value>
+  </data>
+  <data name="Verify" xml:space="preserve">
+    <value>לבדוק</value>
   </data>
   <data name="Videos" xml:space="preserve">
     <value>קטעי וידאו</value>

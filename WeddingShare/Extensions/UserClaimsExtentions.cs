@@ -1,6 +1,7 @@
 ﻿using System.Security.Claims;
 using System.Security.Principal;
 using WeddingShare.Enums;
+using WeddingShare.Models;
 
 namespace WeddingShare.Extensions
 {
@@ -32,116 +33,164 @@ namespace WeddingShare.Extensions
             }
             catch { }
 
-            return UserLevel.Basic;
+            return UserLevel.Free;
         }
 
-        public static AccessPermissions GetUserPermissions(this IIdentity identity)
+        public static bool IsPrivilegedUser(this IIdentity identity)
+        {
+            try
+            {
+                var userLevel = identity?.GetUserLevel() ?? UserLevel.Free;
+                
+                return userLevel == UserLevel.Reviewer
+                    || userLevel == UserLevel.Moderator
+                    || userLevel == UserLevel.Admin
+                    || userLevel == UserLevel.Owner;
+            }
+            catch { }
+
+            return false;
+        }
+
+        public static bool IsBasicUser(this IIdentity identity)
+        {
+            return identity == null || identity.IsPrivilegedUser() == false;
+        }
+
+        public static Permissions GetUserPermissions(this IIdentity identity)
         {
             try
             {
                 var level = identity.GetUserLevel();
                 switch (level)
                 {
-                    case UserLevel.Basic:
-                        return AccessPermissions.Login;
+                    case UserLevel.Free:
+                        return new FreeUserPermissions();
+                    case UserLevel.Paid:
+                        return new PaidUserPermissions();
                     case UserLevel.Reviewer:
-                        return
-                            AccessPermissions.Login
-                            | AccessPermissions.Review_View
-                            | AccessPermissions.Review_Approve
-                            | AccessPermissions.Review_Reject
-                            | AccessPermissions.Review_Delete
-                            | AccessPermissions.Gallery_View;
+                        return new ReviewerPermissions();
                     case UserLevel.Moderator:
-                        return
-                            AccessPermissions.Login
-                            | AccessPermissions.Review_View
-                            | AccessPermissions.Review_Approve
-                            | AccessPermissions.Review_Reject
-                            | AccessPermissions.Review_Delete
-                            | AccessPermissions.Gallery_View
-                            | AccessPermissions.Gallery_Update
-                            | AccessPermissions.Gallery_Upload
-                            | AccessPermissions.Gallery_Download
-                            | AccessPermissions.User_View
-                            | AccessPermissions.User_Reset_MFA
-                            | AccessPermissions.User_Freeze
-                            | AccessPermissions.CustomResource_View
-                            | AccessPermissions.Audit_View;
+                        return new ModeratorPermissions();
                     case UserLevel.Admin:
-                        return
-                            AccessPermissions.Login
-                            | AccessPermissions.Review_View
-                            | AccessPermissions.Review_Approve
-                            | AccessPermissions.Review_Reject
-                            | AccessPermissions.Review_Delete
-                            | AccessPermissions.Gallery_View
-                            | AccessPermissions.Gallery_Create
-                            | AccessPermissions.Gallery_Update
-                            | AccessPermissions.Gallery_Delete
-                            | AccessPermissions.Gallery_Upload
-                            | AccessPermissions.Gallery_Download
-                            | AccessPermissions.User_View
-                            | AccessPermissions.User_Create
-                            | AccessPermissions.User_Update
-                            | AccessPermissions.User_Change_Password
-                            | AccessPermissions.User_Reset_MFA
-                            | AccessPermissions.User_Freeze
-                            | AccessPermissions.CustomResource_View
-                            | AccessPermissions.CustomResource_Create
-                            | AccessPermissions.CustomResource_Update
-                            | AccessPermissions.CustomResource_Delete
-                            | AccessPermissions.Settings_View
-                            | AccessPermissions.Settings_Update
-                            | AccessPermissions.Settings_Gallery_Update
-                            | AccessPermissions.Audit_View;
-                    case UserLevel.Photographer:
-                        return
-                            AccessPermissions.Login
-                            | AccessPermissions.Gallery_View
-                            | AccessPermissions.Gallery_Upload
-                            | AccessPermissions.Gallery_Download;
+                        return new AdminPermissions();
                     case UserLevel.Owner:
-                        return
-                            AccessPermissions.Login
-                            | AccessPermissions.Review_View
-                            | AccessPermissions.Review_Approve
-                            | AccessPermissions.Review_Reject
-                            | AccessPermissions.Review_Delete
-                            | AccessPermissions.Gallery_View
-                            | AccessPermissions.Gallery_Create
-                            | AccessPermissions.Gallery_Update
-                            | AccessPermissions.Gallery_Delete
-                            | AccessPermissions.Gallery_Upload
-                            | AccessPermissions.Gallery_Download
-                            | AccessPermissions.Gallery_Wipe
-                            | AccessPermissions.User_View
-                            | AccessPermissions.User_Create
-                            | AccessPermissions.User_Update
-                            | AccessPermissions.User_Delete
-                            | AccessPermissions.User_Change_Password
-                            | AccessPermissions.User_Reset_MFA
-                            | AccessPermissions.User_Freeze
-                            | AccessPermissions.CustomResource_View
-                            | AccessPermissions.CustomResource_Create
-                            | AccessPermissions.CustomResource_Update
-                            | AccessPermissions.CustomResource_Delete
-                            | AccessPermissions.Settings_View
-                            | AccessPermissions.Settings_Update
-                            | AccessPermissions.Settings_Gallery_Update
-                            | AccessPermissions.Audit_View
-                            | AccessPermissions.Data_View
-                            | AccessPermissions.Data_Import
-                            | AccessPermissions.Data_Export
-                            | AccessPermissions.Data_Wipe;
-                    default:
-                        return AccessPermissions.None;
+                        return new OwnerPermissions();
+                    default: 
+                        return new Permissions();
                 }
-
             }
             catch { }
 
-            return AccessPermissions.None;
+            return new Permissions();
+        }
+
+        public static int GetGalleryLimit(this IIdentity identity)
+        {
+            try
+            {
+                switch (identity.GetUserLevel())
+                {
+                    case UserLevel.Free:
+                    case UserLevel.Reviewer:
+                        return 0;
+                    case UserLevel.Paid:
+                        return 3;
+                    case UserLevel.Moderator:
+                    case UserLevel.Admin:
+                        return 10;
+                    case UserLevel.Owner:
+                        return int.MaxValue;
+                }
+            }
+            catch { }
+
+            return 0;
+        }
+
+        public static AccountTabs GetDefaultTab(this IIdentity identity)
+        {
+            var userPermissions = identity?.GetUserPermissions() ?? new Permissions();
+            if (userPermissions.Review.HasFlag(ReviewPermissions.View))
+            {
+                return AccountTabs.Reviews;
+            }
+            else if (userPermissions.Gallery.HasFlag(GalleryPermissions.View))
+            {
+                return AccountTabs.Galleries;
+            }
+            else if (userPermissions.Users.HasFlag(UserPermissions.View))
+            {
+                return AccountTabs.Users;
+            }
+            else if (userPermissions.CustomResources.HasFlag(CustomResourcePermissions.View))
+            {
+                return AccountTabs.Resources;
+            }
+            else if (userPermissions.Settings.HasFlag(SettingsPermissions.View))
+            {
+                return AccountTabs.Settings;
+            }
+            else if (userPermissions.Audit.HasFlag(AuditPermissions.View))
+            {
+                return AccountTabs.Audit;
+            }
+
+            return AccountTabs.Reviews;
+        }
+
+        public static bool CanEdit(this IIdentity identity, Enum type, int? ownerId)
+        {
+            try
+            {
+                if (identity != null)
+                {
+                    var level = identity.GetUserLevel();
+                    var permissions = identity.GetUserPermissions();
+
+                    if (identity.IsPrivilegedUser())
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        var hasPermissions = false;
+                        if (type.GetType() == typeof(ReviewPermissions))
+                        {
+                            hasPermissions = permissions.Review.HasFlag(type);
+                        }
+                        else if (type.GetType() == typeof(GalleryPermissions))
+                        {
+                            hasPermissions = permissions.Gallery.HasFlag(type);
+                        }
+                        else if (type.GetType() == typeof(UserPermissions))
+                        {
+                            hasPermissions = permissions.Users.HasFlag(type);
+                        }
+                        else if (type.GetType() == typeof(CustomResourcePermissions))
+                        {
+                            hasPermissions = permissions.CustomResources.HasFlag(type);
+                        }
+                        else if (type.GetType() == typeof(SettingsPermissions))
+                        {
+                            hasPermissions = permissions.Settings.HasFlag(type);
+                        }
+                        else if (type.GetType() == typeof(AuditPermissions))
+                        {
+                            hasPermissions = permissions.Audit.HasFlag(type);
+                        }
+                        else if (type.GetType() == typeof(DataPermissions))
+                        {
+                            hasPermissions = permissions.Data.HasFlag(type);
+                        }
+
+                        return hasPermissions && (ownerId != null && identity.GetUserId() == ownerId);
+                    }
+                }
+            }
+            catch { }
+
+            return false;
         }
     }
 }

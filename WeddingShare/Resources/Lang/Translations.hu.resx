@@ -94,6 +94,18 @@
   <data name="406_Error_Title" xml:space="preserve">
     <value>Érvénytelen galéria</value>
   </data>
+  <data name="407_Error_Message" xml:space="preserve">
+    <value>Volt egy kis probléma, miközben próbáltam ellenőrizni a számláját. Kérjük, győződjön meg arról, hogy az ellenőrző link érvényes.</value>
+  </data>
+  <data name="407_Error_Title" xml:space="preserve">
+    <value>Érvénytelen ellenőrzés Kapcsolat</value>
+  </data>
+  <data name="408_Error_Message" xml:space="preserve">
+    <value>Volt egy probléma, miközben megpróbálta visszaállítani a fiók jelszavát. Kérjük, győződjön meg arról, hogy az ellenőrző link érvényes.</value>
+  </data>
+  <data name="408_Error_Title" xml:space="preserve">
+    <value>Érvénytelen jelszó visszaállítás link</value>
+  </data>
   <data name="Accept" xml:space="preserve">
     <value>Elfogadás</value>
   </data>
@@ -120,6 +132,12 @@
   </data>
   <data name="Audit" xml:space="preserve">
     <value>Ellenőrzés</value>
+  </data>
+  <data name="Audit_Account_Registered" xml:space="preserve">
+    <value>Felhasználó által vezetett számla</value>
+  </data>
+  <data name="Audit_ActivateUser" xml:space="preserve">
+    <value>Aktivált felhasználó</value>
   </data>
   <data name="Audit_BulkApproveReviews" xml:space="preserve">
     <value>Bulk jóváhagyta az összes függőben lévő felülvizsgálat</value>
@@ -148,6 +166,9 @@
   <data name="Audit_DeletedUser" xml:space="preserve">
     <value>Törölt felhasználó</value>
   </data>
+  <data name="Audit_Email_Verified" xml:space="preserve">
+    <value>A felhasználó ellenőrizte e-mail címét</value>
+  </data>
   <data name="Audit_ExportedBackup" xml:space="preserve">
     <value>Exportált tartalék</value>
   </data>
@@ -156,6 +177,9 @@
   </data>
   <data name="Audit_FailedLoginAttemptReset" xml:space="preserve">
     <value>A bejelentkezési kísérletek sikertelenné válása</value>
+  </data>
+  <data name="Audit_Forgot_Password" xml:space="preserve">
+    <value>A felhasználó jelszó visszaállítását kérte</value>
   </data>
   <data name="Audit_FrozeUser" xml:space="preserve">
     <value>Békafelhasználó</value>
@@ -198,6 +222,9 @@
   </data>
   <data name="Audit_MultiFactorResetUser" xml:space="preserve">
     <value>Multi- faktor újraindítása felhasználóknak</value>
+  </data>
+  <data name="Audit_Password_Reset" xml:space="preserve">
+    <value>A felhasználó jelszó visszaállítását kérte</value>
   </data>
   <data name="Audit_SearchTerm_Help" xml:space="preserve">
     <value>Keresés alapú szűrőnaplók</value>
@@ -379,6 +406,21 @@
   <data name="Filter" xml:space="preserve">
     <value>Szűrő</value>
   </data>
+  <data name="Forgot_Password" xml:space="preserve">
+    <value>Elfelejtette a jelszót</value>
+  </data>
+  <data name="ForgotPassword" xml:space="preserve">
+    <value>Elfelejtette a jelszót</value>
+  </data>
+  <data name="ForgotPassword_Email_Help" xml:space="preserve">
+    <value>Adja meg a számla email címét.</value>
+  </data>
+  <data name="ForgotPassword_Email_Label" xml:space="preserve">
+    <value>E- mail cím</value>
+  </data>
+  <data name="ForgotPassword_Failed" xml:space="preserve">
+    <value>A jelszó visszaállítása nem sikerült</value>
+  </data>
   <data name="Galleries" xml:space="preserve">
     <value>Galéria</value>
   </data>
@@ -396,6 +438,15 @@
   </data>
   <data name="Gallery_Full" xml:space="preserve">
     <value>Galéria tele van, és túllépte a maximális méretét</value>
+  </data>
+  <data name="Gallery_Identifier" xml:space="preserve">
+    <value>Galéria azonosítója</value>
+  </data>
+  <data name="Gallery_Identifier_Help" xml:space="preserve">
+    <value>Kérjük, adja meg a látogatni kívánt galéria azonosítóját.</value>
+  </data>
+  <data name="Gallery_Identifier_Placeholder" xml:space="preserve">
+    <value>az esküvőm galériája</value>
   </data>
   <data name="Gallery_Key" xml:space="preserve">
     <value>Galéria kulcsa</value>
@@ -417,12 +468,6 @@
   </data>
   <data name="Gallery_Name_Already_Exists" xml:space="preserve">
     <value>A galéria neve már létezik</value>
-  </data>
-  <data name="Gallery_Name_Help" xml:space="preserve">
-    <value>Kérem, adja meg a galéria nevét, ahová el szeretne menni.</value>
-  </data>
-  <data name="Gallery_Name_Placeholder" xml:space="preserve">
-    <value>az esküvőm galériája</value>
   </data>
   <data name="Gallery_Selector_Title" xml:space="preserve">
     <value>Galéria választó</value>
@@ -535,6 +580,24 @@
   <data name="None" xml:space="preserve">
     <value>Nincs</value>
   </data>
+  <data name="Password_Reset_Changed_Message" xml:space="preserve">
+    <value>A jelszavát visszaállították. Ha nem kérte a jelszó visszaállítását, kérjük, azonnal lépjen kapcsolatba az adminisztrátorral.</value>
+  </data>
+  <data name="Password_Reset_Changed_Title" xml:space="preserve">
+    <value>A jelszavát frissítettük!</value>
+  </data>
+  <data name="Password_Reset_Requested_Message" xml:space="preserve">
+    <value>Jelszó-visszaállítás szükséges a számlájára. Ha a jelszó megváltoztatását kérte, kattintson az alábbi linkre, hogy frissítse.</value>
+  </data>
+  <data name="Password_Reset_Requested_Title" xml:space="preserve">
+    <value>Probléma a fiókjához való hozzáférés?</value>
+  </data>
+  <data name="PasswordReset" xml:space="preserve">
+    <value>Jelszó visszaállítása</value>
+  </data>
+  <data name="PasswordReset_Failed" xml:space="preserve">
+    <value>Nem sikerült jelszót visszaállítani.</value>
+  </data>
   <data name="Pending" xml:space="preserve">
     <value>Függőben</value>
   </data>
@@ -553,6 +616,75 @@
   <data name="Random" xml:space="preserve">
     <value>Véletlenszerű</value>
   </data>
+  <data name="Register" xml:space="preserve">
+    <value>Nyilvántartás</value>
+  </data>
+  <data name="Register_Account" xml:space="preserve">
+    <value>Nyilvántartási számla</value>
+  </data>
+  <data name="Register_CPassword_Help" xml:space="preserve">
+    <value>A jelszó megerősítése</value>
+  </data>
+  <data name="Register_CPassword_Label" xml:space="preserve">
+    <value>Jelszó megerősítése</value>
+  </data>
+  <data name="Register_Email_Help" xml:space="preserve">
+    <value>Adja meg a számla email címét.</value>
+  </data>
+  <data name="Register_Email_Label" xml:space="preserve">
+    <value>E- mail cím</value>
+  </data>
+  <data name="Register_Password_Help" xml:space="preserve">
+    <value>Adja meg a jelszót.</value>
+  </data>
+  <data name="Register_Password_Label" xml:space="preserve">
+    <value>Jelszó</value>
+  </data>
+  <data name="Register_Username_Help" xml:space="preserve">
+    <value>Adja meg a felhasználó nevét.</value>
+  </data>
+  <data name="Register_Username_Label" xml:space="preserve">
+    <value>Felhasználónév</value>
+  </data>
+  <data name="Registration_Confirm_Password_Missmatch" xml:space="preserve">
+    <value>A megerősítési jelszó nem egyezik</value>
+  </data>
+  <data name="Registration_Email_Send_Failed" xml:space="preserve">
+    <value>Nem sikerült e-mailt küldeni a felhasználónak.</value>
+  </data>
+  <data name="Registration_Email_Taken" xml:space="preserve">
+    <value>Már létezik egy fiók a megadott e-mail címmel</value>
+  </data>
+  <data name="Registration_Failed" xml:space="preserve">
+    <value>Nem sikerült regisztrálni az új felhasználót</value>
+  </data>
+  <data name="Registration_Invalid_Email" xml:space="preserve">
+    <value>Adja meg az érvényes e-mail címet</value>
+  </data>
+  <data name="Registration_Invalid_Password" xml:space="preserve">
+    <value>Kérjük, adja meg a 8 és 100 karakter közötti érvényes jelszót, amely legalább 1 nagybetűt, 1 kisbetűt, 1 számot és 1 különleges karaktert tartalmaz</value>
+  </data>
+  <data name="Registration_Invalid_Username" xml:space="preserve">
+    <value>Adja meg az érvényes felhasználónevet 5 és 50 karakter között</value>
+  </data>
+  <data name="Registration_Invalid_Verification_Link" xml:space="preserve">
+    <value>Volt egy probléma feldolgozása e-mail ellenőrző link</value>
+  </data>
+  <data name="Registration_Success_Message" xml:space="preserve">
+    <value>Az Ön számláját sikeresen regisztrálták és várja, hogy hozzáférjen</value>
+  </data>
+  <data name="Registration_Success_Title" xml:space="preserve">
+    <value>Isten hozott!</value>
+  </data>
+  <data name="Registration_Success_Verification" xml:space="preserve">
+    <value>A számláját regisztrálták, de ellenőrizni kell, mielőtt hozzáférhet. Kérjük, aktiválja fiókját az alábbi linkre kattintva.</value>
+  </data>
+  <data name="Registration_Username_Taken" xml:space="preserve">
+    <value>A felhasználói név már létezik. Válasszon egy újat</value>
+  </data>
+  <data name="Registration_Weak_Password" xml:space="preserve">
+    <value>A megadott jelszó könnyen kitalálható. Válasszon ki egy biztonságosabb jelszót.</value>
+  </data>
   <data name="Reject" xml:space="preserve">
     <value>Elutasítás</value>
   </data>
@@ -561,6 +693,9 @@
   </data>
   <data name="Rename" xml:space="preserve">
     <value>Átnevezés</value>
+  </data>
+  <data name="ResetPassword_Invalid_Reset_Link" xml:space="preserve">
+    <value>Volt egy probléma feldolgozása a jelszó reset link</value>
   </data>
   <data name="Resources" xml:space="preserve">
     <value>Erőforrások</value>
@@ -603,6 +738,18 @@
   </data>
   <data name="Settings_Account_Profile_Icon_Label" xml:space="preserve">
     <value>Profil ikon</value>
+  </data>
+  <data name="Settings_Account_Registration_Enabled_Help" xml:space="preserve">
+    <value>A vendégek regisztrálhatnak számlát?</value>
+  </data>
+  <data name="Settings_Account_Registration_Enabled_Label" xml:space="preserve">
+    <value>Bejegyzés engedélyezve</value>
+  </data>
+  <data name="Settings_Account_Registration_RequireEmailValidation_Help" xml:space="preserve">
+    <value>A felhasználóknak ellenőrizniük kell e-mail címüket, hogy aktiválják fiókjukat?</value>
+  </data>
+  <data name="Settings_Account_Registration_RequireEmailValidation_Label" xml:space="preserve">
+    <value>E-mail hitelesítés igénylése</value>
   </data>
   <data name="Settings_Alerts" xml:space="preserve">
     <value>Figyelmeztetések</value>
@@ -892,12 +1039,6 @@
   <data name="Settings_Gallery_ReviewCounter_Label" xml:space="preserve">
     <value>Felülvizsgálati számláló</value>
   </data>
-  <data name="Settings_Gallery_SecretKey_Help" xml:space="preserve">
-    <value>Jelszó a galéria megnyitásához</value>
-  </data>
-  <data name="Settings_Gallery_SecretKey_Label" xml:space="preserve">
-    <value>Titkos kulcs</value>
-  </data>
   <data name="Settings_Gallery_ShowFilters_Help" xml:space="preserve">
     <value>Lehetővé kell tenni a felhasználó számára, hogy szűrje és csoportosítsa a médiát?</value>
   </data>
@@ -1162,6 +1303,9 @@
   <data name="Square" xml:space="preserve">
     <value>Négyzet</value>
   </data>
+  <data name="Submit" xml:space="preserve">
+    <value>Küldés</value>
+  </data>
   <data name="Supporters" xml:space="preserve">
     <value>Támogatók</value>
   </data>
@@ -1176,6 +1320,12 @@
   </data>
   <data name="Update" xml:space="preserve">
     <value>Frissítés</value>
+  </data>
+  <data name="Upgrade" xml:space="preserve">
+    <value>Frissítés</value>
+  </data>
+  <data name="Upgrade_Account_Message" xml:space="preserve">
+    <value>Jelenleg az ingyenes verziót használja. Több galéria tárhely és más nagy funkciók megnyitásához fontolja meg fiókjának korszerűsítését</value>
   </data>
   <data name="Upload_Media" xml:space="preserve">
     <value>Média feltöltése</value>
@@ -1203,6 +1353,9 @@
   </data>
   <data name="Users_List_Failed" xml:space="preserve">
     <value>A felhasználói lista nem sikerült</value>
+  </data>
+  <data name="Verify" xml:space="preserve">
+    <value>Ellenőrzés</value>
   </data>
   <data name="Videos" xml:space="preserve">
     <value>Videók</value>

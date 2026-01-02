@@ -94,6 +94,18 @@
   <data name="406_Error_Title" xml:space="preserve">
     <value>คลังภาพไม่ถูกต้อง</value>
   </data>
+  <data name="407_Error_Message" xml:space="preserve">
+    <value>มันมีปัญหาอยู่ ในขณะที่กําลังพยายามที่จะตรวจสอบบัญชีของคุณ โปรดแน่ใจว่าการเชื่อมต่อตรวจสอบใช้ได้.</value>
+  </data>
+  <data name="407_Error_Title" xml:space="preserve">
+    <value>การตรวจสอบสิทธิ์ไม่ถูกต้อง เชื่อมโยง</value>
+  </data>
+  <data name="408_Error_Message" xml:space="preserve">
+    <value>เกิดปัญหาขึ้นระหว่างพยายามรีเซ็ตรหัสผ่านของบัญชีผู้ใช้ของคุณ โปรดแน่ใจว่าการเชื่อมต่อตรวจสอบใช้ได้.</value>
+  </data>
+  <data name="408_Error_Title" xml:space="preserve">
+    <value>รหัสผ่านตั้งค่าลิงก์ใหม่ไม่ถูกต้อง</value>
+  </data>
   <data name="Accept" xml:space="preserve">
     <value>ยอมรับ</value>
   </data>
@@ -120,6 +132,12 @@
   </data>
   <data name="Audit" xml:space="preserve">
     <value>โปรแกรม Audit</value>
+  </data>
+  <data name="Audit_Account_Registered" xml:space="preserve">
+    <value>บัญชีผู้ใช้ที่ลงทะเบียนไว้</value>
+  </data>
+  <data name="Audit_ActivateUser" xml:space="preserve">
+    <value>ผู้ใช้ที่ทํางานอยู่</value>
   </data>
   <data name="Audit_BulkApproveReviews" xml:space="preserve">
     <value>Buff อนุมัติการทบทวนทั้งหมด</value>
@@ -148,6 +166,9 @@
   <data name="Audit_DeletedUser" xml:space="preserve">
     <value>ผู้ใช้ที่ถูกลบแล้ว</value>
   </data>
+  <data name="Audit_Email_Verified" xml:space="preserve">
+    <value>ผู้ใช้ตรวจสอบที่อยู่อีเมลของพวกเขา</value>
+  </data>
   <data name="Audit_ExportedBackup" xml:space="preserve">
     <value>ส่งออกเป็นแฟ้มสํารองข้อมูล</value>
   </data>
@@ -156,6 +177,9 @@
   </data>
   <data name="Audit_FailedLoginAttemptReset" xml:space="preserve">
     <value>การนับการล็อกอินล้มเหลว</value>
+  </data>
+  <data name="Audit_Forgot_Password" xml:space="preserve">
+    <value>ผู้ใช้ร้องขอการตั้งค่ารหัสผ่านใหม่</value>
   </data>
   <data name="Audit_FrozeUser" xml:space="preserve">
     <value>ผู้ใช้ฟโรซ</value>
@@ -198,6 +222,9 @@
   </data>
   <data name="Audit_MultiFactorResetUser" xml:space="preserve">
     <value>ตั้งค่าคุณสมบัติต่าง ๆ ของผู้ใช้ใหม่</value>
+  </data>
+  <data name="Audit_Password_Reset" xml:space="preserve">
+    <value>ผู้ใช้ร้องขอการตั้งค่ารหัสผ่านใหม่</value>
   </data>
   <data name="Audit_SearchTerm_Help" xml:space="preserve">
     <value>ปูมบันทึกของตัวกรอง อิงจากคําค้น</value>
@@ -379,6 +406,21 @@
   <data name="Filter" xml:space="preserve">
     <value>กรอง</value>
   </data>
+  <data name="Forgot_Password" xml:space="preserve">
+    <value>ลืมรหัสผ่าน</value>
+  </data>
+  <data name="ForgotPassword" xml:space="preserve">
+    <value>ลืมรหัสผ่าน</value>
+  </data>
+  <data name="ForgotPassword_Email_Help" xml:space="preserve">
+    <value>โปรดป้อนที่อยู่อีเมลของบัญชีผู้ใช้.</value>
+  </data>
+  <data name="ForgotPassword_Email_Label" xml:space="preserve">
+    <value>ที่อยู่อีเมล</value>
+  </data>
+  <data name="ForgotPassword_Failed" xml:space="preserve">
+    <value>ล้มเหลวในการส่งรหัสผ่านการตั้งค่าใหม่</value>
+  </data>
   <data name="Galleries" xml:space="preserve">
     <value>แกล เล รี</value>
   </data>
@@ -396,6 +438,15 @@
   </data>
   <data name="Gallery_Full" xml:space="preserve">
     <value>แกลเลอรีภาพเต็มและมีขนาดสูงสุด</value>
+  </data>
+  <data name="Gallery_Identifier" xml:space="preserve">
+    <value>ตัวระบุแกลเลอรี</value>
+  </data>
+  <data name="Gallery_Identifier_Help" xml:space="preserve">
+    <value>โปรดป้อนส่วนแสดงตัวของคลังภาพที่คุณต้องการจะเยี่ยมชม.</value>
+  </data>
+  <data name="Gallery_Identifier_Placeholder" xml:space="preserve">
+    <value>งานแต่งของฉัน</value>
   </data>
   <data name="Gallery_Key" xml:space="preserve">
     <value>กุญแจของแกลเลอรี</value>
@@ -417,12 +468,6 @@
   </data>
   <data name="Gallery_Name_Already_Exists" xml:space="preserve">
     <value>มีชื่อแกลเลอรีอยู่แล้ว</value>
-  </data>
-  <data name="Gallery_Name_Help" xml:space="preserve">
-    <value>โปรดป้อนชื่อของคลังภาพที่คุณต้องการจะเยี่ยมชม.</value>
-  </data>
-  <data name="Gallery_Name_Placeholder" xml:space="preserve">
-    <value>งานแต่งของฉัน</value>
   </data>
   <data name="Gallery_Selector_Title" xml:space="preserve">
     <value>เครื่องมือเลือกคลังภาพ</value>
@@ -535,6 +580,24 @@
   <data name="None" xml:space="preserve">
     <value>ไม่มี</value>
   </data>
+  <data name="Password_Reset_Changed_Message" xml:space="preserve">
+    <value>รหัสผ่านของคุณได้ถูกรีเซ็ตแล้ว หากคุณไม่ได้ร้องขอตั้งรหัสผ่านใหม่อีกครั้ง โปรดติดต่อผู้ดูแลระบบทันที.</value>
+  </data>
+  <data name="Password_Reset_Changed_Title" xml:space="preserve">
+    <value>รหัสผ่านของคุณได้รับการปรับปรุงแล้ว!</value>
+  </data>
+  <data name="Password_Reset_Requested_Message" xml:space="preserve">
+    <value>มีการร้องขอตั้งรหัสผ่านใหม่ในบัญชีผู้ใช้ของคุณ หากคุณร้องขอเปลี่ยนรหัสผ่าน โปรดคลิกลิงก์ด้านล่างนี้เพื่อปรับปรุงมัน.</value>
+  </data>
+  <data name="Password_Reset_Requested_Title" xml:space="preserve">
+    <value>ปัญหาการเข้าถึงบัญชีของคุณ?</value>
+  </data>
+  <data name="PasswordReset" xml:space="preserve">
+    <value>ตั้งค่ารหัสผ่านใหม่</value>
+  </data>
+  <data name="PasswordReset_Failed" xml:space="preserve">
+    <value>ล้มเหลวในการส่งรหัสผ่านใหม่.</value>
+  </data>
   <data name="Pending" xml:space="preserve">
     <value>จํานวนครั้งที่เล่น</value>
   </data>
@@ -553,6 +616,75 @@
   <data name="Random" xml:space="preserve">
     <value>สุ่ม</value>
   </data>
+  <data name="Register" xml:space="preserve">
+    <value>ลงทะเบียน</value>
+  </data>
+  <data name="Register_Account" xml:space="preserve">
+    <value>บัญชีผู้ใช้สําหรับล็อกอิน</value>
+  </data>
+  <data name="Register_CPassword_Help" xml:space="preserve">
+    <value>ยืนยันรหัสผ่านของคุณ</value>
+  </data>
+  <data name="Register_CPassword_Label" xml:space="preserve">
+    <value>ยืนยันรหัสผ่าน</value>
+  </data>
+  <data name="Register_Email_Help" xml:space="preserve">
+    <value>โปรดป้อนที่อยู่อีเมลของบัญชีผู้ใช้.</value>
+  </data>
+  <data name="Register_Email_Label" xml:space="preserve">
+    <value>ที่อยู่อีเมล</value>
+  </data>
+  <data name="Register_Password_Help" xml:space="preserve">
+    <value>รหัสผ่านป้อนรหัสผ่าน.</value>
+  </data>
+  <data name="Register_Password_Label" xml:space="preserve">
+    <value>รหัสผ่าน</value>
+  </data>
+  <data name="Register_Username_Help" xml:space="preserve">
+    <value>โปรดป้อนชื่อผู้ใช้ของบัญชีผู้ใช้.</value>
+  </data>
+  <data name="Register_Username_Label" xml:space="preserve">
+    <value>ชื่อผู้ใช้</value>
+  </data>
+  <data name="Registration_Confirm_Password_Missmatch" xml:space="preserve">
+    <value>ยืนยันรหัสผ่านไม่ตรงกัน</value>
+  </data>
+  <data name="Registration_Email_Send_Failed" xml:space="preserve">
+    <value>ล้มเหลวในการส่งอีเมล์ลงทะเบียนไปยังผู้ใช้.</value>
+  </data>
+  <data name="Registration_Email_Taken" xml:space="preserve">
+    <value>มีบัญชีผู้ใช้ที่มีที่อยู่อีเมลที่ระบุอยู่ก่อนแล้ว</value>
+  </data>
+  <data name="Registration_Failed" xml:space="preserve">
+    <value>ล้มเหลวในการลงทะเบียนผู้ใช้ใหม่</value>
+  </data>
+  <data name="Registration_Invalid_Email" xml:space="preserve">
+    <value>โปรดระบุที่อยู่อีเมลที่ถูกต้อง</value>
+  </data>
+  <data name="Registration_Invalid_Password" xml:space="preserve">
+    <value>โปรดระบุรหัสผ่านที่ใช้ได้ระหว่าง 8 ถึง 100 ตัวอักษร โดยมีอักษรตัวพิมพ์ใหญ่อย่างน้อย 1 ตัว, อักษรตัวพิมพ์เล็ก 1 ตัว, 1 ตัว และอักขระพิเศษ 1 ตัว</value>
+  </data>
+  <data name="Registration_Invalid_Username" xml:space="preserve">
+    <value>โปรดระบุชื่อผู้ใช้ที่ใช้ได้ระหว่าง 5 ถึง 50 ตัวอักษร</value>
+  </data>
+  <data name="Registration_Invalid_Verification_Link" xml:space="preserve">
+    <value>มีปัญหาในการประมวลผลลิงก์ตรวจสอบอีเมล</value>
+  </data>
+  <data name="Registration_Success_Message" xml:space="preserve">
+    <value>บัญชีของคุณได้รับการลงทะเบียนเรียบร้อยแล้ว และกําลังรอให้คุณเข้าถึง</value>
+  </data>
+  <data name="Registration_Success_Title" xml:space="preserve">
+    <value>ยินดีต้อนรับ!</value>
+  </data>
+  <data name="Registration_Success_Verification" xml:space="preserve">
+    <value>บัญชีของคุณได้ลงทะเบียนแล้ว แต่ต้องตรวจสอบก่อนจะเข้าถึงได้ โปรดเปิดใช้งานบัญชีผู้ใช้ของคุณด้วยการคลิกลิงก์ด้านล่างนี้.</value>
+  </data>
+  <data name="Registration_Username_Taken" xml:space="preserve">
+    <value>มีชื่อผู้ใช้อยู่แล้ว โปรดเลือกอันใหม่</value>
+  </data>
+  <data name="Registration_Weak_Password" xml:space="preserve">
+    <value>รหัสผ่านที่ระบุจะเดาได้ง่ายๆ โปรดเลือกรหัสผ่านที่ปลอดภัย.</value>
+  </data>
   <data name="Reject" xml:space="preserve">
     <value>ปฏิเสธ</value>
   </data>
@@ -561,6 +693,9 @@
   </data>
   <data name="Rename" xml:space="preserve">
     <value>เปลี่ยนชื่อ</value>
+  </data>
+  <data name="ResetPassword_Invalid_Reset_Link" xml:space="preserve">
+    <value>มีปัญหาในการประมวลผลลิงก์ที่ตั้งค่ารหัสผ่านใหม่</value>
   </data>
   <data name="Resources" xml:space="preserve">
     <value>ทรัพยากร</value>
@@ -603,6 +738,18 @@
   </data>
   <data name="Settings_Account_Profile_Icon_Label" xml:space="preserve">
     <value>ภาพไอคอนโพรไฟล์</value>
+  </data>
+  <data name="Settings_Account_Registration_Enabled_Help" xml:space="preserve">
+    <value>แขกได้รับอนุญาตให้ลงทะเบียนบัญชี?</value>
+  </data>
+  <data name="Settings_Account_Registration_Enabled_Label" xml:space="preserve">
+    <value>เปิดใช้งานการลงทะเบียน</value>
+  </data>
+  <data name="Settings_Account_Registration_RequireEmailValidation_Help" xml:space="preserve">
+    <value>ต้องการผู้ใช้ตรวจสอบอีเมลของพวกเขาเพื่อเปิดใช้งานบัญชีผู้ใช้หรือไม่?</value>
+  </data>
+  <data name="Settings_Account_Registration_RequireEmailValidation_Label" xml:space="preserve">
+    <value>ต้องการตรวจความถูกต้องของอีเมล</value>
   </data>
   <data name="Settings_Alerts" xml:space="preserve">
     <value>แจ้งเตือน</value>
@@ -892,12 +1039,6 @@
   <data name="Settings_Gallery_ReviewCounter_Label" xml:space="preserve">
     <value>ตัวโต้แย้งการทบทวน</value>
   </data>
-  <data name="Settings_Gallery_SecretKey_Help" xml:space="preserve">
-    <value>รหัสผ่านที่จะปลดล็อคคลังภาพ</value>
-  </data>
-  <data name="Settings_Gallery_SecretKey_Label" xml:space="preserve">
-    <value>กุญแจลับ</value>
-  </data>
   <data name="Settings_Gallery_ShowFilters_Help" xml:space="preserve">
     <value>จะให้ผู้ใช้สามารถกรองและจัดกลุ่มสื่อได้หรือไม่?</value>
   </data>
@@ -1162,6 +1303,9 @@
   <data name="Square" xml:space="preserve">
     <value>ตาราง</value>
   </data>
+  <data name="Submit" xml:space="preserve">
+    <value>ส่ง</value>
+  </data>
   <data name="Supporters" xml:space="preserve">
     <value>ผู้สนับสนุน</value>
   </data>
@@ -1176,6 +1320,12 @@
   </data>
   <data name="Update" xml:space="preserve">
     <value>ปรับปรุง</value>
+  </data>
+  <data name="Upgrade" xml:space="preserve">
+    <value>เพิ่มเติม</value>
+  </data>
+  <data name="Upgrade_Account_Message" xml:space="preserve">
+    <value>คุณกําลังใช้งานรุ่นอิสระอยู่ เพื่อปลดล็อคคลังเก็บแกลลอรี่ และคุณสมบัติอื่น ๆ ที่ดี พิจารณาการยกระดับบัญชีผู้ใช้ของคุณ</value>
   </data>
   <data name="Upload_Media" xml:space="preserve">
     <value>อัปโหลดสื่อ</value>
@@ -1203,6 +1353,9 @@
   </data>
   <data name="Users_List_Failed" xml:space="preserve">
     <value>ล้มเหลวในการรับรายการผู้ใช้</value>
+  </data>
+  <data name="Verify" xml:space="preserve">
+    <value>ตรวจสอบ</value>
   </data>
   <data name="Videos" xml:space="preserve">
     <value>วิดีโอ</value>

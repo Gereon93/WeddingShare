@@ -39,10 +39,17 @@ namespace WeddingShare.Helpers
             { 
                 try
                 {
-                    var dbValue = galleryId != null ? await _databaseHelper.GetSetting(key, galleryId.Value) : await _databaseHelper.GetSetting(key);
-                    if (dbValue != null)
+                    try
                     {
-                        return dbValue;
+                        var dbValue = galleryId != null ? await _databaseHelper.GetSetting(key, galleryId.Value) : await _databaseHelper.GetSetting(key);
+                        if (dbValue != null)
+                        {
+                            return dbValue;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        _logger.LogDebug(ex, $"Failed to find key '{key}' in database. If you are seeing this on first setup please ignore as the database might not have initialized the table yet.");
                     }
 
                     var configValue = _configHelper.Get(key);

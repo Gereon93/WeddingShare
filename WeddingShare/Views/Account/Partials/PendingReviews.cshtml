@@ -4,14 +4,15 @@
 @using WeddingShare.Views.Account.Partials
 
 @{
-    var userPermissions = User?.Identity?.GetUserPermissions() ?? AccessPermissions.None;
+    var userPermissions = User?.Identity?.GetUserPermissions() ?? new Permissions();
     var identityEnabled = await _settings.GetOrDefault(Settings.IdentityCheck.Enabled, true);
     var requireEmailEnabled = identityEnabled ? await _settings.GetOrDefault(Settings.IdentityCheck.RequireEmail, false) : false;
 }
 
 <div class="row">
-    @if (userPermissions.HasFlag(AccessPermissions.Review_View) && Model != null && Model.Any())
+    @if (userPermissions.Review.HasFlag(ReviewPermissions.View) && Model != null && Model.Any())
     {
+        var index = 0;
         foreach (var gallery in Model)
         {
             if (gallery.Images != null)
@@ -22,17 +23,17 @@
                     {
                         <div class="pending-approval col-12 col-lg-4 mb-4 mb-lg-0 mb-1 mb-lg-4">
                             <div class="card">
-                                <a href="@review.ImagePath" class="media-viewer-item" data-media-viewer-type="@review.MediaType.ToString().ToLower()" data-media-viewer-collection="@review.GalleryName" data-media-viewer-author="@(identityEnabled ? $"{_localizer["Uploaded_By"].Value}: {(!string.IsNullOrWhiteSpace(review?.UploadedBy) ? $"{review?.UploadedBy}{(!string.IsNullOrWhiteSpace(review?.UploaderEmailAddress) ? $" - {review?.UploaderEmailAddress?.ToLower()}" : string.Empty)}" : "Anonymous")}" : string.Empty)" data-media-viewer-download="true">
-                                    <img src="@review.ThumbnailPath" class="review-tile" loading="lazy" onerror="this.onerror=null;this.src='@(review.ThumbnailPathFallback)';" />
+                                <a href="@review.ImagePath" class="media-viewer-item" data-media-viewer-id="@review.Id" data-media-viewer-index="@index" data-media-viewer-collection="pending_reviews" data-media-viewer-type="pending_review">
+                                    <img src="@review.ThumbnailPath" class="review-tile" loading="lazy" />
                                     @if (review?.MediaType == MediaType.Video)
                                     {
                                         <img src="/images/play-button.svg" class="media-viewer-play" loading="lazy" />
                                     }
-                                    @if (userPermissions.HasFlag(AccessPermissions.Review_Approve))
+                                    @if (userPermissions.Review.HasFlag(ReviewPermissions.Approve))
                                     {
                                         <i class="fa fa-thumbs-up btnReviewApprove d-lg-none" data-id="@review?.Id" data-name="@review?.Name"></i>
                                     }
-                                    @if (userPermissions.HasFlag(AccessPermissions.Review_Reject))
+                                    @if (userPermissions.Review.HasFlag(ReviewPermissions.Reject))
                                     {
                                         <i class="fa fa-thumbs-down btnReviewReject d-lg-none" data-id="@review?.Id" data-name="@review?.Name"></i>
                                     }
@@ -64,6 +65,8 @@
                                 </div>
                             </div>
                         </div>
+
+                        index++;
                     }
                 }
             }
@@ -71,7 +74,7 @@
     }
     else
     {
-        <div class="col-12 text-center border rounded py-3 py-lg-4">
+        <div class="col-12 text-center border rounded py-5">
             <h3 class="display-6">@_localizer["No_Pending_Uploads"].Value</h3>
         </div>
     }

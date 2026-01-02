@@ -99,12 +99,12 @@ function displayMessage(title, message, errors, callbackFn) {
 
     $('#alert-message-modal .modal-error').hide();
     if (errors && errors.length > 0) {
-        var errorMessage = `<b>${localization.translate('Errors')}:</b>`;
-        errorMessage += `<ul>`;
+        var errorMessage = `<b>${localization.translate('Details')}:</b>`;
+        errorMessage += `<div class="checklist">`;
         errors.forEach((error) => {
-            errorMessage += `<li>${error}</li>`;
+            errorMessage += generateChecklistItem('', 'none', error, false, false);
         });
-        errorMessage += `</ul>`;
+        errorMessage += `</div>`;
         $('#alert-message-modal .modal-error').html(errorMessage);
         $('#alert-message-modal .modal-error').show();
     } else {
@@ -127,7 +127,7 @@ function displayMessage(title, message, errors, callbackFn) {
                 callbackFn();
             }
         }
-    }, 5000);
+    }, 10000);
 }
 
 function hideMessage() {
@@ -241,8 +241,143 @@ function displayIdentityCheck(required, callbackFn) {
     });
 }
 
+function generateChecklistItem(identifier, type, text, hidden = false, padded = true) {
+    let icon;
+    switch (type.toLowerCase()) {
+        case 'success':
+            icon = `<i class="fa fa-square-check mx-2"></i>`;
+            break;
+        case 'error':
+            icon = `<i class="fa fa-square-xmark mx-2"></i>`;
+            break;
+        case 'default':
+            icon = `<i class="fa fa-regular fa-square mx-2"></i>`;
+            break;
+        default:
+            icon = '';
+            break;
+    }
+
+    return `
+        <span class="${identifier} ${hidden === true ? 'visually-hidden' : ''} border rounded ${padded === false ? 'mx-0' : 'mx-3 mx-lg-5'} my-2 px-3 py-1 d-block checklist-${type}">
+            ${icon}${text}
+        </span>
+    `;
+}
+
+function generatePasswordValidation(field) {
+    return `
+        <div class="checklist password-validator" data-input="${field}">
+            ${generateChecklistItem('lbl-lower', 'default', localization.translate('Password_Validation_Lower'))}
+            ${generateChecklistItem('lbl-upper', 'default', localization.translate('Password_Validation_Upper'))}
+            ${generateChecklistItem('lbl-number', 'default', localization.translate('Password_Validation_Numbers'))}
+            ${generateChecklistItem('lbl-special', 'default', localization.translate('Password_Validation_Special'))}
+            ${generateChecklistItem('lbl-length', 'default', localization.translate('Password_Validation_Length'))}
+            ${generateChecklistItem('lbl-confirm', 'default', localization.translate('Password_Validation_Confirm'), true)}
+        </div>
+    `;
+}
+
+function setPasswordValidationField(field, valid) {
+    if (valid) {
+        field.removeClass('checklist-success checklist-error checklist-default');
+        field.addClass('checklist-success');
+        field.find('i.fa').removeClass('fa-square-check fa-square-xmark fa-square fa-regular');
+        field.find('i.fa').addClass('fa-square-check');
+    } else {
+        field.removeClass('checklist-success checklist-error checklist-default');
+        field.addClass('checklist-error');
+        field.find('i.fa').removeClass('fa-square-check fa-square-xmark fa-square fa-regular');
+        field.find('i.fa').addClass('fa-square-xmark');
+    }
+}
+
+function initPasswordValidation() {
+    if ($('.password-validator').length > 0) {
+        $('.password-validator').each(function () {
+            let validator = $(this);
+            let input = $(validator.data('input'));
+            if (input !== undefined && input.length > 0) {
+                let confirmField = input.parent().parent().parent().find('input.confirm-password');
+                if (confirmField !== undefined && confirmField.length === 1) {
+                    validator.find('.lbl-confirm').removeClass('visually-hidden');
+                    confirmField.off('keyup').on('keyup', function () {
+                        var value = $(input).val();
+                        setPasswordValidationField(validator.find('.lbl-confirm'), confirmField.val() === value && value.length);
+                        setPasswordValidationField(validator, validator.find('li[class^=\'lbl-\']:not([class*=\'hidden\'])').length === 0);
+                    });
+                }
+
+                $(input).off('keyup').on('keyup', function () {
+                    var value = $(this).val();
+                    setPasswordValidationField(validator.find('.lbl-lower'), /[a-z]+?/.test(value));
+                    setPasswordValidationField(validator.find('.lbl-upper'), /[A-Z]+?/.test(value));
+                    setPasswordValidationField(validator.find('.lbl-number'), /[0-9]+?/.test(value));
+                    setPasswordValidationField(validator.find('.lbl-special'), /[^A-Za-z0-9]+?/.test(value));
+                    setPasswordValidationField(validator.find('.lbl-length'), value.length >= 8);
+
+                    if (confirmField !== undefined && confirmField.length === 1) {
+                        setPasswordValidationField(validator.find('.lbl-confirm'), confirmField.val() === value && value.length);
+                    }
+
+                    setPasswordValidationField(validator, validator.find('li[class^=\'lbl-\']:not([class*=\'hidden\'])').length === 0);
+                })
+            }
+        });
+    }
+}
+
+function resizeLayout() {
+    if ($('div#main-wrapper').length > 0) {
+        let windowWidth = $(window).width();
+        let windowHeight = $(window).height();
+        let navHeight = $('nav.navbar').outerHeight();
+        let alertHeight = $('.header-alert').length > 0 ? $('.header-alert').outerHeight() : 0;
+        let footerHeight = $('footer').outerHeight();
+        let bodyHeight = windowHeight - (navHeight + footerHeight + alertHeight);
+
+        $('div#main-wrapper').css({
+            'height': `${bodyHeight + alertHeight}px`,
+            'max-height': `${bodyHeight + alertHeight}px`,
+            'top': `${navHeight}px`
+        });
+
+        if ($('div#main-content').length > 0) {
+            let contentHeight = $('div#main-content').outerHeight();
+            let padding = (bodyHeight - contentHeight) / 2;
+
+            if (windowWidth >= 700 && padding < 30) {
+                padding = 30;
+            } else if (windowWidth < 700 && padding < 20) {
+                padding = 20;
+            }
+
+            $('div#main-content').css({
+                'padding-top': `${padding}px`,
+                'padding-bottom': `50px`
+            });
+        }
+    }
+}
+
 (function () {
     document.addEventListener('DOMContentLoaded', function () {
+
+        if ($('div.password-validator-container').length > 0) {
+            $('div.password-validator-container').each(function () {
+                $(this).html(generatePasswordValidation($(this).data('input')));
+            });
+            initPasswordValidation();
+        }
+
+        if ($('.nav-horizontal-scroller').length > 0) {
+            $('.nav-horizontal-scroller').each(function () {
+                let pos = $(this).find('.active').position().left - 30;
+                $('.nav-horizontal-scroller').scrollLeft(pos);
+            });
+        }
+
+        resizeLayout();
 
         $(document).on('keyup', function (e) {
             if (e.key === 'Escape') {
@@ -391,20 +526,20 @@ function displayIdentityCheck(required, callbackFn) {
         $(document).off('submit', '#frmSelectGallery').on('submit', '#frmSelectGallery', function (e) {
             preventDefaults(e);
 
-            var galleryId = $('input#gallery-id,select#gallery-id').val();
-            var secretKey = $('input#gallery-key').val();
+            var galleryId = $('input#gallery-id,select#gallery-id').val().trim();
+            var secretKey = $('input#gallery-key').val().trim();
 
-            const regex = /^[a-zA-Z0-9\-\s-_~]+$/;
+            const regex = /^[a-zA-Z0-9\-\s\-_~]+$/;
             if (galleryId && galleryId.length > 0 && regex.test(galleryId)) {
                 $.ajax({
                     type: "POST",
                     url: '/Gallery/Login',
-                    data: { id: galleryId, key: secretKey },
+                    data: { identifier: galleryId, key: secretKey },
                     success: function (data) {
                         if (data.success && data.redirectUrl) {
                             window.location = data.redirectUrl;
                         } else {
-                            displayMessage(localization.translate('Gallery'), localization.translate('Gallery_Invalid_Secret_Key'));
+                            displayMessage(localization.translate('Gallery'), localization.translate('Gallery_Invalid_Gallery_Or_Secret_Key'));
                         }
                     }
                 });
@@ -441,7 +576,11 @@ function displayIdentityCheck(required, callbackFn) {
                     hideLoader();
 
                     if (data.success === true) {
-                        if (data.mfa === true) {
+                        if (data.pending_activation == true)
+                        {
+                            displayMessage(localization.translate('Login'), localization.translate('Login_Verify_Email'));
+                        }
+                        else if (data.mfa === true) {
                             displayPopup({
                                 Title: localization.translate('2FA'),
                                 Fields: [{
@@ -466,7 +605,7 @@ function displayIdentityCheck(required, callbackFn) {
                                                 } else if (data.message) {
                                                     displayMessage(localization.translate('Login'), localization.translate('Login_Failed'), [data.message]);
                                                 } else {
-                                                    displayMessage(localization.translate('Login'), localization.translate('Login_Failed'));
+                                                    displayMessage(localization.translate('Login'), localization.translate('Unexpected_Error_Occurred'));
                                                 }
                                             }
                                         });
@@ -487,6 +626,195 @@ function displayIdentityCheck(required, callbackFn) {
                 .fail((xhr, error) => {
                     hideLoader();
                     displayMessage(localization.translate('Login'), localization.translate('Login_Failed'), [error]);
+                });
+        });
+
+        $(document).off('submit', '#frmRegisterAccount').on('submit', '#frmRegisterAccount', function (e) {
+            preventDefaults(e);
+
+            var token = $('#frmRegisterAccount input[name=\'__RequestVerificationToken\']').val();
+
+            var username = $('#frmRegisterAccount input.input-username').val();
+            if (username === undefined || username.length < 5 || username.length > 50) {
+                displayMessage(localization.translate('Registration'), localization.translate('Registration_Invalid_Username'));
+                return;
+            }
+
+            var email = $('#frmRegisterAccount input.input-email').val();
+            if (email === undefined || email.length === 0 || email.length > 100 || email.indexOf('@') === -1 || email.indexOf('.') === -1) {
+                displayMessage(localization.translate('Registration'), localization.translate('Registration_Invalid_Email'));
+                return;
+            }
+
+            var password = $('#frmRegisterAccount input.input-password').val();
+            if (password === undefined || password.length < 8 || password.length > 100) {
+                displayMessage(localization.translate('Registration'), localization.translate('Registration_Invalid_Password'));
+                return;
+            }
+
+            var cpassword = $('#frmRegisterAccount input.input-cpassword').val();
+            if (cpassword === undefined || cpassword.length === 0 || cpassword !== password) {
+                displayMessage(localization.translate('Registration'), localization.translate('Registration_Invalid_CPassword'));
+                return;
+            }
+
+            displayLoader(localization.translate('Loading'));
+
+            $.ajax({
+                url: '/Account/Register',
+                method: 'POST',
+                data: { __RequestVerificationToken: token, Username: username, EmailAddress: email, Password: password, ConfirmPassword: cpassword }
+            })
+                .done(data => {
+                    hideLoader();
+
+                    if (data.success === true) {
+                        if (data.validation === true) {
+                            displayMessage(localization.translate('Registration'), localization.translate('Registration_Success_Validation'), null, function () {
+                                window.location = `/Account`;
+                            });
+                        } else {
+                            displayMessage(localization.translate('Registration'), localization.translate('Registration_Success'), null, function () {
+                                displayLoader(localization.translate('Loading'));
+                                $.ajax({
+                                    url: '/Account/Login',
+                                    method: 'POST',
+                                    data: { __RequestVerificationToken: token, Username: username, Password: password }
+                                })
+                                    .done(data => {
+                                        hideLoader();
+
+                                        if (data.success === true) {
+                                            window.location = `/Account`;
+                                        } else if (data.message) {
+                                            displayMessage(localization.translate('Registration'), localization.translate('Login_Failed'), [data.message]);
+                                        } else {
+                                            displayMessage(localization.translate('Registration'), localization.translate('Login_Invalid_Details'));
+                                        }
+                                    })
+                                    .fail((xhr, error) => {
+                                        hideLoader();
+                                        displayMessage(localization.translate('Registration'), localization.translate('Login_Failed'), [error]);
+                                    });
+                            });
+                        }
+                    } else if (data.message) {
+                        displayMessage(localization.translate('Registration'), localization.translate('Registration_Failed'), [data.message]);
+                    } else {
+                        displayMessage(localization.translate('Registration'), localization.translate('Unexpected_Error_Occurred'));
+                    }
+                })
+                .fail((xhr, error) => {
+                    hideLoader();
+                    displayMessage(localization.translate('Registration'), localization.translate('Registration_Failed'), [error]);
+                });
+        });
+
+        $(document).off('submit', '#frmForgotPassword').on('submit', '#frmForgotPassword', function (e) {
+            preventDefaults(e);
+
+            var token = $('#frmForgotPassword input[name=\'__RequestVerificationToken\']').val();
+
+            var email = $('#frmForgotPassword input.input-email').val();
+            if (email === undefined || email.length === 0 || email.length > 100 || email.indexOf('@') === -1 || email.indexOf('.') === -1) {
+                displayMessage(localization.translate('Registration'), localization.translate('Registration_Invalid_Email'));
+                return;
+            }
+
+            displayLoader(localization.translate('Loading'));
+
+            $.ajax({
+                url: '/Account/ForgotPassword',
+                method: 'POST',
+                data: { __RequestVerificationToken: token, emailAddress: email }
+            })
+                .done(data => {
+                    hideLoader();
+
+                    if (data.message) {
+                        displayMessage(localization.translate('ForgotPassword'), localization.translate('ForgotPassword_Failed'), [data.message]);
+                    } else {
+                        displayMessage(localization.translate('ForgotPassword'), localization.translate('ForgotPassword_Sent'), null, function () {
+                            window.location = `/Account/Login`;
+                        });
+                    }
+                })
+                .fail((xhr, error) => {
+                    hideLoader();
+                    displayMessage(localization.translate('ForgotPassword'), localization.translate('ForgotPassword_Failed'), [error]);
+                });
+        });
+
+        $(document).off('submit', '#frmResetPassword').on('submit', '#frmResetPassword', function (e) {
+            preventDefaults(e);
+
+            var token = $('#frmResetPassword input[name=\'__RequestVerificationToken\']').val();
+
+            var data = $('#frmResetPassword input.input-data').val();
+            if (data === undefined || data.length === 0) {
+                displayMessage(localization.translate('PasswordReset'), localization.translate('Unexpected_Error_Occurred'));
+                return;
+            }
+
+            var password = $('#frmResetPassword input.input-password').val();
+            if (password === undefined || password.length < 8 || password.length > 100) {
+                displayMessage(localization.translate('PasswordReset'), localization.translate('Registration_Invalid_Password'));
+                return;
+            }
+
+            var cpassword = $('#frmResetPassword input.input-cpassword').val();
+            if (cpassword === undefined || cpassword.length === 0 || cpassword !== password) {
+                displayMessage(localization.translate('PasswordReset'), localization.translate('Registration_Invalid_CPassword'));
+                return;
+            }
+
+            displayLoader(localization.translate('Loading'));
+
+            $.ajax({
+                url: '/Account/ResetPassword',
+                method: 'POST',
+                data: { __RequestVerificationToken: token, Data: data, Password: password, ConfirmPassword: cpassword }
+            })
+                .done(data => {
+                    hideLoader();
+
+                    if (data.success === true && data.username) {
+                        displayMessage(localization.translate('PasswordReset'), localization.translate('PasswordReset_Success'), null, function () {
+                            if (data.mfa) {
+                                window.location = `/Account/Login`;
+                            } else {
+                                displayLoader(localization.translate('Loading'));
+                                $.ajax({
+                                    url: '/Account/Login',
+                                    method: 'POST',
+                                    data: { __RequestVerificationToken: token, Username: data.username, Password: password }
+                                })
+                                    .done(data => {
+                                        hideLoader();
+
+                                        if (data.success === true) {
+                                            window.location = `/Account`;
+                                        } else if (data.message) {
+                                            displayMessage(localization.translate('PasswordReset'), localization.translate('Login_Failed'), [data.message]);
+                                        } else {
+                                            displayMessage(localization.translate('PasswordReset'), localization.translate('Login_Invalid_Details'));
+                                        }
+                                    })
+                                    .fail((xhr, error) => {
+                                        hideLoader();
+                                        displayMessage(localization.translate('PasswordReset'), localization.translate('Login_Failed'), [error]);
+                                    });
+                            }
+                        });
+                    } else if (data.message) {
+                        displayMessage(localization.translate('PasswordReset'), localization.translate('PasswordReset_Failed'), [data.message]);
+                    } else {
+                        displayMessage(localization.translate('PasswordReset'), localization.translate('Unexpected_Error_Occurred'));
+                    }
+                })
+                .fail((xhr, error) => {
+                    hideLoader();
+                    displayMessage(localization.translate('PasswordReset'), localization.translate('PasswordReset_Failed'), [error]);
                 });
         });
 

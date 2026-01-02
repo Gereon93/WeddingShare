@@ -2,6 +2,6 @@
 {
     public class ProtectedValues
     {
-        public static readonly string[] GalleryNames = [ "All", "Default" ];
+        public static readonly string[] GalleryNames = [ "All" ];
     }
 }

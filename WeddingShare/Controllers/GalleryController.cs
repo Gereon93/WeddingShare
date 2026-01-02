@@ -1,8 +1,10 @@
+using System.Net;
+using System.Text;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http.Timeouts;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
-using System.Net;
 using WeddingShare.Attributes;
 using WeddingShare.Constants;
 using WeddingShare.Enums;
@@ -107,10 +109,10 @@ namespace WeddingShare.Controllers
                 galleryId = await _database.GetGalleryIdByName(id);
             }
 
-            GalleryModel? gallery = await _database.GetGallery(galleryId.Value);
+            GalleryModel? gallery = galleryId != null ? await _database.GetGallery(galleryId.Value) : null;
             if (gallery == null)
             {
-                if (await _settings.GetOrDefault(Settings.Basic.GuestGalleryCreation, false))
+                if (User?.Identity != null || await _settings.GetOrDefault(Settings.Basic.GuestGalleryCreation, false))
                 { 
                     if (await _database.GetGalleryCount() < await _settings.GetOrDefault(Settings.Basic.MaxGalleryCount, 1000000))
                     {
@@ -118,7 +120,7 @@ namespace WeddingShare.Controllers
                         {
                             Name = id?.ToLower() ?? GalleryHelper.GenerateGalleryIdentifier(),
                             SecretKey = key,
-                            Owner = 0
+                            Owner = User?.Identity?.GetUserId() ?? 0
                         });
                     }
                     else
@@ -167,7 +169,12 @@ namespace WeddingShare.Controllers
 
             if (galleryId != null)
             {
-                // Check if user has provided their name (required for first-time visitors)
+
+                var userPermissions = User?.Identity?.GetUserPermissions() ?? new Permissions();
+
+                if (galleryId < 1 && !userPermissions.Gallery.HasFlag(GalleryPermissions.ViewAllGallery))
+                {
+                    return new RedirectToActionResult("Index", "Error", new { Reason = ErrorCode.InvalidGalleryId }, false);
                 var viewerIdentity = HttpContext.Session.GetString(SessionKey.ViewerIdentity);
                 var requireNameEntry = await _settings.GetOrDefault(Settings.IdentityCheck.RequireIdentityForUpload, false, galleryId);
 
@@ -175,6 +182,7 @@ namespace WeddingShare.Controllers
                 {
                     // Redirect to name capture page
                     return RedirectToAction("CaptureIdentity", new { galleryId, identifier, key, returnUrl = Request.Path + Request.QueryString });
+                }
                 }
 
                 if (!string.IsNullOrWhiteSpace(culture))
@@ -217,9 +225,7 @@ namespace WeddingShare.Controllers
                     _fileHelper.CreateDirectoryIfNotExists(Path.Combine(galleryPath, "Pending"));
 
                     ViewBag.GalleryIdentifier = gallery.Identifier;
-
-                    var secretKey = await _settings.GetOrDefault(Settings.Gallery.SecretKey, string.Empty, gallery.Id);
-                    ViewBag.SecretKey = secretKey;
+                    ViewBag.SecretKey = gallery.SecretKey;
 
                     var currentPage = 1;
                     try
@@ -274,10 +280,9 @@ namespace WeddingShare.Controllers
                     var allowedFileTypes = (await _settings.GetOrDefault(Settings.Gallery.AllowedFileTypes, ".jpg,.jpeg,.png,.mp4,.mov", gallery?.Id)).Split(',', StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries);
                     var items = (await _database.GetAllGalleryItems(gallery?.Id, GalleryItemState.Approved, mediaType, orientation, galleryGroup, galleryOrder, itemsPerPage, currentPage))?.Where(x => allowedFileTypes.Any(y => string.Equals(Path.GetExtension(x.Title).Trim('.'), y.Trim('.'), StringComparison.OrdinalIgnoreCase)));
 
-                    var userPermissions = User?.Identity?.GetUserPermissions() ?? AccessPermissions.None;
-                    var isGalleryAdmin = User?.Identity != null && User.Identity.IsAuthenticated && userPermissions.HasFlag(AccessPermissions.Gallery_Upload);
-
-                    var uploadActvated = !gallery.Identifier.Equals("All", StringComparison.OrdinalIgnoreCase) && (await _settings.GetOrDefault(Settings.Gallery.Upload, true, gallery?.Id) || isGalleryAdmin);
+                    var isGalleryAdmin = User?.Identity != null && User.Identity.IsAuthenticated && userPermissions.Gallery.HasFlag(GalleryPermissions.Upload);
+                    
+                    var uploadActvated = !gallery.Identifier.Equals("All", StringComparison.OrdinalIgnoreCase) && (isGalleryAdmin || await _settings.GetOrDefault(Settings.Gallery.Upload, true, gallery?.Id));
                     if (uploadActvated)
                     {
                         try
@@ -320,24 +325,24 @@ namespace WeddingShare.Controllers
                     }
 
                     var itemCounts = await _database.GetGalleryItemCount(gallery?.Id, GalleryItemState.All, mediaType, orientation);
-                    var galleryIdentifiers = !gallery.Identifier.Equals("All", StringComparison.OrdinalIgnoreCase) ? new Dictionary<int, string>() { { gallery.Id, gallery.Identifier } } : items?.GroupBy(x => x.Id)?.Select(x => new KeyValuePair<int, string>(x.Key, _database.GetGalleryIdentifier(x.Key).Result))?.ToDictionary();
+                    var galleryIdentifiers = !gallery.Identifier.Equals("All", StringComparison.OrdinalIgnoreCase) ? new Dictionary<int, string>() { { gallery.Id, gallery.Identifier } } : items?.GroupBy(x => x.GalleryId)?.Select(x => new KeyValuePair<int, string>(x.Key, _database.GetGalleryIdentifier(x.Key).Result))?.ToDictionary();
                     var model = new PhotoGallery()
                     {
                         Gallery = gallery,
-                        SecretKey = secretKey,
+                        SecretKey = gallery.SecretKey,
                         Images = items?.Select(x => {
                             var galleryIdentifier = galleryIdentifiers != null && galleryIdentifiers.ContainsKey(x.GalleryId) ? galleryIdentifiers[x.GalleryId] : gallery.Identifier;
                             return new PhotoGalleryImage()
                             {
                                 Id = x.Id,
                                 GalleryId = x.GalleryId,
+                                GalleryName = gallery.Name,
                                 Name = Path.GetFileName(x.Title),
                                 UploadedBy = x.UploadedBy,
                                 UploaderEmailAddress = x.UploaderEmailAddress,
                                 UploadDate = x.UploadedDate,
                                 ImagePath = $"/{Path.Combine(UploadsDirectory, galleryIdentifier).Remove(_hostingEnvironment.WebRootPath).Replace('\\', '/').TrimStart('/')}/{x.Title}",
                                 ThumbnailPath = $"/{Path.Combine(ThumbnailsDirectory, galleryIdentifier).Remove(_hostingEnvironment.WebRootPath).Replace('\\', '/').TrimStart('/')}/{Path.GetFileNameWithoutExtension(x.Title)}.webp",
-                                ThumbnailPathFallback = $"/{ThumbnailsDirectory.Remove(_hostingEnvironment.WebRootPath).Replace('\\', '/').TrimStart('/')}/{Path.GetFileNameWithoutExtension(x.Title)}.webp",
                                 MediaType = x.MediaType
                             };
                         })?.ToList(),
@@ -376,9 +381,8 @@ namespace WeddingShare.Controllers
                 var gallery = await _database.GetGallery(galleryId);
                 if (gallery != null)
                 {
-                    var secretKey = await _settings.GetOrDefault(Settings.Gallery.SecretKey, string.Empty, gallery.Id);
                     string key = (Request?.Form?.FirstOrDefault(x => string.Equals("SecretKey", x.Key, StringComparison.OrdinalIgnoreCase)).Value)?.ToString() ?? string.Empty;
-                    if (!string.IsNullOrWhiteSpace(secretKey) && !string.Equals(secretKey, key))
+                    if (!string.IsNullOrWhiteSpace(gallery.SecretKey) && !string.Equals(gallery.SecretKey, key))
                     {
                         return Json(new { success = false, uploaded = 0, errors = new List<string>() { _localizer["Invalid_Secret_Key_Warning"].Value } });
                     }
@@ -417,8 +421,9 @@ namespace WeddingShare.Controllers
                     var files = Request?.Form?.Files;
                     if (files != null && files.Count > 0)
                     {
-                        // Photographers don't need review ONLY if authorized for this gallery
-                        var requiresReview = isPhotographer ? false : await _settings.GetOrDefault(Settings.Gallery.RequireReview, true, gallery.Id);
+                        var galleryOwner = await _database.GetUser(gallery.Owner);
+                        var isFreeGallery = gallery.Owner > 0 && (galleryOwner?.Level ?? UserLevel.Free) == UserLevel.Free;
+                        var requiresReview = !isFreeGallery && await _settings.GetOrDefault(Settings.Gallery.RequireReview, true, gallery.Id);
 
                         var uploaded = 0;
                         var errors = new List<string>();
@@ -547,15 +552,17 @@ namespace WeddingShare.Controllers
                 var gallery = await _database.GetGallery(galleryId);
                 if (gallery != null)
                 {
-                    var secretKey = await _settings.GetOrDefault(Settings.Gallery.SecretKey, string.Empty, galleryId);
                     string key = (Request?.Form?.FirstOrDefault(x => string.Equals("SecretKey", x.Key, StringComparison.OrdinalIgnoreCase)).Value)?.ToString() ?? string.Empty;
-                    if (!string.IsNullOrWhiteSpace(secretKey) && !string.Equals(secretKey, key))
+                    if (!string.IsNullOrWhiteSpace(gallery.SecretKey) && !string.Equals(gallery.SecretKey, key))
                     {
                         return Json(new { success = false, uploaded = 0, errors = new List<string>() { _localizer["Invalid_Secret_Key_Warning"].Value } });
                     }
 
                     var uploadedBy = HttpContext.Session.GetString(SessionKey.ViewerIdentity) ?? "Anonymous";
-                    var requiresReview = await _settings.GetOrDefault(Settings.Gallery.RequireReview, true, galleryId);
+
+                    var galleryOwner = await _database.GetUser(gallery.Owner);
+                    var isFreeGallery = gallery.Owner > 0 && (galleryOwner?.Level ?? UserLevel.Free) == UserLevel.Free;
+                    var requiresReview = !isFreeGallery && await _settings.GetOrDefault(Settings.Gallery.RequireReview, true, gallery.Id);
 
                     int uploaded = int.Parse((Request?.Form?.FirstOrDefault(x => string.Equals("Count", x.Key, StringComparison.OrdinalIgnoreCase)).Value)?.ToString() ?? "0");
                     if (uploaded > 0 && requiresReview && await _settings.GetOrDefault(Notifications.Alerts.PendingReview, true))
@@ -581,6 +588,7 @@ namespace WeddingShare.Controllers
         }
 
         [HttpPost]
+        [RequestTimeout("timeout_1h")]
         public async Task<IActionResult> DownloadGallery(int id, string? secretKey, string? group)
         {
             try
@@ -590,8 +598,7 @@ namespace WeddingShare.Controllers
                 {
                     secretKey = secretKey ?? string.Empty;
 
-                    var gallerySecret = await _settings.GetOrDefault(Settings.Gallery.SecretKey, string.Empty, gallery.Id);
-                    if (!secretKey.Equals(gallerySecret))
+                    if (!secretKey.Equals(gallery.SecretKey))
                     {
                         return Json(new { success = false, message = _localizer["Failed_Download_Gallery_Invalid_Key"].Value });
                     }
@@ -736,166 +743,10 @@ namespace WeddingShare.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetMyUploads(int galleryId)
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public string GenerateSecretKey()
         {
-            try
-            {
-                // SECURITY FIX: Validate gallery ID
-                if (galleryId <= 0)
-                {
-                    return Json(new { success = false, message = "Invalid gallery ID" });
-                }
-
-                // SECURITY FIX: Validate device UUID format
-                var deviceUuid = HttpContext.Session.GetString(SessionKey.DeviceUuid);
-                if (string.IsNullOrWhiteSpace(deviceUuid) || !Guid.TryParse(deviceUuid, out _))
-                {
-                    return Json(new { success = false, message = "Invalid session" });
-                }
-
-                var items = await _database.GetGalleryItemsByDeviceUuid(galleryId, deviceUuid);
-                var gallery = await _database.GetGallery(galleryId);
-
-                if (gallery == null)
-                {
-                    return Json(new { success = false, message = "Gallery not found" });
-                }
-
-                var result = items.Select(x => new
-                {
-                    id = x.Id,
-                    title = x.Title,
-                    uploadedBy = x.UploadedBy,
-                    uploadedDate = x.UploadedDate,
-                    state = x.State.ToString(),
-                    imagePath = $"/{Path.Combine(UploadsDirectory, gallery.Identifier).Remove(_hostingEnvironment.WebRootPath).Replace('\\', '/').TrimStart('/')}/{x.Title}",
-                    thumbnailPath = $"/{Path.Combine(ThumbnailsDirectory, gallery.Identifier).Remove(_hostingEnvironment.WebRootPath).Replace('\\', '/').TrimStart('/')}/{Path.GetFileNameWithoutExtension(x.Title)}.webp"
-                });
-
-                return Json(new { success = true, items = result });
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, $"Failed to get user uploads - {ex?.Message}");
-                return Json(new { success = false, message = "Internal error" });
-            }
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken] // SECURITY FIX: CSRF protection
-        public async Task<IActionResult> DeleteMyUpload(int itemId)
-        {
-            try
-            {
-                // SECURITY FIX: Validate item ID
-                if (itemId <= 0)
-                {
-                    return Json(new { success = false, message = "Invalid item ID" });
-                }
-
-                // SECURITY FIX: Validate device UUID format
-                var deviceUuid = HttpContext.Session.GetString(SessionKey.DeviceUuid);
-                if (string.IsNullOrWhiteSpace(deviceUuid) || !Guid.TryParse(deviceUuid, out _))
-                {
-                    return Json(new { success = false, message = "Invalid session" });
-                }
-
-                // Verify ownership before deleting
-                var item = await _database.GetGalleryItem(itemId);
-                if (item == null)
-                {
-                    return Json(new { success = false, message = "Item not found" });
-                }
-
-                if (item.DeviceUuid != deviceUuid)
-                {
-                    return Json(new { success = false, message = "Unauthorized: You can only delete your own uploads" });
-                }
-
-                var gallery = await _database.GetGallery(item.GalleryId);
-                if (gallery == null)
-                {
-                    return Json(new { success = false, message = "Gallery not found" });
-                }
-
-                var success = await _database.DeleteGalleryItemByDeviceUuid(itemId, deviceUuid);
-
-                if (success)
-                {
-                    // Delete physical files
-                    var uploadPath = Path.Combine(UploadsDirectory, gallery.Identifier, item.Title);
-                    var pendingPath = Path.Combine(UploadsDirectory, gallery.Identifier, "Pending", item.Title);
-                    var thumbnailPath = Path.Combine(ThumbnailsDirectory, gallery.Identifier, $"{Path.GetFileNameWithoutExtension(item.Title)}.webp");
-
-                    _fileHelper.DeleteFileIfExists(uploadPath);
-                    _fileHelper.DeleteFileIfExists(pendingPath);
-                    _fileHelper.DeleteFileIfExists(thumbnailPath);
-                }
-
-                return Json(new { success });
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, $"Failed to delete user upload - {ex?.Message}");
-                return Json(new { success = false, message = "Internal error" });
-            }
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken] // SECURITY FIX: CSRF protection
-        public async Task<IActionResult> ToggleLike(int itemId)
-        {
-            try
-            {
-                // SECURITY FIX: Validate item ID
-                if (itemId <= 0)
-                {
-                    return Json(new { success = false, message = "Invalid item ID" });
-                }
-
-                // SECURITY FIX: Validate device UUID format
-                var deviceUuid = HttpContext.Session.GetString(SessionKey.DeviceUuid);
-                if (string.IsNullOrWhiteSpace(deviceUuid) || !Guid.TryParse(deviceUuid, out _))
-                {
-                    return Json(new { success = false, message = "Invalid session" });
-                }
-
-                var success = await _database.ToggleLike(itemId, deviceUuid);
-                var likeCount = await _database.GetLikeCount(itemId);
-                var isLiked = await _database.HasUserLiked(itemId, deviceUuid);
-
-                return Json(new { success, likeCount, isLiked });
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, $"Failed to toggle like - {ex?.Message}");
-                return Json(new { success = false, message = "Internal error" });
-            }
-        }
-
-        [HttpGet]
-        public async Task<IActionResult> GetLikeInfo(int itemId)
-        {
-            try
-            {
-                // SECURITY FIX: Validate item ID
-                if (itemId <= 0)
-                {
-                    return Json(new { success = false, message = "Invalid item ID" });
-                }
-
-                // SECURITY FIX: Validate device UUID format
-                var deviceUuid = HttpContext.Session.GetString(SessionKey.DeviceUuid);
-                var likeCount = await _database.GetLikeCount(itemId);
-                var isLiked = !string.IsNullOrWhiteSpace(deviceUuid) && Guid.TryParse(deviceUuid, out _) && await _database.HasUserLiked(itemId, deviceUuid);
-
-                return Json(new { success = true, likeCount, isLiked });
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, $"Failed to get like info - {ex?.Message}");
-                return Json(new { success = false, message = "Internal error" });
-            }
+            return PasswordHelper.GenerateGallerySecretKey();
         }
     }
 }

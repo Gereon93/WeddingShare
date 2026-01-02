@@ -94,6 +94,18 @@
   <data name="406_Error_Title" xml:space="preserve">
     <value>Galeria no vàlida</value>
   </data>
+  <data name="407_Error_Message" xml:space="preserve">
+    <value>Hi va haver un problema mentre intentava verificar el teu compte. Si us plau, assegureu- vos que l' enllaç de verificació és vàlid.</value>
+  </data>
+  <data name="407_Error_Title" xml:space="preserve">
+    <value>Verificació no vàlida Enllaç</value>
+  </data>
+  <data name="408_Error_Message" xml:space="preserve">
+    <value>Hi ha hagut un problema en intentar reiniciar la vostra contrasenya de comptes. Si us plau, assegureu- vos que l' enllaç de verificació és vàlid.</value>
+  </data>
+  <data name="408_Error_Title" xml:space="preserve">
+    <value>Contrasenya Reinicia l' enllaç</value>
+  </data>
   <data name="Accept" xml:space="preserve">
     <value>Accepta</value>
   </data>
@@ -120,6 +132,12 @@
   </data>
   <data name="Audit" xml:space="preserve">
     <value>Auditoria</value>
+  </data>
+  <data name="Audit_Account_Registered" xml:space="preserve">
+    <value>Compte registrat per l' usuari</value>
+  </data>
+  <data name="Audit_ActivateUser" xml:space="preserve">
+    <value>Usuari activat</value>
   </data>
   <data name="Audit_BulkApproveReviews" xml:space="preserve">
     <value>Massa aprovat totes les revisions pendents</value>
@@ -148,6 +166,9 @@
   <data name="Audit_DeletedUser" xml:space="preserve">
     <value>Eliminat d' usuari</value>
   </data>
+  <data name="Audit_Email_Verified" xml:space="preserve">
+    <value>L' usuari ha verificat la seva adreça de correu electrònic</value>
+  </data>
   <data name="Audit_ExportedBackup" xml:space="preserve">
     <value>S' ha exportat una còpia de seguretat</value>
   </data>
@@ -156,6 +177,9 @@
   </data>
   <data name="Audit_FailedLoginAttemptReset" xml:space="preserve">
     <value>El comptador de intents d' accés ha fallat ha reiniciat</value>
+  </data>
+  <data name="Audit_Forgot_Password" xml:space="preserve">
+    <value>L' usuari ha demanat reiniciar la contrasenya</value>
   </data>
   <data name="Audit_FrozeUser" xml:space="preserve">
     <value>Usuari Froze</value>
@@ -198,6 +222,9 @@
   </data>
   <data name="Audit_MultiFactorResetUser" xml:space="preserve">
     <value>Reinicia el factor multi per a l' usuari</value>
+  </data>
+  <data name="Audit_Password_Reset" xml:space="preserve">
+    <value>L' usuari ha demanat reiniciar la contrasenya</value>
   </data>
   <data name="Audit_SearchTerm_Help" xml:space="preserve">
     <value>Filtra els registres basats en un terme de cerca</value>
@@ -379,6 +406,21 @@
   <data name="Filter" xml:space="preserve">
     <value>Filtre</value>
   </data>
+  <data name="Forgot_Password" xml:space="preserve">
+    <value>Contrasenya perduda</value>
+  </data>
+  <data name="ForgotPassword" xml:space="preserve">
+    <value>Contrasenya perduda</value>
+  </data>
+  <data name="ForgotPassword_Email_Help" xml:space="preserve">
+    <value>Introduïu l' adreça de correu electrònic del compte.</value>
+  </data>
+  <data name="ForgotPassword_Email_Label" xml:space="preserve">
+    <value>Adreça de correu electrònic</value>
+  </data>
+  <data name="ForgotPassword_Failed" xml:space="preserve">
+    <value>Ha fallat en enviar el correu de reinici de la contrasenya</value>
+  </data>
   <data name="Galleries" xml:space="preserve">
     <value>Galleries</value>
   </data>
@@ -396,6 +438,15 @@
   </data>
   <data name="Gallery_Full" xml:space="preserve">
     <value>La galeria està plena i ha excedit la mida màxima de</value>
+  </data>
+  <data name="Gallery_Identifier" xml:space="preserve">
+    <value>Identificador de la galeria</value>
+  </data>
+  <data name="Gallery_Identifier_Help" xml:space="preserve">
+    <value>Si us plau, introduïu l' identificador de la galeria que voleu visitar.</value>
+  </data>
+  <data name="Gallery_Identifier_Placeholder" xml:space="preserve">
+    <value>la meva passada d'un costat</value>
   </data>
   <data name="Gallery_Key" xml:space="preserve">
     <value>Clau de Gallery</value>
@@ -417,12 +468,6 @@
   </data>
   <data name="Gallery_Name_Already_Exists" xml:space="preserve">
     <value>El nom de la galeria ja existeix</value>
-  </data>
-  <data name="Gallery_Name_Help" xml:space="preserve">
-    <value>Si us plau, introduïu el nom de la galeria que voleu visitar.</value>
-  </data>
-  <data name="Gallery_Name_Placeholder" xml:space="preserve">
-    <value>la meva passada d'un costat</value>
   </data>
   <data name="Gallery_Selector_Title" xml:space="preserve">
     <value>Selector de galeria</value>
@@ -535,6 +580,24 @@
   <data name="None" xml:space="preserve">
     <value>Cap</value>
   </data>
+  <data name="Password_Reset_Changed_Message" xml:space="preserve">
+    <value>La vostra contrasenya s' ha reiniciat ara. Si no heu demanat que es reiniciï una contrasenya, si us plau, torneu a l' administrador immediatament.</value>
+  </data>
+  <data name="Password_Reset_Changed_Title" xml:space="preserve">
+    <value>S' ha actualitzat la contrasenya!</value>
+  </data>
+  <data name="Password_Reset_Requested_Message" xml:space="preserve">
+    <value>S' ha reiniciat una contrasenya pel vostre compte. Si heu demanat un canvi de contrasenya, feu clic sobre l' enllaç de sota per actualitzar- lo.</value>
+  </data>
+  <data name="Password_Reset_Requested_Title" xml:space="preserve">
+    <value>Problemes per accedir al teu compte?</value>
+  </data>
+  <data name="PasswordReset" xml:space="preserve">
+    <value>Reinicia la contrasenya</value>
+  </data>
+  <data name="PasswordReset_Failed" xml:space="preserve">
+    <value>Ha fallat en enviar el correu de reinici de la contrasenya.</value>
+  </data>
   <data name="Pending" xml:space="preserve">
     <value>Pendent</value>
   </data>
@@ -553,6 +616,75 @@
   <data name="Random" xml:space="preserve">
     <value>Aleatori</value>
   </data>
+  <data name="Register" xml:space="preserve">
+    <value>Registra</value>
+  </data>
+  <data name="Register_Account" xml:space="preserve">
+    <value>Registra compte</value>
+  </data>
+  <data name="Register_CPassword_Help" xml:space="preserve">
+    <value>Confirma la vostra contrasenya</value>
+  </data>
+  <data name="Register_CPassword_Label" xml:space="preserve">
+    <value>Confirma la contrasenya</value>
+  </data>
+  <data name="Register_Email_Help" xml:space="preserve">
+    <value>Introduïu l' adreça de correu electrònic del compte.</value>
+  </data>
+  <data name="Register_Email_Label" xml:space="preserve">
+    <value>Adreça de correu electrònic</value>
+  </data>
+  <data name="Register_Password_Help" xml:space="preserve">
+    <value>Contrasenya introduïu una contrasenya.</value>
+  </data>
+  <data name="Register_Password_Label" xml:space="preserve">
+    <value>Contrasenya</value>
+  </data>
+  <data name="Register_Username_Help" xml:space="preserve">
+    <value>Introduïu el nom d' usuari del compte.</value>
+  </data>
+  <data name="Register_Username_Label" xml:space="preserve">
+    <value>Nom d' usuari</value>
+  </data>
+  <data name="Registration_Confirm_Password_Missmatch" xml:space="preserve">
+    <value>La contrasenya de confirmació no concorda</value>
+  </data>
+  <data name="Registration_Email_Send_Failed" xml:space="preserve">
+    <value>Ha fallat en enviar el correu del registre a l' usuari.</value>
+  </data>
+  <data name="Registration_Email_Taken" xml:space="preserve">
+    <value>Ja existeix un compte amb l' adreça de correu electrònic especificadaName</value>
+  </data>
+  <data name="Registration_Failed" xml:space="preserve">
+    <value>Ha fallat el registre del nou usuari</value>
+  </data>
+  <data name="Registration_Invalid_Email" xml:space="preserve">
+    <value>Especifiqueu una adreça de correu vàlida</value>
+  </data>
+  <data name="Registration_Invalid_Password" xml:space="preserve">
+    <value>Si us plau, especifiqueu una contrasenya vàlida entre 8 i 100 caràcters, que conté com a mínim 1 majúscula, 1 lletra minúscula, 1 número i 1 caràcter especial</value>
+  </data>
+  <data name="Registration_Invalid_Username" xml:space="preserve">
+    <value>Especifiqueu un nom d' usuari vàlid entre 5 i 50 caràcters</value>
+  </data>
+  <data name="Registration_Invalid_Verification_Link" xml:space="preserve">
+    <value>Hi ha hagut un problema en processar l' enllaç de verificació de correu electrònic</value>
+  </data>
+  <data name="Registration_Success_Message" xml:space="preserve">
+    <value>S' ha registrat amb èxit el compte i s' està esperant que l' accési</value>
+  </data>
+  <data name="Registration_Success_Title" xml:space="preserve">
+    <value>Benvinguts!</value>
+  </data>
+  <data name="Registration_Success_Verification" xml:space="preserve">
+    <value>El vostre compte s' ha registrat però cal verificar- lo abans que s' hi pugui accedir. Si us plau, activeu el vostre compte clicant l' enllaç a sota.</value>
+  </data>
+  <data name="Registration_Username_Taken" xml:space="preserve">
+    <value>El nom d' usuari ja existeix. Seleccioneu- ne una de nova</value>
+  </data>
+  <data name="Registration_Weak_Password" xml:space="preserve">
+    <value>La contrasenya especificada és fàcil de suposar. Si us plau seleccioneu una contrasenya més segura.</value>
+  </data>
   <data name="Reject" xml:space="preserve">
     <value>Rebutja</value>
   </data>
@@ -561,6 +693,9 @@
   </data>
   <data name="Rename" xml:space="preserve">
     <value>Reanomena</value>
+  </data>
+  <data name="ResetPassword_Invalid_Reset_Link" xml:space="preserve">
+    <value>Hi ha hagut un problema en processar l' enllaç de reinici de la contrasenya</value>
   </data>
   <data name="Resources" xml:space="preserve">
     <value>Recursos</value>
@@ -603,6 +738,18 @@
   </data>
   <data name="Settings_Account_Profile_Icon_Label" xml:space="preserve">
     <value>Icona de perfil</value>
+  </data>
+  <data name="Settings_Account_Registration_Enabled_Help" xml:space="preserve">
+    <value>Els convidats estan autoritzats a registrar els comptes?</value>
+  </data>
+  <data name="Settings_Account_Registration_Enabled_Label" xml:space="preserve">
+    <value>Registre habilitat</value>
+  </data>
+  <data name="Settings_Account_Registration_RequireEmailValidation_Help" xml:space="preserve">
+    <value>Es requereix usuaris per verificar el seu correu per tal d' activar el seu compte?</value>
+  </data>
+  <data name="Settings_Account_Registration_RequireEmailValidation_Label" xml:space="preserve">
+    <value>Requereix validació de correu electrònic</value>
   </data>
   <data name="Settings_Alerts" xml:space="preserve">
     <value>Avisos</value>
@@ -892,12 +1039,6 @@
   <data name="Settings_Gallery_ReviewCounter_Label" xml:space="preserve">
     <value>Comptador de revisió</value>
   </data>
-  <data name="Settings_Gallery_SecretKey_Help" xml:space="preserve">
-    <value>Una contrasenya per desbloquejar la galeria</value>
-  </data>
-  <data name="Settings_Gallery_SecretKey_Label" xml:space="preserve">
-    <value>Clau secreta</value>
-  </data>
   <data name="Settings_Gallery_ShowFilters_Help" xml:space="preserve">
     <value>L' usuari hauria de filtrar i agrupar els suports?</value>
   </data>
@@ -1162,6 +1303,9 @@
   <data name="Square" xml:space="preserve">
     <value>Quadrat</value>
   </data>
+  <data name="Submit" xml:space="preserve">
+    <value>Envia</value>
+  </data>
   <data name="Supporters" xml:space="preserve">
     <value>Suports</value>
   </data>
@@ -1176,6 +1320,12 @@
   </data>
   <data name="Update" xml:space="preserve">
     <value>Actualitza</value>
+  </data>
+  <data name="Upgrade" xml:space="preserve">
+    <value>Actualitza</value>
+  </data>
+  <data name="Upgrade_Account_Message" xml:space="preserve">
+    <value>Actualment esteu usant la versió lliure. Per a desbloquejar més emmagatzematge de galeria i altres grans característiques consideren actualitzar el vostre compte</value>
   </data>
   <data name="Upload_Media" xml:space="preserve">
     <value>Puja suports</value>
@@ -1203,6 +1353,9 @@
   </data>
   <data name="Users_List_Failed" xml:space="preserve">
     <value>Ha fallat en obtenir la llista d' usuaris</value>
+  </data>
+  <data name="Verify" xml:space="preserve">
+    <value>Verifica</value>
   </data>
   <data name="Videos" xml:space="preserve">
     <value>Vídeos</value>

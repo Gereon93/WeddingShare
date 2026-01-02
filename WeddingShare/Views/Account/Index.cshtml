@@ -3,53 +3,67 @@
 @using WeddingShare.Views.Account.Tabs
 
 @{
-    var userPermissions = User?.Identity?.GetUserPermissions() ?? AccessPermissions.None;
+    var userPermissions = User?.Identity?.GetUserPermissions() ?? new Permissions();
     var showNoAccessMessage = false;
 
-    if (userPermissions != AccessPermissions.None && userPermissions != AccessPermissions.Login)
+    if (userPermissions.Users.HasFlag(UserPermissions.Login))
     {
+        if (userPermissions.Features.HasFlag(FeaturePermissions.UpgradeToUnlock))
+        {
+            <section class="py-3 border banner-message">
+                <div class="row px-5">
+                    <div class="col-12 col-md-10 text-center">
+                        <span class="px-3">@_localizer["Upgrade_Account_Message"].Value</span>
+                    </div>
+                    <div class="col-12 col-md-2 text-center text-md-start mt-3 mt-md-0">
+                    <button class="btn btn-sm btn-success px-3">@_localizer["Upgrade"].Value</button>
+                    </div>
+                </div>
+            </section>
+        }
+
         <section class="nav-border-bottom pb-0 pb-lg-0">
-            <div class="container px-3 px-lg-1 my-3 my-lg-4">
+            <div class="container px-1 px-md-3 px-lg-1 my-3 my-lg-4">
                 <div class="row">
                     <div class="col-12">
-                        <ul class="nav nav-tabs">
-                            @if (userPermissions.HasFlag(AccessPermissions.Review_View))
+                        <ul class="nav nav-tabs nav-horizontal-scroller">
+                            @if (userPermissions.Review.HasFlag(ReviewPermissions.View))
                             {
                                 <li class="nav-item">
                                     <a class="pnl-selector nav-link @(Model.ActiveTab == AccountTabs.Reviews ? "active" : string.Empty)" href="#" data-tab="reviews">@_localizer["Review"].Value</a>
                                 </li>
                             }
-                            @if (userPermissions.HasFlag(AccessPermissions.Gallery_View))
+                            @if (userPermissions.Gallery.HasFlag(GalleryPermissions.View))
                             {
                                 <li class="nav-item">
                                     <a class="pnl-selector nav-link @(Model.ActiveTab == AccountTabs.Galleries ? "active" : string.Empty)" href="#" data-tab="galleries">@_localizer["Galleries"].Value</a>
                                 </li>
                             }
-                            @if (userPermissions.HasFlag(AccessPermissions.User_View))
+                            @if (userPermissions.Users.HasFlag(UserPermissions.View))
                             {
                                 <li class="nav-item">
                                     <a class="pnl-selector nav-link @(Model.ActiveTab == AccountTabs.Users ? "active" : string.Empty)" href="#" data-tab="users">@_localizer["Users"].Value</a>
                                 </li>
                             }
-                            @if (userPermissions.HasFlag(AccessPermissions.CustomResource_View))
+                            @if (userPermissions.CustomResources.HasFlag(CustomResourcePermissions.View))
                             {
                                 <li class="nav-item">
                                     <a class="pnl-selector nav-link @(Model.ActiveTab == AccountTabs.Resources ? "active" : string.Empty)" href="#" data-tab="resources">@_localizer["Resources"].Value</a>
                                 </li>
                             }
-                            @if (userPermissions.HasFlag(AccessPermissions.Settings_View))
+                            @if (userPermissions.Settings.HasFlag(SettingsPermissions.View))
                             {
                                 <li class="nav-item">
                                     <a class="pnl-selector nav-link @(Model.ActiveTab == AccountTabs.Settings ? "active" : string.Empty)" href="#" data-tab="settings">@_localizer["Settings"].Value</a>
                                 </li>
                             }
-                            @if (userPermissions.HasFlag(AccessPermissions.Audit_View))
+                            @if (userPermissions.Audit.HasFlag(AuditPermissions.View))
                             {
                                 <li class="nav-item">
                                     <a class="pnl-selector nav-link @(Model.ActiveTab == AccountTabs.Audit ? "active" : string.Empty)" href="#" data-tab="audit">@_localizer["Audit"].Value</a>
                                 </li>
                             }
-                            @if (userPermissions.HasFlag(AccessPermissions.Data_View))
+                            @if (userPermissions.Data.HasFlag(DataPermissions.View))
                             {
                                 <li class="nav-item">
                                     <a class="pnl-selector nav-link @(Model.ActiveTab == AccountTabs.Data ? "active" : string.Empty)" href="#" data-tab="data">@_localizer["Data"].Value</a>
@@ -61,31 +75,31 @@
             </div>
         </section>
 
-        @if (Model.ActiveTab == AccountTabs.Reviews && userPermissions.HasFlag(AccessPermissions.Review_View))
+        @if (Model.ActiveTab == AccountTabs.Reviews && userPermissions.Review.HasFlag(ReviewPermissions.View))
         {
             <partial name="~/Views/Account/Tabs/Reviews.cshtml" model="new ReviewsModel() { PendingRequests = Model?.PendingRequests }" />
         }
-        else if (Model.ActiveTab == AccountTabs.Galleries && userPermissions.HasFlag(AccessPermissions.Gallery_View))
+        else if (Model.ActiveTab == AccountTabs.Galleries && userPermissions.Gallery.HasFlag(GalleryPermissions.View))
         {
             <partial name="~/Views/Account/Tabs/Galleries.cshtml" model="new GalleriesModel() { Galleries = Model?.Galleries }" />
         }
-        else if (Model.ActiveTab == AccountTabs.Users && userPermissions.HasFlag(AccessPermissions.User_View))
+        else if (Model.ActiveTab == AccountTabs.Users && userPermissions.Users.HasFlag(UserPermissions.View))
         {
             <partial name="~/Views/Account/Tabs/Users.cshtml" model="new UsersModel() { Users = Model?.Users }" />
         }
-        else if (Model.ActiveTab == AccountTabs.Resources && userPermissions.HasFlag(AccessPermissions.CustomResource_View))
+        else if (Model.ActiveTab == AccountTabs.Resources && userPermissions.CustomResources.HasFlag(CustomResourcePermissions.View))
         {
             <partial name="~/Views/Account/Tabs/Resources.cshtml" model="new ResourcesModel() { CustomResources = Model?.CustomResources }" />
         }
-        else if (Model.ActiveTab == AccountTabs.Settings && userPermissions.HasFlag(AccessPermissions.Settings_View))
+        else if (Model.ActiveTab == AccountTabs.Settings && userPermissions.Settings.HasFlag(SettingsPermissions.View))
         {
             <partial name="~/Views/Account/Tabs/Settings.cshtml" model="new SettingsModel() { Settings = Model?.Settings, CustomResources = Model?.CustomResources }" />
         }
-        else if (Model.ActiveTab == AccountTabs.Audit && userPermissions.HasFlag(AccessPermissions.Audit_View))
+        else if (Model.ActiveTab == AccountTabs.Audit && userPermissions.Audit.HasFlag(AuditPermissions.View))
         {
             <partial name="~/Views/Account/Tabs/Audit.cshtml" model="new AuditModel() { Logs = Model?.AuditLogs }" />
         }
-        else if (Model.ActiveTab == AccountTabs.Data && userPermissions.HasFlag(AccessPermissions.Data_View))
+        else if (Model.ActiveTab == AccountTabs.Data && userPermissions.Data.HasFlag(DataPermissions.View))
         {
             <partial name="~/Views/Account/Tabs/Data.cshtml" model="new DataModel()" />
         }

@@ -94,6 +94,18 @@
   <data name="406_Error_Title" xml:space="preserve">
     <value>Invalid Gallery</value>
   </data>
+  <data name="407_Error_Message" xml:space="preserve">
+    <value>Hesabınızı doğrulamaya çalışırken bir sorun vardı. Lütfen doğrulama bağlantının geçerli olmasını sağlayın.</value>
+  </data>
+  <data name="407_Error_Title" xml:space="preserve">
+    <value>Invalid Verification Link Link Link Link</value>
+  </data>
+  <data name="408_Error_Message" xml:space="preserve">
+    <value>Hesap parolanızı sıfırlamaya çalışırken bir sorun vardı. Lütfen doğrulama bağlantının geçerli olmasını sağlayın.</value>
+  </data>
+  <data name="408_Error_Title" xml:space="preserve">
+    <value>Invalid Password reset Link</value>
+  </data>
   <data name="Accept" xml:space="preserve">
     <value>Kabul</value>
   </data>
@@ -120,6 +132,12 @@
   </data>
   <data name="Audit" xml:space="preserve">
     <value>Denetim Denetim Denetimi</value>
+  </data>
+  <data name="Audit_Account_Registered" xml:space="preserve">
+    <value>Kullanıcı kayıtlı hesabı</value>
+  </data>
+  <data name="Audit_ActivateUser" xml:space="preserve">
+    <value>Aktif kullanıcı</value>
   </data>
   <data name="Audit_BulkApproveReviews" xml:space="preserve">
     <value>Bulk tüm bekleyen yorumları onayladı</value>
@@ -148,6 +166,9 @@
   <data name="Audit_DeletedUser" xml:space="preserve">
     <value>Deleted user</value>
   </data>
+  <data name="Audit_Email_Verified" xml:space="preserve">
+    <value>Kullanıcı e-posta adresini doğruladı</value>
+  </data>
   <data name="Audit_ExportedBackup" xml:space="preserve">
     <value>Bir yedekleme</value>
   </data>
@@ -156,6 +177,9 @@
   </data>
   <data name="Audit_FailedLoginAttemptReset" xml:space="preserve">
     <value>Başarısız giriş girişimleri sıfırlama</value>
+  </data>
+  <data name="Audit_Forgot_Password" xml:space="preserve">
+    <value>Kullanıcı bir parola sıfırlama talep etti</value>
   </data>
   <data name="Audit_FrozeUser" xml:space="preserve">
     <value>Froze kullanıcı</value>
@@ -198,6 +222,9 @@
   </data>
   <data name="Audit_MultiFactorResetUser" xml:space="preserve">
     <value>Kullanıcı için çoklu faktör</value>
+  </data>
+  <data name="Audit_Password_Reset" xml:space="preserve">
+    <value>Kullanıcı bir parola sıfırlama talep etti</value>
   </data>
   <data name="Audit_SearchTerm_Help" xml:space="preserve">
     <value>Bir arama terimine dayanan filtre logları</value>
@@ -379,6 +406,21 @@
   <data name="Filter" xml:space="preserve">
     <value>Filtre</value>
   </data>
+  <data name="Forgot_Password" xml:space="preserve">
+    <value>Forgot Password</value>
+  </data>
+  <data name="ForgotPassword" xml:space="preserve">
+    <value>Forgot Password</value>
+  </data>
+  <data name="ForgotPassword_Email_Help" xml:space="preserve">
+    <value>Lütfen hesabı e-posta adresi girin.</value>
+  </data>
+  <data name="ForgotPassword_Email_Label" xml:space="preserve">
+    <value>E-posta Adresi</value>
+  </data>
+  <data name="ForgotPassword_Failed" xml:space="preserve">
+    <value>Şifre sıfırlama e-posta göndermek için başarısız oldu</value>
+  </data>
   <data name="Galleries" xml:space="preserve">
     <value>Galleries</value>
   </data>
@@ -396,6 +438,15 @@
   </data>
   <data name="Gallery_Full" xml:space="preserve">
     <value>Galeri dolu ve max boyutunu aştı</value>
+  </data>
+  <data name="Gallery_Identifier" xml:space="preserve">
+    <value>Gallery Identifier</value>
+  </data>
+  <data name="Gallery_Identifier_Help" xml:space="preserve">
+    <value>Lütfen ziyaret etmek istediğiniz galerinin tanımlayıcısına girin.</value>
+  </data>
+  <data name="Gallery_Identifier_Placeholder" xml:space="preserve">
+    <value>my-wedding-gallery</value>
   </data>
   <data name="Gallery_Key" xml:space="preserve">
     <value>Galeri Key</value>
@@ -417,12 +468,6 @@
   </data>
   <data name="Gallery_Name_Already_Exists" xml:space="preserve">
     <value>Gallery adı zaten var</value>
-  </data>
-  <data name="Gallery_Name_Help" xml:space="preserve">
-    <value>Lütfen ziyaret etmek istediğiniz galerinin adını girin.</value>
-  </data>
-  <data name="Gallery_Name_Placeholder" xml:space="preserve">
-    <value>my-wedding-gallery</value>
   </data>
   <data name="Gallery_Selector_Title" xml:space="preserve">
     <value>Gallery Selector</value>
@@ -535,6 +580,24 @@
   <data name="None" xml:space="preserve">
     <value>Hiçbir şey yok</value>
   </data>
+  <data name="Password_Reset_Changed_Message" xml:space="preserve">
+    <value>Parolanız şimdi sıfırlandı. Bir parola sıfırlama talep etmediyseniz lütfen hemen bir yöneticiye ulaşın.</value>
+  </data>
+  <data name="Password_Reset_Changed_Title" xml:space="preserve">
+    <value>Şifreniz güncellendi!</value>
+  </data>
+  <data name="Password_Reset_Requested_Message" xml:space="preserve">
+    <value>Hesabınızda bir parola sıfırlama talep edildi. Bir şifre değişikliği talep ederseniz, güncellemek için aşağıdaki bağlantıya tıklayın.</value>
+  </data>
+  <data name="Password_Reset_Requested_Title" xml:space="preserve">
+    <value>Hesabınıza erişmeye sorun?</value>
+  </data>
+  <data name="PasswordReset" xml:space="preserve">
+    <value>Şifre sıfırlama</value>
+  </data>
+  <data name="PasswordReset_Failed" xml:space="preserve">
+    <value>Şifre sıfırlama e-posta göndermek için başarısız oldu.</value>
+  </data>
   <data name="Pending" xml:space="preserve">
     <value>Pending</value>
   </data>
@@ -553,6 +616,75 @@
   <data name="Random" xml:space="preserve">
     <value>Random</value>
   </data>
+  <data name="Register" xml:space="preserve">
+    <value>Register</value>
+  </data>
+  <data name="Register_Account" xml:space="preserve">
+    <value>Kayıt Hesabı</value>
+  </data>
+  <data name="Register_CPassword_Help" xml:space="preserve">
+    <value>Parolanızı Onaylayın</value>
+  </data>
+  <data name="Register_CPassword_Label" xml:space="preserve">
+    <value>Şifreyi Onaylayın</value>
+  </data>
+  <data name="Register_Email_Help" xml:space="preserve">
+    <value>Lütfen hesabı e-posta adresi girin.</value>
+  </data>
+  <data name="Register_Email_Label" xml:space="preserve">
+    <value>E-posta Adresi</value>
+  </data>
+  <data name="Register_Password_Help" xml:space="preserve">
+    <value>Şifre bir şifre girer.</value>
+  </data>
+  <data name="Register_Password_Label" xml:space="preserve">
+    <value>Şifre</value>
+  </data>
+  <data name="Register_Username_Help" xml:space="preserve">
+    <value>Lütfen hesap adı girin.</value>
+  </data>
+  <data name="Register_Username_Label" xml:space="preserve">
+    <value>Username</value>
+  </data>
+  <data name="Registration_Confirm_Password_Missmatch" xml:space="preserve">
+    <value>Onaylama şifresi eşleşmez</value>
+  </data>
+  <data name="Registration_Email_Send_Failed" xml:space="preserve">
+    <value>Kullanıcıya kayıt e-posta göndermek için başarısız oldu.</value>
+  </data>
+  <data name="Registration_Email_Taken" xml:space="preserve">
+    <value>Belirtilen e-posta adresi ile bir hesap zaten var</value>
+  </data>
+  <data name="Registration_Failed" xml:space="preserve">
+    <value>Yeni kullanıcı kaydetmeye başarısız oldu</value>
+  </data>
+  <data name="Registration_Invalid_Email" xml:space="preserve">
+    <value>Lütfen geçerli bir e-posta adresini belirtin</value>
+  </data>
+  <data name="Registration_Invalid_Password" xml:space="preserve">
+    <value>Lütfen 8 ve 100 karakter arasında geçerli bir şifre belirt, en az 1 üst vaka mektubu içeren, 1 daha düşük vaka mektubu, 1 numara ve 1 özel karakter</value>
+  </data>
+  <data name="Registration_Invalid_Username" xml:space="preserve">
+    <value>Lütfen 5 ve 50 karakter arasında geçerli bir kullanıcı belirt</value>
+  </data>
+  <data name="Registration_Invalid_Verification_Link" xml:space="preserve">
+    <value>E-posta doğrulama bağlantısını işleme konusu oldu</value>
+  </data>
+  <data name="Registration_Success_Message" xml:space="preserve">
+    <value>You account başarıyla kaydedildi ve erişim için sizi bekliyor</value>
+  </data>
+  <data name="Registration_Success_Title" xml:space="preserve">
+    <value>Hoşgeldiniz!</value>
+  </data>
+  <data name="Registration_Success_Verification" xml:space="preserve">
+    <value>Hesabınız kayıtlıdır, ancak erişilebilir hale gelmeden önce doğrulanmalıdır. Lütfen aşağıdaki bağlantıya tıklayarak hesabınızı etkinleştirin.</value>
+  </data>
+  <data name="Registration_Username_Taken" xml:space="preserve">
+    <value>Kullanıcı adı zaten var. Lütfen yeni bir tane seçin</value>
+  </data>
+  <data name="Registration_Weak_Password" xml:space="preserve">
+    <value>Belirtilen şifre kolayca tahmin edilir. Lütfen daha güvenli bir şifre seçin.</value>
+  </data>
   <data name="Reject" xml:space="preserve">
     <value>Reject</value>
   </data>
@@ -561,6 +693,9 @@
   </data>
   <data name="Rename" xml:space="preserve">
     <value>Rename</value>
+  </data>
+  <data name="ResetPassword_Invalid_Reset_Link" xml:space="preserve">
+    <value>Şifre sıfırlama bağlantısını işleme konusu oldu</value>
   </data>
   <data name="Resources" xml:space="preserve">
     <value>Kaynaklar Kaynakları Kaynaklar</value>
@@ -603,6 +738,18 @@
   </data>
   <data name="Settings_Account_Profile_Icon_Label" xml:space="preserve">
     <value>Profil Icon</value>
+  </data>
+  <data name="Settings_Account_Registration_Enabled_Help" xml:space="preserve">
+    <value>Konuklar hesap kaydetmelerine izin verilir mi?</value>
+  </data>
+  <data name="Settings_Account_Registration_Enabled_Label" xml:space="preserve">
+    <value>Kayıt Enabled</value>
+  </data>
+  <data name="Settings_Account_Registration_RequireEmailValidation_Help" xml:space="preserve">
+    <value>Kullanıcıların hesaplarını aktive etmek için e-postalarını doğrulamaları gerekir mi?</value>
+  </data>
+  <data name="Settings_Account_Registration_RequireEmailValidation_Label" xml:space="preserve">
+    <value>E-posta doğrulama gerektirir</value>
   </data>
   <data name="Settings_Alerts" xml:space="preserve">
     <value>Uyarılar</value>
@@ -892,12 +1039,6 @@
   <data name="Settings_Gallery_ReviewCounter_Label" xml:space="preserve">
     <value>İnceleme Counter Counter</value>
   </data>
-  <data name="Settings_Gallery_SecretKey_Help" xml:space="preserve">
-    <value>Galeriyi açmak için bir şifre</value>
-  </data>
-  <data name="Settings_Gallery_SecretKey_Label" xml:space="preserve">
-    <value>Gizli Anahtar</value>
-  </data>
   <data name="Settings_Gallery_ShowFilters_Help" xml:space="preserve">
     <value>Kullanıcı filtre ve grup medyayı filtreleyebilmeli mi?</value>
   </data>
@@ -1162,6 +1303,9 @@
   <data name="Square" xml:space="preserve">
     <value>Square</value>
   </data>
+  <data name="Submit" xml:space="preserve">
+    <value>Gönder</value>
+  </data>
   <data name="Supporters" xml:space="preserve">
     <value>Destekçiler</value>
   </data>
@@ -1176,6 +1320,12 @@
   </data>
   <data name="Update" xml:space="preserve">
     <value>Update</value>
+  </data>
+  <data name="Upgrade" xml:space="preserve">
+    <value>Yükseltin</value>
+  </data>
+  <data name="Upgrade_Account_Message" xml:space="preserve">
+    <value>Şu anda ücretsiz versiyonu kullanıyorsunuz. Daha fazla galeri depolamasını ve diğer büyük özellikleri hesabınızı geliştirmek için</value>
   </data>
   <data name="Upload_Media" xml:space="preserve">
     <value>Upload Media</value>
@@ -1203,6 +1353,9 @@
   </data>
   <data name="Users_List_Failed" xml:space="preserve">
     <value>Kullanıcıların listesini almak için başarısız oldu</value>
+  </data>
+  <data name="Verify" xml:space="preserve">
+    <value>Verify</value>
   </data>
   <data name="Videos" xml:space="preserve">
     <value>Videolar</value>
