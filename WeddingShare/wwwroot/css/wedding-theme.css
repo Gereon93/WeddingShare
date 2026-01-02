@@ -1,0 +1,406 @@
+/*
+ * Wedding Theme CSS
+ * Inspired by elegant wedding design with coral/rose gold accents
+ */
+
+:root {
+    /* Wedding Color Palette */
+    --wedding-primary: #D68A77;        /* Warm coral/rose gold */
+    --wedding-primary-hover: #C17965;  /* Darker coral on hover */
+    --wedding-primary-light: #E5A592; /* Light coral */
+    --wedding-background: #F5E6E8;     /* Soft blush pink background */
+    --wedding-card-bg: #FFFFFF;        /* White cards */
+    --wedding-text-primary: #4A4A4A;   /* Dark gray text */
+    --wedding-text-secondary: #8B8B8B; /* Medium gray text */
+    --wedding-shadow: rgba(214, 138, 119, 0.15); /* Soft coral shadow */
+
+    /* Override Bootstrap colors */
+    --bs-primary: #D68A77;
+    --bs-primary-rgb: 214, 138, 119;
+    --bs-body-bg: #F5E6E8;
+    --bs-body-color: #4A4A4A;
+    --bs-link-color: #D68A77;
+    --bs-link-hover-color: #C17965;
+}
+
+/* Body & Global Styles */
+body {
+    background-color: var(--wedding-background) !important;
+    color: var(--wedding-text-primary);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+    color: var(--wedding-text-primary);
+    font-weight: 600;
+}
+
+h1 {
+    color: var(--wedding-primary);
+    font-weight: 700;
+}
+
+/* Cards */
+.card {
+    background-color: var(--wedding-card-bg);
+    border: none;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px var(--wedding-shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px var(--wedding-shadow);
+}
+
+.card-body {
+    padding: 2rem;
+}
+
+/* Buttons */
+.btn-primary {
+    background-color: var(--wedding-primary);
+    border: none;
+    border-radius: 25px;
+    padding: 12px 32px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(214, 138, 119, 0.3);
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    background-color: var(--wedding-primary-hover);
+    box-shadow: 0 6px 16px rgba(214, 138, 119, 0.4);
+    transform: translateY(-2px);
+}
+
+.btn-outline-primary {
+    color: var(--wedding-primary);
+    border: 2px solid var(--wedding-primary);
+    border-radius: 25px;
+    padding: 10px 30px;
+    font-weight: 600;
+    background-color: transparent;
+    transition: all 0.3s ease;
+}
+
+.btn-outline-primary:hover,
+.btn-outline-primary:focus {
+    background-color: var(--wedding-primary);
+    border-color: var(--wedding-primary);
+    color: white;
+}
+
+.btn-secondary {
+    background-color: transparent;
+    border: 2px solid var(--wedding-text-secondary);
+    color: var(--wedding-text-secondary);
+    border-radius: 25px;
+    padding: 10px 30px;
+    font-weight: 500;
+}
+
+.btn-secondary:hover {
+    background-color: var(--wedding-text-secondary);
+    color: white;
+}
+
+/* Feature Cards (like in design) */
+.feature-card {
+    background: var(--wedding-card-bg);
+    border-radius: 20px;
+    padding: 2.5rem 2rem;
+    text-align: center;
+    box-shadow: 0 4px 12px var(--wedding-shadow);
+    transition: all 0.3s ease;
+    margin-bottom: 1.5rem;
+}
+
+.feature-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 24px rgba(214, 138, 119, 0.25);
+}
+
+.feature-card .icon {
+    color: var(--wedding-primary);
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+}
+
+.feature-card h5 {
+    color: var(--wedding-text-primary);
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.feature-card p {
+    color: var(--wedding-text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* Step Numbers (for How It Works) */
+.step-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    background-color: var(--wedding-primary);
+    color: white;
+    border-radius: 50%;
+    font-weight: 700;
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+}
+
+.step-card {
+    text-align: center;
+    padding: 1.5rem;
+}
+
+.step-card h6 {
+    color: var(--wedding-text-primary);
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+}
+
+.step-card p {
+    color: var(--wedding-text-secondary);
+    font-size: 0.9rem;
+}
+
+/* Hero Section */
+.hero-section {
+    background: linear-gradient(135deg, var(--wedding-background) 0%, #FCEEF0 100%);
+    padding: 4rem 0;
+    text-align: center;
+}
+
+.hero-icon {
+    color: var(--wedding-primary);
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
+}
+
+.hero-title {
+    color: var(--wedding-primary);
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.hero-subtitle {
+    color: var(--wedding-text-secondary);
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Navigation */
+.navbar {
+    background-color: var(--wedding-card-bg) !important;
+    box-shadow: 0 2px 8px rgba(214, 138, 119, 0.1);
+}
+
+.navbar-brand {
+    color: var(--wedding-primary) !important;
+    font-weight: 700;
+}
+
+.nav-link {
+    color: var(--wedding-text-primary) !important;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: var(--wedding-primary) !important;
+}
+
+/* Forms */
+.form-control {
+    border: 2px solid #E9D5D7;
+    border-radius: 12px;
+    padding: 12px 16px;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: var(--wedding-primary);
+    box-shadow: 0 0 0 3px rgba(214, 138, 119, 0.1);
+    outline: none;
+}
+
+.form-label {
+    color: var(--wedding-text-primary);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+/* Upload Area */
+.upload_drop {
+    background-color: var(--wedding-card-bg);
+    outline: 2px dashed var(--wedding-primary) !important;
+    outline-offset: -12px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+.upload_drop.highlight {
+    outline-color: var(--wedding-primary-hover) !important;
+    background-color: rgba(214, 138, 119, 0.05);
+}
+
+.btn-upload {
+    background-color: var(--wedding-primary);
+    color: white;
+    border-radius: 25px;
+}
+
+.btn-upload:hover {
+    background-color: var(--wedding-primary-hover);
+}
+
+/* Gallery Grid */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+    padding: 1rem 0;
+}
+
+.gallery-item {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px var(--wedding-shadow);
+    transition: all 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: scale(1.03);
+    box-shadow: 0 8px 20px rgba(214, 138, 119, 0.25);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Like Button */
+.like-button {
+    background: white;
+    border: 2px solid var(--wedding-primary);
+    color: var(--wedding-primary);
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.like-button:hover {
+    background: var(--wedding-primary);
+    color: white;
+    transform: scale(1.1);
+}
+
+.like-button.liked {
+    background: var(--wedding-primary);
+    color: white;
+}
+
+/* Heart Icon */
+.heart-icon {
+    color: var(--wedding-primary);
+}
+
+/* Badges */
+.badge {
+    border-radius: 20px;
+    padding: 0.5rem 1rem;
+    font-weight: 600;
+}
+
+.badge-primary {
+    background-color: var(--wedding-primary);
+}
+
+/* Alerts */
+.alert {
+    border-radius: 12px;
+    border: none;
+}
+
+.alert-info {
+    background-color: rgba(214, 138, 119, 0.1);
+    color: var(--wedding-text-primary);
+    border-left: 4px solid var(--wedding-primary);
+}
+
+/* Footer */
+footer {
+    background-color: var(--wedding-card-bg);
+    color: var(--wedding-text-secondary) !important;
+    padding: 2rem 0;
+    margin-top: 4rem;
+    border-top: 1px solid rgba(214, 138, 119, 0.2);
+}
+
+footer p,
+footer span,
+footer .text-white {
+    color: var(--wedding-text-secondary) !important;
+}
+
+footer a,
+footer a.text-link,
+footer a.text-light {
+    color: var(--wedding-primary) !important;
+    text-decoration: none;
+}
+
+footer a:hover,
+footer a.text-link:hover,
+footer a.text-light:hover {
+    color: var(--wedding-primary-hover) !important;
+    text-decoration: underline;
+}
+
+footer .text-muted {
+    color: var(--wedding-text-secondary) !important;
+}
+
+footer small {
+    color: var(--wedding-text-secondary) !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+
+    .feature-card {
+        padding: 2rem 1.5rem;
+    }
+
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 1rem;
+    }
+}
