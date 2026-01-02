@@ -23,6 +23,13 @@ namespace WeddingShare.Helpers.Database
         Task<bool> DeleteGallery(GalleryModel model);
         #endregion
 
+        #region Gallery Photographers
+        Task<bool> AddPhotographerToGallery(int galleryId, int userId);
+        Task<bool> RemovePhotographerFromGallery(int galleryId, int userId);
+        Task<bool> IsPhotographerForGallery(int galleryId, int userId);
+        Task<List<int>> GetPhotographerGalleries(int userId);
+        #endregion
+
         #region Gallery Items
         Task<IDictionary<string, long>> GetGalleryItemCount(int? galleryId, GalleryItemState state = GalleryItemState.All, MediaType type = MediaType.All, ImageOrientation orientation = ImageOrientation.None);
         Task<List<GalleryItemModel>> GetAllGalleryItems(int? galleryId, GalleryItemState state = GalleryItemState.All, MediaType type = MediaType.All, ImageOrientation orientation = ImageOrientation.None, GalleryGroup group = GalleryGroup.None, GalleryOrder order = GalleryOrder.Descending, int limit = int.MaxValue, int page = 1);
