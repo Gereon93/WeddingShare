@@ -40,6 +40,8 @@ namespace WeddingShare
             var dbHelper = services.AddDatabaseConfiguration(config, _loggerFactory);
 
             var settings = new SettingsHelper(dbHelper, config, _loggerFactory.CreateLogger<SettingsHelper>());
+            _logger.LogInformation($"Release Version - '{settings.GetReleaseVersion(4).Result}'");
+
             services.AddNotificationConfiguration(settings);
             services.AddLocalizationConfiguration(settings);
 
@@ -47,6 +49,7 @@ namespace WeddingShare
             services.AddHostedService<NotificationReport>();
             services.AddHostedService<CleanupService>();
 
+            services.AddResponseCaching();
             services.AddRazorPages();
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
 
@@ -73,7 +76,9 @@ namespace WeddingShare
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie(options =>
             {
-                options.Cookie.HttpOnly = false;
+                options.Cookie.HttpOnly = true; // SECURITY FIX: Prevent JavaScript access to prevent XSS attacks
+                options.Cookie.SecurePolicy = CookieSecurePolicy.Always; // SECURITY FIX: Require HTTPS
+                options.Cookie.SameSite = SameSiteMode.Strict; // SECURITY FIX: Prevent CSRF attacks
                 options.ExpireTimeSpan = TimeSpan.FromMinutes(10);
 
                 options.LoginPath = "/Account/Login";
@@ -84,10 +89,18 @@ namespace WeddingShare
                 options.IdleTimeout = TimeSpan.FromMinutes(10);
                 options.Cookie.Name = ".WeddingShare.Session";
                 options.Cookie.IsEssential = true;
+                options.Cookie.HttpOnly = true; // SECURITY FIX: Prevent JavaScript access
+                options.Cookie.SecurePolicy = CookieSecurePolicy.Always; // SECURITY FIX: Require HTTPS
+                options.Cookie.SameSite = SameSiteMode.Strict; // SECURITY FIX: Prevent CSRF
             });
             services.AddDataProtection()
                 .SetApplicationName("WeddingShare")
                 .PersistKeysToFileSystem(new DirectoryInfo(Directories.Config));
+
+            services.AddRequestTimeouts(options =>
+            {
+                options.AddPolicy("timeout_1h", TimeSpan.FromHours(1));
+            });
 
             var localizer = services.BuildServiceProvider().GetRequiredService<IStringLocalizer<Lang.Translations>>();
             var ffmpegPath = config.GetOrDefault(FFMPEG.InstallPath, "/ffmpeg");
@@ -161,6 +174,70 @@ namespace WeddingShare
             app.UseAuthorization();
             app.UseRequestLocalization();
             app.UseSession();
+            app.UseRequestTimeouts();
+            app.UseResponseCaching();
+
+            // Device UUID Middleware - SECURITY HARDENED
+            app.Use(async (context, next) =>
+            {
+                const string cookieName = ".WeddingShare.Guest";
+
+                // Check if device UUID cookie exists and is valid
+                if (!context.Request.Cookies.ContainsKey(cookieName) || string.IsNullOrWhiteSpace(context.Request.Cookies[cookieName]))
+                {
+                    // Generate new cryptographically signed UUID
+                    var signedUuid = SecureDeviceUuidHelper.GenerateSignedUuid();
+
+                    // Set cookie with secure settings (reduced from 1 year to 3 months)
+                    context.Response.Cookies.Append(cookieName, signedUuid, new CookieOptions
+                    {
+                        Expires = DateTimeOffset.UtcNow.AddMonths(3), // SECURITY FIX: Reduced from 1 year
+                        HttpOnly = true, // SECURITY FIX: Prevent JavaScript access to prevent XSS attacks
+                        IsEssential = true,
+                        Secure = true, // SECURITY FIX: Require HTTPS to prevent MITM attacks
+                        SameSite = SameSiteMode.Strict // SECURITY FIX: Prevent CSRF attacks (changed from Lax)
+                    });
+
+                    // Extract and store UUID in session
+                    if (SecureDeviceUuidHelper.ValidateSignedUuid(signedUuid, out var deviceUuid) && deviceUuid != null)
+                    {
+                        context.Session.SetString(Models.SessionKey.DeviceUuid, deviceUuid);
+                    }
+                }
+                else
+                {
+                    // Validate signed UUID from cookie
+                    var signedUuid = context.Request.Cookies[cookieName];
+                    if (SecureDeviceUuidHelper.ValidateSignedUuid(signedUuid, out var deviceUuid) && !string.IsNullOrWhiteSpace(deviceUuid))
+                    {
+                        // Valid signature - store UUID in session
+                        context.Session.SetString(Models.SessionKey.DeviceUuid, deviceUuid);
+                    }
+                    else
+                    {
+                        // SECURITY FIX: Invalid or tampered cookie - delete it and regenerate
+                        context.Response.Cookies.Delete(cookieName);
+
+                        // Generate new signed UUID
+                        var newSignedUuid = SecureDeviceUuidHelper.GenerateSignedUuid();
+                        context.Response.Cookies.Append(cookieName, newSignedUuid, new CookieOptions
+                        {
+                            Expires = DateTimeOffset.UtcNow.AddMonths(3),
+                            HttpOnly = true,
+                            IsEssential = true,
+                            Secure = true,
+                            SameSite = SameSiteMode.Strict
+                        });
+
+                        if (SecureDeviceUuidHelper.ValidateSignedUuid(newSignedUuid, out var newDeviceUuid) && newDeviceUuid != null)
+                        {
+                            context.Session.SetString(Models.SessionKey.DeviceUuid, newDeviceUuid);
+                        }
+                    }
+                }
+
+                await next();
+            });
 
             app.UseEndpoints(endpoints =>
             {

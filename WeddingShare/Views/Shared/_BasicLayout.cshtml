@@ -59,12 +59,12 @@
         </nav>
 
         <!-- Body -->
-        <section id="main-wrapper">
+        <div id="main-wrapper">
             @if (isDemoMode)
             {
-                <div class="alert alert-warning text-center" role="alert">
-                <i class="fa fa-warning mx-3"></i><b>@(_localizer["Warning"].Value.ToUpper()):</b> @_localizer["Demo_Message"].Value
-            </div>
+                <div class="alert alert-warning header-alert text-center" role="alert">
+                    <i class="fa fa-warning mx-3"></i><b>@(_localizer["Warning"].Value.ToUpper()):</b> @_localizer["Demo_Message"].Value
+                </div>
             }
 
             <section class="py-1 py-lg-5">
@@ -72,7 +72,7 @@
                     @RenderBody()
                 </div>
             </section>
-        </section>
+        </div>
 
         <!-- Footer -->
         <footer class="py-1">

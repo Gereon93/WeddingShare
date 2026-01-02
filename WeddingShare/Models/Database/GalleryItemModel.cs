@@ -5,11 +5,11 @@ namespace WeddingShare.Models.Database
     public class GalleryItemModel
     {
         public GalleryItemModel()
-            : this(0, 0, string.Empty, null, null, null, null, MediaType.Unknown, ImageOrientation.None, GalleryItemState.Pending, 0)
+            : this(0, 0, string.Empty, null, null, null, null, MediaType.Unknown, ImageOrientation.None, GalleryItemState.Pending, 0, null, false)
         {
         }
 
-        public GalleryItemModel(int id, int galleryId, string title, string? uploadedBy, string? uploaderEmailAddress, DateTime? uploadedDate, string? checksum, MediaType mediaType, ImageOrientation orientation, GalleryItemState state, long file_size)
+        public GalleryItemModel(int id, int galleryId, string title, string? uploadedBy, string? uploaderEmailAddress, DateTime? uploadedDate, string? checksum, MediaType mediaType, ImageOrientation orientation, GalleryItemState state, long file_size, string? deviceUuid, bool isOfficial)
         {
             Id = id;
             GalleryId = galleryId;
@@ -22,6 +22,8 @@ namespace WeddingShare.Models.Database
             Orientation = orientation;
             State = state;
             FileSize = file_size;
+            DeviceUuid = deviceUuid;
+            IsOfficial = isOfficial;
         }
 
         public int Id { get; set; }
@@ -35,5 +37,7 @@ namespace WeddingShare.Models.Database
         public ImageOrientation Orientation { get; set; }
         public GalleryItemState State { get; set; }
         public long FileSize { get; set; }
+        public string? DeviceUuid { get; set; }
+        public bool IsOfficial { get; set; }
     }
 }

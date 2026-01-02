@@ -244,30 +244,32 @@
                         formData.append('SecretKey', secretKey);
                         formData.append('Count', uploadedCount);
 
-                        $.ajax({
-                            url: '/Gallery/UploadCompleted',
-                            type: 'POST',
-                            data: formData,
-                            async: true,
-                            cache: false,
-                            contentType: false,
-                            dataType: 'json',
-                            processData: false,
-                            success: function (response) {
-                                dataRefs.input.value = '';
+                        setTimeout(function () {
+                            $.ajax({
+                                url: '/Gallery/UploadCompleted',
+                                type: 'POST',
+                                data: formData,
+                                async: true,
+                                cache: false,
+                                contentType: false,
+                                dataType: 'json',
+                                processData: false,
+                                success: function (response) {
+                                    dataRefs.input.value = '';
 
-                                let counter = $('.review-counter');
-                                if (counter.length > 0) {
-                                    counter.find('.review-counter-total').text(response.counters.total);
-                                    counter.find('.review-counter-approved').text(response.counters.approved);
-                                    counter.find('.review-counter-pending').text(response.counters.pending);
+                                    let counter = $('.review-counter');
+                                    if (counter.length > 0) {
+                                        counter.find('.review-counter-total').text(response.counters.total);
+                                        counter.find('.review-counter-approved').text(response.counters.approved);
+                                        counter.find('.review-counter-pending').text(response.counters.pending);
+                                    }
+                                },
+                                error: function (response) {
+                                    console.log(response);
+                                    displayMessage(localization.translate('Upload'), localization.translate('Upload_Failed'), errors);
                                 }
-                            },
-                            error: function (response) {
-                                console.log(response);
-                                displayMessage(localization.translate('Upload'), localization.translate('Upload_Failed'), errors);
-                            }
-                        });
+                            });
+                        }, 500);
                     } else {
                         displayMessage(localization.translate('Upload'), localization.translate('Upload_Success', { count: uploadedCount }), errors, function () {
                             refreshGalleryPage();

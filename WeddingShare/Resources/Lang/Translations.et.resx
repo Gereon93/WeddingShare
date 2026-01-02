@@ -94,6 +94,18 @@
   <data name="406_Error_Title" xml:space="preserve">
     <value>Vigane galerii</value>
   </data>
+  <data name="407_Error_Message" xml:space="preserve">
+    <value>Teie konto kontrollimisel tekkis probleem. Palun veenduge, et kontrolllink on kehtiv.</value>
+  </data>
+  <data name="407_Error_Title" xml:space="preserve">
+    <value>Kehtetu kontrollimine Link</value>
+  </data>
+  <data name="408_Error_Message" xml:space="preserve">
+    <value>Teie konto parooli lähtestamise ajal tekkis probleem. Palun veenduge, et kontrolllink on kehtiv.</value>
+  </data>
+  <data name="408_Error_Title" xml:space="preserve">
+    <value>Vigane parooli lähtestamise link</value>
+  </data>
   <data name="Accept" xml:space="preserve">
     <value>Nõustun</value>
   </data>
@@ -120,6 +132,12 @@
   </data>
   <data name="Audit" xml:space="preserve">
     <value>Audit</value>
+  </data>
+  <data name="Audit_Account_Registered" xml:space="preserve">
+    <value>Kasutaja registreeritud konto</value>
+  </data>
+  <data name="Audit_ActivateUser" xml:space="preserve">
+    <value>Aktiveeritud kasutaja</value>
   </data>
   <data name="Audit_BulkApproveReviews" xml:space="preserve">
     <value>Bulk kiitis heaks kõik pooleliolevad läbivaatamised</value>
@@ -148,6 +166,9 @@
   <data name="Audit_DeletedUser" xml:space="preserve">
     <value>Kustutatud kasutaja</value>
   </data>
+  <data name="Audit_Email_Verified" xml:space="preserve">
+    <value>Kasutaja kontrollis oma e-posti aadressi</value>
+  </data>
   <data name="Audit_ExportedBackup" xml:space="preserve">
     <value>Eksporditi varukoopia</value>
   </data>
@@ -156,6 +177,9 @@
   </data>
   <data name="Audit_FailedLoginAttemptReset" xml:space="preserve">
     <value>Ebaõnnestunud sisselogimiskatsed loevad lähtestamist</value>
+  </data>
+  <data name="Audit_Forgot_Password" xml:space="preserve">
+    <value>Kasutaja soovis parooli lähtestamist</value>
   </data>
   <data name="Audit_FrozeUser" xml:space="preserve">
     <value>Külmutatud kasutaja</value>
@@ -198,6 +222,9 @@
   </data>
   <data name="Audit_MultiFactorResetUser" xml:space="preserve">
     <value>Kasutaja mitmeteguri lähtestamine</value>
+  </data>
+  <data name="Audit_Password_Reset" xml:space="preserve">
+    <value>Kasutaja soovis parooli lähtestamist</value>
   </data>
   <data name="Audit_SearchTerm_Help" xml:space="preserve">
     <value>Otsinguterminil põhinevad filtrilogid</value>
@@ -379,6 +406,21 @@
   <data name="Filter" xml:space="preserve">
     <value>Filter</value>
   </data>
+  <data name="Forgot_Password" xml:space="preserve">
+    <value>Unustasin parooli</value>
+  </data>
+  <data name="ForgotPassword" xml:space="preserve">
+    <value>Unustasin parooli</value>
+  </data>
+  <data name="ForgotPassword_Email_Help" xml:space="preserve">
+    <value>Palun sisesta konto e-posti aadress.</value>
+  </data>
+  <data name="ForgotPassword_Email_Label" xml:space="preserve">
+    <value>E-posti aadress</value>
+  </data>
+  <data name="ForgotPassword_Failed" xml:space="preserve">
+    <value>Parooli lähtestamise kirja saatmine nurjus</value>
+  </data>
   <data name="Galleries" xml:space="preserve">
     <value>Galerii</value>
   </data>
@@ -396,6 +438,15 @@
   </data>
   <data name="Gallery_Full" xml:space="preserve">
     <value>Galerii on täis ja ületanud max-suuruse</value>
+  </data>
+  <data name="Gallery_Identifier" xml:space="preserve">
+    <value>Galerii identifikaator</value>
+  </data>
+  <data name="Gallery_Identifier_Help" xml:space="preserve">
+    <value>Palun sisestage galerii identifikaator, mida soovite külastada.</value>
+  </data>
+  <data name="Gallery_Identifier_Placeholder" xml:space="preserve">
+    <value>pulmagalerii</value>
   </data>
   <data name="Gallery_Key" xml:space="preserve">
     <value>Galerii võti</value>
@@ -417,12 +468,6 @@
   </data>
   <data name="Gallery_Name_Already_Exists" xml:space="preserve">
     <value>Galerii nimi on juba olemas</value>
-  </data>
-  <data name="Gallery_Name_Help" xml:space="preserve">
-    <value>Palun sisestage selle galerii nimi, mida soovite külastada.</value>
-  </data>
-  <data name="Gallery_Name_Placeholder" xml:space="preserve">
-    <value>pulmagalerii</value>
   </data>
   <data name="Gallery_Selector_Title" xml:space="preserve">
     <value>Galeriivalija</value>
@@ -535,6 +580,24 @@
   <data name="None" xml:space="preserve">
     <value>Mitte ükski</value>
   </data>
+  <data name="Password_Reset_Changed_Message" xml:space="preserve">
+    <value>Sinu parool on nüüd lähtestatud. Kui te parooli lähtestamist ei taotlenud, pöörduge kohe administraatori poole.</value>
+  </data>
+  <data name="Password_Reset_Changed_Title" xml:space="preserve">
+    <value>Sinu parool on uuendatud!</value>
+  </data>
+  <data name="Password_Reset_Requested_Message" xml:space="preserve">
+    <value>Teie kontole on taotletud parooli lähtestamist. Kui soovite parooli muuta, klõpsake selle värskendamiseks allpool olevat linki.</value>
+  </data>
+  <data name="Password_Reset_Requested_Title" xml:space="preserve">
+    <value>Probleemid teie kontole juurdepääsuga?</value>
+  </data>
+  <data name="PasswordReset" xml:space="preserve">
+    <value>Parooli lähtestamine</value>
+  </data>
+  <data name="PasswordReset_Failed" xml:space="preserve">
+    <value>Parooli lähtestamise kirja saatmine nurjus.</value>
+  </data>
   <data name="Pending" xml:space="preserve">
     <value>Oodates</value>
   </data>
@@ -553,6 +616,75 @@
   <data name="Random" xml:space="preserve">
     <value>Juhuslik</value>
   </data>
+  <data name="Register" xml:space="preserve">
+    <value>Register</value>
+  </data>
+  <data name="Register_Account" xml:space="preserve">
+    <value>Registrikonto</value>
+  </data>
+  <data name="Register_CPassword_Help" xml:space="preserve">
+    <value>Parooli kinnitamine</value>
+  </data>
+  <data name="Register_CPassword_Label" xml:space="preserve">
+    <value>Parooli kinnitamine</value>
+  </data>
+  <data name="Register_Email_Help" xml:space="preserve">
+    <value>Palun sisesta konto e-posti aadress.</value>
+  </data>
+  <data name="Register_Email_Label" xml:space="preserve">
+    <value>E-posti aadress</value>
+  </data>
+  <data name="Register_Password_Help" xml:space="preserve">
+    <value>Parool sisesta parool.</value>
+  </data>
+  <data name="Register_Password_Label" xml:space="preserve">
+    <value>Parool</value>
+  </data>
+  <data name="Register_Username_Help" xml:space="preserve">
+    <value>Palun sisesta konto kasutajanimi.</value>
+  </data>
+  <data name="Register_Username_Label" xml:space="preserve">
+    <value>Kasutajanimi</value>
+  </data>
+  <data name="Registration_Confirm_Password_Missmatch" xml:space="preserve">
+    <value>Kinnituse parool ei sobi</value>
+  </data>
+  <data name="Registration_Email_Send_Failed" xml:space="preserve">
+    <value>Kasutajale registreerimiskirja saatmine nurjus.</value>
+  </data>
+  <data name="Registration_Email_Taken" xml:space="preserve">
+    <value>Määratud e-posti aadressiga konto on juba olemas</value>
+  </data>
+  <data name="Registration_Failed" xml:space="preserve">
+    <value>Uue kasutaja registreerimine nurjus</value>
+  </data>
+  <data name="Registration_Invalid_Email" xml:space="preserve">
+    <value>Palun määra korrektne e- posti aadress</value>
+  </data>
+  <data name="Registration_Invalid_Password" xml:space="preserve">
+    <value>Palun määra kehtiv salasõna 8–100 tähemärgi vahel, mis sisaldab vähemalt 1 suurtähte, 1 väiketähte, 1 numbrit ja 1 erimärki</value>
+  </data>
+  <data name="Registration_Invalid_Username" xml:space="preserve">
+    <value>Palun määra kehtiv kasutajanimi vahemikus 5 kuni 50 märki</value>
+  </data>
+  <data name="Registration_Invalid_Verification_Link" xml:space="preserve">
+    <value>E-posti kontrollimise lingi töötlemisel tekkis probleem</value>
+  </data>
+  <data name="Registration_Success_Message" xml:space="preserve">
+    <value>Teie konto on edukalt registreeritud ja ootab juurdepääsu</value>
+  </data>
+  <data name="Registration_Success_Title" xml:space="preserve">
+    <value>Tere tulemast!</value>
+  </data>
+  <data name="Registration_Success_Verification" xml:space="preserve">
+    <value>Teie konto on registreeritud, kuid enne sellele juurdepääsu saamist tuleb seda kontrollida. Palun aktiveerige oma konto, klõpsates allpool olevat linki.</value>
+  </data>
+  <data name="Registration_Username_Taken" xml:space="preserve">
+    <value>Kasutajanimi on juba olemas. Palun vali uus</value>
+  </data>
+  <data name="Registration_Weak_Password" xml:space="preserve">
+    <value>Määratud salasõna on kergesti äraarvatav. Palun vali turvalisem parool.</value>
+  </data>
   <data name="Reject" xml:space="preserve">
     <value>Tagasi lükata</value>
   </data>
@@ -561,6 +693,9 @@
   </data>
   <data name="Rename" xml:space="preserve">
     <value>Ümbernimeta</value>
+  </data>
+  <data name="ResetPassword_Invalid_Reset_Link" xml:space="preserve">
+    <value>Probleem oli parooli lähtestamise lingi töötlemises</value>
   </data>
   <data name="Resources" xml:space="preserve">
     <value>Ressursid</value>
@@ -603,6 +738,18 @@
   </data>
   <data name="Settings_Account_Profile_Icon_Label" xml:space="preserve">
     <value>Profiili ikoon</value>
+  </data>
+  <data name="Settings_Account_Registration_Enabled_Help" xml:space="preserve">
+    <value>Kas külalistel on lubatud kontosid registreerida?</value>
+  </data>
+  <data name="Settings_Account_Registration_Enabled_Label" xml:space="preserve">
+    <value>Registreerimine lubatud</value>
+  </data>
+  <data name="Settings_Account_Registration_RequireEmailValidation_Help" xml:space="preserve">
+    <value>Kas kasutajad peavad oma konto aktiveerimiseks kontrollima oma e-posti?</value>
+  </data>
+  <data name="Settings_Account_Registration_RequireEmailValidation_Label" xml:space="preserve">
+    <value>E- posti kontrollimine</value>
   </data>
   <data name="Settings_Alerts" xml:space="preserve">
     <value>Hoiatused</value>
@@ -892,12 +1039,6 @@
   <data name="Settings_Gallery_ReviewCounter_Label" xml:space="preserve">
     <value>Review Counter</value>
   </data>
-  <data name="Settings_Gallery_SecretKey_Help" xml:space="preserve">
-    <value>Galerii avamise paroolName</value>
-  </data>
-  <data name="Settings_Gallery_SecretKey_Label" xml:space="preserve">
-    <value>Salavõti</value>
-  </data>
   <data name="Settings_Gallery_ShowFilters_Help" xml:space="preserve">
     <value>Kas kasutaja saab filtreerida ja rühmitada meediat?</value>
   </data>
@@ -1162,6 +1303,9 @@
   <data name="Square" xml:space="preserve">
     <value>Square</value>
   </data>
+  <data name="Submit" xml:space="preserve">
+    <value>Esita</value>
+  </data>
   <data name="Supporters" xml:space="preserve">
     <value>Toetajad</value>
   </data>
@@ -1176,6 +1320,12 @@
   </data>
   <data name="Update" xml:space="preserve">
     <value>Uuenda</value>
+  </data>
+  <data name="Upgrade" xml:space="preserve">
+    <value>Uuenda</value>
+  </data>
+  <data name="Upgrade_Account_Message" xml:space="preserve">
+    <value>Praegu kasutate tasuta versiooni. Galerii ladustamise ja muude suurepäraste funktsioonide avamiseks kaaluge konto uuendamist</value>
   </data>
   <data name="Upload_Media" xml:space="preserve">
     <value>Meedia üleslaadimine</value>
@@ -1203,6 +1353,9 @@
   </data>
   <data name="Users_List_Failed" xml:space="preserve">
     <value>Kasutajate nimekirja hankimine nurjus</value>
+  </data>
+  <data name="Verify" xml:space="preserve">
+    <value>Kontrolli</value>
   </data>
   <data name="Videos" xml:space="preserve">
     <value>Videod</value>

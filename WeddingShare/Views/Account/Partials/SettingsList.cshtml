@@ -3,10 +3,10 @@
 @using WeddingShare.Views.Account.Tabs
 
 @{
-    var userPermissions = User?.Identity?.GetUserPermissions() ?? AccessPermissions.None;
+    var userPermissions = User?.Identity?.GetUserPermissions() ?? new Permissions();
 }
 
-@if (userPermissions.HasFlag(AccessPermissions.Settings_View) && Model != null)
+@if (userPermissions.Settings.HasFlag(SettingsPermissions.View) && Model != null)
 {
     <div class="accordion" id="settings-accordion">
         <div class="accordion-item">

@@ -24,6 +24,13 @@
                 public const string Password = "Settings:Account:Owner:Password";
                 public const string LogPassword = "Settings:Account:Owner:Log_Password";
             }
+
+            public class Registration
+            {
+                public const string BaseKey = "Settings:Account:Registration:";
+                public const string Enabled = "Settings:Account:Registration:Enabled";
+                public const string RequireEmailValidation = "Settings:Account:Registration:Require_Email_Validation";
+            }
         }
 
         public class Basic
@@ -32,6 +39,7 @@
             public const string Title = "Settings:Title";
             public const string Logo = "Settings:Logo";
             public const string BaseUrl = "Settings:Base_Url";
+            public const string DefaultGallerySecretKey = "Settings:Gallery_Secret_Key";
             public const string ForceHttps = "Settings:Force_Https";
             public const string SingleGalleryMode = "Settings:Single_Gallery_Mode";
             public const string MaxGalleryCount = "Settings:Max_Gallery_Count";
@@ -58,11 +66,11 @@
             public const string ShowTitle = "Settings:Gallery:Show_Title";
             public const string BannerImage = "Settings:Gallery:Banner_Image";
             public const string Quote = "Settings:Gallery:Quote";
-            public const string SecretKey = "Settings:Gallery:Secret_Key";
             public const string Columns = "Settings:Gallery:Columns";
             public const string ItemsPerPage = "Settings:Gallery:Items_Per_Page";
             public const string FullWidth = "Settings:Gallery:Full_Width";
             public const string RetainRejectedItems = "Settings:Gallery:Retain_Rejected_Items";
+            public const string Likes = "Settings:Gallery:Likes";
             public const string Upload = "Settings:Gallery:Upload";
             public const string Download = "Settings:Gallery:Download";
             public const string RequireReview = "Settings:Gallery:Require_Review";

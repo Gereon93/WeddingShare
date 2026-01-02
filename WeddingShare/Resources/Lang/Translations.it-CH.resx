@@ -94,6 +94,18 @@
   <data name="406_Error_Title" xml:space="preserve">
     <value>Galleria Invalid</value>
   </data>
+  <data name="407_Error_Message" xml:space="preserve">
+    <value>C'era un problema durante il tentativo di verificare il tuo account. Assicurarsi che il link di verifica sia valido.</value>
+  </data>
+  <data name="407_Error_Title" xml:space="preserve">
+    <value>Verifica non valida Link</value>
+  </data>
+  <data name="408_Error_Message" xml:space="preserve">
+    <value>C'era un problema durante il tentativo di ripristinare la password del tuo account. Assicurarsi che il link di verifica sia valido.</value>
+  </data>
+  <data name="408_Error_Title" xml:space="preserve">
+    <value>Link di ripristino della password non valida</value>
+  </data>
   <data name="Accept" xml:space="preserve">
     <value>Accettare</value>
   </data>
@@ -120,6 +132,12 @@
   </data>
   <data name="Audit" xml:space="preserve">
     <value>Audit</value>
+  </data>
+  <data name="Audit_Account_Registered" xml:space="preserve">
+    <value>Account utente</value>
+  </data>
+  <data name="Audit_ActivateUser" xml:space="preserve">
+    <value>Utente attivato</value>
   </data>
   <data name="Audit_BulkApproveReviews" xml:space="preserve">
     <value>Bulk ha approvato tutte le recensioni in sospeso</value>
@@ -148,6 +166,9 @@
   <data name="Audit_DeletedUser" xml:space="preserve">
     <value>Utente cancellato</value>
   </data>
+  <data name="Audit_Email_Verified" xml:space="preserve">
+    <value>L'utente ha verificato il loro indirizzo email</value>
+  </data>
   <data name="Audit_ExportedBackup" xml:space="preserve">
     <value>Esportato un backup</value>
   </data>
@@ -156,6 +177,9 @@
   </data>
   <data name="Audit_FailedLoginAttemptReset" xml:space="preserve">
     <value>Ripristino dei tentativi di login falliti</value>
+  </data>
+  <data name="Audit_Forgot_Password" xml:space="preserve">
+    <value>L'utente ha richiesto un ripristino della password</value>
   </data>
   <data name="Audit_FrozeUser" xml:space="preserve">
     <value>Froze utente</value>
@@ -198,6 +222,9 @@
   </data>
   <data name="Audit_MultiFactorResetUser" xml:space="preserve">
     <value>Ripristina multifattore per l'utente</value>
+  </data>
+  <data name="Audit_Password_Reset" xml:space="preserve">
+    <value>L'utente ha richiesto un ripristino della password</value>
   </data>
   <data name="Audit_SearchTerm_Help" xml:space="preserve">
     <value>Filtra i log in base a un termine di ricerca</value>
@@ -379,6 +406,21 @@
   <data name="Filter" xml:space="preserve">
     <value>Filtro</value>
   </data>
+  <data name="Forgot_Password" xml:space="preserve">
+    <value>Password dimenticata</value>
+  </data>
+  <data name="ForgotPassword" xml:space="preserve">
+    <value>Password dimenticata</value>
+  </data>
+  <data name="ForgotPassword_Email_Help" xml:space="preserve">
+    <value>Inserisci l'indirizzo e-mail dell'account.</value>
+  </data>
+  <data name="ForgotPassword_Email_Label" xml:space="preserve">
+    <value>Indirizzo email</value>
+  </data>
+  <data name="ForgotPassword_Failed" xml:space="preserve">
+    <value>Non è possibile inviare email di reset password</value>
+  </data>
   <data name="Galleries" xml:space="preserve">
     <value>Gallerie</value>
   </data>
@@ -396,6 +438,15 @@
   </data>
   <data name="Gallery_Full" xml:space="preserve">
     <value>Galleria è piena e ha superato la dimensione massima di</value>
+  </data>
+  <data name="Gallery_Identifier" xml:space="preserve">
+    <value>Gallery Identifier</value>
+  </data>
+  <data name="Gallery_Identifier_Help" xml:space="preserve">
+    <value>Inserisci l'identificatore della galleria che desideri visitare.</value>
+  </data>
+  <data name="Gallery_Identifier_Placeholder" xml:space="preserve">
+    <value>il mio matrimonio</value>
   </data>
   <data name="Gallery_Key" xml:space="preserve">
     <value>Galleria chiave</value>
@@ -417,12 +468,6 @@
   </data>
   <data name="Gallery_Name_Already_Exists" xml:space="preserve">
     <value>Il nome della galleria esiste già</value>
-  </data>
-  <data name="Gallery_Name_Help" xml:space="preserve">
-    <value>Inserisci il nome della galleria che vuoi visitare.</value>
-  </data>
-  <data name="Gallery_Name_Placeholder" xml:space="preserve">
-    <value>il mio matrimonio</value>
   </data>
   <data name="Gallery_Selector_Title" xml:space="preserve">
     <value>Selezione galleria</value>
@@ -535,6 +580,24 @@
   <data name="None" xml:space="preserve">
     <value>Nessuno</value>
   </data>
+  <data name="Password_Reset_Changed_Message" xml:space="preserve">
+    <value>La password è stata ripristinata. Se non hai richiesto un reset della password, contatta immediatamente un amministratore.</value>
+  </data>
+  <data name="Password_Reset_Changed_Title" xml:space="preserve">
+    <value>La tua password è stata aggiornata!</value>
+  </data>
+  <data name="Password_Reset_Requested_Message" xml:space="preserve">
+    <value>Sul tuo account è stato richiesto un reset della password. Se hai richiesto una modifica della password, clicca sul link sottostante per aggiornarla.</value>
+  </data>
+  <data name="Password_Reset_Requested_Title" xml:space="preserve">
+    <value>Problemi di accesso al tuo account?</value>
+  </data>
+  <data name="PasswordReset" xml:space="preserve">
+    <value>Ripristino della password</value>
+  </data>
+  <data name="PasswordReset_Failed" xml:space="preserve">
+    <value>Non è possibile inviare email di reset password.</value>
+  </data>
   <data name="Pending" xml:space="preserve">
     <value>Finanziamenti</value>
   </data>
@@ -553,6 +616,75 @@
   <data name="Random" xml:space="preserve">
     <value>Random</value>
   </data>
+  <data name="Register" xml:space="preserve">
+    <value>Registrazione</value>
+  </data>
+  <data name="Register_Account" xml:space="preserve">
+    <value>Account di registrazione</value>
+  </data>
+  <data name="Register_CPassword_Help" xml:space="preserve">
+    <value>Conferma la password</value>
+  </data>
+  <data name="Register_CPassword_Label" xml:space="preserve">
+    <value>Conferma la password</value>
+  </data>
+  <data name="Register_Email_Help" xml:space="preserve">
+    <value>Inserisci l'indirizzo e-mail dell'account.</value>
+  </data>
+  <data name="Register_Email_Label" xml:space="preserve">
+    <value>Indirizzo email</value>
+  </data>
+  <data name="Register_Password_Help" xml:space="preserve">
+    <value>Password inserire una password.</value>
+  </data>
+  <data name="Register_Password_Label" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="Register_Username_Help" xml:space="preserve">
+    <value>Inserisci il nome utente dell'account.</value>
+  </data>
+  <data name="Register_Username_Label" xml:space="preserve">
+    <value>Nome utente</value>
+  </data>
+  <data name="Registration_Confirm_Password_Missmatch" xml:space="preserve">
+    <value>La password di conferma non corrisponde</value>
+  </data>
+  <data name="Registration_Email_Send_Failed" xml:space="preserve">
+    <value>Non ha inviato email di registrazione all'utente.</value>
+  </data>
+  <data name="Registration_Email_Taken" xml:space="preserve">
+    <value>Esiste già un account con l'indirizzo email specificato</value>
+  </data>
+  <data name="Registration_Failed" xml:space="preserve">
+    <value>Non registrati nuovi utenti</value>
+  </data>
+  <data name="Registration_Invalid_Email" xml:space="preserve">
+    <value>Si prega di specificare un indirizzo email valido</value>
+  </data>
+  <data name="Registration_Invalid_Password" xml:space="preserve">
+    <value>Si prega di specificare una password valida tra 8 e 100 caratteri, contenente almeno 1 lettera maiuscola superiore, 1 lettera minuscola, 1 numero e 1 carattere speciale</value>
+  </data>
+  <data name="Registration_Invalid_Username" xml:space="preserve">
+    <value>Si prega di specificare un nome utente valido tra 5 e 50 caratteri</value>
+  </data>
+  <data name="Registration_Invalid_Verification_Link" xml:space="preserve">
+    <value>C'è stato un problema di elaborazione del link di verifica e-mail</value>
+  </data>
+  <data name="Registration_Success_Message" xml:space="preserve">
+    <value>L'account è stato registrato con successo e in attesa di accedere</value>
+  </data>
+  <data name="Registration_Success_Title" xml:space="preserve">
+    <value>Benvenuto!</value>
+  </data>
+  <data name="Registration_Success_Verification" xml:space="preserve">
+    <value>Il tuo account è stato registrato, ma deve essere verificato prima di poterlo accedere. Si prega di attivare il tuo account facendo clic sul link qui sotto.</value>
+  </data>
+  <data name="Registration_Username_Taken" xml:space="preserve">
+    <value>Il nome utente esiste già. Si prega di selezionare una nuova</value>
+  </data>
+  <data name="Registration_Weak_Password" xml:space="preserve">
+    <value>La password specificata è facilmente indovinata. Si prega di selezionare una password più sicura.</value>
+  </data>
   <data name="Reject" xml:space="preserve">
     <value>Rifiuta</value>
   </data>
@@ -561,6 +693,9 @@
   </data>
   <data name="Rename" xml:space="preserve">
     <value>Nome</value>
+  </data>
+  <data name="ResetPassword_Invalid_Reset_Link" xml:space="preserve">
+    <value>C'è stato un problema di elaborazione del link di ripristino password</value>
   </data>
   <data name="Resources" xml:space="preserve">
     <value>Risorse</value>
@@ -603,6 +738,18 @@
   </data>
   <data name="Settings_Account_Profile_Icon_Label" xml:space="preserve">
     <value>Profilo Icon</value>
+  </data>
+  <data name="Settings_Account_Registration_Enabled_Help" xml:space="preserve">
+    <value>Gli ospiti possono registrare i conti?</value>
+  </data>
+  <data name="Settings_Account_Registration_Enabled_Label" xml:space="preserve">
+    <value>Registrazione abilitata</value>
+  </data>
+  <data name="Settings_Account_Registration_RequireEmailValidation_Help" xml:space="preserve">
+    <value>Gli utenti sono tenuti a verificare la loro e-mail per attivare il proprio account?</value>
+  </data>
+  <data name="Settings_Account_Registration_RequireEmailValidation_Label" xml:space="preserve">
+    <value>Richiedi la convalida e-mail</value>
   </data>
   <data name="Settings_Alerts" xml:space="preserve">
     <value>Avvisi</value>
@@ -892,12 +1039,6 @@
   <data name="Settings_Gallery_ReviewCounter_Label" xml:space="preserve">
     <value>Revisione Contatore</value>
   </data>
-  <data name="Settings_Gallery_SecretKey_Help" xml:space="preserve">
-    <value>Una password per sbloccare la galleria</value>
-  </data>
-  <data name="Settings_Gallery_SecretKey_Label" xml:space="preserve">
-    <value>Chiave segreta</value>
-  </data>
   <data name="Settings_Gallery_ShowFilters_Help" xml:space="preserve">
     <value>L'utente dovrebbe essere in grado di filtrare e raggruppare i supporti?</value>
   </data>
@@ -1162,6 +1303,9 @@
   <data name="Square" xml:space="preserve">
     <value>Piazza</value>
   </data>
+  <data name="Submit" xml:space="preserve">
+    <value>Inviare</value>
+  </data>
   <data name="Supporters" xml:space="preserve">
     <value>Supporti</value>
   </data>
@@ -1176,6 +1320,12 @@
   </data>
   <data name="Update" xml:space="preserve">
     <value>Aggiorna</value>
+  </data>
+  <data name="Upgrade" xml:space="preserve">
+    <value>Aggiornamento</value>
+  </data>
+  <data name="Upgrade_Account_Message" xml:space="preserve">
+    <value>Attualmente si utilizza la versione gratuita. Per sbloccare più archiviazione galleria e altre grandi funzionalità considerare l'aggiornamento del tuo account</value>
   </data>
   <data name="Upload_Media" xml:space="preserve">
     <value>Caricamento Media</value>
@@ -1203,6 +1353,9 @@
   </data>
   <data name="Users_List_Failed" xml:space="preserve">
     <value>Impossibile ottenere l'elenco degli utenti</value>
+  </data>
+  <data name="Verify" xml:space="preserve">
+    <value>Verifica</value>
   </data>
   <data name="Videos" xml:space="preserve">
     <value>Video</value>

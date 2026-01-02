@@ -96,6 +96,7 @@
         <link rel="stylesheet" href="~/css/fontawesome.regular.min.css" asp-append-version="true" />
         <link rel="stylesheet" href="~/css/fontawesome.solid.min.css" asp-append-version="true" />
         <link rel="stylesheet" href="~/css/fontawesome.brands.min.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/css/wedding-theme.css" asp-append-version="true" />
         @if (!string.Equals("default", theme, StringComparison.OrdinalIgnoreCase))
         {
             <link rel="stylesheet" href="~/css/themes/@(theme).css" asp-append-version="true" />
@@ -153,7 +154,7 @@
                         <div class="profile-icon my-1 m-lg-0 float-end">
                             @if (await _settings.GetOrDefault(Settings.Account.ShowProfileIcon, true))
                             {
-                                if (!string.IsNullOrWhiteSpace(Context?.Request.Path.Value) && Context.Request.Path.Value.Contains("/Account", StringComparison.OrdinalIgnoreCase) && !Context.Request.Path.Value.Contains("/Login", StringComparison.OrdinalIgnoreCase))
+                                if (!string.IsNullOrWhiteSpace(Context?.Request.Path.Value) && Context.Request.Path.Value.Contains("/Account", StringComparison.OrdinalIgnoreCase) && !Context.Request.Path.Value.Contains("/Login", StringComparison.OrdinalIgnoreCase) && !Context.Request.Path.Value.Contains("/Register", StringComparison.OrdinalIgnoreCase) && !Context.Request.Path.Value.Contains("/ForgotPassword", StringComparison.OrdinalIgnoreCase))
                                 {
                                     <a href="@Url.Action("Logout", "Account")">
                                         <i class="fa-solid fa-door-open fa-2x text-danger"></i>
@@ -200,7 +201,7 @@
         <div id="main-wrapper">
             @if (isDemoMode)
             {
-                <div class="alert alert-warning text-center" role="alert">
+                <div class="alert alert-warning header-alert text-center" role="alert">
                     <i class="fa fa-warning mx-3"></i><b>@(_localizer["Warning"].Value.ToUpper()):</b> @_localizer["Demo_Message"].Value
                 </div>
             }

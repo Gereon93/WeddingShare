@@ -3,39 +3,45 @@ let resizePopupTimeout = null;
 let touchStartPosX, touchStartPosY  = null;
 
 function openMediaViewer(e) {
-    let thumbnail = $($(e).find('img')[0]).attr('src');
-    let source = $(e).attr('href');
+    let id = $(e).data('media-viewer-id');
     let index = $(e).data('media-viewer-index');
     let type = $(e).data('media-viewer-type');
-    let title = $(e).data('media-viewer-title');
-    let collection = $(e).data('media-viewer-collection');
-    let author = $(e).data('media-viewer-author');
-    let description = $(e).data('media-viewer-description');
-    let download = $(e).data('media-viewer-download');
 
-    displayMediaViewer(index, thumbnail, source, type, title, collection, author, description, download);
+    displayMediaViewer(id, index, type);
 }
 
-function displayMediaViewer(index, thumbnail, source, type, title, collection, author, description, download) {
+function displayMediaViewer(id, index, type) {
     hideMediaViewer();
-    
-    $('body').append(`
-        <div id="media-viewer-popup" style="opacity: 0;">
-            <div class="media-viewer" data-media-viewer-index="${index}" data-media-viewer-collection="${collection}" data-media-viewer-source="${source}">
-                <div class="media-viewer-title ${title === undefined || title.length === 0 ? 'd-none' : ''}"></div>
-                <div class="media-viewer-content"><img class="media-viewer-image" src="${type.toLowerCase() === 'image' ? source : thumbnail}" onload="initMediaViewImage('${type}', '${source}');"/></div>
-                <div class="media-viewer-author ${author === undefined || author.length === 0 ? 'd-none' : ''}"></div>
-                <div class="media-viewer-description ${description === undefined || description.length === 0 ? 'd-none' : ''}"></div>
-                <div class="media-viewer-options">
-                    <i class="fa fa-download ${download !== undefined && download === false ? 'd-none' : ''}" onclick="download();"></i>
-                    <i class="fa fa-close" onclick="hideMediaViewer();"></i>
-                </div>
-            </div>
-        </div>
-    `);
-    $('#media-viewer-popup .media-viewer-title').text(title);
-    $('#media-viewer-popup .media-viewer-author').text(author);
-    $('#media-viewer-popup .media-viewer-description').text(description);
+
+    displayLoader(localization.translate('Loading'));
+
+    let url;
+    if (type !== undefined && type.length > 0) {
+        if (type.toLowerCase() === 'pending_review') {
+            url = '/MediaViewer/ReviewItem';
+        } else if (type.toLowerCase() === 'custom_resource') {
+            url = '/MediaViewer/CustomResource';
+        } else if (type.toLowerCase() === 'gallery_item') {
+            url = '/MediaViewer/GalleryItem';
+        }
+    }
+
+    if (url !== undefined && url.length > 0) {
+        $.ajax({
+            url: url,
+            type: 'GET',
+            data: { id },
+            success: function (response) {
+                hideLoader();
+                $('body').append(response);
+                $('#media-viewer-popup .media-viewer').attr('data-media-viewer-index', `${index}`);
+            },
+            error: function (response) {
+                hideLoader();
+                console.log(response);
+            }
+        });
+    }
 }
 
 function initMediaViewImage(type, source) {
@@ -88,8 +94,36 @@ function resizeMediaViewer(iteration, popup, type, source) {
     }
 }
 
-function download() {
-    let source = $('#media-viewer-popup .media-viewer').data('media-viewer-source');
+function loginPrompt() {
+    displayMessage(localization.translate('Login'), localization.translate('Login_To_Complete_Action'));
+}
+
+function upgradeToUnlock() {
+    displayMessage(localization.translate('Unavailable'), localization.translate('Paywall_Feature'));
+}
+
+function like(id) {
+    let action = $('#like-button button').attr('data-action');
+    $.ajax({
+        url: '/MediaViewer/Like',
+        type: 'POST',
+        data: { id, action },
+        success: function (response) {
+            if (response !== undefined && response.success) {
+                $('#like-button .lbl-like-count').text(response.value);
+                if (action.toLowerCase() === 'like') {
+                    $('#like-button button').addClass('like-button-active');
+                    $('#like-button button').attr('data-action', 'unlike')
+                } else {
+                    $('#like-button button').removeClass('like-button-active');
+                    $('#like-button button').attr('data-action', 'like')
+                }
+            }
+        }
+    });
+}
+
+function download(source) {
     let parts = source.split('/');
 
     let a = document.createElement('a');

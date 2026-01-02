@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Reflection;
+using WeddingShare.Constants;
 using WeddingShare.Helpers.Database;
 using WeddingShare.Models.Database;
 
@@ -11,28 +12,32 @@ namespace WeddingShare.Helpers.Dbup
         {
             try
             {
+                var galleries = (await database.GetAllGalleries())?.Where(x => !x.Identifier.Equals("All", StringComparison.OrdinalIgnoreCase));
+
                 var settings = await database.GetAllSettings();
-                if (settings == null || !settings.Any())
+                if (settings == null || !settings.Any(setting => setting.Id.StartsWith(Settings.Basic.BaseKey, StringComparison.OrdinalIgnoreCase)))
                 {
                     var systemKeys = GetAllKeys();
                     foreach (var key in systemKeys)
                     {
                         try
                         {
-                            var configVal = config.Get(key);
-                            if (!string.IsNullOrWhiteSpace(configVal))
+                            if (settings == null || !settings.Any(setting => setting.Id.Equals(key, StringComparison.OrdinalIgnoreCase)))
                             {
-                                await database.AddSetting(new SettingModel()
+                                var configVal = config.Get(key);
+                                if (!string.IsNullOrWhiteSpace(configVal))
                                 {
-                                    Id = key,
-                                    Value = configVal
-                                });
+                                    await database.AddSetting(new SettingModel()
+                                    {
+                                        Id = key,
+                                        Value = configVal
+                                    });
+                                }
                             }
                         }
                         catch { }
                     }
 
-                    var galleries = (await database.GetAllGalleries())?.Where(x => !x.Identifier.Equals("All", StringComparison.OrdinalIgnoreCase));
                     if (galleries != null && galleries.Any())
                     {
                         var galleryKeys = GetKeys<Constants.Settings.Gallery>();
@@ -58,6 +63,28 @@ namespace WeddingShare.Helpers.Dbup
                                 }
                             }
                         }
+                    }
+                }
+
+                // Protect any galleries without a secret key by forcing a new one
+                if (galleries != null && galleries.Any())
+                {
+                    foreach (var gallery in galleries.Where(gallery => string.IsNullOrWhiteSpace(gallery.SecretKey)))
+                    {
+                        try
+                        {
+                            if (gallery.Identifier.Equals("default", StringComparison.OrdinalIgnoreCase))
+                            {
+                                gallery.SecretKey = config.GetOrDefault(Settings.Basic.DefaultGallerySecretKey, PasswordHelper.GenerateGallerySecretKey());
+                            }
+                            else
+                            {
+                                gallery.SecretKey = PasswordHelper.GenerateGallerySecretKey();
+                            }
+                            
+                            await database.EditGallery(gallery);
+                        }
+                        catch { }
                     }
                 }
             }

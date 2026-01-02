@@ -1,7 +1,7 @@
 --
 -- Add column `level` to `users`
 --
-ALTER TABLE `users` ADD `level` INTEGER NOT NULL DEFAULT 3;
+ALTER TABLE `users` ADD `level` INTEGER NOT NULL DEFAULT 4;
 
 --
 -- Add column `owner` to `galleries`

@@ -1,4 +1,6 @@
-﻿namespace WeddingShare.Helpers.Notifications
+﻿using Microsoft.Extensions.Localization;
+
+namespace WeddingShare.Helpers.Notifications
 {
     public class NotificationBroker : INotificationHelper
     {
@@ -6,13 +8,15 @@
         private readonly ISmtpClientWrapper _smtp;
         private readonly IHttpClientFactory _clientFactory;
         private readonly ILoggerFactory _logger;
+        private readonly IStringLocalizer<Lang.Translations> _localizer;
 
-        public NotificationBroker(ISettingsHelper settings, ISmtpClientWrapper smtp, IHttpClientFactory clientFactory, ILoggerFactory logger)
+        public NotificationBroker(ISettingsHelper settings, ISmtpClientWrapper smtp, IHttpClientFactory clientFactory, ILoggerFactory logger, IStringLocalizer<Lang.Translations> localizer)
         {
             _settings = settings;
             _smtp = smtp;
             _clientFactory = clientFactory;
             _logger = logger;
+            _localizer = localizer;
         }
 
         public async Task<bool> Send(string title, string message, string? actionLink = null)
@@ -23,7 +27,7 @@
 
             if (await _settings.GetOrDefault(Constants.Notifications.Smtp.Enabled, false))
             {
-                emailSent = await new EmailHelper(_settings, _smtp, _logger.CreateLogger<EmailHelper>()).Send(title, message, actionLink);
+                emailSent = await new EmailHelper(_settings, _smtp, _logger.CreateLogger<EmailHelper>(), _localizer).Send(title, message, actionLink);
             }
 
             if (await _settings.GetOrDefault(Constants.Notifications.Ntfy.Enabled, false))

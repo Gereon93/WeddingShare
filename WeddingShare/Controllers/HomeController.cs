@@ -47,18 +47,21 @@ namespace WeddingShare.Controllers
 
                 if (await _settings.GetOrDefault(Settings.Basic.SingleGalleryMode, false))
                 {
-                    var key = await _settings.GetOrDefault(Settings.Gallery.SecretKey, string.Empty, 1);
-                    if (string.IsNullOrWhiteSpace(key))
+                    var gallery = await _database.GetGallery(1);
+                    if (string.IsNullOrWhiteSpace(gallery?.SecretKey))
                     {
                         return RedirectToAction("Index", "Gallery", new { identifier = "default" });
                     }
                 }
 
-                model.GalleryNames = await _settings.GetOrDefault(Settings.GallerySelector.Dropdown, false) ? (await _database.GetGalleryNames()).Where(x => !x.Equals("all", StringComparison.OrdinalIgnoreCase)) : new List<string>();
+                var isDropdownMode = await _settings.GetOrDefault(Settings.GallerySelector.Dropdown, false);
+                var galleryNames = isDropdownMode ? (await _database.GetGalleryNames()).Where(x => !x.Value.Equals("all", StringComparison.OrdinalIgnoreCase)) : new Dictionary<string, string>();
                 if (await _settings.GetOrDefault(Settings.GallerySelector.HideDefaultOption, false))
                 {
-                    model.GalleryNames = model.GalleryNames.Where(x => !x.Equals("default", StringComparison.OrdinalIgnoreCase));
+                    galleryNames = galleryNames.Where(x => !x.Key.Equals("default", StringComparison.OrdinalIgnoreCase));
                 }
+
+                model.GalleryNames = galleryNames.OrderBy(gallery => gallery.Key.Equals("default", StringComparison.OrdinalIgnoreCase) ? 0 : 1).ThenBy(gallery => gallery.Value.ToLower()).ToDictionary();
             }
             catch (Exception ex)
             {

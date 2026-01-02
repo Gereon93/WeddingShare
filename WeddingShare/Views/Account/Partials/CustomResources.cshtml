@@ -4,19 +4,21 @@
 @using WeddingShare.Views.Account
 
 @{
-    var userPermissions = User?.Identity?.GetUserPermissions() ?? AccessPermissions.None;
+    var userPermissions = User?.Identity?.GetUserPermissions() ?? new Permissions();
 }
 
 <div class="row">
-    @if (userPermissions.HasFlag(AccessPermissions.CustomResource_View) && Model != null && Model.Any())
+    @if (userPermissions.CustomResources.HasFlag(CustomResourcePermissions.View) && Model != null && Model.Any())
     {
-        foreach (var resource in Model)
+        for (var i = 0; i < Model.Count; i++)
         {
+            var resource = Model[i];
+
             <div class="custom-resource col-12 col-lg-4 mb-1 mb-lg-4">
                 <div class="card">
-                    <a href="/custom_resources/@resource.FileName" class="media-viewer-item" data-media-viewer-type="image" data-media-viewer-collection="@resource.Id" data-media-viewer-author="@resource?.FileName" data-media-viewer-download="false">
+                    <a href="/custom_resources/@resource.FileName" class="media-viewer-item" data-media-viewer-id="@resource.Id" data-media-viewer-index="@i" data-media-viewer-collection="custom_resources" data-media-viewer-type="custom_resource">
                         <img src="/custom_resources/@resource?.FileName" class="review-tile" loading="lazy" />
-                        @if (userPermissions.HasFlag(AccessPermissions.CustomResource_Delete))
+                        @if (userPermissions.CustomResources.HasFlag(CustomResourcePermissions.Delete))
                         {
                             <i class="fa fa-trash custom-resource-delete d-lg-none" data-id="@resource?.Id" data-name="@resource?.FileName"></i>
                         }

@@ -94,6 +94,18 @@
   <data name="406_Error_Title" xml:space="preserve">
     <value>不合法的相簿</value>
   </data>
+  <data name="407_Error_Message" xml:space="preserve">
+    <value>有一項問題 在想證實你的賬戶上 請確保核對連接是有效的 .</value>
+  </data>
+  <data name="407_Error_Title" xml:space="preserve">
+    <value>不合法的驗證 連接</value>
+  </data>
+  <data name="408_Error_Message" xml:space="preserve">
+    <value>在想重置您的帳號口令時出事了 。 請確保核對連接是有效的 .</value>
+  </data>
+  <data name="408_Error_Title" xml:space="preserve">
+    <value>不合法的密碼重置連接</value>
+  </data>
   <data name="Accept" xml:space="preserve">
     <value>接受</value>
   </data>
@@ -120,6 +132,12 @@
   </data>
   <data name="Audit" xml:space="preserve">
     <value>审计</value>
+  </data>
+  <data name="Audit_Account_Registered" xml:space="preserve">
+    <value>已註冊的使用者帳號</value>
+  </data>
+  <data name="Audit_ActivateUser" xml:space="preserve">
+    <value>啟動用戶</value>
   </data>
   <data name="Audit_BulkApproveReviews" xml:space="preserve">
     <value>二. 批复</value>
@@ -148,6 +166,9 @@
   <data name="Audit_DeletedUser" xml:space="preserve">
     <value>已刪除使用者</value>
   </data>
+  <data name="Audit_Email_Verified" xml:space="preserve">
+    <value>使用者檢查了他們的電子郵件地址</value>
+  </data>
   <data name="Audit_ExportedBackup" xml:space="preserve">
     <value>已匯出備份</value>
   </data>
@@ -156,6 +177,9 @@
   </data>
   <data name="Audit_FailedLoginAttemptReset" xml:space="preserve">
     <value>登入試想失敗倒數重置</value>
+  </data>
+  <data name="Audit_Forgot_Password" xml:space="preserve">
+    <value>使用者要求重新設定密碼</value>
   </data>
   <data name="Audit_FrozeUser" xml:space="preserve">
     <value>有花色使用者</value>
@@ -198,6 +222,9 @@
   </data>
   <data name="Audit_MultiFactorResetUser" xml:space="preserve">
     <value>为使用者重置多元件</value>
+  </data>
+  <data name="Audit_Password_Reset" xml:space="preserve">
+    <value>使用者要求重新設定密碼</value>
   </data>
   <data name="Audit_SearchTerm_Help" xml:space="preserve">
     <value>基于搜尋名詞的過程紀錄</value>
@@ -379,6 +406,21 @@
   <data name="Filter" xml:space="preserve">
     <value>分頁</value>
   </data>
+  <data name="Forgot_Password" xml:space="preserve">
+    <value>有被遺忘的密碼</value>
+  </data>
+  <data name="ForgotPassword" xml:space="preserve">
+    <value>有被遺忘的密碼</value>
+  </data>
+  <data name="ForgotPassword_Email_Help" xml:space="preserve">
+    <value>請輸入帳號電子郵件位址 .</value>
+  </data>
+  <data name="ForgotPassword_Email_Label" xml:space="preserve">
+    <value>電子郵件地址</value>
+  </data>
+  <data name="ForgotPassword_Failed" xml:space="preserve">
+    <value>傳出密碼重置電子郵件失敗</value>
+  </data>
   <data name="Galleries" xml:space="preserve">
     <value>蓋爾</value>
   </data>
@@ -396,6 +438,15 @@
   </data>
   <data name="Gallery_Full" xml:space="preserve">
     <value>相簿已滿并已超過最大大小</value>
+  </data>
+  <data name="Gallery_Identifier" xml:space="preserve">
+    <value>相簿辨識符</value>
+  </data>
+  <data name="Gallery_Identifier_Help" xml:space="preserve">
+    <value>請輸入您要參觀的畫廊的识别符 .</value>
+  </data>
+  <data name="Gallery_Identifier_Placeholder" xml:space="preserve">
+    <value>我 -- -- 有 -- -- 有</value>
   </data>
   <data name="Gallery_Key" xml:space="preserve">
     <value>相簿金鑰</value>
@@ -417,12 +468,6 @@
   </data>
   <data name="Gallery_Name_Already_Exists" xml:space="preserve">
     <value>相簿名稱已存在</value>
-  </data>
-  <data name="Gallery_Name_Help" xml:space="preserve">
-    <value>請輸入您要參觀的畫廊名 .</value>
-  </data>
-  <data name="Gallery_Name_Placeholder" xml:space="preserve">
-    <value>我 -- -- 有 -- -- 有</value>
   </data>
   <data name="Gallery_Selector_Title" xml:space="preserve">
     <value>相簿選擇器</value>
@@ -535,6 +580,24 @@
   <data name="None" xml:space="preserve">
     <value>無</value>
   </data>
+  <data name="Password_Reset_Changed_Message" xml:space="preserve">
+    <value>您的密碼已重置 。 如果您沒有要求重新設定密碼, 請立即聯絡管理員 .</value>
+  </data>
+  <data name="Password_Reset_Changed_Title" xml:space="preserve">
+    <value>您的密碼已更新 !</value>
+  </data>
+  <data name="Password_Reset_Requested_Message" xml:space="preserve">
+    <value>您已要求重新設定密碼 。 如果您需要密碼變更, 請點擊下方的連結以更新 .</value>
+  </data>
+  <data name="Password_Reset_Requested_Title" xml:space="preserve">
+    <value>有麻煩去取取你的帳戶?</value>
+  </data>
+  <data name="PasswordReset" xml:space="preserve">
+    <value>密碼重置</value>
+  </data>
+  <data name="PasswordReset_Failed" xml:space="preserve">
+    <value>傳出密碼重置電子郵件失敗 .</value>
+  </data>
   <data name="Pending" xml:space="preserve">
     <value>待取</value>
   </data>
@@ -553,6 +616,75 @@
   <data name="Random" xml:space="preserve">
     <value>隨機</value>
   </data>
+  <data name="Register" xml:space="preserve">
+    <value>登入</value>
+  </data>
+  <data name="Register_Account" xml:space="preserve">
+    <value>登入帳號</value>
+  </data>
+  <data name="Register_CPassword_Help" xml:space="preserve">
+    <value>确认您的密碼</value>
+  </data>
+  <data name="Register_CPassword_Label" xml:space="preserve">
+    <value>确认密碼</value>
+  </data>
+  <data name="Register_Email_Help" xml:space="preserve">
+    <value>請輸入帳號電子郵件位址 .</value>
+  </data>
+  <data name="Register_Email_Label" xml:space="preserve">
+    <value>電子郵件地址</value>
+  </data>
+  <data name="Register_Password_Help" xml:space="preserve">
+    <value>有口令入口令.</value>
+  </data>
+  <data name="Register_Password_Label" xml:space="preserve">
+    <value>密碼</value>
+  </data>
+  <data name="Register_Username_Help" xml:space="preserve">
+    <value>請輸入帳號用戶名 .</value>
+  </data>
+  <data name="Register_Username_Label" xml:space="preserve">
+    <value>使用者名</value>
+  </data>
+  <data name="Registration_Confirm_Password_Missmatch" xml:space="preserve">
+    <value>確認密碼不符</value>
+  </data>
+  <data name="Registration_Email_Send_Failed" xml:space="preserve">
+    <value>傳送登入電子郵件到使用者失敗 .</value>
+  </data>
+  <data name="Registration_Email_Taken" xml:space="preserve">
+    <value>有指定電子郵件位址的帳號已存在</value>
+  </data>
+  <data name="Registration_Failed" xml:space="preserve">
+    <value>登入新使用者失敗</value>
+  </data>
+  <data name="Registration_Invalid_Email" xml:space="preserve">
+    <value>請指定有效的電子郵件位址</value>
+  </data>
+  <data name="Registration_Invalid_Password" xml:space="preserve">
+    <value>請指定 8到 100 個字的口令, 其中至少包含 1 大寫字母, 1 小寫字母, 1 數字和 1 個特殊字元</value>
+  </data>
+  <data name="Registration_Invalid_Username" xml:space="preserve">
+    <value>請指定5到50个字元之間的合法使用者名稱</value>
+  </data>
+  <data name="Registration_Invalid_Verification_Link" xml:space="preserve">
+    <value>有問題正在處理電子郵件檢查連接</value>
+  </data>
+  <data name="Registration_Success_Message" xml:space="preserve">
+    <value>您的帳號已成功注册并等待您存取</value>
+  </data>
+  <data name="Registration_Success_Title" xml:space="preserve">
+    <value>歡迎!</value>
+  </data>
+  <data name="Registration_Success_Verification" xml:space="preserve">
+    <value>您的帳號已登入, 但需要被驗證后才能被存取 。 請點擊下方的連結以啟動您的帳號 .</value>
+  </data>
+  <data name="Registration_Username_Taken" xml:space="preserve">
+    <value>已存在使用者名 。 請選擇一款新的</value>
+  </data>
+  <data name="Registration_Weak_Password" xml:space="preserve">
+    <value>指定的密碼很容易被猜出 。 請選擇更安全的密碼 .</value>
+  </data>
   <data name="Reject" xml:space="preserve">
     <value>拒絕</value>
   </data>
@@ -561,6 +693,9 @@
   </data>
   <data name="Rename" xml:space="preserve">
     <value>重命名</value>
+  </data>
+  <data name="ResetPassword_Invalid_Reset_Link" xml:space="preserve">
+    <value>有問題正在處理密碼重置連接</value>
   </data>
   <data name="Resources" xml:space="preserve">
     <value>資源</value>
@@ -603,6 +738,18 @@
   </data>
   <data name="Settings_Account_Profile_Icon_Label" xml:space="preserve">
     <value>配置圖示</value>
+  </data>
+  <data name="Settings_Account_Registration_Enabled_Help" xml:space="preserve">
+    <value>有客人可以入住嗎?</value>
+  </data>
+  <data name="Settings_Account_Registration_Enabled_Label" xml:space="preserve">
+    <value>登入已開啟</value>
+  </data>
+  <data name="Settings_Account_Registration_RequireEmailValidation_Help" xml:space="preserve">
+    <value>有需要用戶去核對郵件以啟動帳號嗎?</value>
+  </data>
+  <data name="Settings_Account_Registration_RequireEmailValidation_Label" xml:space="preserve">
+    <value>需要電子郵件驗證</value>
   </data>
   <data name="Settings_Alerts" xml:space="preserve">
     <value>警告</value>
@@ -892,12 +1039,6 @@
   <data name="Settings_Gallery_ReviewCounter_Label" xml:space="preserve">
     <value>審查分機</value>
   </data>
-  <data name="Settings_Gallery_SecretKey_Help" xml:space="preserve">
-    <value>有解鎖畫廊的口令</value>
-  </data>
-  <data name="Settings_Gallery_SecretKey_Label" xml:space="preserve">
-    <value>密钥</value>
-  </data>
   <data name="Settings_Gallery_ShowFilters_Help" xml:space="preserve">
     <value>使用者是否能过滤和群組媒體?</value>
   </data>
@@ -1162,6 +1303,9 @@
   <data name="Square" xml:space="preserve">
     <value>平方</value>
   </data>
+  <data name="Submit" xml:space="preserve">
+    <value>提交</value>
+  </data>
   <data name="Supporters" xml:space="preserve">
     <value>支持者</value>
   </data>
@@ -1176,6 +1320,12 @@
   </data>
   <data name="Update" xml:space="preserve">
     <value>更新</value>
+  </data>
+  <data name="Upgrade" xml:space="preserve">
+    <value>提升</value>
+  </data>
+  <data name="Upgrade_Account_Message" xml:space="preserve">
+    <value>您正在使用自由版本 。 要解鎖更多畫廊儲存等大功能 就考慮更新你的帳號</value>
   </data>
   <data name="Upload_Media" xml:space="preserve">
     <value>上傳媒體</value>
@@ -1203,6 +1353,9 @@
   </data>
   <data name="Users_List_Failed" xml:space="preserve">
     <value>取得使用者清單失敗</value>
+  </data>
+  <data name="Verify" xml:space="preserve">
+    <value>檢查</value>
   </data>
   <data name="Videos" xml:space="preserve">
     <value>有影片</value>

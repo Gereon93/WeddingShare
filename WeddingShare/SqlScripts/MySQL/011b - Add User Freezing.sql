@@ -1,4 +1,4 @@
 --
--- Add column `file_size` to `gallery_items`
+-- Add column `state` to `users`
 --
 ALTER TABLE `users` ADD `state` INT NOT NULL DEFAULT 0;

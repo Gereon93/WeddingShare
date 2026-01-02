@@ -94,6 +94,18 @@
   <data name="406_Error_Title" xml:space="preserve">
     <value>Invalid Gallery</value>
   </data>
+  <data name="407_Error_Message" xml:space="preserve">
+    <value>Ekzistis temo provante konfirmi vian raporton. Bonvolu certigi ke la kontrolligo estas valida.</value>
+  </data>
+  <data name="407_Error_Title" xml:space="preserve">
+    <value>Invalida Verification Ligiloj</value>
+  </data>
+  <data name="408_Error_Message" xml:space="preserve">
+    <value>Ekzistis temo provante remeti vian konton pasvorton. Bonvolu certigi ke la kontrolligo estas valida.</value>
+  </data>
+  <data name="408_Error_Title" xml:space="preserve">
+    <value>Invalid Password Reset Link</value>
+  </data>
   <data name="Accept" xml:space="preserve">
     <value>Akcepto</value>
   </data>
@@ -120,6 +132,12 @@
   </data>
   <data name="Audit" xml:space="preserve">
     <value>Audit</value>
+  </data>
+  <data name="Audit_Account_Registered" xml:space="preserve">
+    <value>Uzante registritan konton</value>
+  </data>
+  <data name="Audit_ActivateUser" xml:space="preserve">
+    <value>Aktivigita uzanto</value>
   </data>
   <data name="Audit_BulkApproveReviews" xml:space="preserve">
     <value>Bulk aprobis ĉiujn klarigitajn recenzojn</value>
@@ -148,6 +166,9 @@
   <data name="Audit_DeletedUser" xml:space="preserve">
     <value>Dediĉita uzanto</value>
   </data>
+  <data name="Audit_Email_Verified" xml:space="preserve">
+    <value>Uzante sian retpoŝtan adreson</value>
+  </data>
   <data name="Audit_ExportedBackup" xml:space="preserve">
     <value>Eksporti malantaŭen</value>
   </data>
@@ -156,6 +177,9 @@
   </data>
   <data name="Audit_FailedLoginAttemptReset" xml:space="preserve">
     <value>Malsukcesaj loginprovoj nombras reset</value>
+  </data>
+  <data name="Audit_Forgot_Password" xml:space="preserve">
+    <value>Uzante pasvorton reset</value>
   </data>
   <data name="Audit_FrozeUser" xml:space="preserve">
     <value>Froze uzanto</value>
@@ -198,6 +222,9 @@
   </data>
   <data name="Audit_MultiFactorResetUser" xml:space="preserve">
     <value>Reset multi-faktoro por uzanto</value>
+  </data>
+  <data name="Audit_Password_Reset" xml:space="preserve">
+    <value>Uzante pasvorton reset</value>
   </data>
   <data name="Audit_SearchTerm_Help" xml:space="preserve">
     <value>Filter-registroj bazitaj sur serĉperiodo</value>
@@ -379,6 +406,21 @@
   <data name="Filter" xml:space="preserve">
     <value>Filtero</value>
   </data>
+  <data name="Forgot_Password" xml:space="preserve">
+    <value>Forgesita Pasvorto</value>
+  </data>
+  <data name="ForgotPassword" xml:space="preserve">
+    <value>Forgesita Pasvorto</value>
+  </data>
+  <data name="ForgotPassword_Email_Help" xml:space="preserve">
+    <value>Bonvolu eniri retpoŝtan adreson.</value>
+  </data>
+  <data name="ForgotPassword_Email_Label" xml:space="preserve">
+    <value>Retpoŝto</value>
+  </data>
+  <data name="ForgotPassword_Failed" xml:space="preserve">
+    <value>Malsukcesa sendi pasvorton reset retpoŝto</value>
+  </data>
   <data name="Galleries" xml:space="preserve">
     <value>Gallery</value>
   </data>
@@ -396,6 +438,15 @@
   </data>
   <data name="Gallery_Full" xml:space="preserve">
     <value>Galerio estas plena kaj superis la maksgrandecon de</value>
+  </data>
+  <data name="Gallery_Identifier" xml:space="preserve">
+    <value>Galerio Identifier</value>
+  </data>
+  <data name="Gallery_Identifier_Help" xml:space="preserve">
+    <value>Bonvolu eniri la identigilon de la galerio, kiun vi volas viziti.</value>
+  </data>
+  <data name="Gallery_Identifier_Placeholder" xml:space="preserve">
+    <value>mi-forlaso-galulo</value>
   </data>
   <data name="Gallery_Key" xml:space="preserve">
     <value>Ĉefa Galerio</value>
@@ -417,12 +468,6 @@
   </data>
   <data name="Gallery_Name_Already_Exists" xml:space="preserve">
     <value>Galerionomo jam ekzistas</value>
-  </data>
-  <data name="Gallery_Name_Help" xml:space="preserve">
-    <value>Bonvolu eniri la nomon de la galerio, kiun vi volas viziti.</value>
-  </data>
-  <data name="Gallery_Name_Placeholder" xml:space="preserve">
-    <value>mi-forlaso-galulo</value>
   </data>
   <data name="Gallery_Selector_Title" xml:space="preserve">
     <value>Elektu galerion</value>
@@ -535,6 +580,24 @@
   <data name="None" xml:space="preserve">
     <value>Neniu</value>
   </data>
+  <data name="Password_Reset_Changed_Message" xml:space="preserve">
+    <value>Via pasvorton nun estis remetita. Se vi ne petis pasvorton, bonvolu atingi administranton tuj.</value>
+  </data>
+  <data name="Password_Reset_Changed_Title" xml:space="preserve">
+    <value>Via pasvorton estas ĝisdatigita!</value>
+  </data>
+  <data name="Password_Reset_Requested_Message" xml:space="preserve">
+    <value>Pasvorton reset estis petita en via konto. Se vi petis pasvorton ŝanĝi bonvolu klaki la ligon malsupre por ĝisdatigi ĝin.</value>
+  </data>
+  <data name="Password_Reset_Requested_Title" xml:space="preserve">
+    <value>Ĉu vi povas aliri vian konton?</value>
+  </data>
+  <data name="PasswordReset" xml:space="preserve">
+    <value>Pasvorto Reset</value>
+  </data>
+  <data name="PasswordReset_Failed" xml:space="preserve">
+    <value>Malsukcesita sendi pasvorton reset retpoŝto.</value>
+  </data>
   <data name="Pending" xml:space="preserve">
     <value>Atendante</value>
   </data>
@@ -553,6 +616,75 @@
   <data name="Random" xml:space="preserve">
     <value>Akcidento</value>
   </data>
+  <data name="Register" xml:space="preserve">
+    <value>Registrita Registro</value>
+  </data>
+  <data name="Register_Account" xml:space="preserve">
+    <value>Registro konton</value>
+  </data>
+  <data name="Register_CPassword_Help" xml:space="preserve">
+    <value>Konfirmu vian pasvorton</value>
+  </data>
+  <data name="Register_CPassword_Label" xml:space="preserve">
+    <value>Confirm Password</value>
+  </data>
+  <data name="Register_Email_Help" xml:space="preserve">
+    <value>Bonvolu eniri retpoŝtan adreson.</value>
+  </data>
+  <data name="Register_Email_Label" xml:space="preserve">
+    <value>Retpoŝto</value>
+  </data>
+  <data name="Register_Password_Help" xml:space="preserve">
+    <value>Pasvorto eniras pasvorton.</value>
+  </data>
+  <data name="Register_Password_Label" xml:space="preserve">
+    <value>Pasvorto</value>
+  </data>
+  <data name="Register_Username_Help" xml:space="preserve">
+    <value>Bonvolu eniri konton uzantnomo.</value>
+  </data>
+  <data name="Register_Username_Label" xml:space="preserve">
+    <value>Uzantnomo</value>
+  </data>
+  <data name="Registration_Confirm_Password_Missmatch" xml:space="preserve">
+    <value>La pasvorton ne kongruas</value>
+  </data>
+  <data name="Registration_Email_Send_Failed" xml:space="preserve">
+    <value>Malsukcesa sendi registriĝo retpoŝto al uzanto.</value>
+  </data>
+  <data name="Registration_Email_Taken" xml:space="preserve">
+    <value>Raporto kun la precizigita retpoŝta adreso jam ekzistas</value>
+  </data>
+  <data name="Registration_Failed" xml:space="preserve">
+    <value>Malsukcesis registri novan uzanton</value>
+  </data>
+  <data name="Registration_Invalid_Email" xml:space="preserve">
+    <value>Bonvolu specifi validan retpoŝtan adreson</value>
+  </data>
+  <data name="Registration_Invalid_Password" xml:space="preserve">
+    <value>Bonvolu precizigi validan pasvorton inter 8 kaj 100 karakteroj, enhavanta almenaŭ 1 supran kazleteron, 1 pli malaltan kazleteron, 1 nombron kaj 1 specialan karakteron</value>
+  </data>
+  <data name="Registration_Invalid_Username" xml:space="preserve">
+    <value>Bonvolu precizigi validan uzantnomon inter 5 kaj 50 karakteroj</value>
+  </data>
+  <data name="Registration_Invalid_Verification_Link" xml:space="preserve">
+    <value>Ekzistis temo prilaborado de la retpoŝta konfirmligo</value>
+  </data>
+  <data name="Registration_Success_Message" xml:space="preserve">
+    <value>Vi estas registrita sukcese kaj atendas vin aliri</value>
+  </data>
+  <data name="Registration_Success_Title" xml:space="preserve">
+    <value>Bonvenon!</value>
+  </data>
+  <data name="Registration_Success_Verification" xml:space="preserve">
+    <value>Via konto estis registrita sed devas esti konfirmita antaŭ ol ĝi povas esti alirita. Bonvolu aktivigi vian konton per klakado de la ligo malsupre.</value>
+  </data>
+  <data name="Registration_Username_Taken" xml:space="preserve">
+    <value>Uzantnomo jam ekzistas. Bonvolu elekti novan</value>
+  </data>
+  <data name="Registration_Weak_Password" xml:space="preserve">
+    <value>La precizigita pasvorton estas facile konjektita. Bonvolu elekti pli sekuran pasvorton.</value>
+  </data>
   <data name="Reject" xml:space="preserve">
     <value>Rejekto</value>
   </data>
@@ -561,6 +693,9 @@
   </data>
   <data name="Rename" xml:space="preserve">
     <value>Renomo</value>
+  </data>
+  <data name="ResetPassword_Invalid_Reset_Link" xml:space="preserve">
+    <value>Ekzistis temo prilaborado de la pasvorton reset ligo</value>
   </data>
   <data name="Resources" xml:space="preserve">
     <value>Resursoj</value>
@@ -603,6 +738,18 @@
   </data>
   <data name="Settings_Account_Profile_Icon_Label" xml:space="preserve">
     <value>Profilo Icon</value>
+  </data>
+  <data name="Settings_Account_Registration_Enabled_Help" xml:space="preserve">
+    <value>Ĉu gastoj rajtas registri kontojn?</value>
+  </data>
+  <data name="Settings_Account_Registration_Enabled_Label" xml:space="preserve">
+    <value>Registrado Enabled</value>
+  </data>
+  <data name="Settings_Account_Registration_RequireEmailValidation_Help" xml:space="preserve">
+    <value>Ĉu uzantoj estas postulataj por konfirmi sian retpoŝton por aktivigi sian raporton?</value>
+  </data>
+  <data name="Settings_Account_Registration_RequireEmailValidation_Label" xml:space="preserve">
+    <value>Postula retpoŝto Validation</value>
   </data>
   <data name="Settings_Alerts" xml:space="preserve">
     <value>Alertoj</value>
@@ -892,12 +1039,6 @@
   <data name="Settings_Gallery_ReviewCounter_Label" xml:space="preserve">
     <value>Revizio kontraŭ</value>
   </data>
-  <data name="Settings_Gallery_SecretKey_Help" xml:space="preserve">
-    <value>Pasvorton por malŝlosi la galerion</value>
-  </data>
-  <data name="Settings_Gallery_SecretKey_Label" xml:space="preserve">
-    <value>Sekretoj</value>
-  </data>
   <data name="Settings_Gallery_ShowFilters_Help" xml:space="preserve">
     <value>Ĉu la uzanto povas filtri kaj grupigi amaskomunikilojn?</value>
   </data>
@@ -1162,6 +1303,9 @@
   <data name="Square" xml:space="preserve">
     <value>Placo</value>
   </data>
+  <data name="Submit" xml:space="preserve">
+    <value>Submit</value>
+  </data>
   <data name="Supporters" xml:space="preserve">
     <value>Subtenantoj</value>
   </data>
@@ -1176,6 +1320,12 @@
   </data>
   <data name="Update" xml:space="preserve">
     <value>Ĝisdatigo</value>
+  </data>
+  <data name="Upgrade" xml:space="preserve">
+    <value>Ĝisdatiĝi</value>
+  </data>
+  <data name="Upgrade_Account_Message" xml:space="preserve">
+    <value>Nun vi uzas la liberan version. Malŝlosi pli da galerio stokado kaj aliaj grandaj ecoj pripensas ĝisdatigante vian raporton</value>
   </data>
   <data name="Upload_Media" xml:space="preserve">
     <value>Upload Media</value>
@@ -1203,6 +1353,9 @@
   </data>
   <data name="Users_List_Failed" xml:space="preserve">
     <value>Malsukcesis ricevi uzantoj listo</value>
+  </data>
+  <data name="Verify" xml:space="preserve">
+    <value>Traduki</value>
   </data>
   <data name="Videos" xml:space="preserve">
     <value>Videoj</value>

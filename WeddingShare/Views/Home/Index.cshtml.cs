@@ -6,10 +6,10 @@ namespace WeddingShare.Views.Home
     {
         public IndexModel() 
         {
-            this.GalleryNames = new List<string>() { "default" };
+            this.GalleryNames = new Dictionary<string, string>() { { "default", "default" } };
         }
 
-        public IEnumerable<string> GalleryNames { get; set; }
+        public IDictionary<string, string> GalleryNames { get; set; }
 
         public void OnGet()
         {

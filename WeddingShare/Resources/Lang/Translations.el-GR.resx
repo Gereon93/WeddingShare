@@ -94,6 +94,18 @@
   <data name="406_Error_Title" xml:space="preserve">
     <value>Μη έγκυρη συλλογή</value>
   </data>
+  <data name="407_Error_Message" xml:space="preserve">
+    <value>Υπήρχε ένα θέμα ενώ προσπαθούσα να επιβεβαιώσω το λογαριασμό σας. Παρακαλώ βεβαιωθείτε ότι ο σύνδεσμος επαλήθευσης είναι έγκυρος.</value>
+  </data>
+  <data name="407_Error_Title" xml:space="preserve">
+    <value>Μη έγκυρη επαλήθευση Δεσμός</value>
+  </data>
+  <data name="408_Error_Message" xml:space="preserve">
+    <value>Υπήρξε ένα πρόβλημα κατά την προσπάθεια επαναφοράς του κωδικού πρόσβασης του λογαριασμού σας. Παρακαλώ βεβαιωθείτε ότι ο σύνδεσμος επαλήθευσης είναι έγκυρος.</value>
+  </data>
+  <data name="408_Error_Title" xml:space="preserve">
+    <value>Μη έγκυρη σύνδεση επαναφοράς κωδικού πρόσβασης</value>
+  </data>
   <data name="Accept" xml:space="preserve">
     <value>Αποδοχή</value>
   </data>
@@ -120,6 +132,12 @@
   </data>
   <data name="Audit" xml:space="preserve">
     <value>Έλεγχος</value>
+  </data>
+  <data name="Audit_Account_Registered" xml:space="preserve">
+    <value>Καταχωρισμένος λογαριασμός χρήστη</value>
+  </data>
+  <data name="Audit_ActivateUser" xml:space="preserve">
+    <value>Ενεργοποιημένος χρήστης</value>
   </data>
   <data name="Audit_BulkApproveReviews" xml:space="preserve">
     <value>Μαζική έγκριση όλων των εκκρεμών αναθεωρήσεων</value>
@@ -148,6 +166,9 @@
   <data name="Audit_DeletedUser" xml:space="preserve">
     <value>Διαγραφή χρήστη</value>
   </data>
+  <data name="Audit_Email_Verified" xml:space="preserve">
+    <value>Ο χρήστης επαλήθευσε τη διεύθυνση email του</value>
+  </data>
   <data name="Audit_ExportedBackup" xml:space="preserve">
     <value>Εξαγωγή αντιγράφου ασφαλείας</value>
   </data>
@@ -156,6 +177,9 @@
   </data>
   <data name="Audit_FailedLoginAttemptReset" xml:space="preserve">
     <value>Αποτυχημένες προσπάθειες σύνδεσης</value>
+  </data>
+  <data name="Audit_Forgot_Password" xml:space="preserve">
+    <value>Ο χρήστης ζήτησε μια επαναφορά κωδικού πρόσβασης</value>
   </data>
   <data name="Audit_FrozeUser" xml:space="preserve">
     <value>Χρήστης με αφρό</value>
@@ -198,6 +222,9 @@
   </data>
   <data name="Audit_MultiFactorResetUser" xml:space="preserve">
     <value>Επαναφορά πολλαπλού συντελεστή για το χρήστη</value>
+  </data>
+  <data name="Audit_Password_Reset" xml:space="preserve">
+    <value>Ο χρήστης ζήτησε μια επαναφορά κωδικού πρόσβασης</value>
   </data>
   <data name="Audit_SearchTerm_Help" xml:space="preserve">
     <value>Καταγραφές φίλτρων με βάση έναν όρο αναζήτησης</value>
@@ -379,6 +406,21 @@
   <data name="Filter" xml:space="preserve">
     <value>Φίλτρο</value>
   </data>
+  <data name="Forgot_Password" xml:space="preserve">
+    <value>Ξεχάσατε τον κωδικό πρόσβασης</value>
+  </data>
+  <data name="ForgotPassword" xml:space="preserve">
+    <value>Ξεχάσατε τον κωδικό πρόσβασης</value>
+  </data>
+  <data name="ForgotPassword_Email_Help" xml:space="preserve">
+    <value>Παρακαλώ εισάγετε τη διεύθυνση email του λογαριασμού.</value>
+  </data>
+  <data name="ForgotPassword_Email_Label" xml:space="preserve">
+    <value>Διεύθυνση ηλεκτρονικού ταχυδρομείου</value>
+  </data>
+  <data name="ForgotPassword_Failed" xml:space="preserve">
+    <value>Αποτυχία αποστολής email επαναφοράς κωδικού πρόσβασης</value>
+  </data>
   <data name="Galleries" xml:space="preserve">
     <value>Γκαλερί</value>
   </data>
@@ -396,6 +438,15 @@
   </data>
   <data name="Gallery_Full" xml:space="preserve">
     <value>Η γκαλερί είναι γεμάτη και έχει ξεπεράσει το μέγιστο μέγεθος της</value>
+  </data>
+  <data name="Gallery_Identifier" xml:space="preserve">
+    <value>Αναγνωριστικό γκαλερί</value>
+  </data>
+  <data name="Gallery_Identifier_Help" xml:space="preserve">
+    <value>Παρακαλώ εισάγετε το αναγνωριστικό της γκαλερί που θέλετε να επισκεφθείτε.</value>
+  </data>
+  <data name="Gallery_Identifier_Placeholder" xml:space="preserve">
+    <value>η γάγγραινα μου</value>
   </data>
   <data name="Gallery_Key" xml:space="preserve">
     <value>Κλειδί συλλογής</value>
@@ -417,12 +468,6 @@
   </data>
   <data name="Gallery_Name_Already_Exists" xml:space="preserve">
     <value>Το όνομα της γκαλερί υπάρχει ήδη</value>
-  </data>
-  <data name="Gallery_Name_Help" xml:space="preserve">
-    <value>Παρακαλώ εισάγετε το όνομα της γκαλερί που θέλετε να επισκεφθείτε.</value>
-  </data>
-  <data name="Gallery_Name_Placeholder" xml:space="preserve">
-    <value>η γάγγραινα μου</value>
   </data>
   <data name="Gallery_Selector_Title" xml:space="preserve">
     <value>Επιλογέας συλλογής</value>
@@ -535,6 +580,24 @@
   <data name="None" xml:space="preserve">
     <value>Καμία</value>
   </data>
+  <data name="Password_Reset_Changed_Message" xml:space="preserve">
+    <value>Ο κωδικός σας έχει πλέον επαναρυθμιστεί. Αν δεν ζητήσατε μια επαναφορά κωδικού πρόσβασης παρακαλώ επικοινωνήστε αμέσως με έναν διαχειριστή.</value>
+  </data>
+  <data name="Password_Reset_Changed_Title" xml:space="preserve">
+    <value>Ο κωδικός σας έχει ενημερωθεί!</value>
+  </data>
+  <data name="Password_Reset_Requested_Message" xml:space="preserve">
+    <value>Μια επαναφορά κωδικού πρόσβασης έχει ζητηθεί στο λογαριασμό σας. Αν ζητήσατε μια αλλαγή κωδικού παρακαλώ κάντε κλικ στο παρακάτω σύνδεσμο για να το ενημερώσετε.</value>
+  </data>
+  <data name="Password_Reset_Requested_Title" xml:space="preserve">
+    <value>Πρόβλημα πρόσβασης στο λογαριασμό σας?</value>
+  </data>
+  <data name="PasswordReset" xml:space="preserve">
+    <value>Επαναφορά κωδικού πρόσβασης</value>
+  </data>
+  <data name="PasswordReset_Failed" xml:space="preserve">
+    <value>Αποτυχία αποστολής email επαναφοράς κωδικού πρόσβασης.</value>
+  </data>
   <data name="Pending" xml:space="preserve">
     <value>Σε αναμονή</value>
   </data>
@@ -553,6 +616,75 @@
   <data name="Random" xml:space="preserve">
     <value>Τυχαίο</value>
   </data>
+  <data name="Register" xml:space="preserve">
+    <value>Μητρώο</value>
+  </data>
+  <data name="Register_Account" xml:space="preserve">
+    <value>Λογαριασμός μητρώου</value>
+  </data>
+  <data name="Register_CPassword_Help" xml:space="preserve">
+    <value>Επιβεβαίωση κωδικού πρόσβασης</value>
+  </data>
+  <data name="Register_CPassword_Label" xml:space="preserve">
+    <value>Επιβεβαίωση κωδικού πρόσβασης</value>
+  </data>
+  <data name="Register_Email_Help" xml:space="preserve">
+    <value>Παρακαλώ εισάγετε τη διεύθυνση email του λογαριασμού.</value>
+  </data>
+  <data name="Register_Email_Label" xml:space="preserve">
+    <value>Διεύθυνση ηλεκτρονικού ταχυδρομείου</value>
+  </data>
+  <data name="Register_Password_Help" xml:space="preserve">
+    <value>Κωδικός πρόσβασης εισάγετε έναν κωδικό πρόσβασης.</value>
+  </data>
+  <data name="Register_Password_Label" xml:space="preserve">
+    <value>Κωδικός πρόσβασης</value>
+  </data>
+  <data name="Register_Username_Help" xml:space="preserve">
+    <value>Παρακαλώ εισάγετε το όνομα χρήστη του λογαριασμού.</value>
+  </data>
+  <data name="Register_Username_Label" xml:space="preserve">
+    <value>Όνομα χρήστη</value>
+  </data>
+  <data name="Registration_Confirm_Password_Missmatch" xml:space="preserve">
+    <value>Ο κωδικός επιβεβαίωσης δεν ταιριάζει</value>
+  </data>
+  <data name="Registration_Email_Send_Failed" xml:space="preserve">
+    <value>Αποτυχία αποστολής email εγγραφής στο χρήστη.</value>
+  </data>
+  <data name="Registration_Email_Taken" xml:space="preserve">
+    <value>Ένας λογαριασμός με την καθορισμένη διεύθυνση email υπάρχει ήδη</value>
+  </data>
+  <data name="Registration_Failed" xml:space="preserve">
+    <value>Αποτυχία εγγραφής νέου χρήστη</value>
+  </data>
+  <data name="Registration_Invalid_Email" xml:space="preserve">
+    <value>Παρακαλώ προσδιορίστε μια έγκυρη διεύθυνση email</value>
+  </data>
+  <data name="Registration_Invalid_Password" xml:space="preserve">
+    <value>Παρακαλείσθε να ορίσετε έναν έγκυρο κωδικό πρόσβασης μεταξύ 8 και 100 χαρακτήρων, που περιέχει τουλάχιστον 1 κεφαλαίο γράμμα, 1 πεζό γράμμα, 1 αριθμό και 1 ιδιαίτερο χαρακτήρα</value>
+  </data>
+  <data name="Registration_Invalid_Username" xml:space="preserve">
+    <value>Παρακαλώ προσδιορίστε ένα έγκυρο όνομα χρήστη μεταξύ 5 και 50 χαρακτήρων</value>
+  </data>
+  <data name="Registration_Invalid_Verification_Link" xml:space="preserve">
+    <value>Υπήρξε ένα θέμα επεξεργασίας του συνδέσμου επαλήθευσης ηλεκτρονικού ταχυδρομείου</value>
+  </data>
+  <data name="Registration_Success_Message" xml:space="preserve">
+    <value>Ο λογαριασμός σας έχει καταχωρηθεί με επιτυχία και σας περιμένει για πρόσβαση</value>
+  </data>
+  <data name="Registration_Success_Title" xml:space="preserve">
+    <value>Καλώς ήρθατε!</value>
+  </data>
+  <data name="Registration_Success_Verification" xml:space="preserve">
+    <value>Ο λογαριασμός σας έχει καταχωρηθεί αλλά πρέπει να ελεγχθεί πριν να είναι προσβάσιμος. Παρακαλώ ενεργοποιήστε το λογαριασμό σας κάνοντας κλικ στον παρακάτω σύνδεσμο.</value>
+  </data>
+  <data name="Registration_Username_Taken" xml:space="preserve">
+    <value>Το όνομα χρήστη υπάρχει ήδη. Παρακαλώ επιλέξτε ένα νέο</value>
+  </data>
+  <data name="Registration_Weak_Password" xml:space="preserve">
+    <value>Ο κωδικός πρόσβασης είναι εύκολα μαντεμένος. Παρακαλώ επιλέξτε έναν πιο ασφαλή κωδικό πρόσβασης.</value>
+  </data>
   <data name="Reject" xml:space="preserve">
     <value>Απόρριψη</value>
   </data>
@@ -561,6 +693,9 @@
   </data>
   <data name="Rename" xml:space="preserve">
     <value>Μετονομασία</value>
+  </data>
+  <data name="ResetPassword_Invalid_Reset_Link" xml:space="preserve">
+    <value>Υπήρξε μια επεξεργασία θέματος ο σύνδεσμος επαναφοράς κωδικού πρόσβασης</value>
   </data>
   <data name="Resources" xml:space="preserve">
     <value>Πόροι</value>
@@ -603,6 +738,18 @@
   </data>
   <data name="Settings_Account_Profile_Icon_Label" xml:space="preserve">
     <value>Εικονίδιο προφίλ</value>
+  </data>
+  <data name="Settings_Account_Registration_Enabled_Help" xml:space="preserve">
+    <value>Επιτρέπεται στους επισκέπτες να καταχωρούν λογαριασμούς?</value>
+  </data>
+  <data name="Settings_Account_Registration_Enabled_Label" xml:space="preserve">
+    <value>Ενεργοποίηση εγγραφής</value>
+  </data>
+  <data name="Settings_Account_Registration_RequireEmailValidation_Help" xml:space="preserve">
+    <value>Απαιτείται από τους χρήστες να επαληθεύσουν το email τους προκειμένου να ενεργοποιήσουν το λογαριασμό τους?</value>
+  </data>
+  <data name="Settings_Account_Registration_RequireEmailValidation_Label" xml:space="preserve">
+    <value>Απαίτηση επικύρωσης ηλεκτρονικού ταχυδρομείου</value>
   </data>
   <data name="Settings_Alerts" xml:space="preserve">
     <value>Συναγερμοί</value>
@@ -892,12 +1039,6 @@
   <data name="Settings_Gallery_ReviewCounter_Label" xml:space="preserve">
     <value>Μετρητής αναθεώρησης</value>
   </data>
-  <data name="Settings_Gallery_SecretKey_Help" xml:space="preserve">
-    <value>Ένας κωδικός πρόσβασης για να ξεκλειδώσετε τη γκαλερί</value>
-  </data>
-  <data name="Settings_Gallery_SecretKey_Label" xml:space="preserve">
-    <value>Μυστικό κλειδί</value>
-  </data>
   <data name="Settings_Gallery_ShowFilters_Help" xml:space="preserve">
     <value>Θα πρέπει ο χρήστης να μπορεί να φιλτράρει και να ομαδοποιήσει τα μέσα?</value>
   </data>
@@ -1162,6 +1303,9 @@
   <data name="Square" xml:space="preserve">
     <value>Πλατεία</value>
   </data>
+  <data name="Submit" xml:space="preserve">
+    <value>Υποβολή</value>
+  </data>
   <data name="Supporters" xml:space="preserve">
     <value>Υποστηρικτές</value>
   </data>
@@ -1176,6 +1320,12 @@
   </data>
   <data name="Update" xml:space="preserve">
     <value>Ενημέρωση</value>
+  </data>
+  <data name="Upgrade" xml:space="preserve">
+    <value>Αναβάθμιση</value>
+  </data>
+  <data name="Upgrade_Account_Message" xml:space="preserve">
+    <value>Αυτή τη στιγμή χρησιμοποιείτε την ελεύθερη έκδοση. Για να ξεκλειδώσετε περισσότερες αποθήκευση γκαλερί και άλλα μεγάλα χαρακτηριστικά θεωρούν αναβάθμιση του λογαριασμού σας</value>
   </data>
   <data name="Upload_Media" xml:space="preserve">
     <value>Αποστολή πολυμέσων</value>
@@ -1203,6 +1353,9 @@
   </data>
   <data name="Users_List_Failed" xml:space="preserve">
     <value>Αποτυχία λήψης λίστας χρηστών</value>
+  </data>
+  <data name="Verify" xml:space="preserve">
+    <value>Επαλήθευση</value>
   </data>
   <data name="Videos" xml:space="preserve">
     <value>Βίντεο</value>

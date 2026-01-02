@@ -1,4 +1,6 @@
-﻿namespace WeddingShare.Models
+﻿using System.Text.Json.Serialization;
+
+namespace WeddingShare.Models
 {
     public class LoginModel
     {
@@ -12,5 +14,22 @@
         public string Username { get; set; }
         public string Password { get; set; }
         public string Code { get; set; }
+    }
+
+    public class LoginResponse
+    {
+        public LoginResponse(bool success)
+        {
+            Success = success;
+        }
+
+        [JsonPropertyName("success")]
+        public bool Success { get; set; } = false;
+
+        [JsonPropertyName("mfa")]
+        public bool MFAEnabled { get; set; } = false;
+
+        [JsonPropertyName("pending_activation")]
+        public bool PendingActivation { get; set; } = false;
     }
 }

@@ -2,7 +2,7 @@
 @using WeddingShare.Views.Account.Tabs
 
 @{
-    var userPermissions = User?.Identity?.GetUserPermissions() ?? AccessPermissions.None;
+    var userPermissions = User?.Identity?.GetUserPermissions() ?? new Permissions();
 }
 
 <section class="pnl-account pnl-account-reviews pb-0 pb-lg-4">
@@ -10,7 +10,7 @@
         <div class="row">
             <div class="col-12">
                 <h1 class="display-6">@_localizer["Pending_Uploads"].Value
-                    @if (Model?.PendingRequests != null && Model.PendingRequests.Any() && userPermissions.HasFlag(AccessPermissions.Review_Approve) && userPermissions.HasFlag(AccessPermissions.Review_Reject))
+                    @if (Model?.PendingRequests != null && Model.PendingRequests.Any() && userPermissions.Review.HasFlag(ReviewPermissions.Approve) && userPermissions.Review.HasFlag(ReviewPermissions.Reject))
                     {
                         <span class="header-actions">
                             <span class="action text-success pointer">
