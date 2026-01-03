@@ -175,6 +175,8 @@ namespace WeddingShare.Controllers
                 if (galleryId < 1 && !userPermissions.Gallery.HasFlag(GalleryPermissions.ViewAllGallery))
                 {
                     return new RedirectToActionResult("Index", "Error", new { Reason = ErrorCode.InvalidGalleryId }, false);
+                }
+
                 var viewerIdentity = HttpContext.Session.GetString(SessionKey.ViewerIdentity);
                 var requireNameEntry = await _settings.GetOrDefault(Settings.IdentityCheck.RequireIdentityForUpload, false, galleryId);
 
@@ -182,7 +184,6 @@ namespace WeddingShare.Controllers
                 {
                     // Redirect to name capture page
                     return RedirectToAction("CaptureIdentity", new { galleryId, identifier, key, returnUrl = Request.Path + Request.QueryString });
-                }
                 }
 
                 if (!string.IsNullOrWhiteSpace(culture))
@@ -408,7 +409,7 @@ namespace WeddingShare.Controllers
                     }
 
                     // Check if user is a photographer FOR THIS SPECIFIC GALLERY (SECURITY FIX)
-                    var userLevel = HttpContext.User?.Identity?.GetUserLevel() ?? UserLevel.Basic;
+                    var userLevel = HttpContext.User?.Identity?.GetUserLevel() ?? UserLevel.Free;
                     var userId = HttpContext.User?.Identity?.GetUserId() ?? -1;
                     var isPhotographer = false;
 
@@ -685,7 +686,7 @@ namespace WeddingShare.Controllers
                             {
                                 // SECURITY FIX: Check if user has Review permissions for pending/rejected photos
                                 var userPermissions = User.Identity.GetUserPermissions();
-                                var hasReviewPermission = userPermissions.HasFlag(AccessPermissions.Review_View);
+                                var hasReviewPermission = userPermissions.Review.HasFlag(ReviewPermissions.View);
 
                                 var scanners = new List<ZipListingScanner>();
 
