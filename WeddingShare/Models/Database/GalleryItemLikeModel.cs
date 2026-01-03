@@ -3,7 +3,7 @@
     public class GalleryItemLikeModel
     {
         public GalleryItemLikeModel()
-            : this(0, 0, 0, string.Empty null)
+            : this(0, 0, 0, string.Empty, null)
         {
         }
 
